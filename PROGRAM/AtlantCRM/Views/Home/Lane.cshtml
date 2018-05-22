@@ -1,0 +1,148 @@
+﻿<!-- Ряды -->
+<div id="lane" class="tab-content" ng-controller="laneCtrl" ng-show="global.selectedMenuItem === 'menuItemRyadi' && global.function.havePravoRead(5,22)">
+	
+  <div class="headerL">
+		<button class="allBtns btnRaduis now customHeight" ng-click="getData(0)">Сегодня</button>
+    <button class="allBtns next customHeight" ng-click="getData(-1)"><</button>
+    <button class="allBtns next customHeight" ng-click="getData(1)">></button>
+    <span class="text dt">{{dayWeekDate}}</span>
+    <span class="text dt" style="color: red">{{workDayError}}</span>
+	</div>
+  
+  <div class="timeL">
+    <div class="time customHeight" ng-repeat="item in global.manual.M_SEANS_TIME">
+      <button data-id="{{item.ID}}"
+              data-time="{{item.MAX_TIME}}" 
+              class="allBtns btnRaduis customHeight menu-item" 
+              ng-class="selectedButton === item ?
+                       'btn-time-active' :
+                       ''"
+              ng-click="btnTimeClickHandler(item)">{{item.MAX_TIME}}</button>
+    </div>
+  </div>
+
+  <div style="margin-left: 2px; z-index:1" class="lane-and-comment">
+    <div id="tableL">
+      <table id="tableHeader">
+        <tr>
+          <td class="numLane"></td>
+          <td class="headLane">{{seans_time}}</td>
+        </tr>
+      </table>
+
+      <div class="zapisat-na-seans" 
+           style="left: {{zapisatNaSeansLeft}}px; top: {{zapisatNaSeansTop}}px; height: {{zapisatNaSeansHeight}}px; z-index: 2" ng-show="zapisatNaSeans === 1">
+        <div class="rec-on-seans">
+          <span>Дата</span>
+          <input class="stat_date rec-date" ng-model="O_SEANS[0].seans_date" type="date" date-format="short" />
+        </div>
+        <div style="height: {{notValidDateHeight}}px">
+          <span class="rec-on-seans" style="color: red">{{notValidDate}}</span>
+        </div>
+        <div class="rec-on-seans">
+          <span>Сеанс</span>
+          <select class="rec-seans-id" ng-model="O_SEANS[0].m_seans_time_id" ng-options="c.ID as c.NAME for c in global.manual.M_SEANS_TIME"></select>
+        </div>
+        <div class="rec-on-seans">
+          <textarea style="margin-left: 1px" ng-model="comment" rows="5" cols="25" placeholder="Комментарий"></textarea>
+        </div>
+        <button class="btnRec" ng-click="btnOtmenitZapis(0)">Отменить</button>
+        <button class="btnRec" ng-click="btnZapisatNaSeans(0)" style="margin-left: 30px">Сохранить</button>
+      </div>
+
+      <div id="laneAnk" class="new-ank-seans" style="left: {{newAnkNaSeansLeft}}px; top: {{newAnkNaSeansTop}}px; height: {{newAnkHeight}}px" ng-show="newAnkNaSeans === 1">
+        <div class="rec-seans-fio">
+          <span>ФИО</span>
+          <input id="newLaneSurname" class="rec-seans-text" style="margin-left: 38px" ng-model="O_SEANS_ANK[0].surname" placeholder="Фамилия"/>
+          <input class="rec-seans-text rec-seans-data" ng-model="O_SEANS_ANK[0].name" placeholder="Имя"/>
+          <input class="rec-seans-text rec-seans-data" ng-model="O_SEANS_ANK[0].secname" placeholder="Отчество"/>
+        </div>
+        <div style="height: {{newAnkErrorHeight}}px">
+          <span class="rec-on-seans" style="color: red">{{newAnkError}}</span>
+        </div>
+        <div class="rec-seans-phone">
+          <span>Телефон</span>
+          <input id="lanePhoneMobile" class="rec-seans-text rec-phone" ng-model="O_SEANS_ANK[0].phone_mobile"/>
+        </div>
+        <div style="height: {{existsSeansHeight}}px">
+          <span class="rec-on-seans" style="color: red">{{existsSeans}}</span>
+        </div>
+        <button class="btnRec" ng-click="btnNewdAnk()">Расширенно</button>
+        <button class="btnRec" ng-click="btnSozdatAnk()" style="margin-left: 73px">Сохранить</button>
+      </div>
+      
+      <table id="tableRow">
+        <tr style="background-color: white">
+          <td></td>
+          <td style="text-align: center">1-й ряд</td>
+          <td style="text-align: center">2-й ряд</td>
+        </tr>
+        <tr ng-repeat="item in o_seans" ng-style="{ 'background-color' : ($index === 1 || ($index % 2) > 0 ) ? 'white' : '' }">
+          
+          <td class="numLane">{{item.id}}</td>
+
+          <td data-ryad-id="1"
+              class="rowLane" ng-style="{ 'background-color' : (item.tdColor1 === '') ? '' : '#fcff68' }" 
+              ng-click="(item.fio1 === null || item.fio1 === '') && tdZapisatNaSeansClickHandler($event)">
+            
+            <div class="rowContent rowBirth">
+              <img src="~/Content/img/cake.png" height="20" width="20" ng-show="item.birth1 === 1">
+            </div>
+            
+            <div class="rowContent rowText" ng-class="{'row-tex-left': item.birth1 === 1}">
+              <span style="color: {{item.textColor1}}" ng-click="openDialogRej(item.o_ank_id1, item.id1)"
+                    class="hover-cursor-underline">{{item.fio1}}</span>
+            </div>
+            
+            <div class="rowContent rowButton">
+              <button data-ank-id="{{item.o_ank_id1}}"
+                      data-seans-time-id="{{item.m_seans_time_id1}}"
+                      data-ryad-id="{{item.m_ryad_id1}}"
+                      data-seans-id="{{item.id1}}"
+                      class="record"
+                      ng-click="btnZapisatNaSeansClickHandler($event)"
+                      ng-hide="(item.fio1 === null || item.fio1 === '')"
+                      ng-disabled="global.function.noHavePravoWrite(5,22)"></button>
+            </div>
+
+          </td>
+          
+          <td data-ryad-id="2"
+              class="rowLane" ng-style="{ 'background-color' : (item.tdColor2 === '') ? '' : '#fcff68' }"
+              ng-click="(item.fio2 === null || item.fio2 === '') && tdZapisatNaSeansClickHandler($event)">
+            
+            <div class="rowContent rowBirth">
+              <img src="~/Content/img/cake.png" height="20" width="20" ng-show="item.birth2 === 1">
+            </div>
+            
+            <div class="rowContent rowText" ng-class="{'row-tex-left': item.birth2 === 1}">
+              <span style="color: {{item.textColor2}}" ng-click="openDialogRej(item.o_ank_id2, item.id2)"
+                    class="hover-cursor-underline">{{item.fio2}}</span>
+            </div>
+            
+            <div class="rowContent rowButton">
+              <button data-ank-id="{{item.o_ank_id2}}"
+                      data-seans-time-id="{{item.m_seans_time_id2}}"
+                      data-ryad-id="{{item.m_ryad_id2}}"
+                      data-seans-id="{{item.id2}}"
+                      class="record"
+                      ng-click="btnZapisatNaSeansClickHandler($event)"
+                      ng-hide="(item.fio2 === null || item.fio2 === '')"
+                      ng-disabled="global.function.noHavePravoWrite(5,22)"></button>
+            </div>
+          </td>
+
+        </tr>
+      </table>
+    </div>
+    
+    <div style="padding-bottom: 3px" class="memo-and-save-button">
+      <div id="commentL">
+        <textarea id="commentLane" rows="7" cols="91" ng-model="seans_comment" ng-readonly="(editComment === 0)">{{seans_comment}}</textarea>
+      </div>
+      <button class="save" ng-hide="(editComment === 0)" ng-click="saveComment()">Сохранить комментарий</button>
+    </div>
+  </div>
+
+</div>
+<!-- /ряды -->

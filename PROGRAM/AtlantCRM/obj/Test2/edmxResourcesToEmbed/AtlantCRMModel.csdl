@@ -1,0 +1,682 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ATLANTCRMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ATLANTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="ATLANTCRMModel.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="ATLANTCRMModel.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="ATLANTCRMModel.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="ATLANTCRMModel.AspNetUserLogins" />
+    <EntitySet Name="AspNetUsers" EntityType="ATLANTCRMModel.AspNetUsers" />
+    <EntitySet Name="M_IST_INF" EntityType="ATLANTCRMModel.M_IST_INF" />
+    <EntitySet Name="M_MANUAL" EntityType="ATLANTCRMModel.M_MANUAL" />
+    <EntitySet Name="M_METOD_OPL" EntityType="ATLANTCRMModel.M_METOD_OPL" />
+    <EntitySet Name="M_NAME_AND_SEX" EntityType="ATLANTCRMModel.M_NAME_AND_SEX" />
+    <EntitySet Name="M_ORG" EntityType="ATLANTCRMModel.M_ORG" />
+    <EntitySet Name="M_ORG_TYPE" EntityType="ATLANTCRMModel.M_ORG_TYPE" />
+    <EntitySet Name="M_PRAVO_GR" EntityType="ATLANTCRMModel.M_PRAVO_GR" />
+    <EntitySet Name="M_PRAVO_REJ" EntityType="ATLANTCRMModel.M_PRAVO_REJ" />
+    <EntitySet Name="M_PRICH_ISKL" EntityType="ATLANTCRMModel.M_PRICH_ISKL" />
+    <EntitySet Name="M_PRODUCT" EntityType="ATLANTCRMModel.M_PRODUCT" />
+    <EntitySet Name="M_RASHOD_STAT" EntityType="ATLANTCRMModel.M_RASHOD_STAT" />
+    <EntitySet Name="M_RYAD" EntityType="ATLANTCRMModel.M_RYAD" />
+    <EntitySet Name="M_SEANS_PLACE" EntityType="ATLANTCRMModel.M_SEANS_PLACE" />
+    <EntitySet Name="M_SEANS_TIME" EntityType="ATLANTCRMModel.M_SEANS_TIME" />
+    <EntitySet Name="M_SECNAME" EntityType="ATLANTCRMModel.M_SECNAME" />
+    <EntitySet Name="M_SERVICE_TYPE" EntityType="ATLANTCRMModel.M_SERVICE_TYPE" />
+    <EntitySet Name="M_SEX" EntityType="ATLANTCRMModel.M_SEX" />
+    <EntitySet Name="M_SHABLON" EntityType="ATLANTCRMModel.M_SHABLON" />
+    <EntitySet Name="M_STATUS" EntityType="ATLANTCRMModel.M_STATUS" />
+    <EntitySet Name="M_SURNAME" EntityType="ATLANTCRMModel.M_SURNAME" />
+    <EntitySet Name="M_WORK_DAY" EntityType="ATLANTCRMModel.M_WORK_DAY" />
+    <EntitySet Name="M_ZABOL" EntityType="ATLANTCRMModel.M_ZABOL" />
+    <EntitySet Name="M_ZABOL_GROUP" EntityType="ATLANTCRMModel.M_ZABOL_GROUP" />
+    <EntitySet Name="O_ANK" EntityType="ATLANTCRMModel.O_ANK" />
+    <EntitySet Name="O_ANK_ZABOL" EntityType="ATLANTCRMModel.O_ANK_ZABOL" />
+    <EntitySet Name="O_COMPLAINT" EntityType="ATLANTCRMModel.O_COMPLAINT" />
+    <EntitySet Name="O_DIALOG" EntityType="ATLANTCRMModel.O_DIALOG" />
+    <EntitySet Name="O_KONT_ANK" EntityType="ATLANTCRMModel.O_KONT_ANK" />
+    <EntitySet Name="O_KONT_SEANS" EntityType="ATLANTCRMModel.O_KONT_SEANS" />
+    <EntitySet Name="O_PRAVO_GR" EntityType="ATLANTCRMModel.O_PRAVO_GR" />
+    <EntitySet Name="O_PRAVO_REJ" EntityType="ATLANTCRMModel.O_PRAVO_REJ" />
+    <EntitySet Name="O_REK_ANK" EntityType="ATLANTCRMModel.O_REK_ANK" />
+    <EntitySet Name="O_REPORT_BIRTHDAY_CALL" EntityType="ATLANTCRMModel.O_REPORT_BIRTHDAY_CALL" />
+    <EntitySet Name="O_SEANS" EntityType="ATLANTCRMModel.O_SEANS" />
+    <EntitySet Name="O_SEANS_COMMENT" EntityType="ATLANTCRMModel.O_SEANS_COMMENT" />
+    <EntitySet Name="O_SERVICE" EntityType="ATLANTCRMModel.O_SERVICE" />
+    <EntitySet Name="O_SKLAD_PR" EntityType="ATLANTCRMModel.O_SKLAD_PR" />
+    <EntitySet Name="O_SKLAD_PR_PRODUCT" EntityType="ATLANTCRMModel.O_SKLAD_PR_PRODUCT" />
+    <EntitySet Name="O_SKLAD_RAS_PRODUCT_OPL" EntityType="ATLANTCRMModel.O_SKLAD_RAS_PRODUCT_OPL" />
+    <EntitySet Name="O_STATUS" EntityType="ATLANTCRMModel.O_STATUS" />
+    <EntitySet Name="O_ZVONOK" EntityType="ATLANTCRMModel.O_ZVONOK" />
+    <EntitySet Name="S_USER" EntityType="ATLANTCRMModel.S_USER" />
+    <EntitySet Name="S_USER_ROLE" EntityType="ATLANTCRMModel.S_USER_ROLE" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="ATLANTCRMModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="ATLANTCRMModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="ATLANTCRMModel.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <EntitySet Name="O_RAS_DOK" EntityType="ATLANTCRMModel.O_RAS_DOK" />
+    <EntitySet Name="O_SKLAD_RAS" EntityType="ATLANTCRMModel.O_SKLAD_RAS" />
+    <EntitySet Name="O_SKLAD_RAS_PRODUCT" EntityType="ATLANTCRMModel.O_SKLAD_RAS_PRODUCT" />
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="ATLANTCRMModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="ATLANTCRMModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="ATLANTCRMModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="ATLANTCRMModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="ATLANTCRMModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="ATLANTCRMModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="M_IST_INF">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="M_MANUAL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME_ENG" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NAME_RU" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="M_METOD_OPL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="M_NAME_AND_SEX">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SEX" Type="Int32" />
+  </EntityType>
+  <EntityType Name="M_ORG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PARENT_ID" Type="Int32" Nullable="false" />
+    <Property Name="ADRES" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="KOD_PODTV" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="M_ORG_TYPE_ID" Type="Int32" />
+    <Property Name="TZ" Type="Int32" />
+  </EntityType>
+  <EntityType Name="M_ORG_TYPE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="M_PRAVO_GR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="M_PRAVO_REJ">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="M_PRAVO_GR_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="M_PRICH_ISKL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="M_PRODUCT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="M_RASHOD_STAT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="M_RYAD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="M_SEANS_PLACE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="M_PRODUCT_ID" Type="Int32" />
+    <Property Name="M_RYAD_ID" Type="Int32" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="M_SEANS_TIME">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MIN_TIME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MAX_TIME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+    <Property Name="MIN_TIME_MINUTES" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="MAX_TIME_MINUTES" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="M_SECNAME">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SECNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="M_SERVICE_TYPE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="M_SEX">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="M_SHABLON">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SHABLON_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SHABLON_TEXT" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="D_CREATE" Type="DateTime" Precision="0" />
+    <Property Name="OPERATOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="M_STATUS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="M_SURNAME">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SURNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="M_WORK_DAY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DAY_ID" Type="Int32" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="M_ZABOL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="M_ZABOL_GROUP_ID" Type="Int32" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="M_ZABOL_GROUP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="O_ANK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SURNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SECNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SEX" Type="Int16" />
+    <Property Name="BIRTHDAY" Type="DateTime" Precision="0" />
+    <Property Name="PHONE_MOBILE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE_HOME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="REGION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CITY" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="STREET" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="HOUSE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FLAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CORPUS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DISTRICT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="POST_INDEX" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IST_INFO" Type="Int16" />
+    <Property Name="FIO_INFO_ID" Type="Int32" />
+    <Property Name="DATE_REG" Type="DateTime" Precision="0" />
+    <Property Name="PHOTO" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+    <Property Name="USER_REG" Type="Int32" />
+  </EntityType>
+  <EntityType Name="O_ANK_ZABOL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="O_ANK_ID" Type="Int32" />
+    <Property Name="M_ZABOL_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="O_COMPLAINT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="O_ANK_ID" Type="Int32" />
+    <Property Name="COMMENT" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="O_DIALOG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="O_ANK_ID" Type="Int32" />
+    <Property Name="COMMENT" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="USERID" Type="Int32" />
+    <Property Name="NPOS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DIALOG_DATE" Type="DateTime" Precision="0" />
+    <Property Name="O_SEANS_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="O_KONT_ANK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SURNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SECNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+    <Property Name="USERID" Type="Int32" />
+    <Property Name="SKR" Type="Int32" Nullable="false" />
+    <Property Name="D_START" Type="DateTime" Precision="0" />
+    <Property Name="O_ANK_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="O_KONT_SEANS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="O_KONT_ANK_ID" Type="Int32" />
+    <Property Name="COMMENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="D_ZV" Type="DateTime" Precision="0" />
+    <Property Name="SEANS_DATE" Type="DateTime" Precision="0" />
+    <Property Name="M_SEANS_TIME_ID" Type="Int32" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+    <Property Name="USERID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="O_PRAVO_GR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="M_PRAVO_GR_ID" Type="Int32" />
+    <Property Name="S_USER_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="O_PRAVO_REJ">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="M_PRAVO_REJ_ID" Type="Int32" />
+    <Property Name="READ1" Type="Int32" />
+    <Property Name="WRITE1" Type="Int32" />
+    <Property Name="S_USER_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="O_REK_ANK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SURNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SECNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+    <Property Name="USERID" Type="Int32" />
+    <Property Name="D_START" Type="DateTime" Precision="0" />
+    <Property Name="O_ANK_ID" Type="Int32" />
+    <Property Name="SKR" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="O_REPORT_BIRTHDAY_CALL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="D_START" Type="DateTime" Precision="0" />
+    <Property Name="USERID" Type="Int32" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+    <Property Name="O_ANK_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="O_SEANS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="O_ANK_ID" Type="Int32" />
+    <Property Name="M_SEANS_TIME_ID" Type="Int32" />
+    <Property Name="M_SEANS_PLACE_ID" Type="Int32" />
+    <Property Name="SEANS_DATE" Type="DateTime" Precision="0" />
+    <Property Name="SEANS_STATE" Type="Int32" Nullable="false" />
+    <Property Name="M_RYAD_ID" Type="Int32" />
+    <Property Name="USERID" Type="Int32" />
+    <Property Name="D_START" Type="DateTime" Precision="0" />
+    <Property Name="LANE" Type="Int32" />
+    <Property Name="USERID_REG" Type="Int32" />
+    <Property Name="D_REG" Type="DateTime" Precision="0" />
+    <Property Name="BEZ_REG" Type="Int32" Nullable="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+    <Property Name="ANK" Type="Int32" Nullable="false" />
+    <Property Name="D_MODIF" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="O_SEANS_COMMENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SEANS_DATE" Type="DateTime" Precision="0" />
+    <Property Name="COMMENT" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="USERID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="O_SERVICE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="O_ANK_ID" Type="Int32" />
+    <Property Name="M_SERVICE_TYPE_ID" Type="Int32" />
+    <Property Name="M_PRODUCT_ID" Type="Int32" />
+    <Property Name="SERIAL_NUMBER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PRODUCT_PHOTO" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="GUARANTEE_PHOTO" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PRODUCT_CHECK" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="COMMENT" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="USERID" Type="Int32" />
+    <Property Name="D_START" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="O_SKLAD_PR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="D_START" Type="DateTime" Precision="0" />
+    <Property Name="D_MODIF" Type="DateTime" Precision="0" />
+    <Property Name="USERID" Type="Int32" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+    <Property Name="D_SCHET" Type="DateTime" Precision="0" />
+    <Property Name="N_SCHET" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="O_SKLAD_PR_PRODUCT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="D_START" Type="DateTime" Precision="0" />
+    <Property Name="D_MODIF" Type="DateTime" Precision="0" />
+    <Property Name="USERID" Type="Int32" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+    <Property Name="O_SKLAD_PR_ID" Type="Int32" />
+    <Property Name="M_PRODUCT_ID" Type="Int32" />
+    <Property Name="KOLVO" Type="Int32" />
+    <Property Name="COST" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="O_SKLAD_RAS_PRODUCT_OPL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="D_START" Type="DateTime" Precision="0" />
+    <Property Name="D_MODIF" Type="DateTime" Precision="0" />
+    <Property Name="USERID" Type="Int32" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+    <Property Name="O_SKLAD_RAS_PRODUCT_ID" Type="Int32" />
+    <Property Name="OPL" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="D_OPL" Type="DateTime" Precision="0" />
+    <Property Name="M_METOD_OPL_ID" Type="Int32" />
+    <Property Name="SERIAL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="O_STATUS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="O_ANK_ID" Type="Int32" />
+    <Property Name="M_STATUS_ID" Type="Int32" />
+    <Property Name="M_PRODUCT_ID" Type="Int32" />
+    <Property Name="STATUS_DATE" Type="DateTime" Precision="0" />
+    <Property Name="USERID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="O_ZVONOK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="O_ANK_ID" Type="Int32" Nullable="false" />
+    <Property Name="D_END_ISKL" Type="DateTime" Precision="0" />
+    <Property Name="M_ISKL_ID" Type="Int32" />
+    <Property Name="OPERATOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="D_MODIF" Type="DateTime" Precision="0" />
+    <Property Name="D_START" Type="DateTime" Precision="0" />
+    <Property Name="COMMENT" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+    <Property Name="USERID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="S_USER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="S_USER_ROLE_ID" Type="Int32" Nullable="false" />
+    <Property Name="SURNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SECNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+    <Property Name="AspNetUsersId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PHOTO" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="D_START" Type="DateTime" Precision="0" />
+    <Property Name="BIRTHDAY" Type="DateTime" Precision="0" />
+    <Property Name="HIRE_DATE" Type="DateTime" Precision="0" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="IS_ADM" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="S_USER_ROLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="ATLANTCRMModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ATLANTCRMModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="ATLANTCRMModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ATLANTCRMModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="ATLANTCRMModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+    <End Type="ATLANTCRMModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+  </Association>
+  <EntityType Name="O_RAS_DOK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="D_START" Type="DateTime" Precision="0" />
+    <Property Name="D_MODIF" Type="DateTime" Precision="0" />
+    <Property Name="USERID" Type="Int32" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+    <Property Name="M_RASHOD_STAT_ID" Type="Int32" />
+    <Property Name="D_SCHET" Type="DateTime" Precision="0" />
+    <Property Name="N_SCHET" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="POSTAV_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="REK" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="COST" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="KOLVO" Type="Int32" />
+    <Property Name="SUMMA_RASH" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="S_USER_ID" Type="Int32" />
+    <Property Name="MOTIV" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="SUMMA_VID" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="VOZVR" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="RASHOD" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="O_SKLAD_RAS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="D_START" Type="DateTime" Precision="0" />
+    <Property Name="D_MODIF" Type="DateTime" Precision="0" />
+    <Property Name="USERID" Type="Int32" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+    <Property Name="D_SCHET" Type="DateTime" Precision="0" />
+    <Property Name="N_SCHET" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SURNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SECNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="STREET" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="POST_INDEX" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE_MOBILE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="O_ANK_ID" Type="Int32" />
+    <Property Name="S_USER_ID" Type="Int32" />
+    <Property Name="SEMYA_VSEGO" Type="Int32" />
+    <Property Name="SEMYA_HODIT" Type="Int32" />
+  </EntityType>
+  <EntityType Name="O_SKLAD_RAS_PRODUCT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="D_START" Type="DateTime" Precision="0" />
+    <Property Name="D_MODIF" Type="DateTime" Precision="0" />
+    <Property Name="USERID" Type="Int32" />
+    <Property Name="M_ORG_ID" Type="Int32" />
+    <Property Name="O_SKLAD_RAS_ID" Type="Int32" />
+    <Property Name="M_PRODUCT_ID" Type="Int32" />
+    <Property Name="KOLVO" Type="Int32" />
+    <Property Name="TSENA" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="SKIDKA" Type="Decimal" Precision="5" Scale="3" />
+    <Property Name="COST" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IS_AKTSIYA" Type="Int32" Nullable="false" />
+    <Property Name="IS_VID" Type="Int32" Nullable="false" />
+    <Property Name="D_VID" Type="DateTime" Precision="0" />
+    <Property Name="OPL_VSEGO" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OPL_OST" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+</Schema>

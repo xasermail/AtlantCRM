@@ -1,0 +1,154 @@
+﻿<!-- Новый - Звонок -->
+<div id="newZvonok" class="tab-content" ng-controller="newZvonokCtrl" ng-show="global.selectedSubMenuItem === 6 && global.ankZvonokPravoRead === 1">
+  
+  <div id="templateBlock" class="templateEdit"> 
+    <div id="btnTemplate">
+      <span class="call-text">Скрипты</span>
+      <div id="btnBlock">
+        <button type="button" class="btnCircle" ng-click="shablonNewClickHandler()" ng-disabled="global.ankZvonokPravoWrite === 0">+</button>
+        <button type="button" class="btnCircle" ng-click="shablonEditClickHandler(curShablonItem)" ng-disabled="global.ankZvonokPravoWrite === 0">i</button>
+        <button type="button" class="btnCircle" ng-click="shablonDelClickHandler(curShablonItem)" ng-disabled="global.ankZvonokPravoWrite === 0">-</button>
+      </div>
+    </div>
+    <!-- список названий шаблонов -->
+    <div>
+      <ul class="nav" role="tablist">
+        <li ng-repeat="name in names" role="presentation" ng-class="{'active' : name == curShablonItem}">
+          <a href="#" aria-controls="home" role="tab" data-toggle="tab" ng-click="shablonSelectClickHandler(name)">{{name.SHABLON_NAME}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div id="verticalLineLeft">
+  </div>
+
+  <div id="centerBlock">
+    <div class="call-first-line">
+      
+      <table>
+        <tr>
+          <td width="50%"><span class="header">{{global.ank.NAME}} {{global.ank.SECNAME}} {{global.ank.SURNAME}}</span></td>
+          <td width="30%"><span class="header call-age">{{birth}} {{age}}</span></td>
+          <td width="20%"><span class="call-info" style="color: #169BD5; text-align:right">Информация</span></td>
+        </tr>
+      </table>
+      
+      <table>
+        <tr>
+          <td><span>{{all_visits}}</span></td>
+          <td><span class="call-phone">{{phone}}</span></td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <td><span>{{products}}</span></td>
+        </tr>
+      </table>
+
+    </div>
+    <div class="call-second-line">
+      <textarea class="call-comment" ng-model="curShablonItem.SHABLON_TEXT" rows="20" readonly="readonly" cols="40" value=""></textarea>
+    </div>
+  </div>
+
+  <div id="rightBlock">
+    <div ng-repeat="item in lastZvonok">
+      <div>
+        <div class="call-action-iskl">
+          <input type="checkbox" ng-model="item.checked" ng-checked="item.checked" ng-click="checkIskl()" ng-disabled="global.ankZvonokPravoWrite === 0"/>
+        </div>
+        <div class="call-action-iskl call-action-text">
+          <span>Исключить из отчетов</span>
+        </div>
+      </div>
+      <div class="call-action-group">
+        <select ng-disabled="(!item.checked)" class="call-action-reason" ng-model="item.m_iskl_id" 
+                ng-options="c.ID as c.NAME for c in global.manual.M_PRICH_ISKL"></select>
+        <span style="margin-left: 5px">до</span>
+        <input ng-disabled="(!item.checked)" class="call-action-date" ng-model="item.d_end_iskl"
+               type="date" date-format="short" style="{{dIsklErrorStyle}}" />
+        <div>
+          <span style="color: red; margin-top: 3px">{{errorIskl}}</span>
+        </div>
+      </div>
+      
+      <div class="call-action-group">
+        <div>
+          <span style="color: red; margin-top: 3px">{{errorComment}}</span>
+        </div>
+        <textarea ng-model="item.comment" ng-change="checkCommentEnter()" class="call-action-comment" rows="5" cols="40" 
+                  style="{{commentErrorStyle}}" ng-disabled="global.ankZvonokPravoWrite === 0"></textarea>
+      </div>
+      <div class="call-action-save">
+        <button ng-click="saveZvonok()" ng-disabled="global.ankZvonokPravoWrite === 0">Сохранить</button>
+      </div>
+
+      <div class="call-action-comment call-action-container">
+        <table class="call-action-border call-action-table">
+          <tr ng-repeat="item in comment" class="call-action-border">
+            <td width="23%" class="call-action-border">{{item.operator}}</td>
+            <td width="77%" class="call-action-border">{{item.comment}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div ng-repeat="elem in o_seans" class="call-action-group">
+        <div>
+          <div class="call-action-record">
+            <input type="checkbox" ng-checked="elem.checked" ng-model="elem.checked" ng-change="clearError()" ng-disabled="global.ankZvonokPravoWrite === 0">
+          </div>
+          <div class="call-action-record call-action-text">
+            <span class="hover-cursor-underline" ng-click="setChecked()">Записать на сеанс</span>
+          </div>
+        </div>
+        <div>
+          <span style="color: red; margin-top: 3px">{{errorSeans}}</span>
+        </div>
+        <div>
+          <select ng-disabled="(!elem.checked)"
+                  class="call-action-seans-id"
+                  ng-model="elem.m_seans_time_id"
+                  ng-options="c.ID as c.NAME for c in global.manual.M_SEANS_TIME"></select>
+          <input ng-disabled="(!elem.checked)"
+                 class="call-action-seans-date"
+                 ng-model="elem.seans_date"
+                 type="date"
+                 date-format="short"
+                 style="{{dateSeansErrorStyle}}" />
+          <button style="margin-left: 20px; width: 80px" ng-click="saveSeans()" ng-disabled="global.ankZvonokPravoWrite === 0">Записать</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- МОдальное окно для ввода наименования шаблона -->
+  <div id="shablonSelectModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close"
+                  data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title" id="mySmallModalLabel">{{modalCaption}}</h4>
+        </div>
+        <div class="modal-body">
+          <span>Наименование:</span>
+          <input type="text" style="margin-left: 0px" ng-model="shablon_name" class="form-control" />
+          <p>
+            <span>Текст:</span>
+          </p>
+          <textarea id="template_edit_message" rows="12" cols="88" ng-model="shablon_text"></textarea>
+          <p></p>
+          <button class="btn btn-primary" data-dismiss="modal"
+                  ng-click="shablonSaveClickHandler()">
+            Сохранить
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

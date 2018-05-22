@@ -1,0 +1,57 @@
+﻿@{
+  Layout = "/Views/Shared/_Print.cshtml";
+}
+
+<style>
+  .header {
+    display: table;
+    margin: 0 auto;
+  }
+
+  table { 
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    border: 1px black solid
+  }
+
+  tr {
+    border: 1px black solid;
+  }
+
+  td {
+    border: 1px black solid;
+  }
+
+  th {
+    border: 1px black solid;
+  }
+
+  div.text-center {
+    text-align: center;
+  }
+</style>
+
+<div class="header">
+  <H1>Приход на склады</H1>
+  <div class="text-center">
+    <span>c {{dtfrom | date:'dd.MM.yyyy'}} по {{dtto | date:'dd.MM.yyyy'}}</span>
+  </div>
+</div>
+
+<div style="margin-top: 15px">
+  <table width="600">
+    <tr>
+      <th>Номер счета</th>
+      <th>Дата счета</th>
+      <th>Наименование продукции</th>
+      <th>Количество</th>
+    </tr>
+    <tr ng-repeat="item in data">
+      <td width="20%" align="center">{{item.N_SCHET}}</td>
+      <td width="20%" align="center">{{item.D_SCHET | date:'dd.MM.yyyy'}}</td>
+      <td width="40%" align="center">{{item.NAME}}</td>
+      <td width="20%" align="center">{{item.KOLVO}}</td>
+    </tr>
+  </table>
+</div>

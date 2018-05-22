@@ -1,0 +1,42 @@
+﻿<!-- Статистика -->
+<div id="period" class="tab-content" ng-controller="periodCtrl"
+     ng-show="global.selectedSubMenuItem === 1 && global.function.havePravoRead(1,2)">
+
+  <div class="period-main-div">
+    <div>
+      <div><span class="period-blue-text">Штрих-код</span></div>
+      <div><input class="period-barcode-input" ng-model="global.ank.ID_CODE" disabled="disabled" /></div>
+      <div><img class="shtrih-kod" /></div>
+    </div>
+    
+
+    <div class="period-horizontal-line">
+    </div>
+
+    <div style="height: 134px">
+      <table class="period-info-table">
+        <tr class="period-height-tr">
+          <td class="period-bold-text">Контакт</td>
+          <td class="period-padding-td">{{contact}}</td>
+          <td class="period-bold-text" style="padding-left: 15px">{{fio}}</td>
+        </tr>
+        <tr>
+          <td class="period-bold-text">Цикл</td>
+          <td class="period-padding-td">{{cycle}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="period-bold-text">Ходит уже</td>
+          <td class="period-padding-td">{{all_visits}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="period-bold-text">Непрерывно ходит</td>
+          <td class="period-padding-td">{{nepreryv}}</td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>

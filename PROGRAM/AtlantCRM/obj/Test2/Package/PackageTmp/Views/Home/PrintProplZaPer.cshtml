@@ -1,0 +1,77 @@
+﻿@{
+  Layout = "/Views/Shared/_Print.cshtml";
+}
+
+<style>
+
+  @@page {
+    size: portrait A4;
+    margin: 0px;
+  }
+
+  .header {
+    display: table;
+    margin: 0 auto;
+  }
+
+  table { 
+    margin-left: 15px;
+    margin-right: 15px;
+    border-collapse: collapse;
+    border: 1px black solid
+  }
+
+  tr {
+    border: 1px black solid;
+  }
+
+  td {
+    border: 1px black solid;
+  }
+
+  th {
+    border: 1px black solid;
+  }
+
+  div.text-center {
+    text-align: center;
+  }
+
+  div.itogo {
+    margin-top: 10px;
+    margin-left: 385px;
+  }
+</style>
+
+<div class="header">
+  <H1>Проплаты за период</H1>
+  <div class="text-center">
+    <span>c {{dateBeg | date:'dd.MM.yyyy'}} по {{dateEnd | date:'dd.MM.yyyy'}}</span>
+  </div>
+</div>
+
+<div style="margin-top: 15px">
+  <table>
+    <tr>
+      <th>ФИО</th>
+      <th>Наименование товара</th>
+      <th>Стоимость</th>
+      <th>Дата выдачи</th>
+      <th>Телефон</th>
+    </tr>
+    <tr ng-repeat="item in data">
+      <td width="30%" align="center">{{item.fio}}</td>
+      <td width="20%" align="center">{{item.product_name}}</td>
+      <td width="15%" align="center">{{item.opl}}</td>
+      <td width="15%" align="center">{{item.d_vid | date:'dd.MM.yyyy'}}</td>
+      <td width="20%" align="center">{{item.phone_mobile}}</td>
+    </tr>
+    <tr>
+      <td width="30%" align="center"></td>
+      <td width="20%" align="center"></td>
+      <td width="15%" align="center">ИТОГО: {{itogo}}</td>
+      <td width="15%" align="center"></td>
+      <td width="20%" align="center"></td>
+    </tr>
+  </table>
+</div>

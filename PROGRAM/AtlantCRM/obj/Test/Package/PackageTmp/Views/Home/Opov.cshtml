@@ -1,0 +1,24 @@
+﻿<!-- Оповещения -->
+<div id="opov" class="tab-content" ng-controller="opovCtrl"
+     ng-show="(global.selectedMenuItem === 'menuItemDilerA' ||
+               global.selectedMenuItem === 'menuItemDilerC' ||
+               global.selectedMenuItem === 'menuItemDilerD' ||
+               global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_ADMINISTRATSIYA) && 
+              global.selectedDilerSubMenuItem === 1 "> @* && global.function.havePravoRead(10,47) *@
+
+  <div class="caption">
+    Вопросы:
+  </div>
+  <div class="opov-list">
+    <div size="20" 
+         ng-repeat="item in opovList"
+         class="opov-item"
+         ng-class="{'odd': $odd}">
+      {{item.caption}}
+    </div>
+  </div>
+
+  <br />
+
+</div>
+<!-- /оповещения -->

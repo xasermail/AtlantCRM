@@ -1,0 +1,65 @@
+﻿<!-- Учёт - Отчёты - Не продлил -->
+<div id="uchetReportsNeProdlil" class="tab-content" ng-controller="uchetReportsNeProdlilCtrl"
+     ng-show="global.selectedUchetSubMenuItem === 4 && global.selectedUchetReportsSubMenuItem === 5">
+
+  <div class="ne-prodlil-div">
+    
+    <div>
+      <button class="ne-prodlil-first-row" ng-click="refreshNeProdlil()">Обновить</button>
+      <button class="ne-prodlil-first-row" ng-click="print()">Печать</button>
+    </div>
+
+    <div class="ne-prodlil-div-table">
+      <table>
+        <tr>
+          <td align="center">&nbsp;VIP&nbsp;</td>
+          <td align="center">ФИО</td>
+          <td align="center">Дата выдачи</td>
+          <td align="center">Дата действия</td>
+          <td align="center">Телефон</td>
+          <td align="center">Наименование товара</td>
+          <td align="center">Выдано</td>
+          <td align="center">Сумма</td>
+          <td align="center" title="Осталось дней абонемента">Осталось</td>
+          <td align="center">Посещения</td>
+        </tr>
+
+        <tr ng-repeat="item in data"
+            ng-style="{ 'background-color' : ((($index + 1) % 2) > 0 ) ? 'white' : '' }">
+
+          <td align="center" class="info1 vip">{{item.VIP === 1 ? "VIP": ""}}</td>
+
+          <td align="center" class="info2">
+            <span ng-click="openAnkRej(item.O_ANK_ID)"
+                  ng-class="(item.O_ANK_ID === null) ? '' : 'hover-cursor-underline'" class="ng-binding hover-cursor-underline">{{item.FIO}}</span>
+          </td>
+
+          <td align="center" class="info3">{{item.D_VID | date:'dd.MM.yyyy'}}</td>
+          <td align="center" class="info3">{{item.D_DEISTV | date:'dd.MM.yyyy'}}</td>
+
+          <td align="center" class="info4 process-a-call-td">
+            <a href="#"
+               ng-click="global.function.phoneClick(item.PHONE, item)"
+               ng-hide="item.showProcessACall"
+               title="Нажмите на номер телефона для совершения вызова">{{item.PHONE}}</a>
+            <div class="process-a-call" ng-show="item.showProcessACall"><div>Совершается вызов</div></div>
+          </td>
+
+          <td align="center" class="info5">
+            <span ng-click="global.openUchetSkladRasProduct(item.O_SKLAD_RAS_ID)"
+                  ng-class="(item.O_SKLAD_RAS_ID === null) ? '' : 'hover-cursor-underline'" class="ng-binding hover-cursor-underline">{{item.NAME}}</span>
+          </td>
+
+          <td align="center" class="info6">{{item.VID}}</td>
+          <td align="center" class="info6">{{item.SUMMA}}</td>
+          <td align="center" class="info7">{{item.OSTALOS_DN_ABON > 0 ? item.OSTALOS_DN_ABON : ""}}</td>
+          <td align="center" class="info7">{{item.SEANS_CNT}}</td>
+        </tr>
+
+      </table>
+    </div>
+
+  </div>
+</div>
+<!-- /учёт - отчёты - Не продлил -->
+

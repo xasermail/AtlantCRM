@@ -1,0 +1,235 @@
+﻿<!-- Справочники -->
+<div id="manual" class="tab-content" ng-controller="manualCtrl" ng-show="global.selectedMenuItem === 'menuItemManual' && 
+                                                                         global.selectedNastrSubMenuItem === 0 &&
+                                                                         global.function.havePravoRead(2,20)">
+  <!--Однотипные справочники-->
+  <div class="man-vertical-div" id="othersManuals">
+    <div ng-repeat="item in temp">
+      <select style="width: 320px" ng-model="item.id" ng-options="c.ID as c.NAME_RU for c in global.manual.M_MANUAL" ng-change="loadManual(item.id)"></select>
+    </div>
+    
+    <div style="margin-top: 5px; margin-left: 10px">
+      <table style="width: 320px">
+        
+        <tr ng-show="temp[0].id === global.const.M_MANUAL_ID">
+          <td>Наименование</td>
+          <td>Действ.</td>
+          <td>Абон.</td>
+        </tr>
+
+        <tr ng-repeat="item in manual">
+          <td data-id="{{item.ID}}" data-name="{{item.NAME}}" ng-click="editManual($event)">{{item.NAME}}</td>
+          
+          <td ng-show="temp[0].id === global.const.M_MANUAL_ID"
+              align="center"
+              style="width: 25px">
+            <input type="checkbox" ng-false-value="0" ng-true-value="1"
+                   style="margin: 0px 0px 0px 0px; height: 13px"
+                   ng-click="setIsDeistv(item)"
+                   ng-model="item.DEISTV"
+                   ng-disabled="global.function.noHavePravoWrite(2,20)" />
+          </td>
+
+          <td ng-show="temp[0].id === global.const.M_MANUAL_ID"
+              align="center"
+              style="width: 25px">
+            <input type="checkbox" ng-false-value="0" ng-true-value="1"
+                   style="margin: 0px 0px 0px 0px; height: 13px"
+                   ng-click="setIsAbon(item)"
+                   ng-model="item.IS_ABON"
+                   ng-disabled="global.function.noHavePravoWrite(2,20)" />
+          </td>
+        </tr>
+      </table>
+      
+      <div ng-repeat="item in m_temp" ng-hide="global.function.noHavePravoWrite(2,20)">
+        <input style="margin-left: 0px; height: 21px; width: 235px" ng-model="item.name"/>
+        <button class="new-button" ng-click="saveManual()">+</button>
+        <div style="height: {{existsHeight}}px">
+          <span class="rec-on-seans" style="color: red">{{existsError}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="new-manual-name"
+         style="left: {{newManualLeft}}px; top: {{newManualTop}}px; height: {{newManualHeight}}px"
+         ng-class="newManual === 0 ? 'manual-div-hide' : ''"
+         ng-show="newManual === 1">
+      <div ng-repeat="item in e_temp">
+        <input style="margin-left: 5px; height: 21px; width: 250px; margin-top: 5px;" ng-model="item.name" />
+        <div style="height: {{existsEditHeight}}px; margin-left: 5px">
+          <span class="rec-on-seans" style="color: red">{{existsEditError}}</span>
+        </div>
+      </div>
+      <div style="margin-left: 5px; margin-top: 5px">
+        <button ng-click="btnManualCancel()">Отменить</button>
+        <button ng-click="btnManualSave()" style="margin-left: 79px">Сохранить</button>
+      </div>
+    </div>
+
+    </div>
+  <!--Расписание сеансов-->
+  <div class="man-vertical-div" id="seansManual" style="margin-left: 10px">
+    <div style="height: 25px">
+      <span>Расписание сеансов</span>
+    </div>
+    
+    <table style="width: 100%">
+      <tr ng-repeat="item in global.manual.M_SEANS_TIME">
+        <td data-id="{{item.ID}}" align="center" height="{{emptyTdSeansHeight}}" ng-click="editSeansTime($event)">{{item.NAME}}</td>
+      </tr>
+    </table>
+    
+    <button class="new-button" ng-click="addSeansTime($event)" ng-hide="global.function.noHavePravoWrite(2,20)">+</button>
+
+    <div class="new-seans-time"
+         style="left: {{newSeansTimeLeft}}px; top: {{newSeansTimeTop}}px; height: {{newSeansTimeHeight}}px"
+         ng-class="newSeansTime === 0 ? 'manual-div-hide' : ''"
+         ng-show="newSeansTime === 1">
+      <div style="margin-left: 5px; margin-top: 5px">
+        <span>Время с</span>
+        <input ng-model="min_time" type="time" />
+      </div>
+      <div style="margin-left: 43px; margin-top: 2px">
+        <span>по</span>
+        <input ng-model="max_time" type="time" />
+      </div>
+      <div style="height: {{errorTimeHeight}}px; margin-left: 5px; width: 199px">
+        <span style="color: red; word-wrap: break-word">{{errorTime}}</span>
+      </div>
+      <div style="margin-left: 5px; margin-top: 5px">
+        <button ng-click="btnSeansTimeCancel()">Отменить</button>
+        <button ng-click="btnSeansTimeSave()" style="margin-left: 30px">Сохранить</button>
+      </div>
+    </div>
+      
+  </div>
+  <!--Рабочие дни-->
+  <div class="man-vertical-div" id="workDaysManual" style="margin-left: 10px; width: 160px">
+    <div style="height: 25px; margin-left: 37px">
+      <span>График работы</span>
+    </div>
+    <table style="width: 100%">
+      <tr>
+        <td align="center">День недели</td>
+        <td align="center"></td>
+      </tr>
+      <tr ng-repeat="item in work_days">
+        <td align="center">{{item.name}}</td>
+        <td align="center">
+          <input data-id="{{item.id}}"
+                 data-day-id="{{item.day_id}}" 
+                 type="checkbox" 
+                 ng-checked="item.chk"
+                 ng-click="setWorkDay($event)"
+                 ng-disabled="global.function.noHavePravoWrite(2,20)"/>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <!--Места-->
+  <div class="man-vertical-div" style="margin-left: 7px" id="placeManual">
+    <div style="height: 25px; margin-left: 50px">
+      <span>Список оборудования</span>
+    </div>
+    <table style="width: 250px">
+      <tr>
+        <td align="center">№</td>
+        <td align="center">Наименование</td>
+        <td align="center">Тип</td>
+        <td align="center">Группа</td>
+      </tr>
+      <tr ng-repeat="item in place">
+        <td align="center" height="{{emptyTdHeight}}">{{item.NUM}}</td>
+        <td data-id="{{item.ID}}" align="center" height="{{emptyTdHeight}}" ng-click="editPlace($event)">{{item.NAME}}</td>
+        <td align="center" height="{{emptyTdHeight}}">{{item.TYPE}}</td>
+        <td align="center" height="{{emptyTdHeight}}">{{item.GROUP}}</td>
+      </tr>
+    </table>
+
+    <button class="new-button" ng-click="addPlace($event)" ng-hide="global.function.noHavePravoWrite(2,20)">+</button>
+
+    <div class="new-seans-place"
+         style="left: {{newSeansPlaceLeft}}px; top: {{newSeansPlaceTop}}px; height: {{newSeansPlaceHeight}}px"
+         ng-class="newSeansPlace === 0 ? 'manual-div-hide' : ''"
+         ng-show="newSeansPlace === 1">
+      
+      <div style="margin-left: 5px; margin-top: 5px">
+        <span>Наименование</span>
+        <input style="margin-left: 0px; width: 135px" ng-model="name"/>
+      </div>
+
+      <div style="height: {{errorPlaceHeight}}px; margin-left: 5px; width: 390px">
+        <span style="color: red; word-wrap: break-word">{{errorPlace}}</span>
+      </div>
+
+      <div style="margin-left: 5px; margin-top: 3px">
+        <span>Тип</span>
+        <select style="margin-left: 31px; width: 178px" 
+                ng-model="m_product_id"
+                ng-options="c.ID as c.NAME for c in global.manual.M_PRODUCT"
+                ng-change="getPlaceName()"></select>
+      </div>
+
+      <div style="margin-left: 5px; margin-top: 3px">
+        <span>Группа</span>
+        <select style="margin-left: 10px; width: 178px" ng-model="m_ryad_id" ng-options="c.ID as c.NAME for c in global.manual.M_RYAD"></select>
+      </div>
+
+      <div style="margin-left: 5px; margin-top: 5px">
+        <button ng-click="btnPlaceCancel()">Отменить</button>
+        <button ng-click="btnPlaceSave()" style="margin-left: 67px">Сохранить</button>
+      </div>
+
+    </div>
+  </div>
+  <!--Заболевания-->
+  <div class="man-vertical-div" style="margin-left: 10px" id="zabolManual">
+    <div style="height: 25px; margin-left: 25px">
+      <span>Заболевания</span>
+    </div>
+
+    <div style="height: 300px; overflow:auto; border: 1px solid #333333">
+      <table style="width: 390px">
+        <tr>
+          <td align="center">Наименование</td>
+          <td align="center">Группа</td>
+        </tr>
+        <tr ng-repeat="item in zabol">
+          <td data-id="{{item.ID}}" align="center" height="{{emptyTdHeight}}" ng-click="editZabol($event)">{{item.NAME}}</td>
+          <td align="center" height="{{emptyTdHeight}}" style="word-break: break-word">{{item.GROUP}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <button class="new-button" ng-click="addZabol($event)" ng-hide="global.function.noHavePravoWrite(2,20)">+</button>
+
+    <div class="new-zabol"
+          style="left: {{newZabolLeft}}px; top: {{newZabolTop}}px; height: {{newZabolHeight}}px"
+          ng-class="newZabol === 0 ? 'manual-div-hide' : ''"
+          ng-show="newZabol === 1">
+
+      <div style="margin-left: 5px; margin-top: 5px">
+        <span>Наименование</span>
+        <input style="margin-left: 0px; width: 286px" ng-model="name" />
+      </div>
+
+      <div style="margin-left: 5px; margin-top: 3px">
+        <span>Группа</span>
+        <select style="margin-left: 53px; width: 286px" ng-model="m_zabol_group_id" ng-options="c.ID as c.NAME for c in global.manual.M_ZABOL_GROUP"></select>
+      </div>
+
+      <div style="height: {{errorZabolHeight}}px; margin-left: 5px; width: 390px">
+        <span style="color: red; word-wrap: break-word">{{errorZabol}}</span>
+      </div>
+
+      <div style="margin-left: 5px; margin-top: 5px">
+        <button ng-click="btnZabolCancel()">Отменить</button>
+        <button ng-click="btnZabolSave()" style="margin-left: 218px">Сохранить</button>
+      </div>
+
+    </div>
+    </div>
+
+</div>
+<!-- /Справочники -->

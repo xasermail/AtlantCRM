@@ -1,0 +1,27 @@
+﻿<!-- Окно редактирования времени сеанса контакта -->
+<div class="kont-edit-seans" ng-show="kontSeans.show">
+  <div class="kont-edit-container">
+    <table>
+      <tr>
+        <td><span>Дата</span></td>
+        <td><input ng-model="kontSeans.SEANS_DATE" type="date"
+             date-format="short" /></td>
+      </tr>
+      <tr>
+        <td><span>Сеанс</span></td>
+        <td><select ng-model="kontSeans.M_SEANS_TIME_ID" 
+                    ng-options="c.ID as c.NAME for c in global.manual.M_SEANS_TIME"></select></td>
+      </tr>
+      <tr>
+        <td><span>Комментарий</span></td>
+        <td><textarea ng-model="kontSeans.COMMENT"></textarea></td>
+      </tr>
+    </table>
+    <div class="error">{{kontSeans.error}}</div>
+    <div class="rec-change-buttons">
+      <button ng-click="kontEditSeansCancel()">Отменить</button>
+      <button ng-click="kontEditSeansSave()">Сохранить</button>
+    </div>
+  </div>
+</div>
+<!-- /окно редактирования времени сеанса контакта -->

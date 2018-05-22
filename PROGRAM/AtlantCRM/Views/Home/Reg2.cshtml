@@ -1,0 +1,131 @@
+﻿<!-- Регистрация2 -->
+<div id="reg" class="tab-content reg-2" ng-controller="regCtrl"
+     ng-show="global.selectedMenuItem === 'menuItemReg' && global.function.havePravoRead(3)">
+
+
+  <div>
+
+    <!-- Выбор времени сеанса -->
+    <div class="seans-time">
+      <select ng-model="M_SEANS_TIME_ID"
+              ng-options="c.ID as c.NAME for c in global.manual.M_SEANS_TIME"
+              ng-change="seansTimeChange()"></select>
+    </div>
+    <!-- /выбор времени сеанса -->
+
+    <!-- Штрих-код -->
+    <div class="shtrih-kod">
+      <span class="shtrih-kod-label">Штрих-код</span>
+      <input class="shtrih-kod-input" type="text" ng-model="ID_CODE" ng-keypress="shtrihKodKeyPress($event)"
+             ng-disabled="global.function.noHavePravoWrite(3) || shtrihKodInputDisabled === true"
+             ng-paste="pasteKod($event.originalEvent)" />
+    </div>
+    <!-- /штрих-код -->
+    <!-- Перед сканированием -->
+    <div class="pered-skanirovaniem" ng-hide="scanned">
+      Просканируйте анкету
+    </div>
+    <!-- /перед сканированием -->
+
+    <div ng-show="scanned" class="div-left-2">
+
+      <!-- Фото посетителя -->
+      <div class="photo-posetitelya">
+        <img ng-src="{{imgPhoto}}" />
+      </div>
+      <!-- /фото посетителя -->
+
+      <div class="container-9">
+        <div class="zadol" ng-show="reg.isAbonZadol === true">Задолженность</div>
+        <div class="priost-snyata" ng-show="reg.isPriostanovkaSnyata === true">Приостановка снята</div>
+        <div class="abon-kon" ng-show="reg.isAbonKon === true">Абонемент закончился</div>
+        <div class="uje-zareg" ng-show="alreadyRegisteredOAnkId != null">Уже зарегистрирован(а)</div>
+
+        <div class="container-10">
+          <!-- ФИО -->
+          <div class="fio">{{(reg.surname || "") + " " + (reg.name || "") + " " + (reg.secname || "")}}</div>
+          <!-- /фио -->
+          <!-- Сеанс -->
+          <div class="seans">
+            {{reg.seans_current_info}}
+          </div>
+          <!-- /сеанс -->
+          <!-- Специалист -->
+          <div class="spetsialist">
+            <span class="spetsialist-label">Специалист</span>
+            <input class="spetsialist-input" type="text" disabled="disabled" ng-model="reg.spetsialist"
+                   title="{{reg.spetsialist}}"/>
+          </div>
+          <!-- /специалист -->
+          <!-- Горизонтальная линия -->
+          <div class="horizontal-line1"></div>
+          <!-- /горизонтальная линия -->
+          <!-- Данные о посетителе -->
+          <div class="dannie-o-posetitele">
+            <div><span class="blue-label">Количество:</span> {{reg.seansCount === 0 ? "Первый раз" : (reg.seansCount + " раз ")}}</div>
+            <div>
+              <span class="blue-label">Товар: </span>
+              <span class="tovari" ng-repeat="item in reg.tovarList">
+                <br />
+                {{item.product_name}}&nbsp;
+                <br ng-show="item.is_abon === 1" />
+                <span class="abon-deistv-s-po">{{item.is_abon === 1 ? item.abonDeistvSPo : ""}}</span>&nbsp;
+              </span>
+            </div>
+            <div ng-hide="reg.ostalos <= 0 || reg.ostalos == null"><span class="blue-label">Осталось:</span>{{reg.ostalos}}</div>
+          </div>
+          <!-- /данные о посетителе -->
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Вертикальная линия -->
+    <div class="vertical-line2"></div>
+    <!-- /вертикальная линия -->
+
+    <!-- Список зарегистрировавшихся клиентов -->
+    <div class="reg-list">
+      <div class="container-11">
+        <table class="table table-striped table-condensed">
+          <tr class="reg-list-item" ng-repeat="item in regList" ng-class="{'tr-uje-zareg': item.o_ank_id === alreadyRegisteredOAnkId, 'first': $index === 0}">
+            <td class="rn">{{item.rn}}</td>
+            <td class="container-1">
+              <span class="tort" ng-show="item.is_birthday === 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <div class="container-2">
+                <span class="vip" ng-show="item.vip === 1">VIP</span>
+                <span class="ostalos-dn-abon" ng-show="item.ostalos_dn_abon > 0">{{item.ostalos_dn_abon}}</span>
+              </div>
+            </td>
+            <td class="container-3">
+              <span class="reg-fio" ng-class="{'fio-uje-zareg': item.o_ank_id === alreadyRegisteredOAnkId}">{{item.fio}}</span>
+              <span class="kolvo">{{item.seans_cnt}}</span>
+            </td>
+            <td class="dop-usl-list">
+              <div ng-repeat="dopUsl in item.dopUslList" class="container-4">
+                <span class="dop-usl-name" ng-class="{'color-1': $index === 0, 'color-2': $index === 1, 'color-3': $index === 2, 'color-4': $index >= 3}">
+                  {{dopUsl.NAME}}
+                </span>
+                <span class="kolvo-pos" ng-class="{'izm': dopUsl.IZM === 1}" ng-click="kolvoPosClick(dopUsl)">{{dopUsl.KOLVO_POS}}</span>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Зарегистрировано -->
+      <div class="zaregistrirovano">
+        <span class="zaregistrirovano-label">Зарегистрировано:</span>
+        <input class="zaregistrirovano-input" disabled="disabled" ng-model="regCount" />
+      </div>
+      <!-- /зарегистрировано -->
+
+    </div>
+    <!-- /список зарегистрировавшихся клиентов -->
+    
+
+  </div>
+
+</div>
+<!-- /регистрация2 -->

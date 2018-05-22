@@ -1,0 +1,397 @@
+﻿<!-- Учёт - Расход со склада-->
+<div id="uchetSkladRas" class="tab-content" ng-controller="uchetSkladRasCtrl"
+     ng-show="global.selectedUchetSubMenuItem === 2 && global.function.havePravoRead(8,27)">
+
+
+  <div class="input-block">
+
+    <input type="hidden" ng-model="o_sklad_ras.O_ANK_ID" />
+
+    <!-- дата счёта -->
+    <div class="d-schet">
+      <span>Дата счета</span>
+      <input type="date" ng-model="o_sklad_ras.D_SCHET" ng-disabled="global.function.noHavePravoWrite(8,27)"/>
+    </div>
+
+    <!-- счёт -->
+    <div class="n-schet">
+      <span>Счет</span>
+      <input type="text" ng-model="o_sklad_ras.N_SCHET" ng-disabled="global.function.noHavePravoWrite(8,27)"/>
+    </div>
+
+    <!-- вертикальная линия -->
+    <div class="vertical-line1"></div>
+
+    <div class="dob-zv-label">Добавить звонок</div>
+    <div class="data-label">Дата</div>
+
+
+    <div class="fio">
+      <input type="text" ng-model="o_sklad_ras.SURNAME" class="fio-surname" placeholder="Фамилия"
+                          ng-disabled="o_sklad_ras.O_ANK_ID != null || global.function.noHavePravoWrite(8,27)" />
+      <input type="text" ng-model="o_sklad_ras.NAME" class="fio-name" placeholder="Имя"
+                          ng-disabled="o_sklad_ras.O_ANK_ID != null || global.function.noHavePravoWrite(8,27)" />
+      <input type="text" ng-model="o_sklad_ras.SECNAME" class="fio-secname" placeholder="Отчество"
+                          ng-disabled="o_sklad_ras.O_ANK_ID != null || global.function.noHavePravoWrite(8,27)" />
+    </div>
+
+    <div class="street">
+      <!-- Показываю для безанкетного клиента -->
+      <textarea type="text" ng-model="o_sklad_ras.STREET"
+                            ng-show="o_sklad_ras.O_ANK_ID == null"
+                            ng-disabled="global.function.noHavePravoWrite(8,27)"></textarea>
+
+      <!-- Показываю для клиента, у которого есть анкета, т.е. когда перешли из режима Общение -->
+      <textarea type="text" ng-show="o_sklad_ras.O_ANK_ID != null" disabled="disabled">{{o_sklad_ras.STREET}}</textarea>
+
+    </div>
+
+
+    <div class="phone-mobile">
+      <span>Телефон</span>
+      <input type="text" ng-model="o_sklad_ras.PHONE_MOBILE" ng-disabled="o_sklad_ras.O_ANK_ID != null || global.function.noHavePravoWrite(8,27)"/>
+
+      <table class="table-phone-call">
+        <tr>
+          <td class="process-a-call-td">
+            <button type="button" class="btn-call"
+                    ng-hide="o_sklad_ras.showProcessACall || o_sklad_ras.PHONE_MOBILE == null"
+                    ng-click="global.function.phoneClick(o_sklad_ras.PHONE_MOBILE, o_sklad_ras)">Позвонить</button>
+            <div class="process-a-call" ng-show="o_sklad_ras.showProcessACall">
+              <div>Совершается вызов</div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+    <!-- Уведомления -->
+    <div class="uvedoml">
+
+      <select class="vid-sob" ng-model="uvedoml.m_vid_sob_id"
+              ng-options="item.ID as item.NAME for item in global.manual.M_VID_SOB"
+              ng-disabled="uvedoml1Disabled">
+        <option value="">Тип события</option>
+      </select>
+
+      <div class="d-sob-1">
+        <span>Дата</span>
+        <input type="date" ng-model="uvedoml.d_sob1" ng-disabled="uvedoml1Disabled" />
+      </div>
+
+      <textarea class="comment" placeholder="Комментарий" ng-model="uvedoml.comment" 
+                ng-disabled="uvedoml1Disabled"></textarea>
+
+      
+      <div class="d-sob-group">
+        <div class="d-sob-2">
+          <input type="date" ng-model="uvedoml.d_sob2" ng-disabled="uvedoml2Disabled" />
+          <span>7</span>
+        </div>
+
+        <div class="d-sob-3">
+          <input type="date" ng-model="uvedoml.d_sob3" ng-disabled="uvedoml3Disabled" />
+          <span>30</span>
+        </div>
+
+        <div class="d-sob-4">
+          <input type="date" ng-model="uvedoml.d_sob4" ng-disabled="uvedoml4Disabled" />
+          <span>90</span>
+        </div>
+
+        <div class="d-sob-5">
+          <input type="date" ng-model="uvedoml.d_sob5" ng-disabled="uvedoml5Disabled" />
+          <span>180</span>
+        </div>
+      </div>
+
+    </div>
+    <!-- /уведомления -->
+
+
+    <div class="semya">
+      <span>Сколько членов семьи с вами проживают</span>
+      <input type="number" ng-model="o_sklad_ras.SEMYA_VSEGO" class="semya-vsego" ng-disabled="global.function.noHavePravoWrite(8,27)"/>
+      <span class="span-hodit">Ходит</span>
+      <input ng-model="o_sklad_ras.HODIT" class="hodit" disabled="disabled"/>
+      <button type="button" class="btn-vopros" ng-click="openVoprosRej()" ng-show="o_sklad_ras.O_ANK_ID != null">Вопросы</button>
+    </div>
+
+  </div>
+
+
+
+  <div class="o-sklad-ras-product">
+    <button type="button" ng-click="btnAddClick()" class="btn-add-prod" ng-disabled="global.function.noHavePravoWrite(8,27)">+</button>
+    <div>
+      <table class="table table-striped table-condensed table-hover table-prod">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Наименование продукции</th>
+            <th>Кол-во</th>
+            <th>Цена</th>
+            <th>Скидка</th>
+            <th>Стоимость</th>
+            <th>Акция</th>
+            <th>Оплачено</th>
+            <th>Остат. стоимость</th>
+            <th>Выдано</th>
+            <th>Дата выдачи</th>
+            <th>Дата действия</th>
+            <!-- скрытый столбец для автоматической ширины -->
+            <th class="hidden-col"></th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+          <!-- Строки введённой продукции -->
+          <tr ng-repeat="item in productList">
+
+
+            <td class="td-relative">
+
+              <span class="stub-for-button"></span>
+
+              <!-- Таблица частичной оплаты -->
+              <div class="table-chast-opl" ng-show="item.showTableChastOpl">
+                <button type="button" ng-click="btnAddOplClick(item)" class="btn-add-opl" ng-disabled="global.function.noHavePravoWrite(8,27)">+</button>
+                <div class="close-button-wrap">
+                  <span class="close-button" ng-click="btnChastOplatClick(item)">x</span>
+                  <span ng-click="btnChastOplatClick(item)">Закрыть</span><span>&nbsp;&nbsp;&nbsp;</span>
+                </div>
+                <table class="table table-striped table-condensed table-hover">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Частичная оплата</th>
+                      <th>Дата оплаты</th>
+                      <th>Метод оплаты</th>
+                      <th>Серийный номер</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+
+                    <!-- Строки введённой частичной оплаты -->
+                    <tr ng-repeat="item1 in item.o_sklad_ras_product_opl">
+
+                      <td></td>
+                      <td>
+                        <input type="number" ng-model="item1.OPL"
+                                             ng-change="chastOplChanged(item)"
+                                             min="0" step="0.01" class="input-opl"
+                                             ng-disabled="global.function.noHavePravoWrite(8,27)" />
+                      </td>
+                      <td>
+                        <input type="date" ng-model="item1.D_OPL" class="input-d-opl" />
+                      </td>
+                      <td>
+                        <select ng-model="item1.M_METOD_OPL_ID" class="select-metod-opl"
+                                ng-options="c.ID as c.NAME for c in global.manual.M_METOD_OPL"
+                                ng-disabled="global.function.noHavePravoWrite(8,27)"></select>
+                      </td>
+                      <td>
+                        <input type="text" ng-model="item1.SERIAL" class="input-serial" ng-disabled="global.function.noHavePravoWrite(8,27)" />
+                      </td>
+
+                    </tr>
+                    <!-- /строки введённой частичной оплаты -->
+                  
+
+
+                  </tbody>
+                </table>
+              </div>
+              <!-- /таблица частичной оплаты -->
+
+
+
+
+            </td>
+
+
+
+            <td>
+              <button type="button" class="btn-chast-oplat"
+                      ng-click="btnChastOplatClick(item)"
+                      ng-disabled="global.function.noHavePravoWrite(8,27)">
+                <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+              </button>
+              <select ng-model="item.o_sklad_ras_product.M_PRODUCT_ID" class="select-product"
+                      ng-options="c.ID as c.NAME for c in global.manual.M_PRODUCT"
+                      ng-disabled="global.function.noHavePravoWrite(8,27)"></select>
+            </td>
+            <td>
+              <input type="number" ng-model="item.o_sklad_ras_product.KOLVO"
+                                   ng-change="costChanged(item)"
+                                   min="1" class="input-kolvo"
+                                   ng-disabled="global.function.noHavePravoWrite(8,27)" />
+            </td>
+            <td>
+              <input type="number" ng-model="item.o_sklad_ras_product.TSENA"
+                                   ng-change="costChanged(item)"
+                                   min="0" step="0.01" class="input-tsena"
+                                   ng-disabled="global.function.noHavePravoWrite(8,27)" />
+            </td>
+            <td>
+              <input type="number" ng-model="item.o_sklad_ras_product.SKIDKA"
+                                   ng-change="costChanged(item)"
+                                   min="0" step="1" class="input-skidka"
+                                   ng-disabled="global.function.noHavePravoWrite(8,27)" />
+            </td>
+            <td>
+              <input type="number" ng-model="item.o_sklad_ras_product.COST"
+                     disabled="disabled" min="0" step="0.01" class="input-cost" />
+            </td>
+            <td>
+              <input type="checkbox" ng-false-value="0" ng-true-value="1"
+                     ng-model="item.o_sklad_ras_product.IS_AKTSIYA"
+                     class="input-is-aktsiya"
+                     ng-disabled="global.function.noHavePravoWrite(8,27)" />
+            </td>
+
+            <!-- Оплачено -->
+            <td>
+              <input type="number" min="0" step="0.01" class="input-oplach" disabled="disabled"
+                     ng-model="item.o_sklad_ras_product.OPL_VSEGO" />
+            </td>
+            <!-- /оплачено -->
+            <!-- Остат. стоимость -->
+            <td>
+              <input type="number" min="0" step="0.01" class="input-ostat-stoim" disabled="disabled"
+                     ng-model="item.o_sklad_ras_product.OPL_OST" />
+            </td>
+            <!-- /остат. стоимость -->
+
+            <td>
+              <input type="checkbox" ng-false-value="0" ng-true-value="1"
+                     ng-model="item.o_sklad_ras_product.IS_VID" class="input-is-vid"
+                     ng-change="chkIS_VIDChange()"
+                     ng-disabled="global.function.noHavePravoWrite(8,27)" />
+            </td>
+
+            <td>
+              <input type="date" ng-model="item.o_sklad_ras_product.D_VID" class="input-d-vid" ng-disabled="global.function.noHavePravoWrite(8,27)" />
+            </td>
+
+            <td>
+              <input type="date" ng-model="item.o_sklad_ras_product.D_DEISTV" class="input-d-vid" ng-disabled="global.function.noHavePravoWrite(8,27)" />
+            </td>
+
+            <!-- скрытый столбец для автоматической ширины -->
+            <td class="hidden-col"></td>
+
+          </tr>
+          <!-- /строки введённой продукции -->
+
+        </tbody>
+      </table>
+    </div>
+
+    
+  </div>
+
+
+  <!-- Отображение ошибки незаполненной продукции -->
+  <div ng-show="showNullProductError === true" class="null-product-error">
+    <span>Для добавления новой строки введите наименование продукции</span>
+  </div>
+  <!-- /отображение ошибки незаполненной продукции -->
+
+
+  <div>
+
+    <div class="line-5">
+      
+      <div class="dt-1" ng-hide="global.function.noHavePravoRead(8,38)">
+        <span>Дата с:</span><input type="date" ng-model="reportPropl.dateBeg" />
+      </div>
+
+
+      <div class="div-btn-propl-za-per" ng-hide="global.function.noHavePravoRead(8,38)">
+        <button type="button" ng-click="btnProplZaPerClick()" class="btn-propl-za-per">Проплаты за период</button>
+      </div>
+
+
+      <div class="s-user-id">
+        <select ng-options="item.ID as item.FIO for item in global.manual.S_USER |filter:{M_ORG_ID: global.userContext.M_ORG_ID}:true"
+                ng-model="o_sklad_ras.S_USER_ID"
+                ng-disabled="global.function.noHavePravoWrite(8,27)">
+          <option value="">Сотрудник выявивший покупателя</option>
+        </select>
+      </div>
+
+      <div class="div-btn-kass-order">
+        <button type="button" ng-click="btnKassOrderClick()" class="btn-kass-order">Кассовый ордер</button>
+      </div>
+
+    </div>
+
+
+    <div class="line-6">
+
+      <div class="dt-2" ng-hide="global.function.noHavePravoRead(8,38)">
+        <span>Дата по:</span><input type="date" ng-model="reportPropl.dateEnd" />
+      </div>
+
+      <div class="div-btn-fakt-ost-sklad">
+        <button type="button"
+                ng-click="btnFaktOstSkladClick()"
+                class="btn-fakt-ost-sklad"
+                ng-hide="global.function.noHavePravoRead(8,39)">Фактические остатки на складе</button>
+      </div>
+
+    </div>
+
+
+    <div class="bottom-1">
+      <div class="div-btn-zapis">
+        <button type="button" ng-click="btnZapisClick()" class="btn-zapis"
+                ng-hide="global.function.noHavePravoWrite(8,27)">Новая запись</button>
+
+        @* удалять может только Администратор *@
+        <button type="button" ng-click="btnUdalitClick(o_sklad_ras.ID)" class="btn-zapis btn-udalit"
+                ng-hide="global.userContext.ID !== 3">Удалить</button>
+
+        <button type="button" ng-click="btnSaveClick()" class="btn-save"
+                ng-hide="global.function.noHavePravoWrite(8,27)">Сохранить</button>
+      </div>
+      <div class="div-pagination">
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li ng-click="pageNext()">
+              <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li ng-click="pageNext10()">
+              <a href="#" aria-label="Previous 10 pages">
+                <span aria-hidden="true">&lsaquo;</span>
+              </a>
+            </li>
+            <li ng-repeat="item in pageNums" ng-class="{active: item === page}">
+              <a href="#" ng-click="pageNumClick(item)">{{item}}</a>
+            </li>
+            <li ng-click="pagePrev10()">
+              <a href="#" aria-label="Next 10 pages">
+                <span aria-hidden="true">&rsaquo;</span>
+              </a>
+            </li>
+            <li ng-click="pagePrev()">
+              <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+  </div>
+  
+</div>
+<!-- /учёт - расход со склада -->
+

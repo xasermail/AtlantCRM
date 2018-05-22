@@ -1,0 +1,265 @@
+﻿<!-- Дилер A -->
+<div id="dilerA" class="tab-content" ng-controller="dilerACtrl"
+     ng-show="global.selectedMenuItem === 'menuItemDilerA' && global.selectedDilerSubMenuItem === 0">
+
+  <br />
+  <div>
+    <span>Дата</span>
+    <input type="date" ng-model="fromDate" date-format="short" />
+    <span> - </span>
+    <input type="date" ng-model="toDate" date-format="short" />
+    <button class="btn-apply" ng-click="btnApplyHandler()">Применить</button>
+  </div>
+  <br />
+
+  <div class="div-top">
+
+    <!-- Салоны -->
+    <table class="table table-bordered table-condensed table-striped">
+      <thead>
+        <tr>
+          <th>Салоны</th>
+          <th>Наполняемость</th>
+          <th>Новые посетители</th>
+          <th>Звонки</th>
+          <th>Сотрудники</th>
+          <th>Контакты</th>
+          <th>Продажи</th>
+          <th>План</th>
+          <th>Валовый доход</th>
+          <th>Расходы</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tr ng-repeat="item in saloni">
+        <td title="{{item.name + ' (' + item.m_org_id + ')'}}" class="td-saloni-first-col">
+          <!-- #348 -->
+          <button class="btn btn-default saloni-btn"
+                  ng-show="(global.userContext.IS_DILER_A === 1) || (global.userContext.IS_ADM === 1)"
+                  ng-click="btnGoOrgClick(item)">
+            &gt;
+          </button>
+          <span class="saloni-name">{{item.adres}}</span>
+        </td>
+        <td>{{item.napol}}</td>
+        <td>{{item.novPosetCount}}</td>
+        <td>{{item.zvonkiCount}}</td>
+        <td>{{item.sotrudCount}}</td>
+        <td>{{item.kontCount}}</td>
+        <td>{{item.prodajiCount}}</td>
+        <td>{{item.prodajiPlanCount}}</td>
+        <td>{{item.valovDohod}}</td>
+        <td>{{item.rashod}}</td>
+        <td></td>
+      </tr>
+      <tr class="saloni-itogo">
+        <td>Итого:</td>
+        <td>{{getSum("napol")}}</td>
+        <td>{{getSum("novPosetCount")}}</td>
+        <td>{{getSum("zvonkiCount")}}</td>
+        <td>{{getSum("sotrudCount")}}</td>
+        <td>{{getSum("kontCount")}}</td>
+        <td>{{getSum("prodajiCount")}}</td>
+        <td>{{getSum("prodajiPlanCount")}}</td>
+        <td>{{getSum("valovDohod")}}</td>
+        <td>{{getSum("rashod")}}</td>
+        <td></td>
+      </tr>
+    </table>
+    <!-- /салоны -->
+
+
+
+
+    <!-- Склад - Таблица - Склад дилера А -->
+    <h2>Склад</h2>
+
+    <table class="table table-bordered table-condensed table-striped diler-a-sklad">
+      <thead>
+        <tr>
+          <th>Склад дилера А</th>
+          <th ng-repeat="item in sklad">{{item.M_PRODUCT_NAME}}</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="td-saloni-first-col">Количество на складе</td>
+        @* вот это не правильно, просто пока сделал, чтобы талица правильного размера была *@
+        <td ng-repeat="item in sklad">
+          <input class="input-kolvo-na-sklade" type="number"
+                 ng-model="item.KOLVO" />
+        </td>
+        <td><button class="btn-save" ng-click="skladSave()">Сохранить</button></td>
+        <td></td>
+      </tr>
+      @* вроде не нужно
+      <tr>
+        <td class="td-saloni-first-col">Количество неоплаченного товара</td>
+        @ * вот это не правильно, просто пока сделал, чтобы талица правильного размера была * @
+        <td ng-repeat="item in global.manual.M_PRODUCT"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="td-saloni-first-col">Долг перед компанией</td>
+        @ * вот это не правильно, просто пока сделал, чтобы талица правильного размера была * @
+        <td ng-repeat="item in global.manual.M_PRODUCT"></td>
+        <td></td>
+      </tr>
+      *@
+    </table>
+    <!-- /склад - таблица - склад дилера а -->
+
+
+    <!-- Склад - Таблица - Наименование -->
+    <table class="table table-bordered table-condensed table-striped">
+      <thead>
+        <tr>
+          <th>Наименование</th>
+          <th ng-repeat="item in global.manual.M_PRODUCT">{{item.NAME}}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tr ng-repeat="item in saloni">
+        <td title="{{item.name + ' (' + item.m_org_id + ')'}}" class="td-saloni-first-col">{{item.adres}}</td>
+        <td ng-repeat="item1 in global.manual.M_PRODUCT">
+          {{getSaloniSkladKolvo(item, item1)}}
+        </td>
+        <td></td>
+      </tr>
+    </table>
+    <!-- /склад - таблица - наименование -->
+
+
+
+    <!-- Прайс -->
+    <h2>Прайс</h2>
+
+    <table class="table table-bordered table-condensed table-striped diler-a-price">
+      <thead>
+        <tr>
+          <th>Наименование</th>
+          <th>D</th>
+          <th>Розница</th>
+          <th>Подарок</th>
+          <th>C</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in price">
+          <td class="td-saloni-first-col">{{item.M_PRODUCT_TOVAR_ID_NAME}}</td>
+          <td><input type="number" min="0" step="0.01" class="input-tsena" ng-model="item.D" /></td>
+          <td><input type="number" min="0" step="0.01" class="input-tsena" ng-model="item.ROZN" /></td>
+          <td>
+            <select type="text" ng-model="item.M_PRODUCT_ID_PODAROK"
+                    ng-options="c.ID as c.NAME for c in global.manual.M_PRODUCT">
+              <option value="">(Без подарка)</option>
+            </select>
+          </td>
+          <td><input type="number" min="0" step="0.01" class="input-tsena" ng-model="item.C" /></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td colspan="2"><button class="btn-save" ng-click="priceSave()">Сохранить</button></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- /прайс -->
+  </div>
+
+
+  <!-- Календарь продаж -->
+  
+  <div class="kalen-prod">
+    <h2>Календарь продаж</h2>
+
+    <div class="div-2"></div>
+
+    <div>
+      <div class="div-0">
+        <span>Год</span>
+        <select type="text" value="Нефритовая осень" ng-model="kp.GOD"
+                ng-options="item as item for item in kp.years">
+        </select>
+      </div>
+      <div class="month" ng-class="{selected: kp.MES === 1}" ng-click="monthClick(1)">Январь</div>
+      <div class="month" ng-class="{selected: kp.MES === 2}" ng-click="monthClick(2)">Февраль</div>
+      <div class="month" ng-class="{selected: kp.MES === 3}" ng-click="monthClick(3)">Март</div>
+      <div class="month" ng-class="{selected: kp.MES === 4}" ng-click="monthClick(4)">Апрель</div>
+      <div class="month" ng-class="{selected: kp.MES === 5}" ng-click="monthClick(5)">Май</div>
+      <div class="month" ng-class="{selected: kp.MES === 6}" ng-click="monthClick(6)">Июнь</div>
+      <div class="month" ng-class="{selected: kp.MES === 7}" ng-click="monthClick(7)">Июль</div>
+      <div class="month" ng-class="{selected: kp.MES === 8}" ng-click="monthClick(8)">Август</div>
+      <div class="month" ng-class="{selected: kp.MES === 9}" ng-click="monthClick(9)">Сентябрь</div>
+      <div class="month" ng-class="{selected: kp.MES === 10}" ng-click="monthClick(10)">Октябрь</div>
+      <div class="month" ng-class="{selected: kp.MES === 11}" ng-click="monthClick(11)">Ноябрь</div>
+      <div class="month" ng-class="{selected: kp.MES === 12}" ng-click="monthClick(12)">Декабрь</div>
+    </div>
+
+
+    <div class="div-1">
+      <div class="div-1-1">
+        <span>Название акции</span><input type="text" value="Нефритовая осень" ng-model="kp.NAME_AK" />
+      </div>
+      <div class="div-1-2">
+        <span>Товар</span>
+        <select type="text" ng-model="kp.M_PRODUCT_ID_TOVAR"
+                ng-options="c.ID as c.NAME for c in global.manual.M_PRODUCT">
+        </select>
+      </div>
+      <div class="div-1-3">
+        <span>Подарок</span>
+        <select type="text" ng-model="kp.M_PRODUCT_ID_PODAROK"
+                ng-options="c.ID as c.NAME for c in global.manual.M_PRODUCT">
+          <option value="">(Без подарка)</option>
+        </select>
+      </div>
+      <div class="div-1-4">
+        <span>Цена</span><input type="number" min="0" step="0.01" ng-model="kp.COST" />
+      </div>
+      <div class="div-1-5">
+        <span>Наполняем с</span><input type="date" ng-model="kp.D_NAPOLN_S" />
+        <span>&nbsp;&nbsp;&nbsp;по&nbsp;&nbsp;&nbsp;</span>
+        <input type="date" ng-model="kp.D_NAPOLN_PO" ng-change="kpDateChanged()" />
+      </div>
+      <div class="div-1-5">
+        <span>Влюбляем с</span><input type="date" ng-model="kp.D_VLYUB_S" />
+        <span>&nbsp;&nbsp;&nbsp;по&nbsp;&nbsp;&nbsp;</span>
+        <input type="date" ng-model="kp.D_VLYUB_PO" ng-change="kpDateChanged()" />
+      </div>
+      <div class="div-1-5">
+        <span>Продаём с</span><input type="date" ng-model="kp.D_PROD_S" />
+        <span>&nbsp;&nbsp;&nbsp;по&nbsp;&nbsp;&nbsp;</span>
+        <input type="date" ng-model="kp.D_PROD_PO" ng-change="kpDateChanged()" />
+      </div>
+      <div class="div-1-6"><button class="btn-save" ng-click="btnSaveKalenProdClick()">Сохранить</button></div>
+    </div>
+
+
+    <div class="datepicker-container">
+      <div id="datepickerDilerA" class="datepicker-diler-a"></div>
+      <div class="datepicker-legend">
+        <div class="div-napolnyaem"></div>
+        <div class="div-napolnyaem-caption">Наполняем</div>
+        <div class="div-vlyublyaem"></div>
+        <div class="div-vlyublyaem-caption">Влюбляем</div>
+        <div class="div-prodayom"></div>
+        <div class="div-prodayom-caption">Продаём</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- /календарь продаж -->
+
+
+
+
+
+
+</div>
+<!-- /дилер A -->

@@ -1,0 +1,19 @@
+﻿<!-- Отчеты - Карта -->
+<div id="dilerACKarta" ng-controller="dilerACKartaCtrl" class="tab-content"
+     ng-show="(global.selectedDilerSubMenuItem === 4) && (global.selectedMenuItem === 'menuItemDilerA' || global.selectedMenuItem === 'menuItemDilerC')">
+
+  <div class="karta-header">
+    <span>Дата</span>
+    <input type="date" ng-model="fromDate" />
+    <span> - </span>
+    <input type="date" ng-model="toDate" />
+    <button ng-click="refresh()">Применить</button>
+  </div>
+
+  <div id="mapDiler" style="width: 800px; height: 450px"></div>
+  <div class="karta-status">
+    <p ng-repeat="item in status"><strong>{{item.kolvo}}</strong>&nbsp;{{item.name}}</p>
+  </div>
+
+</div>
+<!-- /отчеты - карта -->

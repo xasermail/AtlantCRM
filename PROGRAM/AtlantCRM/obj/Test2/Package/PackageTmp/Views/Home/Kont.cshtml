@@ -1,0 +1,146 @@
+﻿<!-- Контакты -->
+<div id="kont" class="tab-content" ng-controller="kontCtrl" ng-show="global.selectedKontSubMenuItem === 0">
+    
+    <div class="top-buttons">
+        <button class="record-button-style tomorrow custom-radius" ng-click="getDataClick(0)" ng-disabled="(tomorrowClick === 0)">Завтра</button>
+        <button class="record-button-style record-date" ng-click="getDataClick(-1)" ng-disabled="(backClick === 0)"><</button>
+        <button class="record-button-style record-date" ng-click="getDataClick(1)" ng-disabled="(nextClick === 0)">></button>
+        <span class="text dt">{{dayWeekDate}}</span>
+        <span class="text dt" style="color: red">{{workDayError}}</span>
+    </div>
+
+    <div>
+      
+        <table  class="table table-bordered table-hover table-striped">
+            <tr>
+                <th>№</th>
+                <th ng-repeat="item in o_seans_header">{{item.time}}</th>
+            </tr>
+            <tr ng-repeat="dataRow in dataForTable">
+                <td><span>{{$index + 1}}</span></td>
+                <td ng-repeat="dataColumn in dataRow"
+                   style="position:relative">
+                    <div ng-show="{{dataColumn.Shown}}">
+                        <div>
+                            <div><a item-SURNAME="{{dataColumn.SURNAME}}"
+                                    item-NAME="{{dataColumn.NAME}}" 
+                                    item-SECNAME="{{dataColumn.SECNAME}}" 
+                                    item-Phone="{{dataColumn.Phone}}"
+                                    item-Comment="{{dataColumn.Comment}}"
+                                    item-KontId="{{dataColumn.KontId}}"
+                                    href="#" ng-click="tdChangeKontClickHandler($event)">{{dataColumn.FIO}}</a></div>
+                            <div>{{dataColumn.Phone}}</div>
+                        </div>
+                        <div kont-seans-id="{{dataColumn.KontSeansID}}"
+                             class="record-td-div record-button-div">
+                            <button kont-seans-id="{{dataColumn.KontSeansID}}"
+                                    time-id="{{dataColumn.SeansTimeID}}"
+                                    commentForChange="{{dataColumn.Comment}}"
+                                    ng-click="btnChangeSeansClick($event)"
+                                    class="record-new-date">
+                            </button>
+                        </div>
+                    </div>
+                    <div ng-hide="{{dataColumn.Shown}}"
+                         data-time-id="{{dataColumn.SeansTimeID}}"
+                         ng-click="tdAddKontClickHandler($event)"
+                         style="position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;">
+                        
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td ng-repeat="item in o_seans_header"
+                    data-time-id="{{item.id}}"
+                    ng-click="tdAddKontClickHandler($event)"
+                    style="height: 30px;"></td>
+            </tr>
+        </table>
+
+        @*Окошко добавления нового контакта*@
+        <div class="new-ank-seans" style="left: {{newAnkNaSeansLeft}}px; top: {{newAnkNaSeansTop}}px; height: {{newAnkHeight}}px" ng-show="newAnkNaSeans === 1">
+            <div>
+                <div class="new-ank-body">
+                    <div class="new-ank-fio">
+                        <div class="new-ank-label">
+                            <span>ФИО</span>
+                        </div>
+                        <div class="new-ank-value">
+                            <input class="rec-seans-text" ng-model="newKontSurname" placeholder="Фамилия" />
+                            <input class="rec-seans-text rec-seans-data" ng-model="newKontName" placeholder="Имя" />
+                            <input class="rec-seans-text rec-seans-data" ng-model="newKontSecname" placeholder="Отчество" />
+                        </div>
+                    </div>
+                    <div class="new-ank-phone">
+                        <div class="new-ank-label">
+                            <span>Телефон</span>
+                        </div>
+                        <div class="new-ank-value">
+                            <input id="kontPhoneMobile" class="rec-seans-text" ng-model="newKontPhone_mobile" />
+                        </div>
+                    </div>
+                    <div class="new-ank-comment">
+                        <div class="new-ank-label">
+                            <span>Комментарий</span>
+                        </div>
+                        <div class="new-ank-value">
+                            <textarea class="rec-seans-text" ng-model="commentForSave"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="new-ank-close"><button class="btnRec" ng-click="btnCloseNewKont()">X</button></div>
+            </div>
+            <div class="new-ank-save-panel">
+                <span class="errorMessage">{{errorSaveNewKont}}</span>
+                <button class="btnRec" 
+                        ng-click="btnCreateNewKont()"
+                        ng-disabled="btnCreateNewKontDisabled"
+                        style="margin-left: 13px;
+                                float: right;">Сохранить</button>
+            </div>
+        </div>
+
+        @*Окошко переноса сеанса*@
+        <div class="zapisat-na-seans"
+             style="left: {{zapisatNaSeansLeft}}px; top: {{zapisatNaSeansTop}}px; height: {{zapisatNaSeansHeight}}px" ng-show="changeSeans === 1">
+            <div class="rec-on-seans">
+                <span class="change-seans-label">Дата</span>
+                <input class="stat_date rec-date change-seans-value" ng-model="changeSeansDate" type="date"
+                       date-format="short" />
+            </div>
+            <div style="height: {{notValidDateHeight}}px">
+                <span class="rec-on-seans" style="color: red">{{notValidDate}}</span>
+            </div>
+            <div class="rec-on-seans">
+                <span class="change-seans-label">Сеанс</span>
+                <select class="rec-seans-id change-seans-value" ng-model="change_m_seans_time_id" ng-options="c.ID as c.NAME for c in global.manual.M_SEANS_TIME"></select>
+            </div>
+
+            <div class="rec-comment">
+                <span class="change-seans-label">Комментарий</span>
+                <textarea class="change-seans-value" ng-model="commentForSave"></textarea>
+            </div>
+            <div style="height: {{errorMessageChangeSeansHeight}}px">
+                <span class="errorMessage">{{errorSaveChangeSeansDate}}</span>
+            </div>
+            <div class="rec-change-buttons">
+                <button class="btnCancelChange" ng-click="btnCancelChangeSeans()">Отменить</button>
+                <button class="btnSaveChange" ng-click="btnSaveChangeSeans()" style="margin-left: 30px">Сохранить</button>
+            </div>
+        </div>
+
+
+    </div>
+
+  
+
+</div>
+
+
+<!-- /контакты -->

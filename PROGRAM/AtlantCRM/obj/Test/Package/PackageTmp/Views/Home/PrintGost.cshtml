@@ -1,0 +1,91 @@
+﻿@{
+  Layout = "/Views/Shared/_Print.cshtml";
+}
+
+<style>
+.gost-div-table {
+  margin-top: 10px;
+}
+
+.gost-first-row {
+  margin-top: 20px;
+}
+
+.span-dt-from {
+  margin-left: 120px;
+}
+
+.info1 {
+  width: 80px;
+}
+
+.info2 {
+  width: 250px;
+}
+
+.info3 {
+  width: 110px;
+}
+
+.info4 {
+  width: 250px;
+}
+
+.info5 {
+  width: 80px;
+}
+
+table {
+  word-wrap: break-word;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+tr {
+  border-collapse: collapse;
+  padding: 10px 0;
+}
+
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 21px;
+}
+
+.gost-table-itog {
+  font-weight: bold;
+}
+
+.gost-space {
+  border: none;
+}
+</style>
+
+<div @*style="margin: 15px 0 0 15px"*@>
+
+  <div align="center">
+    <H2 style="color: black">{{REPORT_NAME}}</H2>
+    <span>За период с {{DT_FROM | date:'dd.MM.yyyy'}} по {{DT_TO | date:'dd.MM.yyyy'}}</span>
+  </div>
+
+  <div align="center" class="gost-div-table">
+    <table>
+      <tr>
+        <td align="center">Дата посещения</td>
+        <td align="center">ФИО</td>
+        <td align="center">Телефон</td>
+        <td align="center">Адрес салона</td>
+        <td align="center">Дата окончание абонемента</td>
+      </tr>
+
+      <tr ng-repeat="item in data">
+        <td align="center" class="info1">{{item.D_REG | date:'dd.MM.yyyy'}}</td>
+        <td align="center" class="info2">{{item.FIO}}</td>
+        <td align="center" class="info3">{{item.PHONE}}</td>
+        <td align="center" class="info4">{{item.ADDRESS}}</td>
+        <td align="center" class="info5">{{item.D_DEISTV | date:'dd.MM.yyyy'}}</td>
+      </tr>
+    </table>
+  </div>
+
+</div>

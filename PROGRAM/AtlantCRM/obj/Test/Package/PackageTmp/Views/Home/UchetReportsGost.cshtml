@@ -1,0 +1,50 @@
+﻿<!-- Учёт - Отчёты - Гость -->
+<div id="uchetReportsGost" class="tab-content" ng-controller="uchetReportsGostCtrl"
+     ng-show="global.selectedUchetSubMenuItem === 4 && global.selectedUchetReportsSubMenuItem === 6">
+
+  <div class="gost-div">
+    
+    <div>
+      <span class="span-dt-from">Дата с</span>
+      <input type="date" ng-model="DT_FROM" />
+
+      <span>Дата по</span>
+      <input type="date" ng-model="DT_TO" />
+
+      <button class="gost-first-row" ng-click="refreshGost()">Обновить</button>
+      <button class="gost-first-row" ng-click="print()">Печать</button>
+    </div>
+
+    <div class="gost-div-table">
+      <table>
+        <tr>
+          <td align="center">Дата посещения</td>
+          <td align="center">ФИО</td>
+          <td align="center">Телефон</td>
+          <td align="center">Адрес салона</td>
+          <td align="center">Дата окончания абонемента</td>
+        </tr>
+
+        <tr ng-repeat="item in data"
+            ng-style="{ 'background-color' : (((($index + 1) % 2) > 0 ) ? 'white' : '') }">
+          <td align="center" class="info1">{{item.D_REG | date:'dd.MM.yyyy'}}</td>
+          <td align="center" class="info2">{{item.FIO}}</td>
+
+          <td align="center" class="process-a-call-td info3">
+            <a href="#" style="color: #333333; font-weight: normal"
+               ng-click="global.function.phoneClick(item.PHONE, item)"
+               ng-hide="item.showProcessACall"
+               title="Нажмите на номер телефона для совершения вызова">{{item.PHONE}}</a>
+            <div class="process-a-call" ng-show="item.showProcessACall"><div>Совершается вызов</div></div>
+          </td>
+
+          <td align="center" class="info4">{{item.ADDRESS}}</td>
+          <td align="center" class="info5">{{item.D_DEISTV | date:'dd.MM.yyyy'}}</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>
+<!-- /учёт - отчёты - гость -->
+

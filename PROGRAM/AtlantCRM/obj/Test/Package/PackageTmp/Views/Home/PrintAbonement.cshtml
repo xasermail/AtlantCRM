@@ -1,0 +1,123 @@
+﻿@{
+  Layout = "/Views/Shared/_Print.cshtml";
+}
+
+<style>
+  body {
+	  margin: 0 0 0 0;
+    display: flex;
+  }
+
+  #ankAbonementPrint {
+	  margin-left: 20px;
+	  margin-top: 20px;
+	  display: inline-flex;
+  }
+
+  #ankAbonementPrint .wrap {
+	  width: 85mm;
+	  height: 55mm;
+	  background: #FFFFFF;
+	  border-radius: 6mm;
+	  border: 1px solid black;
+	  display: inline-block;
+  }
+
+  #ankAbonementPrint .abon-photo {
+	  width: 30mm;
+	  height: 40mm;
+	  margin-top: 3mm;
+	  margin-left: 3mm;
+	  border-radius: 3mm;
+  }
+
+  #ankAbonementPrint .wrap-div {
+	  position: relative;
+  }
+
+  #ankAbonementPrint .wrap-fio {
+	  font-size: 6mm;
+	  font-weight: bold;
+  }
+
+  #ankAbonementPrint .fio {
+    margin-top: 5mm;
+    margin-left: 36mm;
+  }
+
+  #ankAbonementPrint .wrap-phone {
+	  font-size: 6mm;
+	  font-weight: bold;
+  }
+
+  #ankAbonementPrint .phone {
+	  margin-left: 36mm;
+    margin-top: 5mm;
+  }
+
+  #ankAbonementPrint .medical-photo {
+	  width: 55mm;
+    height: 10mm;
+    margin-top: 6mm;
+    margin-left: 15mm;
+  }
+
+  #ankAbonementPrint .barcode-photo {
+	  width: 60mm;
+    height: 18mm;
+    margin-top: 5mm;
+    margin-left: 12.5mm;
+	  border-radius: 3mm;
+	  border: 1px solid black;
+  }
+
+  #ankAbonementPrint .org-info {
+	  font-size: 5mm;
+	  margin-top: 10mm;
+  }
+</style>
+
+<div id="ankAbonementPrint">
+  <div class="wrap">
+
+    <div class="wrap-div">
+      <img class="abon-photo" 
+           ng-hide="ANK_PHOTO == null"
+           ng-src="{{ANK_PHOTO}}" />
+    </div>
+
+    <div class="wrap-div">
+      <div class="fio"
+           ng-style="{'margin-top' : (ANK_PHOTO != null ) ? '-38mm' : '5mm' }">
+        <span class="wrap-fio">{{NAME}}</span>
+        <br/>
+        <span class="wrap-fio">{{SECNAME}}</span>
+        <br>
+        <span class="wrap-fio">{{upperSURNAME}}</span>
+      </div>
+
+      <div class="phone">
+        <span class="wrap-phone">{{PHONE_MOBILE || PHONE_HOME}}</span>
+      </div>
+
+      <div class="wrap-div">
+        <img class="medical-photo" src="~/Content/img/new-ank-print-logo-life-medical.png" />
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wrap">
+
+    <div class="wrap-div">
+      <img class="barcode-photo" ng-src="{{BARCODE}}" />
+    </div>
+
+    <div class="org-info" align="center">
+      <span>{{M_ORG_ADRES}}</span>
+      <br />
+      <span>{{M_ORG_PHONE}}</span>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,134 @@
+﻿<!-- Техотдел -->
+<div id="tehOtdel" class="tab-content" ng-controller="tehOtdelCtrl" ng-show="global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_TEH_OTDEL">
+ 
+  <div id="tehOtdelSalon" class="teh-otdel-salon">
+    <select ng-model="teh.M_ORG_ID_TEH_OTDEL"
+            ng-options="c.ID as c.NAME for c in global.manual.M_ORG | filter:{M_ORG_ID_TEH_OTDEL: global.userContext.M_ORG_ID}:true"
+            ng-change="getDataOrg()">
+    </select>
+  </div>
+
+  <div id="tehOtdelProduct">
+    
+    <div>
+      <input class="find-text"
+             ng-model="teh.TEXT"
+             placeholder="Поиск по ФИО, телефону, номеру"
+             ng-keydown="($event.keyCode === 13) && getData()"/>
+      <button ng-click="getData()">Применить</button>
+    </div>
+
+    <div class="teh-otdel-na-remont">
+      <table>
+        <tr>
+          <th>Дата</th>
+          <th>ФИО</th>
+          <th>Телефон</th>
+          <th>Товар</th>
+          <th>Статус</th>
+        </tr>
+
+        <tr ng-repeat="item in tehotdel"
+            ng-if="item.M_SERVICE_TYPE_ID_TEH_OTDEL !== global.const.M_SERVICE_TYPE_ID_SDELAL"
+            ng-click="editRow(item)"
+            ng-style="{ 'background-color' : (item.M_SERVICE_TYPE_ID === global.const.M_SERVICE_TYPE_ID_NA_REMONT) ? '#FFFF66' : '' }">
+          <td>{{item.D_START | date:'dd.MM.yyyy'}}</td>
+          <td>{{item.FIO}}</td>
+          <td>{{item.PHONE}}</td>
+          <td>{{item.M_PRODUCT_ID_NAME}}</td>
+          <td>{{item.M_SERVICE_TYPE_ID_NAME}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="teh-otdel-sdelal">
+      <table>
+        <tr>
+          <th>Дата</th>
+          <th>ФИО</th>
+          <th>Телефон</th>
+          <th>Товар</th>
+          <th>Статус</th>
+        </tr>
+
+        <tr ng-repeat="item in tehotdel"
+            ng-if="item.M_SERVICE_TYPE_ID_TEH_OTDEL === global.const.M_SERVICE_TYPE_ID_SDELAL"
+            style="background-color: rgb(0, 255, 0)">
+          <td>{{item.DATE_TEH_OTDEL | date:'dd.MM.yyyy'}}</td>
+          <td>{{item.FIO}}</td>
+          <td>{{item.PHONE}}</td>
+          <td>{{item.M_PRODUCT_ID_NAME}}</td>
+          <td>{{item.M_SERVICE_TYPE_ID_TEH_OTDEL_NAME}}</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div id="tehOtdelStatus" class="teh-otdel-status">
+    <div class="status-div">
+      <span class="status-text">Статус</span>
+    </div>
+
+    <div class="status-div-row" ng-repeat="item in stat">
+      <span><u>{{item.NAME}}</u></span>
+    </div>
+  </div>
+
+  <div class="modal-div" ng-show="teh.show === 1">
+    <div id="orgInfo">
+
+      <div class="teh-otdel-info teh-otdel-adres">
+        <span>{{item.ADRES}}</span>
+      </div>
+
+      <div class="teh-otdel-info teh-otdel-phone">
+        <span>{{item.PHONE}}</span>
+      </div>
+
+      <div class="teh-otdel-info teh-otdel-product">
+        <span>{{item.M_PRODUCT_ID_NAME}}</span>
+      </div>
+
+      <div class="teh-otdel-info teh-otdel-serial">
+        <span class="serial-text">{{item.SERIAL_NUMBER}}</span>
+      </div>
+
+    </div>
+
+    <div class="photo-frame teh-otdel-image teh-otdel-prod">
+      <img class="image" style="{{item.PHOTO_SIZE}}" ng-src="{{item.PRODUCT_PHOTO}}" />
+    </div>
+
+    <div class="photo-frame teh-otdel-image teh-otdel-garantee">
+      <img class="image" style="{{item.PHOTO_SIZE}}" ng-src="{{item.GUARANTEE_PHOTO}}" />
+    </div>
+
+    <div class="photo-frame teh-otdel-image teh-otdel-check">
+      <img class="image" style="{{item.PHOTO_SIZE}}" ng-src="{{item.PRODUCT_CHECK}}" />
+    </div>
+
+    <div class="ank-comment">
+      <textarea cols="120" rows="4" readonly>{{item.COMMENT}}</textarea>
+    </div>
+
+    <div class="tehnik-info">
+      <span class="teh-otdel-status-span">Статус</span>
+      <select class="teh-otdel-new-status" ng-model="item.M_SERVICE_TYPE_ID_TEH_OTDEL" ng-options="c.ID as c.NAME for c in global.manual.M_SERVICE_TYPE"></select>
+      <span class="tehnik-do">до</span>
+      <input type="date" ng-model="item.DATE_TEH_OTDEL"/>
+    </div>
+
+    <div class="teh-comment">
+      <textarea cols="120" rows="4" ng-model="item.COMMENT_TEH_OTDEL">{{item.COMMENT_TEH_OTDEL}}</textarea>
+    </div>
+
+    <div>
+      <button class="btn-close" ng-click="closeForm()">Отмена</button>
+      <button class="btn-save" ng-click="saveForm()">Сохранить</button>
+    </div>
+
+  </div>
+
+</div>
+<!-- /Техотдел-->

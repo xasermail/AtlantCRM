@@ -1,0 +1,130 @@
+﻿@{
+  Layout = "~/Views/Shared/_Dev.cshtml";
+}
+
+@*<!-- Учет - Отчеты - Отчет за период -->
+  <div id="uchetReportsOtchetZaPer">
+    @Html.Partial("UchetReportsOtchetZaPer")
+    @Html.Partial("UchetReportsOtchetZaPer")
+  </div>
+  <!-- /учет - отчеты - отчет за период -->*@
+
+@*@Html.Partial("UchetReportsSpisPokup");*@
+
+
+@*@Html.Partial("DilerD")*@
+
+@Html.Partial("Reg2")
+
+@*@Html.Partial("DilerA")*@
+@*@Html.Partial("ReportKarta")*@
+
+  <!-- Отчеты - Маркетинг -->
+  @*<div id="reportMarketing">
+    @Html.Partial("ReportMarketing")
+    @Html.Partial("ReportMarketing")
+  </div>*@
+  <!-- /отчеты - маркетинг -->
+
+@*@Html.Partial("Zadachi")*@
+@*<div style="display: none;">
+  @Html.Partial("Kont")
+</div>*@
+@*@Html.Partial("KontNoCame")*@
+@*@Html.Partial("Record")*@
+@*@Html.Partial("UchetSkladRasDoc")*@
+@*@Html.Partial("UchetSkladRas")*@
+@*@Html.Partial("Uvedoml")*@
+
+@*@Html.Partial("KontStatReport")*@
+@*@Html.Partial("Baza")*@
+
+@*@Html.Partial("UchetReportsFilterTovarov")*@
+
+@*@Html.Partial("Stat")*@
+
+
+
+@section scripts {
+
+  @*<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>*@
+
+  @{string s = "?i=" + DateTime.Now.Ticks;}
+  
+  <script src="~/Scripts/myApp.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/appCtrl.js@(s)"></script>
+  @*<script src="~/Scripts/ng-controllers/druzyaCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/uchetReportsOtchetZaPerCtrl.js@(s)"></script>*@
+  @*<script src="~/Scripts/ng-controllers/uchetReportsSpisPokupCtrl.js@(s)"></script>*@
+  @*<script src="~/Scripts/ng-controllers/dilerDCtrl.js@(s)"></script>*@
+  @*<script src="~/Scripts/ng-controllers/dilerACtrl.js@(s)"></script>*@
+  <script src="~/Scripts/ng-controllers/reg2Ctrl.js@(s)"></script>
+  @*<script src="~/Scripts/ng-controllers/reportKartaCtrl.js@(s)"></script>*@
+  @*<script src="~/Scripts/ng-controllers/reportMarketingCtrl.js@(s)"></script>*@
+  @*<script src="~/Scripts/ng-controllers/zadachiCtrl.js@(s)"></script>*@
+  @*<script src="~/Scripts/ng-controllers/kontCtrl.js@(s)"></script>*@
+  @*<script src="~/Scripts/ng-controllers/kontStatReportCtrl.js@(s)"></script>*@
+  @*<script src="~/Scripts/ng-controllers/kontListByModeCtrl.js@(s)"></script>*@
+  @*<script src="~/Scripts/ng-controllers/recordCtrl.js@(s)"></script>*@
+  @*<script src="~/Scripts/ng-controllers/uchetSkladRasDocCtrl.js@(s)"></script>*@
+  @*<script src="~/Scripts/ng-controllers/uchetSkladRasCtrl.js@(s)"></script>*@
+  @*<script src="~/Scripts/ng-controllers/uvedomlCtrl.js@(s)"></script>*@
+  @*<script src="~/Scripts/ng-controllers/bazaCtrl.js@(s)"></script>*@
+  @*<script src="~/Scripts/ng-controllers/uchetReportsFilterTovarovCtrl.js@(s)"></script>*@
+  @*<script src="~/Scripts/ng-controllers/statCtrl.js@(s)"></script>*@
+
+  <style>
+    #dilerA {
+      height: 3700px;
+    }
+
+    #topContainer {
+      height: auto;
+    }
+  </style>
+
+
+  <script>
+
+    jQuery(document).ready(() => {
+      scopeAppCtrl.setStartPage = () => { };
+      scopeAppCtrl.global.selectedMenuItem = 'menuItemReg';
+      scopeAppCtrl.global.selectedSubMenuItem = 7;
+      scopeAppCtrl.global.selectedKontSubMenuItem = 1;
+      scopeAppCtrl.global.ank.ID = 7;
+      scopeAppCtrl.global.selectedUchetSubMenuItem = 2;
+      scopeAppCtrl.global.selectedUchetReportsSubMenuItem = 0;
+      scopeAppCtrl.global.hideWaitingForm();
+    });
+
+
+    @*window.setTimeout(() => {
+
+      //$(app).scope().global.selectedMenuItem = 'menuItemDilerD';
+      //$(app).scope().global.selectedMenuItem = 'menuItemReports';
+      $(app).scope().global.selectedMenuItem = 'menuItemJur';
+      //$(app).scope().global.selectedMenuItem = 'menuItemUchet';
+      //$(app).scope().global.selectedMenuItem = 'menuItemReg';
+      //$(app).scope().global.selectedReportSubMenuItem = 10;
+      $(app).scope().global.selectedUchetSubMenuItem = 2
+      $(app).scope().global.selectedJurSubMenuItem = 1;
+      //$(app).scope().global.selectedDilerSubMenuItem = 2;
+      $(app).scope().global.ank.ID = 5;
+      scopeAppCtrl.global.hideWaitingForm();
+
+      window.setTimeout(() => {
+
+        /*
+        scopeRecordCtrl.yearMonthDay = "2017-03-22";
+        scopeRecordCtrl.getDataClick(-1);
+        */
+
+      }, 2000);
+
+
+      $(app).scope().$apply();
+    }, 7000);*@
+
+  </script>
+
+}

@@ -1,0 +1,58 @@
+﻿<!-- Учёт - Отчёты - Дебиторская задолженность -->
+<div id="uchetReportsDebetZadol" class="tab-content" ng-controller="uchetReportsDebetZadolCtrl"
+     ng-show="global.selectedUchetSubMenuItem === 4 && global.selectedUchetReportsSubMenuItem === 1">
+
+  <div class="debet-zadol-div">
+    
+    <div>
+      <button class="debet-zadol-first-row" ng-click="refreshDebetZadol()">Обновить</button>
+      <button class="debet-zadol-first-row" ng-click="print()">Печать</button>
+    </div>
+
+    <div class="debet-zadol-div-table">
+      <table>
+        <tr>
+          <td align="center">Наименование товара</td>
+          <td align="center">Фамилия покупателя</td>
+          <td align="center">Дата последней проплаты</td>
+          <td align="center">Телефон</td>
+          <td align="center">Дебет</td>
+          <td align="center">Дата следующего платежа</td>
+        </tr>
+
+        <tr ng-repeat-start="item in data"
+            ng-style="{ 'background-color' : ((($index + 1) % 2) > 0 ) ? 'white' : '' }">
+          <td align="center" class="info1" ng-style="{'font-weight' : (item.BR === 1 ) ? 'bold' : '' }">{{item.NAME}}</td>
+          <td align="center" class="info2">
+            <span ng-click="global.openUchetSkladRasProduct(item.O_SKLAD_RAS_ID)"
+                  ng-class="(item.O_SKLAD_RAS_ID === null) ? '' : 'hover-cursor-underline'" class="ng-binding hover-cursor-underline">{{item.FIO}}</span>
+          </td>
+          <td align="center" class="info3">{{item.D_OPL | date:'dd.MM.yyyy'}}</td>
+
+          <td align="center" class="process-a-call-td info4">
+            <a href="#" style="color: #333333; font-weight:normal"
+               ng-click="global.function.phoneClick(item.PHONE, item)"
+               ng-hide="item.showProcessACall"
+               title="Нажмите на номер телефона для совершения вызова">{{item.PHONE}}</a>
+            <div class="process-a-call" ng-show="item.showProcessACall"><div>Совершается вызов</div></div>
+          </td>
+
+          <td align="center" class="info5" ng-style="{'font-weight' : (item.BR === 1 ) ? 'bold' : '' }">{{item.SUMMA}}</td>
+
+          <td align="center" class="info3">{{item.D_NEXT_OPL | date:'dd.MM.yyyy'}}</td>
+        </tr>
+
+        <tr ng-repeat-end ng-show="item.BR === 1"  class="debet-zadol-space">
+          <td class="debet-zadol-space"></td>
+          <td class="debet-zadol-space"></td>
+          <td class="debet-zadol-space"></td>
+          <td class="debet-zadol-space"></td>
+          <td class="debet-zadol-space"></td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>
+<!-- /учёт - отчёты - Дебиторская задолженность -->
+

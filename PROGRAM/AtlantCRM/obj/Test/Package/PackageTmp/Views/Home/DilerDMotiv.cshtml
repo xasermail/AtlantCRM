@@ -1,0 +1,22 @@
+﻿<!-- Дилер D - Мотивация-->
+<div id="motiv" class="tab-content" ng-controller="dilerDMotivCtrl"
+     ng-show="global.selectedMenuItem === 'menuItemDilerD' && global.selectedDilerDSubMenuItem === 1">
+
+  <div>
+
+    <span>Дата плана с</span>
+    <input type="date" ng-model="motiv.D_BEG">
+
+    <span>по</span>
+    <input type="date" ng-model="motiv.D_END">
+
+    <span>Сумма</span>
+    <input type="number" ng-model="motiv.SUMMA">
+    
+    <span>Проценты</span>
+    <input type="number" ng-model="motiv.PROCENT">
+    
+    <button ng-click="saveData()">Сохранить</button>
+  </div>
+</div>
+<!-- /дилер D - Мотивация-->

@@ -1,0 +1,82 @@
+﻿
+<!-- Друзья -->
+<style>
+    .priglashen{
+        border: 1px solid black;
+        width: 450px;
+        height: 80px;
+    }
+</style>
+<div id="druzya" class="tab-content" ng-controller="druzyaCtrl"
+     ng-show="global.selectedSubMenuItem === 5 "> @*&& global.druzyaPravoRead === 1*@
+  <!--Блок слева -->
+  <div class="left-block">
+    <div class="left-block-2">
+      <div class="left-bl-1">
+        <span class="left-block-caption caption-1">Пригласил</span>
+      </div>
+      <div class="left-bl-2">
+        <span class="left-block-caption caption-2">Рекомендованный</span>
+      </div>
+      <div class="left-bl-3">
+        <span class="left-block-caption caption-3">Приглашенные</span>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--Блок справа -->
+  <div class="right-block-common">
+
+    <div class="right-block-1">
+      <span class="right-block-1-1"><ins>{{person.priglasil}}</ins></span>
+
+        <select ng-model="person.bonus" ng-options="item.id as item.name for item in bonus"></select>
+
+    </div>
+    <hr>
+    <div class="right-block-active ">
+      <input type="checkbox" checked="{{person.aktivist}}">
+      <span class="right-block-1-1">Активист</span>
+    </div>
+    <hr>
+    <div class="right-block-priglashen">
+      <span class="right-block-1-1">Приглашенные</span>
+      <span class="right-block-1-1 right-block-count-1">{{person.kolvo_prigl}}</span>
+    </div>
+
+    <div class="right-block-recommend">
+
+      <input type="text" ng-model="surname" placeholder="Фамилия" class="right-block-fio">
+      <input type="text" ng-model="name" placeholder="Имя" class="right-block-fio">
+      <input type="text" ng-model="secname" placeholder="Отчество" class="right-block-fio">
+      <input type="text" placeholder="Телефон" class="right-block-phone">
+      <button class="right-block-button-1"><</button>
+
+    </div>
+    <hr>
+    <div class="right-block-date-common">
+      <span class="right-block-1-1">Дата</span>
+      <input type="date" size="3" class="right-block-date">
+      <span>—</span>
+      <input type="date" size="3" class="right-block-date">
+      <div class="right-block-button-com">
+        <button class="right-block-button-1"><</button>
+      </div>
+
+      <span class="right-block-1-1 right-block-count-2">50</span>
+    </div>
+
+
+      <div class="priglashen">
+          <div ng-repeat="x in person.prigl" >{{x.fio}}; {{x.bonus}}; {{x.d_prigl}}</div>
+      </div>
+  </div>
+</div>
+<!-- /друзья -->
+
+
+
+
+

@@ -1,0 +1,124 @@
+﻿<!-- Учёт - Инвентаризация -->
+<div id="uchetInvent" class="tab-content" ng-controller="uchetInventCtrl" ng-show="global.selectedUchetSubMenuItem === 6 && global.function.havePravoRead(8,35)">
+
+  <div class="inv-block-common">
+
+    <div class="inv-block-table">
+
+      <table width="1185">
+      
+        <tr>
+          <td>Фото</td>
+          <td>Название</td>
+          <td>Количество</td>
+          <td>Цена</td>
+          <td>Чек фото</td>
+          <td>Инв. №</td>
+          <td>Списан</td>
+          <td>Комментарий</td>
+        </tr>
+
+        <tr ng-repeat="item in inv">
+          
+          <td width="10.5%">
+            <div class="photo">
+              <div class="photo-frame">
+                <img class="image" style="{{item.PHOTO_SIZE}}" ng-src="{{item.PHOTO}}" />
+              </div>
+            </div>
+          </td>
+
+          <td width="20%" ng-click="editItem(item)">{{item.NAME}}</td>
+          <td width="7%" ng-click="editItem(item)">{{item.KOLVO}}</td>
+          <td width="7%" ng-click="editItem(item)">{{item.COST}}</td>
+
+          <td width="10.5%">
+            <div class="photo">
+              <div class="photo-frame">
+                <img class="image" style="{{item.CHECK_PHOTO_SIZE}}" ng-src="{{item.CHECK_PHOTO}}" />
+              </div>
+            </div>
+          </td>
+
+          <td width="7%">{{item.INV_NUM}}</td>
+          <td width="5%" ng-click="spisatItem(item)">
+            <input type="checkbox" ng-false-value="0" ng-true-value="1"
+                   ng-model="item.IS_SPISAN"
+                   ng-disabled="global.function.noHavePravoWrite(8,35)"/>
+          </td>
+
+          <td ng-click="editItem(item)">{{item.COMMENT}}</td>
+
+        </tr>
+
+      </table>
+
+    </div>
+
+    <div class="inv-block-itogo">
+      <button class="inv-button-new" ng-click="addItem()" ng-hide="global.function.noHavePravoWrite(8,35)">Новая запись</button>
+      <button class="inv-button-print" ng-click="print()">Печать</button>
+      <span class="inv-text-itogo">
+        Общая стоимость: {{itogo}} руб
+      </span>
+    </div>
+  </div>
+
+  <div id="editInvForm" class="inv-edit-div" ng-hide="editMode === 0">
+    <div class="inv-photo-document">  
+      <div class="inv-file">
+        <span style="margin-left: 50px">Фото</span>
+        <div class="inv-photo">
+          <div class="photo-frame">
+            <img class="image" style="{{inv_edit.PHOTO_SIZE}}" ng-src="{{inv_edit.PHOTO}}" />
+          </div>
+          <input class="inv-photo-file" type="file" onchange="angular.element(this).scope().setFile(this, 'PHOTO')" accept="image/*"/>
+        </div>
+      </div>
+
+      <div class="inv-file" style="margin-left: 102px">
+        <span style="margin-left: 30px">Чек фото</span>
+        <div class="inv-photo">
+          <div class="photo-frame">
+            <img class="image" style="{{inv_edit.CHECK_PHOTO_SIZE}}" ng-src="{{inv_edit.CHECK_PHOTO}}" />
+          </div>
+          <input class="inv-photo-file" type="file" onchange="angular.element(this).scope().setFile(this, 'CHECK_PHOTO')" accept="image/*"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="inv-input-div">
+      <div>
+        <span>Название</span>
+        <input class="inv-name" ng-model="inv_edit.NAME" />
+      </div>
+
+      <div class="inv-div-input-data">
+        <span>Количество</span>
+        <input class="inv-kolvo" type="number" ng-model="inv_edit.KOLVO" />
+      </div>
+
+      <div class="inv-div-input-data">
+        <span>Цена</span>
+        <input class="inv-cost" type="number" ng-model="inv_edit.COST" />
+      </div>
+
+      <div class="inv-div-input-data">
+        <span>Инв. №</span>
+        <input class="inv-inv-num" ng-model="inv_edit.INV_NUM" />
+      </div>
+
+      <div class="inv-div-input-data">
+        <span>Комментарий</span>
+        <textarea rows="3" class="inv-comment" type="number" ng-model="inv_edit.COMMENT"></textarea>
+      </div>
+    </div>
+
+    <div class="inv-button-div">
+      <button ng-click="saveItem()">Сохранить</button>
+      <button ng-click="cancel()">Отменить</button>
+    </div>
+  </div>
+
+</div>
+<!-- /Учёт - Инвентаризация -->

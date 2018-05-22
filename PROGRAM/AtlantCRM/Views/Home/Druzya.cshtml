@@ -1,0 +1,81 @@
+﻿
+<!-- Друзья -->
+
+
+<div id="druzya" class="tab-content" ng-controller="druzyaCtrl" ng-show="global.selectedSubMenuItem === 5 && global.function.havePravoRead(1,7)">
+  <!--Блок слева -->
+  <div class="left-block">
+    <div class="left-block-2">
+      <div class="left-bl-1">
+        <span class="left-block-caption caption-1">Пригласил</span>
+      </div>
+      <div class="left-bl-2">
+        <span class="left-block-caption caption-2">Рекомендованный</span>
+      </div>
+      <div class="left-bl-3">
+        <span class="left-block-caption caption-3">Приглашенные</span>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--Блок справа -->
+  <div class="right-block-common">
+
+    <div class="right-block-1">
+      <span class="right-block-1-1"><ins>{{person.priglasil}}</ins></span>
+      
+        @* бонус пока просили убрать, не удаляю, просто скрою *@
+        <select ng-change="chng()" ng-model="person.bonus"
+                ng-show="false"
+                ng-options="item.id as item.name for item in bonus"
+                ng-disabled="global.function.noHavePravoWrite(1,7)"
+                class="friend-select"></select>
+
+    </div>
+    <hr>
+    <div class="right-block-active ">
+      <input class ="activ-1 " type="checkbox" ng-model="person.aktivist" ng-false-value="0" ng-true-value="1" ng-disabled="true">
+      <span class="right-block-1-1">Активист</span>
+    </div>
+    <hr>
+    <div class="right-block-priglashen">
+      <span class="right-block-1-1">Приглашенные</span>
+      <span class="right-block-1-1 right-block-count-1">{{person.kolvo_prigl}}</span>
+    </div>
+
+    <div class="right-block-recommend">
+
+      <input type="text" ng-model="surname" placeholder="Фамилия" class="right-block-fio" ng-disabled="global.function.noHavePravoWrite(1,7)">
+      <input type="text" ng-model="name" placeholder="Имя" class="right-block-fio" ng-disabled="global.function.noHavePravoWrite(1,7)">
+      <input type="text" ng-model="secname" placeholder="Отчество" class="right-block-fio" ng-disabled="global.function.noHavePravoWrite(1,7)">
+      <input type="text" ng-model="phone" placeholder="Телефон" class="right-block-phone phone-1" ng-disabled="global.function.noHavePravoWrite(1,7)">
+      <button class="right-block-button-1" ng-click="add()" ng-disabled="global.function.noHavePravoWrite(1,7) " ><</button>
+
+    </div>
+    <hr>
+    <div class="right-block-date-common">
+      <span class="right-block-1-1">Дата</span>
+      <input type="date" size="3" class="right-block-date" ng-disabled="global.function.noHavePravoWrite(1,7)" ng-model="fromDate">
+      <span>—</span>
+      <input type="date" size="3" class="right-block-date" ng-disabled="global.function.noHavePravoWrite(1,7)" ng-model="toDate1">
+      <div class="right-block-button-com">
+        <button class="right-block-button-1" ng-disabled="global.function.noHavePravoWrite(1,7)" ng-click="find()"><</button>
+      </div>
+
+      <span class="right-block-1-1 right-block-count-2">{{ar.length}}</span>
+    </div>
+
+
+      <div class="priglashen">
+          <div ng-repeat="x in ar" >{{x.fio}}; {{x.bonus}}; {{x.d_prigl | date:'dd.MM.yyyy'}}</div>
+      </div>
+  </div>
+</div>
+<!-- /друзья -->
+
+
+
+
+

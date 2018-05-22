@@ -1,0 +1,36 @@
+﻿<!-- Отчеты - Опрос -->
+<div id="reportOpros" ng-controller="reportOprosCtrl" ng-show="global.selectedReportSubMenuItem === 8 && global.function.havePravoRead(4, 17)">
+  <div class="opros-header">
+    <span class="opros-span">Период с</span>
+    <input type="date" ng-model="date0">
+    <span class="opros-span">по</span>
+    <input type="date" ng-model="date1">
+    <button ng-click="prim()">Применить</button>
+  </div>
+
+  <div id="opros-data-header">
+    <select ng-model="M_VOPROS_TAB_ID"
+            ng-options="c.ID as c.NAME for c in global.manual.M_VOPROS_TAB | filter:{M_ORG_ID: global.userContext.M_ORG_ID}:true">
+    </select>
+  </div>
+
+  <div id="opros-data-data">
+    <table>
+      <tr>
+        <td class="opros-td-name">
+          <span class="opros-all-count">{{opros_header.NAME}}</span>
+        </td>
+        <td class="opros-td-da">{{opros_header.DA}}</td>
+        <td class="opros-td-net">{{opros_header.NET}}</td>
+        <td class="opros-td-pusto">{{opros_header.PUSTO}}</td>
+      </tr>
+      <tr ng-repeat="item in opros | filter:{M_VOPROS_TAB_ID: M_VOPROS_TAB_ID}">
+        <td class="opros-td-name">{{item.NAME}}</td>
+        <td class="opros-td-da">{{item.DA}}</td>
+        <td class="opros-td-net">{{item.NET}}</td>
+        <td class="opros-td-pusto">{{item.PUSTO}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<!-- /отчеты - Опрос -->

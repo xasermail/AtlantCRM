@@ -1,0 +1,45 @@
+﻿@{
+  Layout = "/Views/Shared/_Print.cshtml";
+}
+
+<style>
+  table {
+    word-wrap: break-word;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  tr {
+    border-collapse: collapse;
+    padding: 10px 0;
+  }
+
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+  }
+</style>
+
+<div style="margin: 15px 0 0 15px">
+  <div align="center">
+    <table width="1200">
+      <tr>
+        <td>Название</td>
+        <td>Количество</td>
+        <td>Цена</td>
+        <td>Инв. №</td>
+        <td>Списан</td>
+        <td>Комментарий</td>
+      </tr>
+      <tr ng-repeat="item in data">
+        <td width="20%">{{item.NAME}}</td>
+        <td width="7%">{{item.KOLVO}}</td>
+        <td width="7%">{{item.COST}}</td>
+        <td width="7%">{{item.INV_NUM}}</td>
+        <td width="5%">{{((item.IS_SPISAN === 1) ? 'Да' : '')}}</td>
+        <td>{{item.COMMENT}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

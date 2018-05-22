@@ -1,0 +1,33 @@
+﻿<!-- Дилер D - Рассылка-->
+<div id="dilerDSmsAutoSend" class="tab-content" ng-controller="dilerDSmsAutoSendCtrl"
+     ng-show="global.selectedMenuItem === 'menuItemDilerD' && global.selectedDilerDSubMenuItem === 2">
+
+  <div class="diler-d-sms-active-div">
+    <input ng-model="global.manual.O_NASTR[0].SMS_AUTO_SEND" type="checkbox" ng-false-value="0" ng-true-value="1"
+           ng-click="setSmsAutoSend()"
+           class="diler-d-sms-active"/>
+
+    <span>Активировать СМС-рассылку</span>
+  </div>
+
+  <div class="diler-d-sms-save-div">
+    <select ng-model="M_SMS_TEMPLATE_TYPE_ID"
+            ng-options="item.ID as item.NAME for item in global.manual.M_SMS_TEMPLATE_TYPE"
+            ng-change="getSmsTemplate()">
+    </select>
+
+    <br/>
+
+    <div class="diler-d-sms-info">
+      <span ng-hide="M_SMS_TEMPLATE_TYPE_ID === 2">Подстановка в сообщение: <ИО> заменяется на имя и отчество</span>
+      <span ng-hide="M_SMS_TEMPLATE_TYPE_ID !== 2">Подстановка в сообщение: <ИО> заменяется на имя и отчество, <Дата> - на дату платежа</span>
+    </div>
+
+    <textarea ng-model="template.SOOB" class="diler-d-sms-save-text"></textarea>
+
+    <br/>
+
+    <button class="diler-d-sms-save-button" ng-click="saveData()">Сохранить</button>
+  </div>
+</div>
+<!-- /дилер D - Рассылка-->

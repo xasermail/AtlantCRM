@@ -1,0 +1,158 @@
+﻿@{
+  Layout = "/Views/Shared/_Print.cshtml";
+}
+
+<style>
+  #newAnkPrintPreview1 .new-ank-print-preview {
+    background-color: white;
+    position: relative;
+    font-family: 'Times New Roman';
+    height: 100vh;
+    width: 1150px;
+    color: black;
+  }
+
+  #newAnkPrintPreview1 .new-ank-print-preview .org-adres {
+    position: absolute;
+    left: 50px;
+    top: 660px;
+    width: 510px;
+    font-size: 32px;
+  }
+
+  #newAnkPrintPreview1 .new-ank-print-preview .org-adres.org-adres-multiline {
+    top: 710px;
+  }
+
+  #newAnkPrintPreview1 .new-ank-print-preview .org-adres p {
+    line-height: 32px;
+    margin:0;
+    padding:0;
+  }
+
+  #newAnkPrintPreview1 .new-ank-print-preview .org-phone {
+    position: absolute;
+    left: 50px;
+    top: 700px;
+    font-size: 32px;
+  }
+
+  #newAnkPrintPreview1 .new-ank-print-preview .vertical-line1 {
+    position: absolute;
+    border: 1px #e3e3e3 dashed;
+    width: 1px;
+    left: 590px;
+    height: 750px;
+    top: 40px;
+  }
+
+  #newAnkPrintPreview1 .new-ank-print-preview .right-part {
+    float: right;
+    text-align: center;
+    margin-right: 20px;
+  }
+
+  #newAnkPrintPreview1 .new-ank-print-preview .new-ank-print-logo {
+   margin-top: 40px;
+  }
+
+  #newAnkPrintPreview1 .new-ank-print-preview .fio {
+    margin-top: 80px;
+    font-size: 40px;
+    background-color: white;
+    font-weight: bold;
+  }
+
+  #newAnkPrintPreview1 .new-ank-print-preview .fio p {
+    margin-top: 0px;
+    padding-top: 0px;
+    line-height: 40px;
+  }
+
+  #newAnkPrintPreview1 .new-ank-print-preview .phone-mobile {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  #newAnkPrintPreview1 .new-ank-print-preview .new-ank-print-barcode {
+    margin-top: 30px;
+  }
+
+  #newAnkPrintPreview1 .new-ank-print-preview .slogan {
+    margin-top: 70px;
+    text-align: center;
+    font-size: 28px;
+    color: red;
+  }
+
+  #newAnkPrintPreview1 .new-ank-print-preview .slogan p {
+    line-height: 32px;
+    margin:0;
+    padding:0;
+    text-align: center;
+  }
+
+  #newAnkPrintPreview1 .left-part {
+    position: absolute;
+    width: 550px;
+    margin-left: 20px;
+  }
+
+  #newAnkPrintPreview1 .zabol {
+    height: 60px;
+  }
+</style>
+
+<div id="newAnkPrintPreview1">
+  <div class="new-ank-print-preview">
+    <!-- Левая часть, верх -->
+    <div class="zabol left-part">
+      <p>{{ZABOL}}</p>
+    </div>
+
+      <!-- Правая часть -->
+      <div class="right-part">
+        <img class="new-ank-print-logo" src="~/Content/img/new-ank-print-logo-life-medical.png" />
+
+        <div class="fio">
+          <p>{{SURNAME}}</p>
+          <p>{{(NAME || "") + " " + (SECNAME || "")}}</p>
+        </div>
+
+        <div class="phone-mobile" style="text-align: center">
+          <p>Тел: {{PHONE_MOBILE || PHONE_HOME}}</p>
+        </div>
+
+        <div><img class="new-ank-print-barcode" ng-src="{{BARCODE}}"/></div>
+
+        <div class="slogan">
+          <p>КАЖДЫЙ ДЕНЬ</p>
+          <p>В ЛАЙФ-МЕДИКАЛ ХОЖУ -</p>
+          <p>Я ЗДОРОВЬЕМ ДОРОЖУ</p>
+        </div>
+
+
+      </div>
+      <!-- /правая часть -->
+      <!-- Вертикальный штрих-пунктирный разделитель -->
+      <div class="vertical-line1"></div>
+      <!-- /вертикальный штрих-пунктирный разделитель -->
+      <!-- Левая часть -->
+      <div class="left-part">
+
+        <div class="org-adres">
+          <p>{{M_ORG_ADRES}}</p>
+        </div>
+
+        <div class="org-phone">
+          <p>{{M_ORG_PHONE}}</p>
+        </div>
+
+      </div>
+      <!-- /левая часть -->
+
+
+    </div>
+</div>

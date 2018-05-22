@@ -1,0 +1,224 @@
+﻿<!-- Дилер A или Дилер C-->
+<div id="dilerA" class="tab-content" ng-controller="dilerACtrl"
+     ng-show="(global.selectedMenuItem === 'menuItemDilerA') || (global.selectedMenuItem === 'menuItemDilerC')">
+
+  <br />
+  <div>
+    <input type="date" ng-model="toDate" ng-change="toDateChangeHandler()" date-format="short"/>
+  </div>
+
+  <table class="table table-bordered table-condensed table-striped">
+    <thead>
+      <tr>
+        <th>Салоны</th>
+        <th>Наполняемость</th>
+        <th>Новые посетители</th>
+        <th>Звонки</th>
+        <th>Сотрудники</th>
+        <th>Контакты</th>
+        <th>Продажи</th>
+        <th>План</th>
+        <th>Валовый доход</th>
+        <th>Расходы</th>
+      </tr>
+    </thead>
+    <tr ng-repeat="item in saloni">
+      <td title="{{item.name + ' (' + item.m_org_id + ')'}}" class="td-saloni-first-col">{{item.adres}}</td>
+      <td>{{item.napol}}</td>
+      <td>{{item.novPoset}}</td>
+      <td>{{item.zvonki}}</td>
+      <td>{{item.sotrud}}</td>
+      <td>{{item.kontakti}}</td>
+      <td>{{item.prodaji}}</td>
+      <td>{{item.plan}}</td>
+      <td>{{item.valDohod}}</td>
+      <td>{{item.rash}}</td>
+    </tr>
+    <tr class="saloni-itogo">
+      <td>Итого:</td>
+      <td>{{getSum("napol")}}</td>
+      <td>{{getSum("novPoset")}}</td>
+      <td>{{getSum("zvonki")}}</td>
+      <td>{{getSum("sotrud")}}</td>
+      <td>{{getSum("kontakti")}}</td>
+      <td>{{getSum("prodaji")}}</td>
+      <td>{{getSum("plan")}}</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <h2>Склад</h2>
+
+  <table class="table table-bordered table-condensed table-striped">
+    <thead>
+      <tr>
+        <th>Склад дилера А</th>
+        <th>Проектор</th>
+        <th>Mini mat-1</th>
+        <th>Маска</th>
+        <th>Браслет</th>
+        <th>Подушка</th>
+        <th>Cover mat</th>
+        <th>Cushion 1</th>
+        <th>CerMatrS</th>
+        <th>Наколенники</th>
+        <th>Кровать</th>
+      </tr>
+    </thead>
+    <tr>
+      <td class="td-saloni-first-col">Количество на складе</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="td-saloni-first-col">Количество неоплаченного товара</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="td-saloni-first-col">Долг перед компанией</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <table class="table table-bordered table-condensed table-striped">
+    <thead>
+      <tr>
+        <th>Наименование</th>
+        <th>Проектор</th>
+        <th>Mini mat-1</th>
+        <th>Маска</th>
+        <th>Браслет</th>
+        <th>Подушка</th>
+        <th>Cover mat</th>
+        <th>Cushion 1</th>
+        <th>CerMatrS</th>
+        <th>Наколенники</th>
+        <th>Кровать</th>
+      </tr>
+    </thead>
+    <tr ng-repeat="item in saloni">
+      <td title="{{item.name + ' (' + item.m_org_id + ')'}}" class="td-saloni-first-col">{{item.adres}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+
+  <!-- Прайс -->
+  <h2>Прайс</h2>
+
+  <table class="table table-bordered table-condensed table-striped diler-a-price">
+    <thead>
+      <tr class="th-saloni-first-row">
+        <th class="th-saloni-first-row">Наименование</th>
+        <th class="th-saloni-first-row">D</th>
+        <th class="th-saloni-first-row">Розница</th>
+        <th class="th-saloni-first-row">Подарок</th>
+        <th class="th-saloni-first-row">C</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="td-saloni-first-col">Проектор G-Life</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="td-saloni-first-col">Cusion 1</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="td-saloni-first-col">Нефритов. Ковры</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="td-saloni-first-col">Подушка WellMini</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="td-saloni-first-col">Большой Хвантоболовый</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="td-saloni-first-col">мхм хвантоболовый</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="td-saloni-first-col">Турманиевый лекарь</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="td-saloni-first-col">Турманиевые бусы</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="td-saloni-first-col">Турманиевый браслет</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- /прайс -->
+
+</div>
+<!-- /дилер A или дилер C-->

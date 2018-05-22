@@ -1,0 +1,52 @@
+/* проверка на наличие задолженности по оплате абонемента */
+
+BEGIN TRY
+    DROP FUNCTION [dbo].[GET_IS_ABON_ZADOL];
+END TRY
+BEGIN CATCH
+    PRINT 'Function did not exist.';
+END CATCH
+
+GO
+
+create function [dbo].[GET_IS_ABON_ZADOL](
+  -- ID анкеты
+  @o_ank_id int,
+  -- организация
+	@m_org_id int
+) returns int
+	
+as begin
+
+
+declare @cnt int;
+
+-- ВИД СОБЫТИЯ В УВЕДОМЛЕНИИ - ДОПЛАТА
+DECLARE @M_VID_SOB_DOPLATA INT = 5;
+
+declare @d smalldatetime = cast(dbo.CREATE_DATE(@m_org_id) as date);
+
+select
+  @cnt = count(*)
+from
+  dbo.O_SKLAD_RAS r
+  join dbo.O_SKLAD_RAS_PRODUCT rp on rp.O_SKLAD_RAS_ID = r.ID
+  join dbo.M_PRODUCT p on p.ID = rp.M_PRODUCT_ID
+  join dbo.O_UVEDOML u on u.O_SKLAD_RAS_ID = r.ID
+where
+  r.O_ANK_ID = @o_ank_id
+  and p.IS_ABON = 1
+  and u.M_VID_SOB_ID = @M_VID_SOB_DOPLATA
+  and isnull(rp.OPL_OST,0) > 0
+  and u.D_SOB <= @d
+;
+
+return @cnt;
+
+
+end;
+
+go
+
+
+select dbo.GET_IS_ABON_ZADOL(2527, 2);

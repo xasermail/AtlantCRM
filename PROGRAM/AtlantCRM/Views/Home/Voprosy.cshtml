@@ -1,0 +1,55 @@
+﻿<!-- Вопросы -->
+<div id="vopros" class="tab-content" ng-controller="voprosCtrl" ng-show="global.selectedSubMenuItem === 3 && global.function.havePravoRead(1,5)">
+ 
+  <div>
+    <div id="subMenuVoprosy">
+    
+      <div ng-repeat="item in submenu"
+           class="sub-menu-item" data-index="{{$index}}"
+           ng-class="selectedMenuItem === $index ? 'sub-menu-item-active' :'sub-menu-item-no-active' "
+           ng-click="selectItem($index)">
+        <span class="blue-text">{{item.NAME}}</span>
+      </div>
+
+      <div class="div-menu-button">
+        <button class="plus-button" ng-click="addTabClickHandler($event)" ng-disabled="global.function.noHavePravoWrite(1,5)">+</button>
+      </div>
+    </div>
+
+  </div>
+    
+  <div>
+    <div class="div-vopros-row" ng-repeat="item in vopros | filter:{M_VOPROS_TAB_ID: addTab.activeTabId}:true">
+      
+      <select 
+        ng-model="item.M_VOPROS_ID"
+        ng-options="c.ID as c.NAME for c in global.manual.M_VOPROS" ng-disabled="global.function.noHavePravoWrite(1,5)">
+      </select>
+
+      <select
+        ng-model="item.M_YES_NO_ID"
+        ng-options="c.ID as c.NAME for c in global.manual.M_YES_NO" ng-disabled="global.function.noHavePravoWrite(1,5)">
+      </select>
+
+      <textarea cols="60" maxlength="4000" ng-model="item.COMMENT"></textarea>
+
+      <button class="btnCircle" ng-click="add($index)" ng-show="$index === 0" ng-disabled="global.function.noHavePravoWrite(1,5)">+</button>
+      <button class="btnCircle" ng-click="remove(item.ID)" ng-hide="$index === 0" ng-disabled="global.function.noHavePravoWrite(1,5)">-</button>
+
+    </div>
+
+  </div>
+
+  <div id="addTabForm" class="add-tab-form" style="left: {{addTab.left}}px; top: {{addTab.top}}px; height: {{addTab.height}}px" ng-show="addTab.show === 1">
+    <input ng-model="addTab.name"/>
+    <div>
+      <button ng-click="addTabOk()">Ок</button>
+      <button class="add-tab-form-button-close" ng-click="addTabClose()">Отмена</button>
+    </div>
+  </div>
+
+  <div>
+    <button class="button-vopros-save" ng-click="saveVopros()" ng-show="addTab.showSave === 1 && global.function.havePravoWrite(1,5)">Сохранить</button>
+  </div>
+</div>
+<!-- /Вопросы-->

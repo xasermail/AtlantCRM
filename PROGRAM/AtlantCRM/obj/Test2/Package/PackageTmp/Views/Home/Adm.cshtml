@@ -1,0 +1,312 @@
+﻿<!-- Администрация -->
+<div id="adm" class="tab-content" ng-controller="admCtrl" ng-show="global.selectedMenuItem === 'menuItemAdm'">
+
+  <!-- Организации -->
+  <!-- для Дилера D скрыто -->
+  <div ng-hide="global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_D">
+
+    <!-- Администрация, Дилер A, C, D -->
+    <div class="org-tree">
+
+
+      <!-- Администрация -->
+      <div>
+        <div class="tree-item tree-item-org">
+          <span ng-click="orgClickHandler(org_tree)"
+                ng-class="{'tree-item-active': activeItemId === org_tree.ID}">{{org_tree.NAME}}</span>
+        </div>
+      </div>
+      <!-- /администрация -->
+      <!-- Дилер A, C, D -->
+      <div class="org-tree-wrapper">
+
+        <!-- Наименования. В этом цикле формируется первый столбец, с наименованиями организаций -->
+        <div class="org-tree-names">
+          <div ng-repeat="item in org_tree.childs" class="diller-a">
+            <!-- Дилер A -->
+            <div ng-click="orgClickHandler(item)" class="tree-item tree-item-org">
+              <span ng-class="{'tree-item-active': activeItemId === item.ID}">{{item.NAME}}</span>
+            </div>
+
+            <div ng-repeat="item1 in item.childs" class="diller-c">
+              <!-- Дилер C или иногда Дилер D -->
+              <div ng-click="orgClickHandler(item1)" class="tree-item tree-item-org">
+                <span ng-class="{'tree-item-active': activeItemId === item1.ID}">{{item1.NAME}}</span>
+              </div>
+
+              <div ng-repeat="item2 in item1.childs" class="diller-d">
+                <!-- Дилер D -->
+                <div ng-click="orgClickHandler(item2)" class="tree-item tree-item-org">
+                  <span ng-class="{'tree-item-active': activeItemId === item2.ID}">{{item2.NAME}}</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /наименования -->
+        <!-- Тип организации. В этом цикле формируется второй столбец, с типами организаций -->
+        <div class="org-tree-fields">
+          <div ng-repeat="item in org_tree.childs" class="">
+            <!-- Дилер A -->
+            <div ng-click="orgClickHandler(item)"
+                 class="tree-item"
+                 ng-class="{'tree-item-active': activeItemId === item.ID}">{{item.M_ORG_TYPE_ID_NAME}}</div>
+
+            <div ng-repeat="item1 in item.childs" class="">
+              <!-- Дилер C или иногда Дилер D -->
+              <div ng-click="orgClickHandler(item1)"
+                   class="tree-item"
+                   ng-class="{'tree-item-active': activeItemId === item1.ID}">{{item1.M_ORG_TYPE_ID_NAME}}</div>
+
+              <div ng-repeat="item2 in item1.childs" class="">
+                <!-- Дилер D -->
+                <div ng-click="orgClickHandler(item2)"
+                     class="tree-item"
+                     ng-class="{'tree-item-active': activeItemId === item2.ID}">{{item2.M_ORG_TYPE_ID_NAME}}</div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /тип организации -->
+
+      </div>
+      <!-- /дилер A, C, D -->
+
+    </div>
+    <!-- /администрация, Дилер A, C, D -->
+
+    <!-- Кнопки взаимодействия с выбранной организацией -->
+    <div class="adm-active-buttons">
+      <button ng-disabled="activeItemId == null" ng-click="btnEditOrgClickHandler(activeItem)">Редактировать</button>
+      <button ng-disabled="(activeItemId == null) ||
+                           (activeItem.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_D)"
+              ng-click="btnAddOrgClickHandler(activeItem)">
+        Добавить организацию
+      </button>
+      <button ng-disabled="activeItemId == null" ng-click="btnUserClickHandler(activeItem)">Пользователи</button>
+      <button ng-disabled="activeItemId == null" ng-click="btnGoOrgClick(activeItem)">Перейти в магазин</button>
+    </div>
+    <!-- /кнопки взаимодействия с выбранной организацией -->
+
+    <!-- Добавление/редактирование организации -->
+    <div class="org-add-edit" ng-show="isOrgAddEditShow">
+      <div class="tip-organizatsii">
+        <span>Тип организации</span>
+        <select ng-options="item.ID as item.NAME for item in global.manual.M_ORG_TYPE | filter:{ID: '!1'}"
+                ng-model="org.M_ORG_TYPE_ID"></select>
+      </div>
+      <div class="imya-and-otn">
+        <div class="imya">
+          <span>Наименование</span>
+          <input type="text" ng-model="org.NAME" />
+        </div>
+        <div class="otn">
+          <span>Относится к</span>
+          <select ng-options="item.ID as item.NAME for item in global.manual.M_ORG"
+                  ng-model="org.PARENT_ID"></select>
+        </div>
+      </div>
+      <div class="adres-salona">
+        <span class="control-label">Адрес салона</span>
+        <textarea class="control-input" ng-model="org.ADRES"></textarea>
+      </div>
+      <div class="telefon-and-kod">
+        <span class="telefon-label">Телефон</span>
+        <input class="telefon-input" type="text" ng-model="org.PHONE" />
+        <span class="kod-label">Код подтверждения</span>
+        <input class="kod-input" type="text" ng-model="org.KOD_PODTV" />
+      </div>
+
+      <!-- Кнопка Создать и Отмена-->
+      <div class="btnSozdatAndOtmena">
+        <button ng-click="btnAddOrgCreateClickHandler()">{{btnOrgAddCreateCaption}}</button>
+        <button ng-click="btnAddOrgCancelClickHandler()">Отмена</button>
+      </div>
+      <!-- /кнопка создать и отмена -->
+
+    </div>
+    <!-- /добавление/редактирование организации -->
+
+  </div>
+  <!-- /организации -->
+
+  <!-- Список пользователей -->
+  <div class="user-list" ng-show="isUserAddEditShow"
+       ng-class="{'user-list-diler-d': global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_D}">
+    <div class="table-1">
+      <table class="table table-condensed table-hover table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Фото</th>
+            <th>ФИО</th>
+            <th>Логин</th>
+            <th>Должность</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tr ng-repeat="item in global.manual.S_USER | filter:{M_ORG_ID: activeItemId}">
+          <td>{{$index + 1}}</td>
+
+          <td>
+            <img class="user-img" ng-src="/Home/GetUserPhoto/{{item.ID}}" />
+          </td>
+
+          <td>
+            {{item.SURNAME}} <br />
+            {{item.NAME}} <br />
+            {{item.SECNAME}} <br />
+            {{item.BIRTHDAY | date:'dd.MM.yyyy'}}
+          </td>
+          <td>{{item.UserName}}</td>
+          <td>
+            <select ng-options="item.ID as item.NAME for item in global.manual.S_USER_ROLE"
+                    ng-model="item.S_USER_ROLE_ID"
+                    ng-change="userRoleChangeClickHandler(item)"></select> <br />
+            <span>Принят: {{item.HIRE_DATE | date:'dd.MM.yyyy'}}</span>
+          </td>
+          <td class="text-center td-vertical-align-middle">
+            <button type="button" class="btn btn-default" aria-label="Left Align" title="Редактировать"
+                    ng-click="btnEditUserClickHandler(item)">
+              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            </button>
+
+            <button type="button" class="btn btn-default" aria-label="Left Align" title="Удалить"
+                    ng-click="btnRemoveUserClickHandler(item)">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
+
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="button-1">
+      <button ng-click="btnUserAddClickHandler()">Добавить нового</button>
+
+      <!-- для Дилера D она скрыта -->
+      <button ng-click="btnUserCancelClickHandler()"
+              ng-hide="global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_D">Отмена</button>
+
+    </div>
+  </div>
+  <!-- /список пользователей -->
+  <!-- Добавление/редактирование пользователя -->
+  <div class="user-add-edit" ng-show="newEditUserFormShow === true">
+
+    <!-- Информация о пользователе -->
+    <div>
+      <!-- Фото -->
+      <div class="user-photo">
+        <div class="org-photo">
+          <div>
+            <div class="photo-frame"><img ng-src="{{user.imgPhoto}}" /></div>
+          </div>
+          <div class="photo-source">
+            <img src="~/Content/img/u57.png" />
+            <input type="file" />
+          </div>
+        </div>
+      </div>
+      <!-- /фото -->
+      <!-- Данные пользователя -->
+      <div class="user-info">
+
+        <div class="input-wrapper">
+          <div class="input-group-1">
+            <span>Фамилия: </span> <br />
+            <input type="text" placeholder="Фамилия" ng-model="user.SURNAME" />
+          </div>
+          <div class="input-group-1">
+            <span>Имя: </span> <br />
+            <input type="text" placeholder="Имя" ng-model="user.NAME" />
+          </div>
+          <div class="input-group-1">
+            <span>Отчество: </span> <br />
+            <input type="text" placeholder="Отчество" ng-model="user.SECNAME" />
+          </div>
+          <div class="input-group-1">
+            <span>Дата рождения: </span> <br />
+            <input type="date" placeholder="Дата рождения" ng-model="user.BIRTHDAY" />
+          </div>
+          <div class="input-group-1">
+            <span>Должность: </span> <br />
+            <select ng-options="item.ID as item.NAME for item in global.manual.S_USER_ROLE"
+                    ng-model="user.S_USER_ROLE_ID"></select>
+          </div>
+          <div class="input-group-1">
+            <span>Дата принятия: </span> <br />
+            <input type="date" ng-model="user.HIRE_DATE" />
+          </div>
+          <div class="input-group-1">
+            <span>Логин: </span> <br />
+            <input type="text" placeholder="Логин" ng-model="user.UserName" ng-disabled="user.ID != null" />
+          </div>
+          <div class="input-group-1">
+            <span>Пароль: </span> <br />
+            <input type="text" placeholder="Пароль" ng-model="user.PASSWORD" />
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+      </div>
+      <!-- /данные пользователя -->
+
+    </div>
+    <!-- /информация о пользователе -->
+    <!-- Права -->
+    <div class="prava">
+      <div class="prava-gr-wrapper">
+        <div class="prava-gr" ng-repeat="item in O_PRAVO_GR">
+          <div>
+            <input type="checkbox" ng-model="item.CHECKED" ng-true-value="1" ng-false-value="0" />
+            <span>{{item.NAME}}</span>
+          </div>
+          <div class="pravo-rej" ng-repeat="item1 in O_PRAVO_REJ | filter:{M_PRAVO_GR_ID: item.M_PRAVO_GR_ID}">
+            <button type="button" class="btn btn-sm btn-default"
+                    aria-label="Left Align" ng-class='{"btn-success": item1.READ1 === 1}' ng-click="btnReadPravoClickHandler(item1)">
+              <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-sm btn-default"
+                    aria-label="Left Align" ng-class='{"btn-success": item1.WRITE1 === 1}' ng-click="btnWritePravoClickHandler(item1)">
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+            </button>
+            <span>{{item1.NAME}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <!-- /права -->
+    <!-- Кнопки закрытия формы -->
+    <div class="buttons-1">
+      <!-- Сохранить новый -->
+      <button type="button" class="btn btn-default"
+              aria-label="Left Align" ng-click="btnUserSaveNewClickHandler()"
+              ng-show="user.ID == null">
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Сохранить
+      </button>
+
+      <!-- Сохранить отредактированный -->
+      <button type="button" class="btn btn-default"
+              aria-label="Left Align" ng-click="btnUserSaveEditClickHandler()"
+              ng-show="user.ID != null">
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Сохранить
+      </button>
+
+      <button type="button" class="btn btn-default"
+              ng-click="btnUserCloseClickHandler()">
+        Отмена
+      </button>
+    </div>
+    <!-- /кнопки закрытия формы -->
+
+
+  </div>
+  <!-- /добавление/редактирование пользователя -->
+
+
+</div>
+<!-- /администрация -->

@@ -1,0 +1,102 @@
+﻿
+<!-- База -->
+<div id="scriptAnalysis" class="tab-content" ng-controller="scriptAnalysisCtrl"
+     ng-show="global.selectedScriptsSubMenuItem === 0 && global.function.havePravoRead(13, 59)">
+
+
+ 
+  <div class="container-1">
+
+    <style>
+      #scriptAnalysis .container-1 {
+        width: 800px;
+        height: 600px;
+        background-color: white;
+      }
+
+      #scriptAnalysis #svgContainer {
+        position: absolute;
+        z-index: 0;
+        /*background-color:silver;
+        opacity: 0.5;*/
+      }
+
+
+      #scriptAnalysis .block-field {
+        position: absolute;
+        left: 40px;
+        top: 40px;
+        width: 800px;
+        height: 600px;
+        background-color: transparent;
+      }
+
+      #scriptAnalysis .block-item {
+        position: absolute;
+        border: 1px solid black;
+        padding: 10px;
+      }
+
+      .block-item textarea{
+        border:none;
+      }
+
+      .block-answer {
+        border: 1px solid black;
+        padding: 10px;
+        margin-left: -10px;
+        margin-right: -10px;
+      }
+      .block-answer p {
+        max-width: 200px;
+      }
+    </style>
+
+    <button ng-click="dob1()">добавить</button>
+
+    <label>Соединить&nbsp;</label>
+    <select ng-options="item.id as item.caption for item in blockList" ng-model="blockId1"></select>
+    <label>&nbsp;с&nbsp;</label>
+    <select ng-options="item.id as item.caption for item in blockList" ng-model="blockId2"></select>
+    <button ng-click="btnSoedClick()">Применить</button>
+
+    <div id="svgContainer" style="margin: 50px 50px;">
+      <svg id="svg1" width="0" height="0">
+        <path ng-repeat="item in connectorList"
+              id="myNewPath{{item.id}}"
+              d="M0 0"
+              stroke-width="0.3em"
+              style="stroke:#555; fill:none;  " />
+        <polygon ng-repeat="item in connectorList"
+                 id="myNewArrow{{item.id}}"
+                 points="0,0 10,10 10,20"
+                 style="fill: black;  stroke: black;" />
+
+
+      </svg>
+    </div>
+
+    <div class="block-field" ng-click="blockFieldClick($event)">
+      <div class="block-item" ng-style="item"
+           ng-click="blockItemClick(item, $event)"
+           id="{{item.id}}"
+           ng-repeat="item in blockList">
+           <div>
+              <span>#{{item.num}}</span>
+           </div>
+           <textarea class="script-textarea-item-caption"
+                      ng-click="selectedTextQuery(item, $event)">{{item.caption}}</textarea>
+
+           <div class="block-answer"
+           id="{{answer.id}}"
+           ng-repeat="answer in item.answerList">
+           <p>{{answer.caption}}</p> </div>
+
+            <div><button ng-click="addAnswer(item, $event)">Добавить ответ</button></div>           
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<!-- /база -->

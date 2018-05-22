@@ -1,0 +1,285 @@
+﻿<!-- Новый - Анкета -->
+<div id="newAnk" class="tab-content" ng-controller="newAnkCtrl"
+     ng-show="global.selectedSubMenuItem === 0 && global.function.havePravoRead(1,1) && !(global.newAnkPrintPreviewMode)">
+
+  <div id="newAnkEditDiv" class="new-ank-content" ng-hide="global.newAnkPrintPreviewMode">
+
+    <div id="ankVerticalLine"></div>
+    <div id="ankfioAndOtherSectionCaption"><span class="section-caption">Личные данные</span></div>
+    <div id="zabolSectionCaption"><span class="section-caption">Заболевания</span></div>
+    <div id="adresSectionCaption"><span class="section-caption">Адрес</span></div>
+    <div id="istInfSectionCaption"><span class="section-caption">Источник информации</span></div>
+    <div id="regOptSectionCaption"><span class="section-caption">Опции регистрации</span></div>
+    <div id="registeredBySectionCaption"><span class="section-caption">Зарегистрировал(а)</span></div>
+
+    <div id="newAnkLeft"></div>
+    <div id="newAnkRight">
+      <!-- Фото -->
+      <div id="newAnkPhoto">
+        <div class="photo-frame"><img ng-src="{{imgPhoto}}" /></div>
+      </div>
+      <div class="photo-source">
+        <img src="~/Content/img/u57.png" />
+        <img src="~/Content/img/u59.png" ng-click="photoFormShow()" />
+        <input type="file" ng-disabled="global.function.noHavePravoWrite(1,1)" />
+      </div>
+      <!-- /фото -->
+      <!-- Личные данные -->
+      <div id="fioAndOther">
+        <div class="controls-container controls-container-fio">
+          @* временно закомментировал подбор фамилии *@
+          @*<input ng-model="surnameMatch" name="surnameMatch" />*@
+          <span>Фамилия</span><input id="newAnkSurname" name="surname" type="text" ng-model="newAnk.SURNAME"
+                                     @*ng-change="surnameChangeHanlder()"
+                                     ng-blur="surnameBlurHandler()"
+                                     ng-keyup="surnameKeyUpHandler($event)" *@
+                                     ng-disabled="global.function.noHavePravoWrite(1,1)" />
+          <span>Имя</span><input name="name" type="text" ng-model="newAnk.NAME" ng-disabled="global.function.noHavePravoWrite(1,1)" />
+          <span>Отчество</span><input name="secname" type="text" ng-model="newAnk.SECNAME" ng-disabled="global.function.noHavePravoWrite(1,1)" />
+        </div>
+        @* обязательно заполнить какую-нибудь часть ФИО *@
+        <div class="fio-error" ng-show="(((newAnk.SURNAME || '') + (newAnk.NAME || '') + (newAnk.SECNAME || '')) === '') && saveClicked ">заполните фамилию</div>
+        <div class="controls-container">
+          <span>Пол</span>
+          <select ng-model="newAnk.SEX" ng-options="item.ID as item.NAME for item in global.manual.M_SEX" ng-disabled="global.function.noHavePravoWrite(1,1)"></select>
+          <span>&nbsp;&nbsp;Дата рождения</span>
+          <input name="birthday" type="date" ng-model="newAnk.BIRTHDAY" ng-disabled="global.function.noHavePravoWrite(1,1)" />
+        </div>
+        <div class="controls-container">
+          <div class="controls-container">
+            <span>Телефон мобильный</span>
+            <input id="phoneMobile" name="phoneMobile" type="text" ng-model="newAnk.PHONE_MOBILE" ng-disabled="global.function.noHavePravoWrite(1,1)"
+                   ng-change="getRekAnkFio(newAnk.PHONE_MOBILE)" />
+          </div>
+        </div>
+        <div class="controls-container">
+          <div class="controls-container">
+            <span>Телефон домашний</span>
+            <input id="phoneHome" name="phoneHome" type="text" ng-model="newAnk.PHONE_HOME" ng-disabled="global.function.noHavePravoWrite(1,1)"
+                   ng-change="getRekAnkFio(newAnk.PHONE_HOME)" />
+          </div>
+        </div>
+        <div class="ank-vip-div">
+          <img class="ank-vip-img" src="~/Content/img/vip.png"/>
+          <input type="checkbox" ng-false-value="0" ng-true-value="1"
+                 class="ank-vip-checkbox"
+                 ng-model="newAnk.VIP"
+                 ng-disabled="global.function.noHavePravoWrite(1,1)" />
+        </div>
+      </div>
+      <!-- /личные данные -->
+
+      <div id="horizontalLineAnk1" class="horizontal-line"></div>
+
+      <!-- Заболевания -->
+      <div id="zabol">
+        <div>
+          <input name="zabolPoisk" type="text" placeholder="Поиск" ng-model="zabolPoisk" ng-disabled="global.function.noHavePravoWrite(1,1)" />
+          @*<button class="btn-poisk" ng-disabled="global.function.noHavePravoWrite(1,1)">+</button>*@
+          <span class="zabol-selected-caption">Выбранные заболевания</span>
+        </div>
+        <div>
+          <select class="zabol-list" multiple ng-disabled="global.function.noHavePravoWrite(1,1)">
+            <option ng-repeat="row in zabolFiltered = (global.manual.M_ZABOL | filter:zabolPoiskFilter) track by $index"
+                    value="{{row.id}}"
+                    ng-click="mZabolItemClickHandler(row)"
+                    ng-dblclick="btnAddZabolClickHandler()">
+              {{row.NAME}}
+            </option>
+          </select>
+          <button class="btn-add" ng-click="btnAddZabolClickHandler()" ng-disabled="global.function.noHavePravoWrite(1,1)">></button>
+          <button class="btn-remove" ng-click="btnRemoveZabolClickHandler()" ng-disabled="global.function.noHavePravoWrite(1,1)"><</button>
+          <select class="zabol-selected" multiple ng-disabled="global.function.noHavePravoWrite(1,1)">
+            <option ng-repeat="row in newAnk.O_ANK_ZABOL"
+                    value="{{row.ID}}"
+                    ng-click="zabolSelectedItemClickHandler(row)">
+              {{row.M_ZABOL_NAME}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <!-- /заболевания -->
+
+      <div id="horizontalLineAnk2" class="horizontal-line"></div>
+
+      <!-- Адрес -->
+      <div id="adresForm">
+        <a name="form"></a>
+        <div class="address">
+          <form class="js-form-address">
+            <div class="line">
+              @* убрал, наверное вообще не нужен, потом можно удалить
+              <div class="field">
+                <label>Регион</label>
+                <input type="text" name="region" ng-model="newAnk.REGION" ng-disabled="global.function.noHavePravoWrite(1,1)">
+              </div>
+              *@
+              <div class="field">
+                <label>Город</label>
+                <input type="text" name="city" ng-model="newAnk.CITY" ng-disabled="global.function.noHavePravoWrite(1,1)">
+              </div>
+              <div class="field">
+                <label>Улица</label>
+                <input type="text" name="street" ng-model="newAnk.STREET" ng-disabled="global.function.noHavePravoWrite(1,1)">
+              </div>
+              <div class="field">
+                <label>Дом</label>
+                <input type="text" name="house" ng-model="newAnk.HOUSE" ng-disabled="global.function.noHavePravoWrite(1,1)">
+              </div>
+              <div class="field">
+                <label>Квартира</label>
+                <input type="text" name="flat" ng-model="newAnk.FLAT" ng-disabled="global.function.noHavePravoWrite(1,1)">
+              </div>
+            </div>
+            <div class="line">
+              <div class="field">
+                <label>Корпус</label>
+                <input type="text" name="corpus" ng-model="newAnk.CORPUS" ng-disabled="global.function.noHavePravoWrite(1,1)">
+              </div>
+              <div class="field">
+                <label>Район</label>
+                <input type="text" name="district" ng-model="newAnk.DISTRICT" ng-disabled="global.function.noHavePravoWrite(1,1)">
+              </div>
+              <div class="field">
+                <label>Индекс</label>
+                <input type="text" name="post_index" ng-model="newAnk.POST_INDEX" ng-disabled="global.function.noHavePravoWrite(1,1)">
+              </div>
+            </div>
+            <div class="tooltip" style="display: none;"><b></b><span></span></div>
+          </form>
+        </div>
+      </div>
+      <!-- /адрес -->
+
+      <div id="horizontalLineAnk3" class="horizontal-line"></div>
+
+      <!-- Источник информации -->
+      <div id="istInf">
+        <select name="istInfo" ng-model="newAnk.IST_INFO"
+                ng-options="item.ID as item.NAME for item in global.manual.M_IST_INF"
+                ng-disabled="global.function.noHavePravoWrite(1,1)"></select>
+        <span class="ist-inf-line" ng-show="isIstInfPosetitel()"></span>
+        <span class="ist-inf-line" ng-show="newAnk.IST_INFO === global.const.M_IST_INFO_SOTRUDNIK"></span>
+
+        <div class="ng-autocomplete" ng-show="isIstInfPosetitel()">
+          <div class="ui-widget">
+            <input id="fioInfoId1">
+          </div>
+        </div>
+
+        <div class="inst-info-sotrudnik" ng-show="newAnk.IST_INFO === global.const.M_IST_INFO_SOTRUDNIK">
+          <select id="fioInfoId2"
+                  ng-model="newAnk.IST_INFO_USERID"
+                  ng-options="c.ID as c.NAME for c in global.manual.S_USER_FIO"
+                  ng-disabled="(global.function.noHavePravoWrite(1,1))||(!newAnk.PR_NEW)"></select>
+        </div>
+      </div>
+      <!-- /источник информации -->
+
+      <div id="horizontalLineAnk4" class="horizontal-line"></div>
+
+      <!-- Опции регистрации -->
+      <div id="regOpt">
+
+        @* прячу, если уже зарегистрирован *@
+        <div class="reg-opt-check-group" ng-hide="newAnk.reg_status != null">
+          <input type="checkbox" id="regOptRegForSeans" ng-model="newAnk.regForSeans"
+                 ng-false-value="0"
+                 ng-true-value="1"
+                 @* нет прав или уже зарегистрирован на сегодня  *@
+                 ng-disabled="global.function.noHavePravoWrite(1,1)"
+                 ng-change="regForSeansChanged()"/>
+          <label for="regOptRegForSeans">Регистрировать на сеанс</label>
+        </div>
+
+        @* прячу, если уже зарегистрирован *@
+        <div class="reg-opt-second-line" ng-form name="regForm" ng-hide="newAnk.reg_status != null">
+          <select name="regOptSelectTime" ng-model="newAnk.M_SEANS_TIME_ID"
+                  ng-options="c.ID as c.NAME for c in global.manual.M_SEANS_TIME"
+                  @* нет прав или уже зарегистрирован на сегодня  *@
+                  ng-disabled="global.function.noHavePravoWrite(1,1)"
+                  ng-required="newAnk.regForSeans === 1"></select>
+          <select name="regOptSelectPlace" ng-model="newAnk.M_SEANS_PLACE_ID"
+                  ng-options="c.ID as c.NUM for c in global.manual.M_SEANS_PLACE"
+                  @* нет прав или уже зарегистрирован на сегодня  *@
+                  ng-disabled="global.function.noHavePravoWrite(1,1)"
+                  ng-required="newAnk.regForSeans === 1"></select>
+          <div class="reg-error-time" ng-show="regForm.regOptSelectTime.$invalid && saveClicked">требуется указать время</div>
+          <div class="reg-error-place" ng-show="regForm.regOptSelectPlace.$invalid && saveClicked">требуется выбрать место на рядах</div>
+        </div>
+
+        <div class="already-registered">{{newAnk.reg_status}}</div>
+
+        <div id="ank-barcode-main-div" class="ank-barcode-div">
+          <div>
+            <span ng-hide="ID != null">Штрих-код</span>
+          </div>
+
+          <div>
+            <input class="ank-barcode-input" type="text" 
+                   ng-model="ID"
+                   ng-keypress="barCodeKeyPress($event)"
+                   ng-paste="barCodePaste($event.originalEvent)"
+                   ng-hide="ID != null"/>
+          </div>
+
+          <div id="ank-barcode-div"></div>
+        </div>
+      </div>
+      <!-- /опции регистрации -->
+
+      <div id="horizontalLineAnk5" class="horizontal-line"></div>
+
+      <!-- Зарегистрировал(а) -->
+      <div id="registeredBy">
+
+        <select ng-model="newAnk.USER_REG" class="fioReg"
+                ng-options="c.ID as c.NAME for c in global.manual.S_USER_FIO" ng-disabled="(global.function.noHavePravoWrite(1,1))||(!newAnk.PR_NEW)"></select>
+
+        <span>Дата регистрации</span> <input type="date" name="dateReg" ng-model="newAnk.DATE_REG" ng-disabled="global.function.noHavePravoWrite(1,1)"/>
+      </div>
+      <!-- /зарегистрировал(а) -->
+      <!-- Сохранить и печать и Сохранить и Очистить/Новая -->
+      <div id="ankBottomButtons">
+        <button class="ank-bottom-button-save-and-print" ng-click="saveAndPrint()" ng-disabled="global.function.noHavePravoWrite(1,1)">Сохранение и печать карты</button>
+        <button class="ank-bottom-button-print" ng-click="printAnk()">Печать карты</button>
+        <button class="ank-bottom-button-save" ng-click="save()" ng-disabled="global.function.noHavePravoWrite(1,1)">Сохранить</button>
+        <button class="ank-bottom-button-print" ng-click="printAbonement()">Абонемент</button>
+      </div>
+      <!-- /сохранить и печать и Сохранить -->
+
+    </div>
+    <div class="clearfix"></div>
+
+
+
+    <!-- Фон к форме фотосъемки -->
+    <div id="photoFormBackground" ng-show="photoFormBackgroundShow">
+    </div>
+    <!-- /фон к форме фотосъемки -->
+    <!-- Форма фотосъемки -->
+    <div class="container" id="photoForm" ng-show="photoFormBackgroundShow">
+      <div class="row container-row">
+        <div class="col-md-6">
+          <h2>Камера</h2>
+          <div id="my_camera"></div>
+          <button class="btn btn-default btn-take-snapshot" ng-click="takeSnapshot()">Сделать фото</button>
+        </div>
+        <div class="col-md-6">
+          <h2>Фотография</h2>
+          <div id="my_camera_results"></div>
+        </div>
+      </div>
+      <div class="row container-buttons">
+        <div class="col-md-12">
+          <button class="btn btn-default" ng-click="photoFormSave()">Сохранить</button>
+          <button class="btn btn-default" ng-click="photoFormClose()">Закрыть</button>
+        </div>
+      </div>
+    </div>
+    <!-- /форма фотосъемки -->
+
+  </div>
+
+</div>
+<!-- /новый - анкета -->

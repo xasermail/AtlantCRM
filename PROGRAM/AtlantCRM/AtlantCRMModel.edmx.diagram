@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e4e28a74a2424c02847ce69069343a3e" Name="Diagram1" ZoomLevel="80" >
+        <EntityTypeShape EntityType="ATLANTCRMModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="2.5" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="3.625" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.AspNetUsers" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_DEISTV" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_IST_INF" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_KONT_IST" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_KONT_STATUS" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_MANUAL" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_METOD_OPL" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_NAME_AND_SEX" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_ORG" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_ORG_TYPE" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_PRAVO_GR" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_PRAVO_REJ" Width="1.5" PointX="4.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_PRICH_ISKL" Width="1.5" PointX="6.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_PRODUCT" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_RASHOD_STAT" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_RYAD" Width="1.5" PointX="10.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_SEANS_PLACE" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_SEANS_TIME" Width="1.5" PointX="2.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_SECNAME" Width="1.5" PointX="11.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_SERVICE_TYPE" Width="1.5" PointX="4.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_SEX" Width="1.5" PointX="12.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_SHABLON" Width="1.5" PointX="6.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_SMS_SEND_ERROR" Width="1.5" PointX="8.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_SOPR_DOP" Width="1.5" PointX="12.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_SOPR_FORM_OPL" Width="1.5" PointX="10.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_SOPR_PRODUCT" Width="1.5" PointX="12.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_SOPR_STATUS" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_STATUS" Width="1.5" PointX="13.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_SURNAME" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_VID_SOB" Width="1.5" PointX="14.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_VOPROS" Width="1.5" PointX="14.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_VOPROS_TAB" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_WORK_DAY" Width="1.5" PointX="15.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_YES_NO" Width="1.5" PointX="4.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_ZABOL" Width="1.5" PointX="6.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_ZABOL_GROUP" Width="1.5" PointX="8.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_ANK" Width="1.5" PointX="10.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_ANK_ZABOL" Width="1.5" PointX="12.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_COMPLAINT" Width="1.5" PointX="14.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_DEISTV" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_DIALOG" Width="1.5" PointX="16.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_DILER_A_PRICE" Width="1.5" PointX="16.75" PointY="10.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_DILER_A_SKLAD" Width="1.5" PointX="16.75" PointY="14.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_DILER_C_SKLAD" Width="1.5" PointX="17.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_INVENT" Width="1.5" PointX="2.75" PointY="18.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_KALEN_PROD" Width="1.5" PointX="18.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_KONT_SEANS" Width="1.5" PointX="6.75" PointY="18.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_KONT_SEANS_COMMENT" Width="1.5" PointX="18.75" PointY="10.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_KONT_STAT" Width="1.5" PointX="18.75" PointY="14.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_NASTR" Width="1.5" PointX="16.75" PointY="18.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_OPOV" Width="1.5" PointX="18.75" PointY="18.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_PRAVO_GR" Width="1.5" PointX="19.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_PRAVO_REJ" Width="1.5" PointX="12.75" PointY="19.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_PRODL" Width="1.5" PointX="20.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_PRODL_COMMENT" Width="1.5" PointX="20.75" PointY="7.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_RAS_DOK" Width="1.5" PointX="20.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_REK_ANK" Width="1.5" PointX="20.75" PointY="17.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_REPORT_BIRTHDAY_CALL" Width="1.5" PointX="21.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_SEANS" Width="1.5" PointX="20.75" PointY="21.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_SEANS_COMMENT" Width="1.5" PointX="22.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_SERVICE" Width="1.5" PointX="22.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_SKLAD_PR" Width="1.5" PointX="6.75" PointY="22.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_SKLAD_PR_PRODUCT" Width="1.5" PointX="8.75" PointY="22.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_SKLAD_RAS" Width="1.5" PointX="10.75" PointY="22.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_SKLAD_RAS_PRODUCT_OPL" Width="1.5" PointX="12.75" PointY="22.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_SMS_SEND" Width="1.5" PointX="22.75" PointY="18.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_SOPR" Width="1.5" PointX="22.75" PointY="22.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_SOPR_COMMENT" Width="1.5" PointX="0.75" PointY="23.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_STATUS" Width="1.5" PointX="2.75" PointY="23.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_UVEDOML" Width="1.5" PointX="14.75" PointY="23.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_UVEDOML_GR_COMMENT" Width="1.5" PointX="16.75" PointY="23.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_VIPIS" Width="1.5" PointX="24.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_VIPIS_FILE_ULUCH" Width="1.5" PointX="24.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_VIPIS_FILE_ZABOL" Width="1.5" PointX="24.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_VIPIS_ULUCH" Width="1.5" PointX="24.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_VOPROS" Width="1.5" PointX="24.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_ZADACHA" Width="1.5" PointX="24.75" PointY="19.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_ZARPL" Width="1.5" PointX="24.75" PointY="24.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_ZARPL_FIO" Width="1.5" PointX="26.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_ZVONOK" Width="1.5" PointX="4.75" PointY="26.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.S_USER" Width="1.5" PointX="26.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.S_USER_ROLE" Width="1.5" PointX="6.75" PointY="26.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.S_USER_SIGN_LOG" Width="1.5" PointX="26.75" PointY="11.75" />
+        <AssociationConnector Association="ATLANTCRMModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ATLANTCRMModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ATLANTCRMModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_MOTIV" Width="1.5" PointX="0.75" PointY="27.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_SMS_TEMPLATE_TYPE" Width="1.5" PointX="27.375" PointY="17.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_SMS_TEMPLATE" Width="1.5" PointX="27.375" PointY="14.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_ABON_PRIOST" Width="1.5" PointX="27.375" PointY="20.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.M_PRODUCT_ORG" Width="1.5" PointX="21.375" PointY="27.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_SKLAD_RAS_PRODUCT" Width="1.5" PointX="17.375" PointY="27.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_ABON_DOP_USL_IZM" Width="1.5" PointX="27.375" PointY="24.75" />
+        <EntityTypeShape EntityType="ATLANTCRMModel.O_KONT_ANK" Width="1.5" PointX="9.375" PointY="28.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

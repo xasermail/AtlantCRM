@@ -1,0 +1,57 @@
+﻿.full-screen {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: url(img/LoginPageBackground.jpg) no-repeat ;
+  background-size: cover;
+  z-index: 0;
+}
+
+form {
+  z-index: 3;
+  position: relative;
+  padding-top: 30px;
+  padding-left: 30px;
+}
+
+div.form-1 {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  position: fixed;
+  width: 332px;
+  top: 10px;
+  z-index: 1;
+  left: 10px;
+  height: 195px;
+}
+
+.checkbox {
+  line-height: 27px;
+  margin-left: 20px;
+  display: inline-block;
+  color: white;
+}
+
+input[type="submit"] {
+  top: 2px;
+  position: relative;
+  display: inline-block;
+  margin-left: 44px;
+}
+
+.container {
+  margin-left: 15px;
+}
+
+.row-1 {
+  position: relative;
+  z-index: 10;
+  width: 300px;
+}
+
+#UserName, #Password {
+  width: 90%;
+}

@@ -1,0 +1,10 @@
+﻿<!-- Отчеты - Сервис -->
+<div id="reportService" class="reportForm" ng-controller="reportServiceCtrl" ng-show="global.selectedReportSubMenuItem === 9 && global.function.havePravoRead(4, 18)">
+  <table>
+    <tr ng-repeat="item in report">
+      <td ng-class="{'isReady': item.M_SERVICE_TYPE_ID === 4, 'forRepairs': item.M_SERVICE_TYPE_ID === 2}"
+      >{{item.O_ANK_SURNAME}} {{item.O_ANK_NAME}} {{item.O_ANK_SECNAME}}; {{item.PRODUCT_NAME}}; {{item.D_START  | date:'dd.MM.yyyy'}}; {{item.M_SERVICE_TYPE_NAME}} {{item.DATE_TEH_OTDEL  | date:'dd.MM.yyyy'}}</td>
+    </tr>
+  </table>
+</div>
+<!-- /отчеты - Сервис -->

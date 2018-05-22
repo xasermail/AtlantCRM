@@ -1,0 +1,56 @@
+﻿@{
+  Layout = "/Views/Shared/_Print.cshtml";
+}
+
+<style>
+  .header {
+    display: table;
+    margin: 0 auto;
+  }
+
+  table { 
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    border: 1px black solid
+  }
+
+  tr {
+    border: 1px black solid;
+  }
+
+  td {
+    border: 1px black solid;
+    text-align: center;
+  }
+
+  th {
+    border: 1px black solid;
+  }
+
+  div.text-center {
+    text-align: center;
+  }
+</style>
+
+<div class="header">
+  <H1>Расходы: детально</H1>
+  <div class="text-center">
+    <span>c {{DT_FROM | date:'dd.MM.yyyy'}} по {{DT_TO | date:'dd.MM.yyyy'}}</span>
+  </div>
+</div>
+
+<div style="margin-top: 15px">
+  <table width="980">
+    <tr>
+      <td>Дата</td>
+      <td>Сумма</td>
+      <td>Кто</td>
+    </tr>
+    <tr ng-repeat="item in data" ng-style="{ 'background-color' : ($index === 0 || ($index % 2) === 0 ) ? 'white' : '' }">
+      <td width="16%" ng-style="{'font-weight' : (item.BR === 1 ) ? 'bold' : '' }">{{item.D_SCHET | date:'dd.MM.yyyy'}}</td>
+      <td width="43%" ng-style="{'font-weight' : (item.BR === 1 ) ? 'bold' : '' }">{{item.SUMMA}}</td>
+      <td width="41%">{{item.KTO}}</td>
+    </tr>
+  </table>
+</div>

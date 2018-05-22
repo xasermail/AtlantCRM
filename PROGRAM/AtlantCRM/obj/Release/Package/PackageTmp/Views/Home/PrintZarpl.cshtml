@@ -1,0 +1,97 @@
+﻿@{
+    Layout = "~/Views/Shared/_Print.cshtml";
+}
+
+<style>
+  .zp-input1 {
+  width:65px;
+
+  }
+
+   table {
+  word-wrap: break-word;
+  border-collapse: collapse;
+  border-spacing: 0;
+ }
+
+   tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+ }
+
+  td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 21px;
+ }
+  .comm-zp {
+    padding-left: 800px;
+    padding-top: 40px;
+    display: inline-block;
+  }
+  .line {
+    border-bottom: 1px solid black;
+    height: 2px;
+    margin-top: 100px;
+    margin-left: 800px;
+    width: 150px;
+    right: 460px;
+  }
+
+  .podp {
+    height: 2px;
+    margin-top: 10px;
+    margin-left: 800px;
+  }
+</style>
+
+
+<div>
+
+  <div  style="padding-bottom:20px;  display: inline-block">
+    <H2 style="color: black; padding-left:500px" >Зарплата</H2>
+    <span>Дата с {{DT_FROM | date:'dd.MM.yyyy'}} по {{DT_TO | date:'dd.MM.yyyy'}}</span>
+  </div>
+
+ 
+
+
+  <div style="display: inline-block">
+    <center>
+      <table width="1000">
+        <col width="35">
+        <col width="270">
+        <tr>
+          <td></td>
+          <td><center>ФИО</center></td>
+          <td><center>Дни</center></td>
+          <td><center>Оклад</center></td>
+          
+          <td><center>%</center></td>
+          <td><center>Бонус</center></td>
+          <td><center>Штраф</center></td>
+          <td><center>Зарплата</center></td>
+        </tr>
+        <tr ng-repeat="x in sotrudnik">
+          <td><center>{{$index + 1}}</center></td>
+          <td>{{x.fio}}</td>
+          <td align="center" class="zp-input1" ng-change="schChanged(x)" ng-model="x.DNI">{{x.DNI}}</td>
+          <td align="center" class="zp-input1" ng-model="x.OKLAD" ng-change="schChanged(x)" >{{x.OKLAD}}</td>
+          <td align="center" class="zp-input1" ng-model="x.PROTS" ng-change="schChanged(x)">{{x.PROTS}}</td>
+          <td align="center" class="zp-input1" ng-model="x.BONUS" ng-change="schChanged(x)">{{x.BONUS}}</td>
+          <td align="center" class="zp-input1" ng-model="x.SHTRAF" ng-change="schChanged(x)">{{x.SHTRAF}}</td>
+          <td align="center" class="zp-input1" ng-model="x.ZARPL"  ng-change="schChanged(x)">{{x.ZARPL}}</td>
+        </tr>
+      </table>
+
+      <div class="line"></div>
+      <div class="podp">(подпись)</div>
+
+    </center>
+ 
+   
+  </div>
+
+</div>
+
+

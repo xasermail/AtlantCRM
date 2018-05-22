@@ -1,0 +1,147 @@
+﻿<!-- База -->
+<div id="reg" class="tab-content" ng-controller="regCtrl"
+     ng-show="global.selectedMenuItem === 'menuItemReg' && global.function.havePravoRead(3)">
+
+
+  <div>
+
+    <!-- Выбор времени сеанса -->
+    <div class="seans-time">
+      <select ng-model="M_SEANS_TIME_ID"
+              ng-options="c.ID as c.NAME for c in global.manual.M_SEANS_TIME"
+              ng-change="seansTimeChange()"></select>
+    </div>
+    <!-- /выбор времени сеанса -->
+
+    <!-- Штрих-код -->
+    <div class="shtrih-kod">
+      <span class="shtrih-kod-label">Штрих-код</span>
+      <input class="shtrih-kod-input" type="text" ng-model="ID" ng-keypress="shtrihKodKeyPress($event)"
+             ng-disabled="global.function.noHavePravoWrite(3)"
+             ng-paste="pasteKod($event.originalEvent)" />
+    </div>
+    <!-- /штрих-код -->
+    <!-- Перед сканированием -->
+    <div class="pered-skanirovaniem" ng-hide="scanned">
+      Просканируйте анкету
+    </div>
+    <!-- /перед сканированием -->
+
+    <div ng-show="scanned" class="div-left-2">
+
+      <!-- Фото посетителя -->
+      <div class="photo-posetitelya">
+        <img ng-src="{{imgPhoto}}" />
+      </div>
+      <!-- /фото посетителя -->
+      <!-- ФИО -->
+      <div class="fio">{{(reg.surname || "") + " " + (reg.name || "") + " " + (reg.secname || "")}}</div>
+      <!-- /фио -->
+      <!-- Сеанс -->
+      <div class="seans">
+        {{reg.seans_current_info}}
+      </div>
+      <!-- /сеанс -->
+      <!-- До окончания регистрации осталось -->
+      <div class="do-okonchaniya-registratsii-ostalos">
+        До окончания регистрации осталось {{doOkonchaniyaRegistratsii}}
+      </div>
+      <!-- /до окончания регистрации осталось -->
+      <!-- Заполненность -->
+      <div class="zapolnennost">
+        <div class="indicator-outer">
+          <div class="indicator-inner">
+            <div class="indicator-line" ng-style="{width: (zapolnennost * 296) + 'px'}"></div>
+          </div>
+        </div>
+        <div class="protsent">{{(zapolnennost * 100).toFixed(2)}}%</div>
+      </div>
+      <!-- /заполненность -->
+      <!-- Специалист -->
+      <div class="spetsialist">
+        <span class="spetsialist-label">Специалист</span>
+        <input class="spetsialist-input" type="text" disabled="disabled" ng-model="reg.spetsialist"
+               title="{{reg.spetsialist}}"/>
+      </div>
+      <!-- /специалист -->
+      <!-- Горизонтальная линия -->
+      <div class="horizontal-line1"></div>
+      <!-- /горизонтальная линия -->
+      <!-- Данные о посетителе -->
+      <div class="dannie-o-posetitele">
+        <div class="dannie-o-posetitele-header">Данные о посетителе</div>
+        <div class="dannie-o-posetitele-count">
+          {{reg.seansCount === 0 ? "Первый раз" : (reg.seansCount + " раз: ")}}
+        </div>
+        <div class="seansi">
+          <div class="seansi-inner">
+            <div ng-repeat="item in reg.seansList">{{item.time + "  " + item.place}}</div>
+          </div>
+        </div>
+        <div class="vertical-line1"></div>
+        <div class="tovar">
+          <div class="tovar-header">Товар</div>
+          <div class="tovari" ng-repeat="item in reg.tovarList">{{item.product_name}}</div>
+        </div>
+      </div>
+      <!-- /данные о посетителе -->
+
+    </div>
+
+    <!-- Вертикальная линия -->
+    <div class="vertical-line2"></div>
+    <!-- /вертикальная линия -->
+    
+
+    <!-- Выбор места -->
+    <div class="vibor-mesta-outer">
+      <div class="vibor-mesta">
+        <div class="vibor-mesta-header">Выбор места</div>
+        <div class="vibor-mesta-body">
+
+          <!-- Первый ряд -->
+          <div class="vibor-mesta-1ryad-header">Первый ряд</div>
+          <div class="vibor-mesta-1ryad-body" ng-repeat="item in seansPlace1"
+               ng-dblclick="mestoDblClickHandler(item)">
+            <span class="mesto-num">{{($index + 1) + " "}}</span>
+            <span class="mesto"
+                  ng-class="{mestoZanyato: item.zanyato == 1,
+                           mestoSvobodno: item.zanyato == 0}"
+                  ng-style="item === autoSelectedPlace ? autoSelectedPlaceStyle : {}">
+              &nbsp;&nbsp;{{item.zanyato_kolvo <= 1 ? null : item.zanyato_kolvo}}&nbsp;&nbsp;
+            </span>
+            <span class="place-name">{{item.NAME}}</span>
+          </div>
+          <!-- /первый ряд -->
+          <!-- Второй ряд -->
+          <div class="vibor-mesta-1ryad-header">Второй ряд</div>
+          <div class="vibor-mesta-1ryad-body" ng-repeat="item in seansPlace2"
+               ng-dblclick="mestoDblClickHandler(item)">
+            <span class="mesto-num">{{($index + 1 + seansPlace1.length)}}</span>
+            <span class="mesto"
+                  ng-class="{mestoZanyato: item.zanyato == 1,
+                           mestoSvobodno: item.zanyato == 0}"
+                  ng-style="item === autoSelectedPlace ? autoSelectedPlaceStyle : {}">
+              &nbsp;&nbsp;{{item.zanyato_kolvo <= 1 ? null : item.zanyato_kolvo}}&nbsp;&nbsp;
+            </span>
+            <span class="place-name">{{item.NAME}}</span>
+          </div>
+          <!-- /второй ряд -->
+
+        </div>
+      </div>
+
+      <!-- Зарегистрировано -->
+      <div class="zaregistrirovano">
+        <span class="zaregistrirovano-label">Зарегистрировано:</span>
+        <input class="zaregistrirovano-input" disabled="disabled" ng-model="regCount" />
+      </div>
+      <!-- /зарегистрировано -->
+
+    </div>
+    <!-- /выбор места -->
+
+  </div>
+
+</div>
+<!-- /база -->

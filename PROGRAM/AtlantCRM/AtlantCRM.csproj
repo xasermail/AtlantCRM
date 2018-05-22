@@ -1,0 +1,944 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C23E9FBD-29F1-4261-98F4-A1D1F0D1380A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AtlantCRM</RootNamespace>
+    <AssemblyName>AtlantCRM</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ClosedXML, Version=0.90.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.90.0\lib\net452\ClosedXML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FastMember.Signed, Version=1.0.0.9, Culture=neutral, PublicKeyToken=9e8f22703bef9a29, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.Signed.1.1.0\lib\net40\FastMember.Signed.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.Core, Version=1.6.17.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.Core.1.6.17\lib\net45\Hangfire.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.6.17.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.SqlServer.1.6.17\lib\net45\Hangfire.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="AspNetRoles.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaims.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogins.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUsers.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AtlantCRMModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AtlantCRMModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AtlantCRMModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AtlantCRMModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AtlantCRMModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\HomeViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="M_DEISTV.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_IST_INF.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_KONT_IST.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_KONT_STATUS.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_MANUAL.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_METOD_OPL.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_NAME_AND_SEX.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_ORG.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_ORG_TYPE.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_PRAVO_GR.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_PRAVO_REJ.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_PRICH_ISKL.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_PRODUCT.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_PRODUCT_ORG.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_RASHOD_STAT.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_RYAD.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_SEANS_PLACE.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_SEANS_TIME.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_SECNAME.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_SERVICE_TYPE.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_SEX.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_SHABLON.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_SMS_SEND_ERROR.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_SMS_TEMPLATE.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_SMS_TEMPLATE_TYPE.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_SOPR_DOP.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_SOPR_FORM_OPL.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_SOPR_PRODUCT.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_SOPR_STATUS.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_STATUS.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_SURNAME.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_VID_SOB.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_VOPROS.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_VOPROS_TAB.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_WORK_DAY.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_YES_NO.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_ZABOL.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M_ZABOL_GROUP.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_ABON_DOP_USL_IZM.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_ABON_PRIOST.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_ANK.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_ANK_ZABOL.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_COMPLAINT.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_DEISTV.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_DIALOG.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_DILER_A_PRICE.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_DILER_A_SKLAD.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_DILER_C_SKLAD.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_INVENT.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_KALEN_PROD.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_KONT_ANK.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_KONT_SEANS.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_KONT_SEANS_COMMENT.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_KONT_STAT.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_MOTIV.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_NASTR.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_OPOV.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_PRAVO_GR.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_PRAVO_REJ.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_PRODL.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_PRODL_COMMENT.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_RAS_DOK.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_REK_ANK.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_REPORT_BIRTHDAY_CALL.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_SEANS.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_SEANS_COMMENT.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_SERVICE.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_SKLAD_PR.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_SKLAD_PR_PRODUCT.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_SKLAD_RAS.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_SKLAD_RAS_PRODUCT.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_SKLAD_RAS_PRODUCT_OPL.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_SMS_SEND.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_SOPR.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_SOPR_COMMENT.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_STATUS.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_UVEDOML.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_UVEDOML_GR_COMMENT.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_VIPIS.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_VIPIS_FILE_ULUCH.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_VIPIS_FILE_ZABOL.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_VIPIS_ULUCH.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_VOPROS.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_ZADACHA.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_ZARPL.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_ZARPL_FIO.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_ZVONOK.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="S_USER.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="S_USER_ROLE.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="S_USER_SIGN_LOG.cs">
+      <DependentUpon>AtlantCRMModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AtlantCRMModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AtlantCRMModel.edmx</DependentUpon>
+      <LastGenOutput>AtlantCRMModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="AtlantCRMModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AtlantCRMModel.edmx</DependentUpon>
+      <LastGenOutput>AtlantCRMModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\bell_new.png" />
+    <Content Include="Content\Images\spinner.png" />
+    <Content Include="Content\Images\ui-anim_basic_16x16.gif" />
+    <Content Include="Content\Images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\Images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\img\0.png" />
+    <Content Include="Content\img\10.png" />
+    <Content Include="Content\img\100.png" />
+    <Content Include="Content\img\15.png" />
+    <Content Include="Content\img\20.png" />
+    <Content Include="Content\img\25.png" />
+    <Content Include="Content\img\30.png" />
+    <Content Include="Content\img\35.png" />
+    <Content Include="Content\img\40.png" />
+    <Content Include="Content\img\45.png" />
+    <Content Include="Content\img\5.png" />
+    <Content Include="Content\img\50.png" />
+    <Content Include="Content\img\55.png" />
+    <Content Include="Content\img\60.png" />
+    <Content Include="Content\img\65.png" />
+    <Content Include="Content\img\70.png" />
+    <Content Include="Content\img\75.png" />
+    <Content Include="Content\img\80.png" />
+    <Content Include="Content\img\85.png" />
+    <Content Include="Content\img\90.png" />
+    <Content Include="Content\img\95.png" />
+    <Content Include="Content\img\atlasCRMlogo1.png" />
+    <Content Include="Content\img\av1_u47.png" />
+    <Content Include="Content\img\av5_u49.png" />
+    <Content Include="Content\img\cake.png" />
+    <Content Include="Content\img\favicon.ico" />
+    <Content Include="Content\img\LoginPageBackground.jpg" />
+    <Content Include="Content\img\moneyBag.png" />
+    <Content Include="Content\img\new-ank-print-barcode.png" />
+    <Content Include="Content\img\new-ank-print-logo-life-medical.png" />
+    <Content Include="Content\img\new-ank-print-logo.png" />
+    <Content Include="Content\img\ProgressRing_Blue40x40.gif" />
+    <Content Include="Content\img\transparent.gif" />
+    <Content Include="Content\img\u0.png" />
+    <Content Include="Content\img\u10.png" />
+    <Content Include="Content\img\u12.png" />
+    <Content Include="Content\img\u14.png" />
+    <Content Include="Content\img\u16.png" />
+    <Content Include="Content\img\u20.png" />
+    <Content Include="Content\img\u4.png" />
+    <Content Include="Content\img\u42_line.png" />
+    <Content Include="Content\img\u43.png" />
+    <Content Include="Content\img\u57.png" />
+    <Content Include="Content\img\u59.png" />
+    <Content Include="Content\img\u76_line.png" />
+    <Content Include="Content\img\u87_line.png" />
+    <Content Include="Content\img\vip.png" />
+    <Content Include="Content\jquery-ui-themes.css" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery.kladr.min.css" />
+    <Content Include="Content\Site.css">
+      <DependentUpon>Site.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles.css" />
+    <Content Include="Content\print-kass-order.css" />
+    <Content Include="Content\styles3Login.css" />
+    <Content Include="Content\styles2.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <None Include="Content\Site.less" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-aria.min.js" />
+    <Content Include="Scripts\angular-locale_ru-ru.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="AtlantCRMModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AtlantCRMModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="AtlantCRMModel.edmx.diagram">
+      <DependentUpon>AtlantCRMModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\atlas-TEST.pubxml" />
+    <None Include="Properties\PublishProfiles\atlas.pubxml" />
+    <None Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\jquery-1.12.4.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.kladr.min.js" />
+    <Content Include="Scripts\jquery.maskedinput.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JsBarcode.ean-upc.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\multiselect.js" />
+    <Content Include="Scripts\myApp.js" />
+    <Content Include="Scripts\ng-controllers\dilerCCtrl.js" />
+    <Content Include="Scripts\ng-controllers\dilerDSmsAutoSendCtrl.js" />
+    <Content Include="Scripts\ng-controllers\druzyaCtrl.js" />
+    <Content Include="Scripts\ng-controllers\jurDeistvCtrl.js" />
+    <Content Include="Scripts\ng-controllers\kontStatReportCtrl.js" />
+    <Content Include="Scripts\ng-controllers\kontCtrl.js" />
+    <Content Include="Scripts\ng-controllers\admCtrl.js" />
+    <Content Include="Scripts\ng-controllers\appCtrl.js" />
+    <Content Include="Scripts\ng-controllers\bazaCtrl.js" />
+    <Content Include="Scripts\ng-controllers\dialogCtrl.js" />
+    <Content Include="Scripts\ng-controllers\dilerACtrl.js" />
+    <Content Include="Scripts\ng-controllers\dilerDCtrl.js" />
+    <Content Include="Scripts\ng-controllers\kontListByModeCtrl.js" />
+    <Content Include="Scripts\ng-controllers\nastrCtrl.js" />
+    <Content Include="Scripts\ng-controllers\periodCtrl.js" />
+    <Content Include="Scripts\ng-controllers\recordCtrl.js" />
+    <Content Include="Scripts\ng-controllers\jurItogCtrl.js" />
+    <Content Include="Scripts\ng-controllers\opovCtrl.js" />
+    <Content Include="Scripts\ng-controllers\dilerAMarketingKalendCtrl.js" />
+    <Content Include="Scripts\ng-controllers\dilerACKartaCtrl.js" />
+    <Content Include="Scripts\ng-controllers\reg2Ctrl.js" />
+    <Content Include="Scripts\ng-controllers\reportUvedomlCtrl.js" />
+    <Content Include="Scripts\ng-controllers\prodlCtrl.js" />
+    <Content Include="Scripts\ng-controllers\dilerDMotivCtrl.js" />
+    <Content Include="Scripts\ng-controllers\scriptAnalysisCtrl.js" />
+    <Content Include="Scripts\ng-controllers\soprCtrl.js" />
+    <Content Include="Scripts\ng-controllers\uchetReportsGostCtrl.js" />
+    <Content Include="Scripts\ng-controllers\uchetReportsNeProdlilCtrl.js" />
+    <Content Include="Scripts\ng-controllers\uchetReportsNeHodyatCtrl.js" />
+    <Content Include="Scripts\ng-controllers\zadachiCtrl.js" />
+    <Content Include="Scripts\ng-controllers\vipisCtrl.js" />
+    <Content Include="Scripts\ng-controllers\reportServiceCtrl.js" />
+    <Content Include="Scripts\ng-controllers\tehOtdelCtrl.js" />
+    <Content Include="Scripts\ng-controllers\reportOprosCtrl.js" />
+    <Content Include="Scripts\ng-controllers\reportProdajiCtrl.js" />
+    <Content Include="Scripts\ng-controllers\reportKartaCtrl.js" />
+    <Content Include="Scripts\ng-controllers\reportBirthdayCtrl.js" />
+    <Content Include="Scripts\ng-controllers\reportDayCtrl.js" />
+    <Content Include="Scripts\ng-controllers\reportIstCtrl.js" />
+    <Content Include="Scripts\ng-controllers\reportSpecialistsCtrl.js" />
+    <Content Include="Scripts\ng-controllers\reportMetrikaCtrl.js" />
+    <Content Include="Scripts\ng-controllers\reportStatisticCtrl.js" />
+    <Content Include="Scripts\ng-controllers\reportZabolCtrl.js" />
+    <Content Include="Scripts\ng-controllers\reportMarketingCtrl.js" />
+    <Content Include="Scripts\ng-controllers\voprosCtrl.js" />
+    <Content Include="Scripts\ng-controllers\statCtrl.js" />
+    <Content Include="Scripts\ng-controllers\manualCtrl.js" />
+    <Content Include="Scripts\ng-controllers\laneCtrl.js" />
+    <Content Include="Scripts\ng-controllers\regCtrl.js" />
+    <Content Include="Scripts\ng-controllers\serviceCtrl.js" />
+    <Content Include="Scripts\ng-controllers\newZvonokCtrl.js" />
+    <Content Include="Scripts\ng-controllers\newAnkCtrl.js" />
+    <Content Include="Scripts\ng-controllers\telephonyCtrl.js" />
+    <Content Include="Scripts\ng-controllers\uchetReportsOtchetDohodCtrl.js" />
+    <Content Include="Scripts\ng-controllers\uchetReportsDebetZadolCtrl.js" />
+    <Content Include="Scripts\ng-controllers\uchetReportsFilterTovarovCtrl.js" />
+    <Content Include="Scripts\ng-controllers\uchetReportsOtchetZaPerCtrl.js" />
+    <Content Include="Scripts\ng-controllers\uchetReportsSpisPokupCtrl.js" />
+    <Content Include="Scripts\ng-controllers\uchetInventCtrl.js" />
+    <Content Include="Scripts\ng-controllers\uchetZarplCtrl.js" />
+    <Content Include="Scripts\ng-controllers\uchetSkladCtrl.js" />
+    <Content Include="Scripts\ng-controllers\uchetSkladRasDocCtrl.js" />
+    <Content Include="Scripts\ng-controllers\uchetSkladRasCtrl.js" />
+    <Content Include="Scripts\ng-controllers\uchetSkladPrCtrl.js" />
+    <Content Include="Scripts\ng-controllers\uchetCtrl.js" />
+    <Content Include="Scripts\ng-controllers\jurUvedomlCtrl.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="SW.js" />
+    <Content Include="Scripts\webcam.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Shared\Multiselect.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\NewAnk.cshtml" />
+    <Content Include="Views\Home\Dialog.cshtml" />
+    <Content Include="Views\Home\NewZvonok.cshtml" />
+    <Content Include="Views\Home\Baza.cshtml" />
+    <Content Include="Views\Home\Lane.cshtml" />
+    <Content Include="Views\Home\Service.cshtml" />
+    <Content Include="Views\Home\Stat.cshtml" />
+    <Content Include="Views\Home\Reg.cshtml" />
+    <Content Include="Views\Home\Period.cshtml" />
+    <Content Include="Views\Home\Record.cshtml" />
+    <Content Include="Views\Home\Adm.cshtml" />
+    <Content Include="Views\Home\Manual.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Home\DilerA.cshtml" />
+    <Content Include="Views\Home\DilerD.cshtml" />
+    <Content Include="Views\Home\ReportDay.cshtml" />
+    <Content Include="Views\Home\Kont.cshtml" />
+    <Content Include="Views\Home\KontNoCame.cshtml" />
+    <Content Include="Views\Home\Uchet.cshtml" />
+    <Content Include="Views\Home\ReportStatistic.cshtml" />
+    <Content Include="Views\Home\Druzya.cshtml" />
+    <Content Include="Views\Home\ReportSpecialists.cshtml" />
+    <Content Include="Views\Home\ReportZabol.cshtml" />
+    <Content Include="Views\Home\ReportIst.cshtml" />
+    <Content Include="Views\Home\UchetSkladPr.cshtml" />
+    <Content Include="Views\Home\ReportBirthday.cshtml" />
+    <Content Include="Views\Home\UchetSkladRas.cshtml" />
+    <Content Include="Views\Shared\_Print.cshtml" />
+    <Content Include="Views\Home\PrintKassOrder.cshtml" />
+    <Content Include="Views\Home\PrintPrihod.cshtml" />
+    <Content Include="Views\Home\UchetSklad.cshtml" />
+    <Content Include="Views\Home\UchetSkladRasDoc.cshtml" />
+    <Content Include="Views\Home\UchetReportsSpisPokup.cshtml" />
+    <Content Include="Views\Shared\_Dev.cshtml" />
+    <Content Include="Views\Home\UchetReportsDebetZadol.cshtml" />
+    <Content Include="Views\Home\PrintProplZaPer.cshtml" />
+    <Content Include="Views\Home\PrintDebetZadol.cshtml" />
+    <Content Include="Views\Home\PrintSpisPokup.cshtml" />
+    <Content Include="Views\Home\UchetReportsOtchetZaPer.cshtml" />
+    <Content Include="Views\Home\UchetReportsOtchetDohod.cshtml" />
+    <Content Include="Views\Home\PrintOtchetDohod.cshtml" />
+    <Content Include="Views\Home\UchetReportsFilterTovarov.cshtml" />
+    <Content Include="Views\Home\Dev.cshtml" />
+    <Content Include="Views\Home\UchetZarpl.cshtml" />
+    <Content Include="Views\Home\UchetInvent.cshtml" />
+    <Content Include="Views\Home\PrintInvent.cshtml" />
+    <Content Include="Views\Home\PrintZarpl.cshtml" />
+    <Content Include="Views\Home\Telephony.cshtml" />
+    <Content Include="Views\Home\ReportKarta.cshtml" />
+    <Content Include="Views\Home\Nastr.cshtml" />
+    <Content Include="Views\Home\ReportProdaji.cshtml" />
+    <Content Include="Views\Home\JurnalDeistv.cshtml" />
+    <Content Include="Views\Home\JurnalUvedoml.cshtml" />
+    <Content Include="Views\Home\Voprosy.cshtml" />
+    <Content Include="Views\Home\ReportOpros.cshtml" />
+    <Content Include="Views\Home\PrintAnk.cshtml" />
+    <Content Include="Views\Home\ReportMarketing.cshtml" />
+    <Content Include="Views\Home\ReportMetrika.cshtml" />
+    <Content Include="Views\Home\TehOtdel.cshtml" />
+    <Content Include="Views\Home\ReportService.cshtml" />
+    <Content Include="Views\Home\JurnalItog.cshtml" />
+    <Content Include="Views\Home\Vipis.cshtml" />
+    <Content Include="Views\Home\DilerC.cshtml" />
+    <Content Include="Views\Home\Zadachi.cshtml" />
+    <Content Include="Views\Home\Opov.cshtml" />
+    <Content Include="Views\Shared\_KontEdit.cshtml" />
+    <Content Include="Views\Shared\_KontEditSeans.cshtml" />
+    <Content Include="Views\Home\ReportUvedoml.cshtml" />
+    <Content Include="Views\Home\DilerAMarketingKalend.cshtml" />
+    <Content Include="Views\Home\DilerACKarta.cshtml" />
+    <Content Include="Views\Home\PrintAbonement.cshtml" />
+    <Content Include="Views\Home\KontStatReport.cshtml" />
+    <Content Include="Views\Home\Sopr.cshtml" />
+    <Content Include="Views\Home\Reg2.cshtml" />
+    <Content Include="Views\Home\UchetReportsNeProdlil.cshtml" />
+    <Content Include="Views\Home\Prodl.cshtml" />
+    <Content Include="Views\Home\UchetReportsGost.cshtml" />
+    <Content Include="Views\Home\PrintGost.cshtml" />
+    <Content Include="Views\Home\DilerDMotiv.cshtml" />
+    <Content Include="Views\Home\PrintNeProdlil.cshtml" />
+    <Content Include="Views\Home\ScriptAnalysis.cshtml" />
+    <Content Include="Views\Home\UchetReportsNeHodyat.cshtml" />
+    <Content Include="Views\Home\PrintNeHodyat.cshtml" />
+    <Content Include="Views\Home\DilerDSmsAutoSend.cshtml" />
+    <None Include="Web.Test.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test2|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58355</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58356/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

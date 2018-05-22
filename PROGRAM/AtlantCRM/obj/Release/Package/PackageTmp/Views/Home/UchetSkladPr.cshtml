@@ -1,0 +1,104 @@
+﻿<!-- Учёт - Приход на склад -->
+<div id="uchetSkladPr" class="tab-content" ng-controller="uchetSkladPrCtrl"
+     ng-show="global.selectedUchetSubMenuItem === 0 && global.function.havePravoRead(8,25)">
+
+
+  <div class="d-schet">
+    <span>Дата счета</span>
+    <input type="date" ng-model="o_sklad_pr.D_SCHET" ng-disabled="global.function.noHavePravoWrite(8,25)"/>
+  </div>
+
+  <div class="n-schet">
+    <span>Счет</span>
+    <input type="text" ng-model="o_sklad_pr.N_SCHET" ng-disabled="global.function.noHavePravoWrite(8,25)"/>
+  </div>
+
+  <div class="o-sklad-pr-product">
+    <table class="table table-striped table-condensed table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Наименование продукции</th>
+          <th>Кол-во</th>
+          <th ng-hide="global.function.noHavePravoRead(8,40)">Себестоимость</th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+        <!-- Строки введённой продукции -->
+        <tr ng-repeat="item in o_sklad_pr_product">
+          <td></td>
+          <td>
+            <select ng-model="item.M_PRODUCT_ID" class="select-product"
+                    ng-options="c.ID as c.NAME for c in global.manual.M_PRODUCT"
+                    ng-disabled="global.function.noHavePravoWrite(8,25)"></select>
+          </td>
+          <td>
+            <input type="number" ng-model="item.KOLVO" min="1" class="input-kolvo" ng-disabled="global.function.noHavePravoWrite(8,25)"/>
+          </td>
+          <td ng-hide="global.function.noHavePravoRead(8,40)">
+            <input type="number" ng-model="item.COST" min="0" step="0.01" class="input-cost" ng-disabled="global.function.noHavePravoWrite(8,25)"/>
+          </td>
+        </tr>
+        <!-- /строки введённой продукции -->
+
+
+        <!-- Строка для добавления новой продукции -->
+        <tr>
+          <td><button type="button" ng-click="btnAddClick()" ng-disabled="global.function.noHavePravoWrite(8,25)">+</button></td>
+          <td>
+            <select ng-model="new.M_PRODUCT_ID" class="select-product"
+                    ng-options="c.ID as c.NAME for c in global.manual.M_PRODUCT"
+                    ng-disabled="global.function.noHavePravoWrite(8,25)"></select>
+          </td>
+          <td>
+            <input type="number" ng-model="new.KOLVO" min="1" class="input-kolvo" ng-disabled="global.function.noHavePravoWrite(8,25)"/>
+          </td>
+          <td ng-hide="global.function.noHavePravoRead(8,40)">
+            <input type="number" ng-model="new.COST" min="0" step="0.01" class="input-cost" ng-disabled="global.function.noHavePravoWrite(8,25)"/>
+          </td>
+        </tr>
+        <!-- /строка для добавления новой продукции -->
+
+
+      </tbody>
+    </table>
+
+    <!-- Отображение ошибки незаполненной продукции -->
+    <div ng-show="showNullProductError === true" class="null-product-error">
+      <span>Для добавления новой строки введите наименование продукции</span>
+    </div>
+    <!-- /отображение ошибки незаполненной продукции -->
+
+  </div>
+
+
+  <div><button type="button" ng-click="btnSaveClick()" class="btn-save" ng-hide="global.function.noHavePravoWrite(8,25)">Сохранить</button></div>
+
+  <div><button type="button" ng-click="btnZapisClick()" class="btn-zapis" ng-hide="global.function.noHavePravoWrite(8,25)">Новая запись</button></div>
+
+
+  <div class="div-pagination">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li ng-click="pageNext()">
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li ng-repeat="item in pageNums" ng-class="{active: item === page}">
+          <a href="#" ng-click="pageNumClick(item)">{{item}}</a>
+        </li>
+        <li ng-click="pagePrev()">
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  
+</div>
+<!-- /учёт - приход на склад -->
+

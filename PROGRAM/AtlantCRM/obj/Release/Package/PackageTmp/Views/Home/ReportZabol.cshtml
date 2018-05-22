@@ -1,0 +1,23 @@
+﻿<!-- Отчеты - Заболевания -->
+<div id="reportZabol" class="reportForm" ng-controller="reportZabolCtrl" ng-show="global.selectedReportSubMenuItem === 3 && global.function.havePravoRead(4,12)">
+  <div>
+    <span>Дата</span>
+    <input type="date" ng-model="fromDate" />
+    <span> - </span>
+    <input type="date" ng-model="toDate" />
+    <button ng-click="btnChangeSeansClick($event)">Применить</button>
+  </div>
+  <table>
+    <tr>
+      <td>Номер</td>
+      <td>Название</td>
+      <td>Количество</td>
+    </tr>
+    <tr ng-repeat="item in report">
+      <td>{{$index + 1}}</td>
+      <td>{{item.ZABOL_NAME}}</td>
+      <td>{{item.ZABOL_COUNT}}</td>
+    </tr>
+  </table>
+</div>
+<!-- /отчеты - Заболевания -->

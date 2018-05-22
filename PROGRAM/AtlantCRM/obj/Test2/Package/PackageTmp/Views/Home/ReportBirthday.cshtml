@@ -1,0 +1,40 @@
+﻿<div id="reportBirthday" class="reportForm" ng-controller="reportBirthdayCtrl" ng-show="global.selectedReportSubMenuItem === 5">
+  <div>
+    <span>Дата</span>
+    <input type="date" ng-model="fromDate" />
+    <span> - </span>
+    <input type="date" ng-model="toDate" />
+    <button ng-click="btnReportUpdateClick($event)">Применить</button>
+  </div>
+  <table>
+    <tr>
+      <td>ФИО</td>
+      <td>День рождения</td>
+      <td>Возраст</td>
+      <td>Дней осталось</td>
+      <td>Товар</td>
+      <td>Позвонить</td>
+    </tr>
+    <tr ng-repeat="item in report">
+      <td>{{item.SURNAME}} {{item.NAME}} {{item.SECNAME}}</td>
+      <td>{{item.BIRTHDAY | date:'dd.MM.yyyy'}}</td>
+      <td>{{item.AGE}}</td>
+      <td>{{item.DAYS_LEFT}}</td>
+      <td>{{item.PRODUCT_COUNT}}</td>
+      <td> 
+        <div>
+          <div>
+            <svg ng-show="item.CALL">
+              <polygon points="10,0 0,10 10,20 20,10" fill="#00cc00"/>
+            </svg>
+
+            <svg ng-hide="item.CALL" ng-click="btnMarkAnkClick(item.ANK_ID)">
+              <polygon points="10,0 0,10 10,20 20,10" stroke="#00cc00" stroke-width="1" fill="none" />
+            </svg>
+             
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

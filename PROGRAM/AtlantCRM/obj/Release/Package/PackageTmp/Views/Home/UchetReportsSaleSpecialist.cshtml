@@ -1,0 +1,87 @@
+﻿<!-- Учёт - Отчёты - Продано специалистом -->
+@*<script src="~/Scripts/multiselect.js"></script>*@
+
+<div id="uchetReportsSaleSpecialist" class="tab-content" ng-controller="uchetReportsSaleSpecialistCtrl"
+     ng-show="global.selectedUchetSubMenuItem === 4 && global.selectedUchetReportsSubMenuItem === 2">
+      @*долно быть ng-show="global.selectedUchetSubMenuItem === 4 && global.selectedUchetReportsSubMenuItem === 2">*@
+     <div>
+
+       <multiselect class="input-xlarge multiselect-specialist" multiple="true"
+                    ng-model="selectedSpecialist"
+                    options="c.name for c in getAccesebleSpecialist()"
+                    change="selected()"></multiselect>
+
+       
+       <multiselect class="input-xlarge multiselect-tovar" multiple="true"
+                    ng-model="selectedPropuct"
+                    options="c.name for c in getAcceseblePropuct()"
+                    change="selected()"></multiselect>
+
+       @*<input type="text" value="{{selectedSpecialists}}"/>
+       <select ng-model="currentMode" ng-options="item for item in modes"></select>
+
+       <select ng-model="currentMode" ng-options="item for item in modes"></select>*@
+       
+       <span>Дата с: </span>
+       <input type="date" ng-model="fromDate" />
+       <span> Дата по: </span>
+       <input type="date" ng-model="toDate" />
+
+       
+       <button ng-click="btnRefreshReportClick($event)">Применить</button>
+     </div>
+
+     <div>
+     <table class="table table-bordered table-hover table-striped">
+      <tr>
+        <th>Дата</th>
+        <th>Товар</th>
+        <th>ФИО</th>
+        <th>Цена</th>
+        <th>Телефон</th>
+        <th>Продавец</th>
+      </tr>
+      <tr ng-repeat="item in report">
+        <td>{{item.D_SCHET | date:'dd.MM.yyyy'}}</td>
+        <td>{{item.PRODUCT_NAME}}</td>
+        <td ng-click="fioItemClick(item)">{{item.SURNAME_POKUP}} {{item.NAME_POKUP}} {{item.SECNAME_POKUP}}</td>
+        <td>{{item.COST}}</td>
+        
+        <td class="process-a-call-td">
+          <a href="#" style="color: #333333; font-weight:normal"
+             ng-click="global.function.phoneClick(item.PHONE_MOBILE, item)"
+             ng-hide="item.showProcessACall"
+             title="Нажмите на номер телефона для совершения вызова">{{item.PHONE_MOBILE}}</a>
+          <div class="process-a-call" ng-show="item.showProcessACall"><div>Совершается вызов</div></div>
+        </td>
+
+        <td>{{item.SURNAME_SPECIALIST}} {{item.NAME_SPECIALIST}} {{item.SECNAME_SPECIALIST}}</td>
+      </tr>
+     </table>
+     </div>
+
+  <div class="div-pagination">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li>
+          <a href="#" aria-label="Previous" ng-click="prevPageClickHandler()">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li ng-repeat="item in pageNums" ng-class="{ 'active': item === page }">
+          <a href="#" ng-click="pageNumClickHandler(item)">{{item}}</a>
+        </li>
+        <li>
+          <a href="#" aria-label="Next" ng-click="nextPageClickHandler()">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+
+
+<!-- /учёт - Отчёты - Продано специалистом -->
+

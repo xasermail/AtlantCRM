@@ -1,0 +1,8977 @@
+﻿/* Класс для моргания красным цветом границы */
+.blink-border-red {
+  animation: blinker-border-red 1s linear infinite;
+}
+@keyframes blinker-border-red {
+  100% {
+    border-color: red;
+  }
+}
+/* /класс для моргания красным цветом границы */
+/* Класс для моргания красным цветом фона */
+.blink-background-red {
+  animation: blinker-background-red 1s linear infinite;
+}
+@keyframes blinker-background-red {
+  100% {
+    background-color: red;
+  }
+}
+/* /класс для моргания красным цветом фона */
+/* Форма выхода из программы */
+#logoutForm .setting-window {
+  position: fixed;
+  top: 85px;
+  background-color: white;
+  right: 50px;
+  width: 330px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: left;
+}
+#logoutForm .setting-window .user-login-img {
+  max-width: 100px;
+  position: relative;
+  float: left;
+}
+#logoutForm .setting-window .div-1 {
+  padding-top: 15px;
+  margin-left: 115px;
+  text-align: center;
+}
+#logoutForm .setting-window .div-2 {
+  margin-left: 115px;
+  text-align: center;
+  color: #c0c0c0;
+}
+#logoutForm .setting-window .buttons-1 {
+  margin-top: 15px;
+}
+#logoutForm .setting-window .buttons-1 .form-item {
+  width: 165px;
+}
+#logoutForm .setting-window .div-adm {
+  margin-bottom: 15px;
+}
+#logoutForm .setting-window .div-manuals {
+  margin-bottom: 15px;
+}
+#logoutForm .setting-window .div-exit {
+  text-align: right;
+}
+#logoutForm .setting-window .div-exit .form-item {
+  width: auto;
+}
+#logoutForm .user-name:hover,
+#logoutForm .div-user-img:hover,
+#logoutForm .div-user-img:hover + .user-name {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #337ab7;
+}
+#logoutForm .setting-window .btn-close {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}
+#logoutForm .user-name {
+  position: absolute;
+  top: 60px;
+  color: #333333;
+  left: 0px;
+  display: block;
+  width: 100px;
+  text-align: center;
+  font-weight: bold;
+}
+/* /форма выхода из программы */
+/* Иконка ожидания при выборе из autocomplete */
+.ui-autocomplete-loading {
+  background: white url("/Content/Images/ui-anim_basic_16x16.gif") right center no-repeat;
+}
+/* /иконка ожидания при выборе из autocomplete */
+/* Основной контейнер */
+#topContainer {
+  position: absolute;
+  top: 80px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+/* когда выбрана страница Новый или Учёт в меню, там есть
+   подменю, которое надо отобразить, поэтому контейнер
+   с содержимым надо сдвинуть ниже */
+#topContainer.menuItemNewSelected,
+#topContainer.menuItemUchetSelected {
+  top: 129px;
+}
+#topContainer.menuItemUchetReportsSelected {
+  top: 178px;
+}
+/* /основной контейнер */
+/* Время и дата на главной странице */
+#currentDateTime1 {
+  top: 0px;
+  right: 120px;
+  position: absolute;
+}
+#currentDateTime1 .current-time {
+  font-size: 40px;
+  line-height: 30px;
+  padding-top: 15px;
+}
+#currentDateTime1 .current-date {
+  font-size: 24px;
+}
+/* /время и дата на главной странице*/
+/* Логотип */
+#logo1 {
+  position: absolute;
+  width: 133px;
+  height: 40px;
+  background: url(/content/img/atlasCRMlogo1.png);
+  z-index: 1;
+  background-size: contain;
+  background-repeat: no-repeat;
+  left: 8px;
+  top: 2px;
+}
+/* /логотип */
+/* Наименование сервис-центра*/
+#serviceName {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 25px;
+  z-index: 5;
+  font-size: 22px;
+  font-weight: bold;
+}
+/*/Наименование сервис-центра*/
+#fixedTopMenu {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 80px;
+}
+/* Форма входа в систему */
+#loginForm [type="submit"] {
+  height: 34px;
+}
+/* /форма входа в систему */
+/* Текущий логин */
+#currentLogin {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 100px;
+  background-color: #e4e4e4;
+  height: 90px;
+  z-index: 255;
+  padding-top: 10px;
+  border-left: 2px solid #2f97ff;
+  border-bottom: 1px solid #2f97ff;
+  border-bottom-left-radius: 40px;
+  border-top-left-radius: 28px;
+}
+#currentLogin .user-img {
+  max-width: 50px;
+}
+#currentLogin .div-user-img {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  display: inline-block;
+}
+#currentLogin form {
+  float: none !important;
+  text-align: center;
+}
+/* /текущий логин */
+/* Отображение ошибок alert */
+#alertMessage {
+  position: fixed;
+  top: 130px;
+  right: 0px;
+  left: 0px;
+  z-index: 50;
+}
+#alertMessage button.btn {
+  margin-top: 10px;
+}
+#alertMessage .error-text {
+  max-height: 300px;
+  overflow-y: scroll;
+  overflow-x: auto;
+  display: block;
+  word-wrap: break-word;
+}
+#alertMessage .alert-danger {
+  border-color: #5f3b3b;
+}
+/* /отображение ошибок alert */
+/* Отображение информационных сообщений alert */
+#infoMessage {
+  position: fixed;
+  top: 130px;
+  right: 0px;
+  left: 0px;
+  z-index: 10;
+}
+#infoMessage button.btn {
+  margin-top: 10px;
+}
+#infoMessage .error-text {
+  max-height: 300px;
+  overflow-y: scroll;
+  overflow-x: auto;
+  display: block;
+  word-wrap: break-word;
+}
+#infoMessage .alert-danger {
+  border-color: #5f3b3b;
+}
+/* /отображение информационных сообщений alert */
+/* Специальное фоновое прозрачное окно для общего использования */
+.common-modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.5;
+  background-color: #000;
+  z-index: 1;
+}
+.common-modal-background-2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.5;
+  background-color: #000;
+  z-index: 3;
+}
+/* /специальное фоновое прозрачное окно для общего использования */
+/* Диалоговая форма с кнопками Да и Нет */
+#yesNoDialog .background-1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.5;
+  background-color: #000;
+  z-index: 10;
+}
+#yesNoDialog .body-1 {
+  /*position: fixed;*/
+  z-index: 11;
+  /*top: 200px;
+  left: 30%;*/
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  background-color: #fff;
+  width: 400px;
+  height: 120px;
+  padding: 10px;
+}
+#yesNoDialog .body-1 .caption-1 {
+  text-align: center;
+}
+#yesNoDialog .body-1 .buttons {
+  position: relative;
+  top: 20px;
+  left: 140px;
+}
+/* /диалоговая форма с кнопками Да и Нет */
+/* Форма ожидания */
+#waitingForm,
+#waitingFormBeforeLoad {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 260;
+}
+#waitingForm .waiting-form-background,
+#waitingFormBeforeLoad .waiting-form-background {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  opacity: 0.8;
+}
+#waitingForm .waiting-form-middle-line,
+#waitingFormBeforeLoad .waiting-form-middle-line {
+  position: fixed;
+  width: 100%;
+  z-index: 101;
+  margin: auto 0;
+  padding: 1em;
+  left: 0;
+  top: 30%;
+  background-color: #fff;
+  height: auto;
+  min-height: 206px;
+  vertical-align: middle;
+  line-height: 10em;
+}
+#waitingForm .waiting-form-middle-line-heading,
+#waitingFormBeforeLoad .waiting-form-middle-line-heading {
+  line-height: 1.25;
+  margin: 0 0 .75em 0;
+  font-size: 150%;
+  font-weight: 600;
+  position: relative;
+  color: #0072c6;
+  text-align: center;
+}
+#waitingForm .waiting-form-middle-line-loading-animation,
+#waitingFormBeforeLoad .waiting-form-middle-line-loading-animation {
+  background: url(img/ProgressRing_Blue40x40.gif) no-repeat;
+  width: 40px;
+  height: 40px;
+  margin: 40px auto;
+}
+/* /форма ожидания */
+input {
+  height: 20px;
+  margin-left: 10px;
+}
+select {
+  height: 20px;
+  margin-left: 10px;
+}
+.controls-container {
+  margin-bottom: 10px;
+}
+body {
+  position: relative;
+  width: 1200px;
+  overflow: hidden;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+  white-space: normal;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+div#topMenu {
+  height: 80px;
+  background-color: #2f97ff;
+  position: relative;
+  padding-top: 40px;
+}
+.menu-item {
+  display: inline-block;
+  vertical-align: top;
+}
+.menu-item-button {
+  /*width: 40px;*/
+  height: 35px;
+  background-color: #e4e4e4;
+  position: relative;
+  left: 10px;
+  top: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 16px;
+  /*border-color: #797979;
+  border-width: 1px;
+  border-style: solid;*/
+  padding: 5px;
+  /*color: rgba(0,0,0,0.87);*/
+  padding-top: 8px;
+  border-bottom: #2f97ff 1px solid;
+  min-width: 65px;
+  text-align: center;
+}
+.menu-item:hover {
+  cursor: pointer;
+}
+.menu-item:hover .menu-item-button,
+.menu-item-active .menu-item-button {
+  background-color: #fff;
+  border-bottom: #fff 1px solid;
+}
+/*.menu-item-caption {
+  position: absolute;
+  top: 55px;
+}*/
+.menu-splitter {
+  width: 1px;
+  height: 60px;
+  top: 10px;
+  position: absolute;
+  background-color: #868686;
+  left: 625px;
+}
+/*#menuItemNew {
+}
+
+#menuItemCaptionNew {
+  left: 9px;
+}
+
+
+#menuItemReg {
+  left: 91px;
+}
+
+#menuItemCaptionReg {
+  left: -11px;
+}
+
+#menuItemBaza {
+  left: 181px;
+}
+
+#menuItemCaptionBaza {
+  left: 14px;
+}
+
+#menuItemReports {
+  left: 271px;
+}
+
+#menuItemCaptionReports {
+  left: 6px;
+}
+
+#menuItemRyadi {
+  left: 361px;
+}
+
+#menuItemCaptionRyadi {
+  left: 13px;
+}
+
+#menuItemZapis {
+  left: 451px;
+}
+
+#menuItemCaptionZapis {
+  left: 7px;
+}
+
+#menuItemContacts {
+  left: 541px;
+}
+
+#menuItemCaptionContacts {
+  left: 2px;
+}
+
+#menuItemUchet {
+  left: 650px;
+}
+
+#menuItemCaptionUchet {
+  left: 15px;
+}
+
+#menuItemApp {
+  left: 740px;
+}
+
+#menuItemCaptionApp {
+  left: -12px;
+}
+
+#menuItemJur {
+  left: 830px;
+}
+
+#menuItemCaptionJur {
+  left: 4px;
+}*/
+/*#menuItemAdm, #menuItemDilerA, #menuItemDilerC, #menuItemDilerD {
+  position: relative;
+  width: 70px;
+  display: inline-block;
+}
+
+#menuItemCaptionAdm, #menuItemCaptionDilerC, #menuItemCaptionDilerD {
+  left: -18px;
+}
+
+#menuItemManual {
+  position: relative;
+  display: inline-block;
+  width: 95px;
+  margin-left: 10px;
+}*/
+/*#menuItemCaptionManual {
+  left: -8px;
+}
+
+#menuItemCaptionDilerA {
+  left: 1px;
+}
+
+#menuItemCaptionDilerC {
+  left: 1px;
+}
+
+#menuItemCaptionDilerD {
+  left: 1px;
+}*/
+/*#topMenu .adm-i-spr {
+  position: absolute;
+  left: 920px;
+  top: 0px;
+}*/
+#subMenu,
+#subMenuUchet,
+#subMenuUchetReports,
+#subMenuDiler {
+  height: 49px;
+  background-color: #f2f2f2;
+  position: fixed;
+  top: 80px;
+  left: 0px;
+  width: 100%;
+}
+#subMenuUchetReports {
+  top: 129px;
+}
+#subMenuKont {
+  height: 49px;
+  background-color: #f2f2f2;
+  position: relative;
+}
+.sub-menu-item {
+  line-height: 49px;
+  float: left;
+  height: 100%;
+  width: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+.sub-menu-item:hover {
+  cursor: pointer;
+}
+.sub-menu-item:hover,
+.sub-menu-item-active,
+.tab-content {
+  background-color: #e4e4e4;
+}
+/* Новый - Анкета */
+#ankVerticalLine {
+  position: absolute;
+  height: 580px;
+  top: 10px;
+  width: 1px;
+  background-color: #a1a1a1;
+  left: 283px;
+}
+#newAnk .section-caption {
+  color: #0099ff;
+}
+#newAnk #ankfioAndOtherSectionCaption {
+  position: absolute;
+  left: 170px;
+  top: 10px;
+}
+#newAnk #zabolSectionCaption {
+  position: absolute;
+  left: 188px;
+  top: 170px;
+}
+#newAnk #adresSectionCaption {
+  position: absolute;
+  left: 235px;
+  top: 300px;
+}
+#newAnk #istInfSectionCaption {
+  position: absolute;
+  left: 125px;
+  top: 380px;
+}
+#newAnk #regOptSectionCaption {
+  position: absolute;
+  left: 146px;
+  top: 434px;
+}
+#newAnk #registeredBySectionCaption {
+  position: absolute;
+  left: 146px;
+  top: 524px;
+}
+#newAnk {
+  position: relative;
+}
+#newAnkLeft {
+  width: 300px;
+  float: left;
+  height: 600px;
+  position: relative;
+}
+#newAnkRight {
+  float: left;
+  height: 600px;
+  width: 800px;
+  position: relative;
+}
+#newAnkPhoto {
+  position: absolute;
+  top: 15px;
+  display: table;
+}
+#newAnkPhoto .photo-frame {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  width: 125px;
+  height: 120px;
+  border: 1px black solid;
+  background-color: #fff;
+  box-sizing: content-box;
+}
+#newAnkPhoto .photo-frame img {
+  width: auto;
+  height: auto;
+  max-width: 125px;
+  max-height: 120px;
+}
+#newAnkRight .photo-source {
+  height: 20px;
+  position: absolute;
+  top: 137px;
+}
+#newAnkRight .photo-source img {
+  margin: 3px;
+  margin-top: 5px;
+}
+#newAnkRight input[type="file"] {
+  width: 11px;
+  top: -15px;
+  left: -7px;
+  position: relative;
+  height: 9px;
+  overflow: hidden;
+}
+#fioAndOther {
+  position: absolute;
+  top: 20px;
+  left: 140px;
+  width: 790px;
+}
+#fioAndOther input[name="surname"],
+#fioAndOther input[name="name"],
+#fioAndOther input[name="secname"] {
+  width: 150px;
+  max-width: none;
+  text-transform: capitalize;
+}
+/*#fioAndOther input[name="surname"] {
+  position: relative;
+  background-color: transparent;
+  z-index: 1;
+  text-transform: capitalize;
+  font-family: 'Courier New';
+}*/
+#fioAndOther input[name="surnameMatch"] {
+  position: absolute;
+  left: 60px;
+  top: 0px;
+  width: 150px;
+  color: grey;
+  text-transform: lowercase;
+  font-family: 'Courier New';
+}
+#fioAndOther input[name="day"],
+#fioAndOther input[name="month"] {
+  width: 40px;
+}
+#fioAndOther input[name="year"] {
+  width: 60px;
+}
+#fioAndOther input[name="phoneMobile"] {
+  width: 234px;
+}
+#fioAndOther input[name="phoneHome"] {
+  margin-left: 16px;
+  width: 234px;
+}
+#fioAndOther .controls-container-fio {
+  margin-bottom: 20px;
+}
+#fioAndOther .fio-error {
+  position: absolute;
+  top: 19px;
+  left: 80px;
+  color: red;
+}
+#fioAndOther .ank-vip-div {
+  margin-left: 400px;
+  margin-top: -30px;
+}
+#fioAndOther .ank-vip-span {
+  font-size: 15px;
+}
+#fioAndOther .ank-vip-checkbox-div {
+  position: absolute;
+  margin-left: 30px;
+  margin-top: -21px;
+}
+#fioAndOther .ank-vip-checkbox {
+  margin-left: 5px;
+  height: 14px;
+}
+div.horizontal-line {
+  height: 1px;
+  background-color: #a1a1a1;
+  width: 800px;
+  position: absolute;
+}
+#horizontalLineAnk1 {
+  top: 166px;
+}
+#zabol {
+  position: absolute;
+  top: 177px;
+  height: 300px;
+  width: 800px;
+}
+#zabol input[name="zabolPoisk"] {
+  height: 30px;
+  margin-left: 0px;
+  margin-right: 10px;
+  width: 200px;
+}
+#zabol button.btn-poisk {
+  width: 30px;
+  height: 30px;
+}
+#zabol .zabol-list {
+  height: 70px;
+  width: 240px;
+  left: 0px;
+  top: 40px;
+  position: absolute;
+  margin-left: 0px;
+}
+#zabol .btn-add {
+  position: absolute;
+  left: 270px;
+  top: 40px;
+  width: 50px;
+}
+#zabol .btn-remove {
+  position: absolute;
+  left: 270px;
+  top: 82px;
+  width: 50px;
+}
+#zabol .zabol-selected {
+  height: 70px;
+  width: 240px;
+  left: 350px;
+  top: 40px;
+  position: absolute;
+  margin-left: 0px;
+}
+#zabol .zabol-selected-caption {
+  position: absolute;
+  left: 350px;
+  top: 0px;
+  color: #0099ff;
+}
+#horizontalLineAnk2 {
+  top: 297px;
+}
+#adres {
+  top: 307px;
+  position: absolute;
+  left: 0px;
+}
+#adres .adres-first-line div,
+#adres .adres-second-line div {
+  float: left;
+  margin-right: 20px;
+}
+#adres .adres-first-line input[name="city"] {
+  width: 154px;
+}
+#adres .adres-first-line input[name="street"] {
+  width: 190px;
+}
+#adres .adres-first-line input[name="house"] {
+  width: 50px;
+}
+#adres .adres-first-line input[name="flat"] {
+  width: 50px;
+}
+#adres .adres-second-line input[name="corpus"] {
+  width: 50px;
+}
+#adres .adres-second-line input[name="district"] {
+  width: 154px;
+}
+#adres .adres-second-line input[name="post_index"] {
+  width: 60px;
+}
+#adres .adres-second-line {
+  margin-top: 10px;
+}
+#horizontalLineAnk3 {
+  top: 367px;
+}
+#istInf {
+  position: absolute;
+  top: 380px;
+}
+#istInf select[name="istInfo"] {
+  margin-left: 0px;
+  height: 25px;
+  width: 150px;
+}
+#istInf span.ist-inf-line {
+  position: absolute;
+  background-color: black;
+  width: 40px;
+  height: 1px;
+  top: 12px;
+  left: 160px;
+}
+#istInf .ng-autocomplete {
+  height: 25px;
+  width: 355px;
+  position: absolute;
+  left: 215px;
+  top: 0px;
+}
+#istInf .ng-autocomplete input#fioInfoId1 {
+  height: 25px;
+  padding-left: 3px;
+  width: 355px;
+}
+#istInf .inst-info-sotrudnik {
+  height: 25px;
+  width: 355px;
+  position: absolute;
+  left: 215px;
+  top: 0px;
+}
+#istInf .inst-info-sotrudnik select#fioInfoId2 {
+  height: 25px;
+  padding-left: 3px;
+  width: 253px;
+}
+#horizontalLineAnk4 {
+  top: 417px;
+}
+#regOpt {
+  position: absolute;
+  top: 435px;
+  width: 790px;
+  height: 100px;
+}
+#regOpt label {
+  font-weight: normal;
+}
+#regOpt .reg-opt-check-group {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#regOpt .reg-opt-check-group input[type="checkbox"] {
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+#regOpt .reg-opt-check-group label {
+  position: absolute;
+  top: 0px;
+  left: 20px;
+  width: 200px;
+  margin: 0;
+  padding: 0;
+}
+#regOpt .reg-opt-second-line {
+  position: absolute;
+  width: 800px;
+  top: 30px;
+}
+#regOpt .reg-opt-second-line select[name="regOptSelectTime"] {
+  margin-left: 0px;
+  width: 200px;
+}
+#regOpt .reg-opt-second-line select[name="regOptSelectPlace"] {
+  margin-left: 30px;
+  width: 230px;
+}
+#regOpt .reg-error-time {
+  position: absolute;
+  top: 19px;
+  left: 10px;
+  color: red;
+}
+#regOpt .reg-error-place {
+  position: absolute;
+  top: 19px;
+  left: 248px;
+  color: red;
+}
+#regOpt .already-registered {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 400px;
+  font-size: 16px;
+}
+#horizontalLineAnk5 {
+  top: 510px;
+}
+#registeredBy {
+  position: absolute;
+  top: 525px;
+  width: 790px;
+}
+#registeredBy .fioReg {
+  margin-left: 0px;
+}
+#registeredBy span {
+  margin-left: 30px;
+}
+#registeredBy input[name="dateReg"] {
+  width: 150px;
+}
+#ankBottomButtons {
+  position: absolute;
+  top: 560px;
+  width: 790px;
+}
+#ankBottomButtons button {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+}
+#ankBottomButtons button.ank-bottom-button-save-and-print {
+  width: 205px;
+}
+#ankBottomButtons button.ank-bottom-button-save {
+  margin-left: 15px;
+  width: 110px;
+}
+#ankBottomButtons button.ank-bottom-button-print {
+  margin-left: 15px;
+  width: 110px;
+}
+#ankBottomButtons button.ank-bottom-button-bar-code {
+  margin-left: 15px;
+  width: 140px;
+}
+#ankBottomButtons button.ank-bottom-button-clear-or-new {
+  margin-left: 80px;
+  width: 160px;
+  border: 2px #00c3c3 solid;
+}
+#newAnk #photoFormBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.5;
+  background-color: #000;
+  z-index: 1;
+}
+#newAnk #photoForm {
+  margin: 20px;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 430px;
+  z-index: 2;
+  width: 1100px;
+  margin: 60px;
+  padding-left: 40px;
+}
+#newAnk #photoForm .container-row {
+  margin-top: 20px;
+}
+#newAnk #photoForm .btn-take-snapshot {
+  margin-top: 16px;
+}
+#newAnk #photoForm .container-buttons {
+  position: absolute;
+  bottom: 30px;
+}
+#newAnk #my_camera,
+#newAnk #my_camera_results {
+  margin-top: 10px;
+}
+#adresForm {
+  position: absolute;
+  width: 790px;
+  top: 307px;
+  height: 55px;
+  margin-left: 0px;
+}
+#adresForm div {
+  float: left;
+  margin-right: 20px;
+}
+#adresForm div.line {
+  margin-bottom: 10px;
+}
+#adresForm input[name="region"] {
+  width: 160px;
+}
+#adresForm input[name="city"] {
+  width: 160px;
+  margin-left: 17px;
+}
+#adresForm input[name="street"] {
+  width: 182px;
+}
+#adresForm input[name="house"] {
+  width: 40px;
+}
+#adresForm input[name="flat"] {
+  width: 40px;
+}
+#adresForm input[name="corpus"] {
+  width: 40px;
+}
+#adresForm input[name="district"] {
+  width: 160px;
+}
+#adresForm input[name="post_index"] {
+  width: 60px;
+}
+#adresForm label {
+  font-weight: normal;
+}
+#newAnkPrintPreview1 .new-ank-print-preview {
+  background-color: white;
+  position: relative;
+  font-family: 'Times New Roman';
+  height: 100vh;
+  width: 1150px;
+  color: black;
+}
+#newAnkPrintPreview1 .new-ank-print-preview .org-adres {
+  position: absolute;
+  left: 50px;
+  top: 730px;
+  width: 450px;
+  font-size: 32px;
+}
+#newAnkPrintPreview1 .new-ank-print-preview .org-adres.org-adres-multiline {
+  top: 710px;
+}
+#newAnkPrintPreview1 .new-ank-print-preview .org-adres p {
+  line-height: 32px;
+  margin: 0;
+  padding: 0;
+}
+#newAnkPrintPreview1 .new-ank-print-preview .org-phone {
+  position: absolute;
+  left: 50px;
+  top: 770px;
+  font-size: 32px;
+}
+#newAnkPrintPreview1 .new-ank-print-preview .vertical-line1 {
+  position: absolute;
+  border: 1px #e3e3e3 dashed;
+  width: 1px;
+  left: 590px;
+  height: 750px;
+  top: 40px;
+}
+#newAnkPrintPreview1 .new-ank-print-preview .right-part {
+  float: right;
+  text-align: center;
+}
+#newAnkPrintPreview1 .new-ank-print-preview .new-ank-print-logo {
+  margin-top: 40px;
+}
+#newAnkPrintPreview1 .new-ank-print-preview .fio {
+  margin-top: 80px;
+  font-size: 40px;
+  background-color: white;
+  font-weight: bold;
+}
+#newAnkPrintPreview1 .new-ank-print-preview .fio p {
+  margin-top: 0px;
+  padding-top: 0px;
+  line-height: 40px;
+}
+#newAnkPrintPreview1 .new-ank-print-preview .phone-mobile {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+#newAnkPrintPreview1 .new-ank-print-preview .new-ank-print-barcode {
+  margin-top: 40px;
+}
+#newAnkPrintPreview1 .new-ank-print-preview .slogan {
+  margin-top: 140px;
+  text-align: center;
+  font-size: 28px;
+  color: red;
+}
+#newAnkPrintPreview1 .new-ank-print-preview .slogan p {
+  line-height: 32px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+#newAnk .ank-barcode-div {
+  position: absolute;
+  margin-left: 500px;
+}
+#newAnk .ank-barcode-img {
+  width: 250px;
+  height: 75px;
+  margin-top: -10px;
+}
+#newAnk .ank-barcode-input {
+  margin-top: 10px;
+  margin-left: 0px;
+}
+/* /новый - анкета */
+/*диалог*/
+#dialog {
+  font-family: 'Arial Обычный', 'Arial';
+  font-weight: 400;
+  font-size: 13px;
+  font-style: normal;
+  line-height: normal;
+  background-color: #e3e3e3;
+  height: 100%;
+  height: auto;
+}
+#dialogStatus,
+#clientInfo,
+#dialogVerticalLineRight,
+#dialogPhoto,
+#clientData,
+#statusRepeat,
+#subDateDialog,
+#subBtnSave {
+  vertical-align: top;
+  display: inline-block;
+}
+#dialogStatus {
+  width: 255px;
+  text-align: right;
+}
+#subDialogStatus,
+#subDialogSicks,
+#subDialogComplaint,
+#subDialogComment {
+  white-space: nowrap;
+  color: #169BD5;
+  border-right: 1px solid #a1a1a1;
+  padding: 10px;
+  font-size: 13px;
+}
+#subDialogComment {
+  height: 230px;
+}
+#subDialogStatus {
+  margin-top: 188px;
+  height: 40px;
+}
+#subDialogSicks {
+  height: 49px;
+}
+#subDialogComplaint {
+  height: 45px;
+}
+#dialog .photo-frame {
+  background: url(/Content/img/u4.png) no-repeat center center;
+  height: 120px;
+}
+#clientInfo {
+  width: 605px;
+}
+#dialogPhoto {
+  margin: 10px;
+  margin-top: 10px;
+  width: 100px;
+  height: 124px;
+  border: 1px black solid;
+  width: 125px;
+  height: 125px;
+}
+#clientData .header {
+  font-size: 16px;
+  font-weight: bold;
+}
+#clientData .btnEdit {
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 1px #787878 solid;
+  background-color: #f0f0f0;
+  color: #333333;
+  font-size: 13px;
+}
+#clientData .lines {
+  font-size: 13px;
+  padding-bottom: 10px;
+  border-bottom: 1px #999999 solid;
+}
+#clientData .first-line {
+  margin-top: 10px;
+}
+#clientData .second-line {
+  margin-top: 10px;
+}
+#clientData .third-line {
+  margin-top: 10px;
+}
+#clientData .fourth-line {
+  margin-top: 10px;
+  font-size: 13px;
+  padding-bottom: 10px;
+}
+#clientData .phone-caption {
+  font-weight: bold;
+}
+#clientData .phone-number {
+  margin-left: 20px;
+  text-align: right;
+  font-size: 14px;
+}
+#clientData .numb {
+  text-decoration: underline;
+  color: #2F97FF;
+  margin-left: 20px;
+}
+#clientData .birth {
+  margin-left: 57px;
+}
+#clientData .age {
+  margin-left: 20px;
+  color: #999999;
+}
+#clientData .addr {
+  margin-left: 118px;
+}
+#clientData .kto {
+  margin-left: 96px;
+}
+#statusBlock .stat,
+#statusBlock .prod {
+  height: 30px;
+}
+#statusBlock .stat {
+  width: 225px;
+}
+#statusBlock .prod {
+  width: 155px;
+}
+#statusBlock .stat_date {
+  margin-left: 10px;
+  width: 123px;
+  height: 30px;
+}
+#statusBlock .btnCircle {
+  height: 30px;
+  width: 30px;
+  margin-left: 5px;
+  border-radius: 15px;
+  border: 1px #787878 solid;
+  background-color: #f0f0f0;
+  font-size: 18px;
+  color: #333333;
+}
+#dialog .blue-text {
+  color: #009DD9;
+}
+/*#dialog input, textarea{
+  max-width: 530px;
+}*/
+#clientStatus {
+  margin-top: 10px;
+}
+#clientSicks,
+#clientComplaint,
+#clientComment {
+  height: 36px;
+  width: 530px;
+}
+#clientComplaint {
+  margin-top: 10px;
+}
+#clientCommentDiv {
+  margin-top: 10px;
+}
+#btns,
+#enterComment {
+  display: inline-block;
+  vertical-align: top;
+}
+#clientComment {
+  margin-left: 10px;
+  height: 70px;
+}
+#btns {
+  margin-left: 5px;
+}
+#dialog .btnStar,
+.btnLe {
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+  border: 1px #787878 solid;
+  background-color: #f0f0f0;
+  font-size: 18px;
+  color: #333333;
+}
+#dialog .btnLe {
+  margin-top: 40px;
+}
+#container {
+  height: auto;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 50px;
+}
+#container table tr td {
+  border: 1px black solid;
+  border-collapse: collapse;
+}
+#commentTable {
+  width: 100%;
+  table-layout: fixed;
+}
+#container td {
+  height: 30%;
+  padding: 2px;
+  border: 1px black solid;
+  word-wrap: break-word;
+}
+#dialog .tblCont {
+  height: 120px;
+  overflow: auto;
+  width: 530px;
+}
+#dialogVerticalLineRight {
+  position: absolute;
+  height: 553px;
+  top: 10px;
+  width: 1px;
+  background-color: #a1a1a1;
+  left: 850px;
+}
+#dialogAddSale {
+  position: absolute;
+  top: 10px;
+  left: 870px;
+}
+#dialog .add {
+  background-color: #65ff37;
+  height: 32px;
+  border-radius: 5px;
+  border: 1px #787878 solid;
+  color: #333333;
+  font-size: 13px;
+}
+#addInfo {
+  margin-top: 15px;
+}
+#addInfoTable tr {
+  height: 30px;
+}
+#addInfoTable td {
+  padding-right: 10px;
+  border: 1px #e3e3e3 solid;
+}
+#dialogHorizontalLine {
+  margin-top: 11px;
+  height: 1px;
+  width: 97%;
+  background-color: #a1a1a1;
+}
+#dialogStatistic {
+  margin-top: 11px;
+}
+#dialog .faded {
+  color: #999999;
+}
+#dialog .half-fat {
+  font-weight: bold;
+  color: #333333;
+}
+#dialogStatisticTable tr {
+  height: 33px;
+}
+#dialogStatisticTable td {
+  padding-right: 10px;
+}
+#subDateDialog {
+  margin-top: 18px;
+  margin-left: 10px;
+}
+#dialog .save {
+  height: 30px;
+  border-radius: 5px;
+  border: 1px #787878 solid;
+  margin-left: 382px;
+  margin-top: 10px;
+}
+#dialog .td-dialog-product-status-item:hover {
+  cursor: pointer;
+}
+#dialog .process-a-call-td {
+  position: relative;
+  padding-left: 20px;
+  width: 200px;
+}
+#dialog .process-a-call {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+}
+#dialog .process-a-call div {
+  background: url('Images/ui-anim_basic_16x16.gif') no-repeat left center;
+  padding-left: 20px;
+  line-height: 20px;
+}
+/*/диалог*/
+/* База */
+#baza {
+  position: relative;
+  background-color: #ffffff;
+}
+#baza .filter {
+  height: 85px;
+  background-color: #f2f2f2;
+  position: relative;
+  display: inline-block;
+  width: 1100px;
+}
+#baza .filter-clear-panel {
+  height: 30px;
+  background-color: #f2f2f2;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 13px;
+  width: 70px;
+  margin-left: -3px;
+}
+#baza .filter-heading {
+  text-align: center;
+  font-size: 18px;
+  font-weight: normal;
+  color: #333333;
+}
+#baza .fio-table-and-statuses {
+  display: flex;
+}
+#baza .fio-table {
+  /*width: 1070px;*/
+  height: 377px;
+}
+#baza .fio-table tr td {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#baza .fio-table table tr th:nth-child(1) {
+  width: 75px;
+}
+#baza .fio-table table tr th:nth-child(2) {
+  width: 299px;
+}
+#baza .fio-table table tr th:nth-child(3) {
+  width: 187px;
+}
+#baza .fio-table table tr th:nth-child(4) {
+  width: 87px;
+}
+#baza .fio-table table tr th:nth-child(5) {
+  width: 66px;
+}
+#baza .fio-table table tr th:nth-child(6) {
+  width: 96px;
+}
+#baza .fio-table table tr th:nth-child(8) {
+  width: 42px;
+}
+#baza .fio-table th {
+  text-align: center;
+  vertical-align: middle;
+}
+#baza .fio-table th.th-d-zv span {
+  color: #333333;
+}
+#baza .fio-table table tr td {
+  line-height: 10px;
+  vertical-align: middle;
+}
+#baza .fio-table table tr td.td-last-zv {
+  position: relative;
+  text-decoration: none;
+}
+#baza .fio-table table tr td.td-last-zv .an1 {
+  position: relative;
+  font-size: 11px;
+  width: 15px;
+  display: block;
+  line-height: 15px;
+}
+#baza .fio-table table tr td.td-last-zv .an2 {
+  position: relative;
+  display: block;
+  line-height: 15px;
+}
+#baza .div-pagination {
+  text-align: center;
+}
+#baza .div-pagination ul.pagination {
+  margin: 0 0;
+}
+#baza .arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #ccc;
+  position: absolute;
+  right: 10px;
+  top: 6px;
+}
+#baza .filter-select {
+  position: absolute;
+  width: 155px;
+  border: 1px solid black;
+  text-align: center;
+  padding-right: 10px;
+}
+#baza .filter-posescheniya {
+  left: 205px;
+  top: 15px;
+  position: absolute;
+}
+#baza .filter-posescheniya .filter-pos-top {
+  position: absolute;
+  width: 100%;
+  height: 22px;
+}
+#baza .filter-posescheniya .filter-pos-top:hover {
+  cursor: pointer;
+}
+#baza .filter-posescheniya .filter-pos-window {
+  background-color: white;
+  width: 155px;
+  position: absolute;
+  z-index: 2;
+  padding-top: 10px;
+  margin-top: 1px;
+  border: 1px solid black;
+  border-top: none;
+  margin-left: -1px;
+}
+#baza .filter-posescheniya .filter-pos-window select {
+  display: block;
+  margin: 0 auto;
+}
+#baza .filter-posescheniya .filter-pos-window .filter-pos-dn-div {
+  margin-top: 10px;
+}
+#baza .filter-posescheniya .filter-pos-window .filter-pos-na-datu-div input {
+  width: 130px;
+  margin: 0;
+  margin-top: 10px;
+}
+#baza .filter-posescheniya .filter-pos-window input {
+  width: 55px;
+}
+#baza .filter-posescheniya .filter-pos-window .dn-error,
+#baza .filter-posescheniya .filter-pos-window .na-datu-error {
+  color: red;
+}
+#baza .filter-select button.btn-ok {
+  display: block;
+  margin: 10px auto;
+}
+#baza .filter-select button.btn-close {
+  padding: 0px 7px;
+  display: block;
+  position: absolute;
+  top: 0px;
+  line-height: 18px;
+  left: 2px;
+}
+#baza .filter-reg {
+  left: 400px;
+  top: 15px;
+}
+#baza .filter-reg-window {
+  background-color: white;
+  width: 155px;
+  position: absolute;
+  z-index: 2;
+  padding-top: 10px;
+  margin-top: 1px;
+  border: 1px solid black;
+  border-top: none;
+  margin-left: -1px;
+}
+#baza .filter-reg .filter-reg-top {
+  position: absolute;
+  width: 100%;
+  height: 22px;
+}
+#baza .filter-reg .filter-reg-top:hover {
+  cursor: pointer;
+}
+#baza .filter-reg-s {
+  width: 50px;
+  margin-left: 0px;
+}
+#baza .filter-reg-po {
+  width: 50px;
+}
+#baza .filter-seans {
+  left: 595px;
+  top: 15px;
+}
+#baza .filter-seans-window {
+  background-color: white;
+  width: 155px;
+  position: absolute;
+  z-index: 2;
+  padding-top: 10px;
+  margin-top: 1px;
+  border: 1px solid black;
+  border-top: none;
+  margin-left: -1px;
+}
+#baza .filter-seans .filter-seans-top {
+  position: absolute;
+  width: 100%;
+  height: 22px;
+}
+#baza .filter-seans .filter-seans-top:hover {
+  cursor: pointer;
+}
+#baza .filter-seans-window .seans-listbox {
+  width: 140px;
+  height: 250px;
+}
+#baza .filter-seans-window .seans-listbox {
+  margin-left: 0px;
+}
+#baza .filter-kateg {
+  left: 205px;
+  top: 58px;
+}
+#baza .filter-kateg-window {
+  background-color: white;
+  width: 350px;
+  position: absolute;
+  z-index: 2;
+  padding-top: 10px;
+  margin-top: 1px;
+  border: 1px solid black;
+  border-top: none;
+  margin-left: -1px;
+}
+#baza .filter-kateg .filter-kateg-top {
+  position: absolute;
+  width: 100%;
+  height: 22px;
+}
+#baza .filter-kateg .filter-kateg-top:hover {
+  cursor: pointer;
+}
+#baza .filter-kateg-window .kateg-listbox {
+  width: 320px;
+  height: 300px;
+}
+#baza .filter-kateg-window .kateg-listbox {
+  margin-left: 0px;
+}
+#baza .filter-zabol {
+  left: 10px;
+  top: 58px;
+}
+#baza .filter-zabol .filter-zabol-top {
+  position: absolute;
+  width: 100%;
+  height: 22px;
+}
+#baza .filter-zabol .filter-zabol-top:hover {
+  cursor: pointer;
+}
+#baza .filter-zabol-window {
+  background-color: white;
+  width: 500px;
+  position: absolute;
+  z-index: 2;
+  padding-top: 10px;
+  margin-top: 1px;
+  border: 1px solid black;
+  border-top: none;
+  margin-left: -1px;
+}
+#baza .filter-zabol-window .search-str {
+  width: 300px;
+  height: 25px;
+  line-height: 25px;
+}
+#baza .filter-zabol-window .zabol-listbox {
+  margin-top: 10px;
+  width: 460px;
+}
+#baza .filter-period {
+  left: 10px;
+  top: 15px;
+}
+#baza .filter-period .filter-period-top {
+  position: absolute;
+  width: 100%;
+  height: 22px;
+}
+#baza .filter-period .filter-period-top:hover {
+  cursor: pointer;
+}
+#baza .filter-period .filter-period-window {
+  background-color: white;
+  width: 350px;
+  position: absolute;
+  z-index: 2;
+  padding-top: 10px;
+  margin-top: 1px;
+  border: 1px solid black;
+  border-top: none;
+  margin-left: -1px;
+}
+#baza .filter-period .filter-period-window .period-today {
+  margin-top: 10px;
+}
+#baza .filter-prod {
+  left: 400px;
+  top: 58px;
+}
+#baza .filter-prod-window {
+  background-color: white;
+  width: 196px;
+  position: absolute;
+  z-index: 2;
+  padding-top: 10px;
+  margin-top: 1px;
+  border: 1px solid black;
+  border-top: none;
+  margin-left: -1px;
+}
+#baza .filter-prod .filter-prod-top {
+  position: absolute;
+  width: 100%;
+  height: 22px;
+}
+#baza .filter-prod .filter-prod-top:hover {
+  cursor: pointer;
+}
+#baza .filter-prod-window .prod-listbox {
+  width: 180px;
+  height: 300px;
+  border-top: none;
+  outline: none;
+}
+#baza .filter-prod-window .prod-listbox {
+  margin-left: 0px;
+}
+#baza .filter-uluch {
+  left: 595px;
+  top: 58px;
+}
+#baza .filter-uluch .filter-uluch-top {
+  position: absolute;
+  width: 100%;
+  height: 22px;
+}
+#baza .filter-uluch .filter-uluch-top:hover {
+  cursor: pointer;
+}
+#baza .filter-uluch-window {
+  background-color: white;
+  width: 485px;
+  position: absolute;
+  z-index: 2;
+  padding-top: 10px;
+  margin-top: 1px;
+  border: 1px solid black;
+  border-top: none;
+  margin-left: -1px;
+}
+#baza .filter-uluch-window .search-str {
+  width: 300px;
+  height: 25px;
+  line-height: 25px;
+}
+#baza .filter-uluch-window .uluch-listbox {
+  margin-top: 10px;
+  width: 460px;
+}
+#baza .d-zv {
+  position: absolute;
+  left: 770px;
+  top: 15px;
+}
+#baza .d-zv input {
+  width: 130px;
+  height: 22px;
+}
+#baza .aktivist {
+  position: absolute;
+  left: 940px;
+  top: 15px;
+}
+#baza .aktivist input {
+  position: absolute;
+  top: 1px;
+  padding: 0;
+  margin: 0;
+}
+#baza .aktivist span {
+  position: absolute;
+  left: 20px;
+}
+#baza .pokazat-isklyuchennih {
+  position: absolute;
+  left: 940px;
+  top: 35px;
+  width: 250px;
+}
+#baza .pokazat-isklyuchennih input {
+  position: absolute;
+  top: 1px;
+  padding: 0;
+  margin: 0;
+}
+#baza .pokazat-isklyuchennih span {
+  position: absolute;
+  left: 20px;
+}
+#baza .poisk-po {
+  position: absolute;
+  left: 770px;
+  top: 58px;
+  height: 22px;
+  border: 1px solid black;
+  width: 280px;
+}
+#baza .filter-actions {
+  margin-top: 15px;
+  display: inline-block;
+  vertical-align: top;
+  width: 100px;
+}
+#baza .filter-actions .btn-refresh {
+  margin: 0px auto;
+  display: block;
+}
+#baza .filter-actions .vsego {
+  margin-top: 10px;
+  text-align: center;
+}
+#baza .table tbody > tr > td {
+  padding: 3px;
+}
+#baza .filter-outer-block {
+  background-color: #f2f2f2;
+}
+#baza .baza-send-sms {
+  position: absolute;
+  left: 1100px;
+  top: 57px;
+  width: 130px;
+  color: #333333;
+  background-color: #ffffff;
+  /* border-color: #cccccc; */
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+#baza .sms-message-form {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  height: 245px;
+  width: 400px;
+  border: 1px solid black;
+  background-color: #f2f2f2;
+}
+#baza .message {
+  margin: 20px 10px 10px 10px;
+}
+#baza .send-sms-button {
+  float: right;
+  margin-right: 13px;
+}
+#baza .statusesClient {
+  /*position:absolute;
+    top: 90px;
+    left: 1100px;
+    float: right;*/
+  margin-left: 20px;
+}
+#baza span {
+  color: #009DD9;
+}
+#baza .baza-all-count {
+  background-color: #f2f2f2;
+}
+#baza td:nth-child(2),
+#baza td:nth-child(3) {
+  text-decoration: underline;
+}
+#baza .process-a-call-td {
+  position: relative;
+}
+#baza .process-a-call {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#baza .process-a-call div {
+  background: url('Images/ui-anim_basic_16x16.gif') no-repeat left center;
+  padding-left: 20px;
+  line-height: 20px;
+}
+#baza .baza-clear-filter {
+  width: 130px;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#baza .getSalesCalendarConrol tr td {
+  text-decoration: none;
+}
+#baza .getSalesCalendarConrol tr td span {
+  color: black;
+  width: 20px;
+}
+#baza .getSalesCalendarConrol input {
+  width: 130px;
+  margin-left: 0px;
+}
+#baza .getSalesCalendarConrol a {
+  color: grey;
+  text-decoration: underline;
+  font-size: 14px;
+  font-weight: normal;
+}
+#baza .salesCalendarPanel {
+  width: 99%;
+  height: 89%;
+  position: fixed;
+  top: 80px;
+  background-color: #f2f2f2;
+  border: 1px black solid;
+  z-index: 5;
+}
+#baza table {
+  margin: 2px 2px 2px 2px;
+}
+#baza .calendar-prodaj-main-div {
+  overflow: auto;
+  height: 87%;
+  margin-left: 0.1%;
+  margin-top: 10px;
+}
+#baza .calendar-prodaj-div {
+  border: 1px solid #cccccc;
+  width: 14.28%;
+  display: inline-flex;
+}
+#baza .calendar-prodaj-link {
+  font-size: 18px;
+}
+#baza .calendar-prodaj-prod {
+  text-align: center;
+  width: inherit;
+}
+#baza .closePanel {
+  float: right;
+  margin-right: 18px;
+  margin-top: 5px;
+}
+#baza .calendar-prodaj-header {
+  margin-top: 10px;
+}
+#baza .calendar-prodaj-summa {
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+}
+#baza .calendar-prodaj-name {
+  font-size: 11px;
+  font-weight: bold;
+  color: black;
+  padding-left: 2px;
+}
+#baza .calendar-prodaj-defis {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  margin-left: 10px;
+}
+#baza .calendar-prodaj-refresh {
+  margin-left: 10px;
+}
+#baza .calendar-prodaj-spis {
+  border: 1px #787878 solid;
+  border-collapse: collapse;
+  word-wrap: break-word;
+  margin-left: 584px;
+  text-decoration: none;
+}
+#baza .calendar-prodaj-itogo {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+#baza .net-tovara {
+  width: 180px;
+  height: 20px;
+  background-color: transparent;
+  border: 1px solid darkgrey;
+  border-bottom: none;
+  padding-bottom: 0px;
+  left: 7px;
+  position: relative;
+  text-align: left;
+  padding-left: 2px;
+}
+#baza .net-tovara:hover {
+  cursor: default;
+}
+#baza .net-tovara.active {
+  background-color: #1e90ff;
+  color: white;
+}
+/* /база */
+/* Ряды*/
+#lane {
+  position: relative;
+  height: 600px;
+}
+#lane .customHeight {
+  height: 30px;
+}
+#lane .headerL {
+  margin-left: 10px;
+}
+#lane .allBtns {
+  border: 1px #787878 solid;
+}
+#lane .btnRaduis {
+  border-radius: 5px;
+}
+#lane .now {
+  width: 100px;
+  background-color: white;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+#lane .next {
+  margin-left: 5px;
+  margin-top: 10px;
+  width: 43px;
+}
+#lane .text {
+  font-family: "Arial Обычный", Arial;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  color: #333333;
+  text-align: left;
+  line-height: normal;
+}
+#lane .dt,
+.timeL {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+#lane .time {
+  margin-left: 40px;
+  width: 50px;
+  vertical-align: top;
+  display: inline-block;
+}
+#tableL table tr td {
+  border: 1px #787878 solid;
+  border-collapse: collapse;
+  word-wrap: break-word;
+}
+#tableL,
+#commentL {
+  vertical-align: top;
+  display: inline-block;
+  margin-right: -4px;
+  margin-top: 5px;
+}
+#commentLane {
+  height: 232px;
+  margin-top: 4px;
+  width: 652px;
+  max-width: 654px;
+}
+#tableHeader {
+  margin: 4px 0 0 0;
+}
+#tableRow {
+  margin: 0 0 0 0;
+  font-size: 13px;
+}
+#lane .numLane {
+  width: 53px;
+  text-align: center;
+  height: 30px;
+}
+#lane .headLane {
+  width: 560px;
+  text-align: center;
+}
+#lane .rowLane {
+  width: 280px;
+  height: 30px;
+}
+#lane .record {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  border: 1px black solid;
+}
+#lane .rowContent {
+  display: inline-block;
+  vertical-align: top;
+}
+#lane .rowBirth {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+#lane .rowText {
+  max-width: 145px;
+  margin-left: 65px;
+}
+#lane .rowButton {
+  margin-top: 6px;
+}
+#lane .btn-time-active {
+  background-color: #fff;
+}
+#lane .zapisat-na-seans {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 220px;
+  height: 0px;
+  background-color: #e4e4e4;
+  border: 1px #787878 solid;
+}
+#lane .row-tex-left {
+  margin-left: 45px;
+}
+#lane .rec-on-seans,
+.rec-seans-fio,
+.rec-seans-phone {
+  margin-top: 2px;
+  margin-left: 10px;
+}
+#lane .rec-ryad {
+  margin-left: 26px;
+}
+#lane .rec-date {
+  width: 144px;
+  height: 30px;
+  margin-left: 20px;
+}
+#lane .rec-seans-id {
+  width: 144px;
+  height: 28px;
+}
+#lane .btnRec {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+#lane .save {
+  margin-top: 7px;
+  margin-left: 1090px;
+  height: 30px;
+  border: 1px #787878 solid;
+  border-radius: 5px;
+}
+#lane .new-ank-seans {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 281px;
+  background-color: #e4e4e4;
+  border: 1px #787878 solid;
+}
+#lane .rec-seans-text {
+  height: 30px;
+}
+#lane .rec-phone {
+  margin-left: 10px;
+}
+#lane .rec-seans-data {
+  margin-left: 74px;
+}
+#lane .rec-seans-ryad {
+  margin-left: 45px;
+  width: 174px;
+}
+#lane .hover-cursor-underline:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#lane .memo-and-save-button {
+  position: relative;
+}
+#lane .memo-and-save-button {
+  position: absolute;
+  left: 620px;
+}
+#lane .memo-and-save-button .save {
+  position: absolute;
+  right: 0px;
+  width: 190px;
+}
+#lane .lane-and-comment {
+  position: relative;
+}
+#lane #tableL {
+  position: absolute;
+}
+/*/Ряды*/
+/* Звонки */
+#newZvonok .call-text {
+  margin-left: 35px;
+  font-family: 'Arial Обычный', 'Arial';
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  color: #333333;
+}
+#btnBlock {
+  margin-top: 5px;
+  margin-left: 13px;
+}
+#btnBlock .btnCircle {
+  height: 30px;
+  width: 30px;
+  margin-left: 5px;
+  border-radius: 15px;
+  border: 1px #787878 solid;
+  background-color: #f0f0f0;
+  font-size: 18px;
+  color: #333333;
+}
+#newZvonok .templateEdit {
+  margin-left: 5px;
+  width: 170px;
+}
+#verticalLineLeft {
+  border-right: 1px solid #a1a1a1;
+  height: 225px;
+  width: 2px;
+  margin-top: 25px;
+}
+#verticalLineLeft,
+#templateBlock,
+#centerBlock,
+#rightBlock {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 10px;
+}
+#centerBlock {
+  border-right: 1px solid #a1a1a1;
+  width: 575px;
+}
+#centerBlock .header {
+  font-size: 16px;
+  font-weight: bold;
+}
+#centerBlock .call-first-line {
+  margin-left: 20px;
+}
+/*#centerBlock .call-age {
+  margin-left: 17px;
+}*/
+#centerBlock .call-info {
+  color: #169BD5;
+  /*margin-right: 23px;*/
+  float: right;
+}
+#centerBlock .call-phone {
+  /*margin-right: 167px;*/
+  font-size: 16px;
+  font-weight: bold;
+  float: right;
+}
+#centerBlock .call-comment {
+  margin-left: 20px;
+  width: 530px;
+}
+#rightBlock {
+  margin-left: 20px;
+  font-size: 13px;
+  width: 348px;
+}
+#rightBlock .call-action-iskl,
+.call-action-record {
+  display: inline-block;
+  vertical-align: top;
+}
+#rightBlock .call-action-iskl {
+  height: 21px;
+}
+#rightBlock .call-action-text {
+  margin-top: 4px;
+}
+#rightBlock .call-action-group {
+  margin-top: 12px;
+}
+#rightBlock .call-action-reason,
+.call-action-seans-id {
+  height: 20px;
+  margin-left: 0px;
+  width: 110px;
+}
+#rightBlock .call-action-date {
+  width: 120px;
+}
+#rightBlock .call-action-comment {
+  width: 348px;
+}
+#rightBlock .call-action-modif {
+  margin-left: 37px;
+}
+#rightBlock .call-action-seans-date {
+  margin-left: 10px;
+  width: 120px;
+}
+#rightBlock .call-action-save {
+  margin-top: 5px;
+  float: right;
+  margin-bottom: 5px;
+}
+#centerBlock .process-a-call-td {
+  position: relative;
+}
+#centerBlock .process-a-call {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#centerBlock .process-a-call div {
+  background: url('Images/ui-anim_basic_16x16.gif') no-repeat left center;
+  padding-left: 20px;
+  line-height: 20px;
+}
+/*/Звонки*/
+/* Сервис*/
+#serviceOption .service-option {
+  margin-left: 280px;
+  padding-top: 40px;
+}
+#serviceOption .service-blue-text {
+  font-size: 16px;
+  color: #009DD9;
+}
+#serviceOption .service-action-id {
+  width: 200px;
+  height: 22px;
+  margin-left: 20px;
+}
+#serviceOption .service-product-id {
+  width: 157px;
+  height: 22px;
+  margin-left: 10px;
+}
+#serviceOption .service-serial-number {
+  margin-left: 12px;
+  font-size: 16px;
+  color: #000000;
+  width: 127px;
+}
+#service-photo-document {
+  margin-left: 356px;
+}
+#service-photo-document .service-photo {
+  border: 1px black solid;
+  width: 125px;
+  height: 125px;
+}
+#service-photo-document .photo-frame {
+  position: relative;
+  height: 120px;
+}
+#service-photo-document .service-file {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 35px;
+}
+#service-photo-document .image {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+#serviceComment .service-comment {
+  width: 614px;
+  height: 120px;
+  margin-top: 10px;
+  margin-left: 355px;
+}
+#service .service-save {
+  border: 2px solid #3090fe;
+  border-radius: 5px;
+  margin-left: 800px;
+}
+#service-photo-document .service-photo-file {
+  width: 121px;
+  height: 22px;
+  overflow: hidden;
+  margin-top: 9px;
+  margin-left: 1px;
+}
+/*/Сервис*/
+/*Статистика*/
+#stat {
+  font-family: "Arial Обычный", Arial;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+#stat #statSeansInfo {
+  margin-left: 136px;
+  border-bottom: 1px solid #a1a1a1;
+}
+#stat #statSeansInfo .stat-seans-info,
+#stat .stat-reg-info,
+#stat .stat-lane-info {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+#stat .stat-blue-text {
+  color: #0099FF;
+}
+#stat table,
+#stat td,
+#stat th {
+  font-weight: normal;
+}
+#stat .stat-line {
+  margin-top: 22px;
+  margin-right: 15px;
+}
+#stat .stat-reg-info {
+  margin-left: 15px;
+}
+#stat .stat-lane-info {
+  margin-left: 15px;
+}
+#stat #statRegInfo {
+  margin-left: 136px;
+  margin-top: 10px;
+  width: 235px;
+  border-right: 1px solid #a1a1a1;
+}
+#stat .stat-reg-line {
+  height: 33px;
+}
+#stat #statVisitInfo {
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+#stat #statRegInfo,
+#stat #statVisitInfo {
+  display: inline-block;
+  vertical-align: top;
+}
+#stat #statVisitInfo .stat-visit-table-td {
+  padding-left: 40px;
+}
+#stat .pos-priost {
+  position: relative;
+  margin-left: 136px;
+  border-top: 1px solid #a1a1a1;
+  padding-top: 10px;
+}
+#stat .pos-priost .pos {
+  display: inline-block;
+}
+#stat .pos-priost .pos table {
+  max-width: 700px;
+}
+#stat .pos-priost .priost {
+  position: relative;
+  display: inline-block;
+  border-left: 1px solid #a1a1a1;
+  left: 72px;
+  padding-left: 20px;
+}
+/*/Статистика*/
+/* Регистрация */
+#reg {
+  height: 700px;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+}
+#reg .shtrih-kod {
+  position: relative;
+  left: 240px;
+  top: 60px;
+}
+#reg .shtrih-kod-label {
+  color: #0099ff;
+}
+@keyframes blink-border {
+  0% {
+    border-color: white;
+  }
+  50% {
+    border-color: green;
+  }
+  100% {
+    border-color: yellow;
+  }
+}
+#reg .shtrih-kod-input:focus {
+  animation: blink-border 1s infinite;
+}
+#reg .shtrih-kod-input {
+  width: 200px;
+  border: 2px solid black;
+  height: 25px;
+}
+#reg .photo-posetitelya {
+  position: absolute;
+  left: 350px;
+  top: 50px;
+  max-width: 130px;
+  max-height: 125px;
+}
+#reg .photo-posetitelya img {
+  max-width: 100%;
+  max-height: 100%;
+}
+#reg .fio {
+  font-weight: bold;
+  font-size: 16px;
+}
+#reg .fio {
+  position: absolute;
+  left: 180px;
+  text-align: center;
+  width: 420px;
+  top: 180px;
+}
+#reg .seans {
+  position: absolute;
+  left: 180px;
+  width: 420px;
+  text-align: center;
+  top: 200px;
+}
+#reg .do-okonchaniya-registratsii-ostalos {
+  position: absolute;
+  left: 180px;
+  width: 420px;
+  text-align: center;
+  top: 220px;
+}
+#reg .zapolnennost {
+  position: absolute;
+  top: 245px;
+  left: 240px;
+  width: 360px;
+}
+#reg .zapolnennost .indicator-outer {
+  background-color: #000;
+  width: 300px;
+  height: 18px;
+  float: left;
+  padding: 1px;
+  margin-top: 2px;
+}
+#reg .zapolnennost .indicator-inner {
+  background-color: #fff;
+  width: 298px;
+  height: 16px;
+  padding: 1px;
+}
+#reg .zapolnennost .indicator-line {
+  background-color: blue;
+  max-width: 296px;
+  height: 14px;
+  padding: 1px;
+}
+#reg .zapolnennost .protsent {
+  margin-left: 10px;
+  width: 40px;
+  float: left;
+}
+#reg .spetsialist {
+  position: absolute;
+  left: 240px;
+  top: 270px;
+}
+#reg .spetsialist-label {
+  color: #0099ff;
+}
+#reg .spetsialist-input {
+  width: 207px;
+}
+#reg .horizontal-line1 {
+  position: absolute;
+  top: 300px;
+  width: 400px;
+  left: 240px;
+  height: 1px;
+  background-color: #a1a1a1;
+}
+#reg .dannie-o-posetitele {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  left: 240px;
+  top: 320px;
+}
+#reg .dannie-o-posetitele-header {
+  color: #0099ff;
+}
+#reg .dannie-o-posetitele-count {
+  position: absolute;
+  left: 20px;
+  font-weight: bold;
+  font-size: 16px;
+}
+#reg .seansi {
+  position: absolute;
+  top: 47px;
+  right: 140px;
+  width: 300px;
+}
+#reg .seansi-inner {
+  float: right;
+}
+#reg .tovar-header {
+  color: #0099ff;
+}
+#reg .tovar {
+  position: absolute;
+  left: 190px;
+}
+#reg .vertical-line1 {
+  position: absolute;
+  top: 25px;
+  height: 120px;
+  left: 170px;
+  width: 1px;
+  background-color: #a1a1a1;
+}
+#reg .vertical-line2 {
+  position: absolute;
+  top: 25px;
+  height: 440px;
+  left: 660px;
+  width: 1px;
+  background-color: #a1a1a1;
+}
+#reg .vibor-mesta-outer {
+  position: absolute;
+  left: 680px;
+  width: 200px;
+  top: 25px;
+}
+#reg .vibor-mesta {
+  background-color: #fff;
+  border: 1px solid black;
+  padding: 3px;
+}
+#reg .vibor-mesta-header {
+  background-color: #00ccff;
+  padding-left: 5px;
+}
+#reg .vibor-mesta-1ryad-header {
+  padding-left: 15px;
+}
+#reg .mesto-num {
+  width: 20px;
+  display: inline-block;
+}
+#reg .mesto {
+  border-radius: 3px;
+  border: 1px solid black;
+  height: 24px;
+  width: 32px;
+  line-height: 28px;
+  display: inline-block;
+}
+#reg .vibor-mesta-1ryad-body:hover .mesto {
+  text-decoration: none;
+}
+#reg .vibor-mesta-1ryad-body:hover span {
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+}
+#reg .mestoZanyato {
+  background-color: red;
+}
+#reg .mestoSvobodno {
+  background-color: green;
+}
+#reg .place-name {
+  padding-left: 5px;
+}
+#reg .zaregistrirovano {
+  margin-top: 10px;
+}
+#reg .zaregistrirovano-label {
+  font-weight: bold;
+}
+#reg .zaregistrirovano-input {
+  width: 47px;
+}
+#reg .scan {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+#reg .pered-skanirovaniem {
+  position: absolute;
+  left: 240px;
+  top: 100px;
+  font-weight: bold;
+  font-size: 16px;
+  width: 400px;
+  text-align: center;
+}
+#reg .reg-closed {
+  padding-left: 60px;
+  padding-top: 60px;
+}
+#reg .seans-time {
+  position: absolute;
+  left: 285px;
+  top: 25px;
+}
+#reg .seans-time select {
+  width: 260px;
+  height: 25px;
+  font-size: 20px;
+}
+#reg .div-left-2 {
+  position: relative;
+  margin-top: 20px;
+}
+/* /регистрация */
+/* Регистрация 2ой вариант интерфейса */
+#reg.reg-2 {
+  height: 550px;
+}
+#reg.reg-2 span.blue-label {
+  color: #0099ff;
+}
+#reg.reg-2 .container-9 {
+  position: absolute;
+  left: 0px;
+  top: 180px;
+  width: 500px;
+}
+#reg.reg-2 .container-9 .zadol,
+#reg.reg-2 .container-9 .priost-snyata,
+#reg.reg-2 .container-9 .abon-kon,
+#reg.reg-2 .container-9 .uje-zareg {
+  width: 420px;
+  text-align: center;
+  color: red;
+}
+#reg.reg-2 .container-9 .uje-zareg {
+  color: #468847;
+}
+#reg.reg-2 .container-9 .container-10 {
+  position: relative;
+}
+#reg.reg-2 .container-9 .container-10 .fio {
+  left: 0px;
+  top: 0px;
+}
+#reg.reg-2 .container-9 .container-10 .seans {
+  left: 0px;
+  top: 20px;
+}
+#reg.reg-2 .container-9 .container-10 .do-okonchaniya-registratsii-ostalos {
+  left: 0px;
+  top: 40px;
+}
+#reg.reg-2 .container-9 .container-10 .zapolnennost {
+  left: 60px;
+  top: 65px;
+}
+#reg.reg-2 .container-9 .container-10 .spetsialist {
+  left: 60px;
+  top: 90px;
+}
+#reg.reg-2 .container-9 .container-10 .horizontal-line1 {
+  left: 60px;
+  top: 120px;
+}
+#reg.reg-2 .container-9 .container-10 .dannie-o-posetitele {
+  left: 60px;
+  top: 140px;
+  height: 170px;
+  width: 360px;
+}
+#reg.reg-2 .reg-list {
+  position: absolute;
+  top: 10px;
+  left: 430px;
+}
+#reg.reg-2 .reg-list .container-11 {
+  max-height: 480px;
+  overflow: auto;
+}
+#reg.reg-2 .reg-list .container-11 .tr-uje-zareg {
+  border: 2px solid #468847;
+}
+#reg.reg-2 .reg-list .container-11 .fio-uje-zareg {
+  font-weight: bold;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item td {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item td.rn {
+  border: 1px solid #a1a1a1;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item td.container-1 {
+  border-top: 1px solid #a1a1a1;
+  border-bottom: 1px solid #a1a1a1;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item td.container-1 span.tort {
+  background-image: url('/Content/img/cake.png');
+  background-repeat: no-repeat;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item td.container-1 div.container-2 {
+  display: inline-block;
+  position: relative;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item td.container-1 div.container-2 span.vip {
+  font-size: 8px;
+  color: #f1cc0d;
+  display: block;
+  position: relative;
+  height: 5px;
+  padding-left: 2px;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item td.container-1 div.container-2 span.ostalos-dn-abon {
+  font-size: 12px;
+  display: block;
+  position: relative;
+  height: 5px;
+  top: 3px;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item td.container-1 span.reg-fio {
+  font-weight: bold;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item td.container-3 {
+  text-align: right;
+  border-top: 1px solid #a1a1a1;
+  border-bottom: 1px solid #a1a1a1;
+  border-right: 1px solid #a1a1a1;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item .dop-usl-list .container-4 {
+  display: inline-block;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item .dop-usl-list .container-4 span.dop-usl-name {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item .dop-usl-list .container-4 .color-1 {
+  background-color: #ffff00;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item .dop-usl-list .container-4 .color-2 {
+  background-color: #ff00ff;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item .dop-usl-list .container-4 .color-3 {
+  background-color: #00ff00;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item .dop-usl-list .container-4 .color-4 {
+  background-color: #808000;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item .dop-usl-list .container-4 .kolvo-pos {
+  border-radius: 5px;
+  border: 1px black solid;
+  margin-left: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 20px;
+}
+#reg.reg-2 .reg-list .container-11 tr.reg-list-item .dop-usl-list .container-4 .kolvo-pos.izm {
+  background-color: red;
+}
+#reg.reg-2 .seans-time {
+  left: 50px;
+}
+#reg.reg-2 .seans-time select {
+  width: 293px;
+}
+#reg.reg-2 .shtrih-kod {
+  left: 60px;
+  width: 360px;
+}
+#reg.reg-2 .pered-skanirovaniem {
+  left: 60px;
+}
+#reg.reg-2 .photo-posetitelya {
+  left: 170px;
+}
+#reg.reg-2 .vertical-line2 {
+  left: 420px;
+}
+#reg.reg-2 .horizontal-line1 {
+  width: 350px;
+}
+/* /регистрация 2ой вариант интерфейса */
+/*Период*/
+#period .period-main-div {
+  margin-left: 530px;
+  padding-top: 10px;
+}
+#period .period-blue-text {
+  margin-top: 5px;
+  color: #009DD9;
+}
+#period .period-barcode-input {
+  width: 342px;
+  height: 20px;
+  margin-left: 0px;
+  margin-top: 10px;
+}
+#period .shtrih-kod {
+  margin-top: 10px;
+}
+#period .period-horizontal-line {
+  margin-top: 10px;
+  height: 2px;
+  width: 342px;
+  border-top: 1px solid #a1a1a1;
+}
+#period .period-info-table {
+  table-layout: auto;
+  width: 0px;
+}
+#period .period-bold-text {
+  font-family: "Arial Полужирный", Arial;
+  font-weight: 700;
+  font-size: 16px;
+}
+#period .period-padding-td {
+  padding-left: 15px;
+}
+#period .period-height-tr {
+  height: 32px;
+}
+/*/Период*/
+/*Запись*/
+.custom-radius {
+  border-radius: 5px;
+}
+.custom-height {
+  height: 30px;
+}
+.custom-border {
+  border: 1px solid #a1a1a1;
+}
+#record .record-button-style {
+  margin-top: 10px;
+  height: 30px;
+  border: 1px solid #a1a1a1;
+}
+#record .tomorrow {
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: white;
+  width: 100px;
+}
+#record .record-date {
+  width: 43px;
+  margin-left: 5px;
+}
+#record .text {
+  font-family: "Arial Обычный", Arial;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  color: #333333;
+  text-align: left;
+  line-height: normal;
+}
+#record .dt {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+#record table.record-info td {
+  margin-top: 10px;
+  border: 1px solid #a1a1a1;
+  border-collapse: separate;
+  border-spacing: 0px;
+}
+#record table.record-info tr.white-row {
+  background-color: white;
+}
+#record table.record-info tr.o-seans-kont td {
+  text-align: left;
+  padding-left: 5px;
+}
+#record table.record-info tr.o-seans-kont td:nth-child(1) {
+  text-align: center;
+}
+#record table.record-info tr.o-seans-kont td div.fio {
+  color: #df1d41;
+}
+#record table.record-info tr.o-seans-kont td div.fio:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#record table.record-info tr.o-seans-kont td div.phone {
+  color: #007eff;
+}
+#record table.record-info tr.o-seans-kont .fio-and-button {
+  display: flex;
+  justify-content: space-between;
+}
+#record table.record-info tr.o-seans-kont .fio-and-button div.phone a {
+  white-space: nowrap;
+}
+#record table.record-info tr.o-seans-kont .div-edit-seans {
+  position: relative;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+#record table.record-info tr.o-seans-kont .div-edit-seans div.btns {
+  width: 44px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#record table.record-info tr.o-seans-kont .div-edit-seans div.btns .btn-change-seans-date,
+#record table.record-info tr.o-seans-kont .div-edit-seans div.btns .btn-delete-seans {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  border: none;
+  padding: 0px;
+  border: 1px solid black;
+}
+#record table.record-info tr.o-seans-kont .div-edit-seans div.btns .btn-delete-seans {
+  background-color: white;
+}
+#record .record-new-date {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  margin-left: 5px;
+  border: 1px solid black;
+  padding: 0 0 0 0;
+  display: inline-block;
+}
+#record .record-td-div {
+  display: inline-block;
+  vertical-align: middle;
+}
+#record .record-td-div div.container-2 {
+  display: inline-block;
+  position: relative;
+}
+#record .record-td-div div.container-2 span.vip {
+  font-size: 8px;
+  color: #f1cc0d;
+  display: block;
+  position: relative;
+  height: 5px;
+  padding-left: 2px;
+}
+#record .record-td-div div.container-2 span.ostalos-dn-abon {
+  font-size: 12px;
+  display: block;
+  position: relative;
+  height: 5px;
+  top: 3px;
+}
+#record .record-image {
+  height: 20px;
+  width: 20px;
+  margin-left: 2px;
+}
+#record .record-button-div {
+  height: 21px;
+  margin-right: 2px;
+  margin-bottom: 2px;
+  float: right;
+  vertical-align: middle;
+  display: inline-block;
+  margin-left: 10px;
+}
+#record .record-one {
+  text-decoration: underline;
+}
+#record .record-link {
+  text-decoration: underline;
+  margin-left: 20px;
+}
+#record .zapisat-na-seans {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 220px;
+  height: 0px;
+  background-color: #e4e4e4;
+  border: 1px #787878 solid;
+}
+#record .row-tex-left {
+  margin-left: 45px;
+}
+#record .rec-on-seans {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+#record .rec-seans-id {
+  width: 151px;
+  height: 28px;
+  margin-left: 0px;
+}
+#record .btnRec {
+  margin-top: 8px;
+  margin-left: 10px;
+}
+#record .new-ank-seans {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 300px;
+  height: 175px;
+  background-color: #e4e4e4;
+  border: 1px #787878 solid;
+}
+#record .new-ank-seans input {
+  width: 203px;
+  text-transform: capitalize;
+}
+#record #recordPhoneMobile {
+  margin-left: 12px;
+}
+#record .rec-seans-text {
+  height: 30px;
+}
+#record .rec-seans-data {
+  margin-left: 74px;
+  margin-top: 2px;
+}
+#record .rec-phone {
+  margin-left: 10px;
+}
+#record .hover-cursor-underline:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#record .record-header-div {
+  display: inline-block;
+}
+#record .record-header-div-right,
+#record .record-header-div-left {
+  background-color: white;
+  border: 1px solid #cccccc;
+  padding-left: 2px;
+  padding-right: 4px;
+}
+#record .record-header-div-right {
+  margin-left: 10px;
+}
+#record .record-header-div-left {
+  margin-right: 10px;
+}
+#record .process-a-call-td {
+  position: relative;
+  padding-left: 20px;
+}
+#record .process-a-call {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 60%;
+  height: 100%;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+}
+#record .process-a-call div {
+  background: url('Images/ui-anim_basic_16x16.gif') no-repeat left center;
+  padding-left: 20px;
+  line-height: 20px;
+}
+#record .viplachivaet,
+#record .zadoljennost {
+  padding-left: 5px;
+  font-size: 12px;
+}
+#record .viplachivaet {
+  color: #00cc00;
+}
+#record .zadoljennost {
+  color: #ff0000;
+}
+#recordAnkPhoto {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #e4e4e4;
+  border: 1px #787878 solid;
+  width: 250px;
+  height: 80px;
+  overflow: hidden;
+  justify-content: center;
+}
+#recordAnkPhoto table {
+  margin-left: 2px;
+  margin-top: 5px;
+}
+#recordAnkPhoto td {
+  border: 1px solid #787878;
+  border-collapse: collapse;
+}
+#recordAnkPhoto .info1 {
+  width: 192px;
+}
+#recordAnkPhoto .info2 {
+  width: 50px;
+}
+#recordAnkPhoto .user-img {
+  position: relative;
+  left: 2px;
+  top: 2px;
+  height: 79px;
+  width: 79px;
+  border: 1px #787878 solid;
+}
+/* /запись */
+/* Администрация */
+#adm {
+  height: 700px;
+  position: relative;
+  margin-top: 40px;
+}
+#adm .org-tree {
+  margin-left: 20px;
+  padding-top: 30px;
+}
+#adm .diller-a {
+  margin-left: 20px;
+}
+#adm .diller-c {
+  margin-left: 20px;
+}
+#adm .diller-d {
+  margin-left: 20px;
+}
+#adm .org-tree-names {
+  position: relative;
+  top: 0px;
+}
+#adm .org-tree-fields {
+  position: absolute;
+  left: 300px;
+  top: -5px;
+}
+#adm .org-tree-deistv {
+  position: absolute;
+  left: 450px;
+  top: -5px;
+}
+#adm .org-tree-wrapper {
+  position: relative;
+}
+#adm .org-tree * {
+  outline: none;
+}
+#adm .org-tree .tree-item {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#adm .org-tree .tree-item-active {
+  text-decoration: underline;
+}
+#adm .org-tree .tree-item:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+#adm .org-add-edit {
+  position: fixed;
+  width: 1100px;
+  height: 600px;
+  left: 100px;
+  top: 100px;
+  z-index: 2;
+  background-color: #e4e4e4;
+  padding: 40px;
+}
+#adm .org-add-edit .tip-organizatsii {
+  display: inline-block;
+}
+#adm .org-add-edit .teh-otdel {
+  display: inline-block;
+  padding-left: 63px;
+}
+#adm .org-add-edit .imya-and-otn {
+  position: relative;
+  height: 40px;
+  margin-top: 20px;
+}
+#adm .org-add-edit .imya-and-otn .imya {
+  position: absolute;
+  left: 0px;
+}
+#adm .org-add-edit .imya-and-otn .otn {
+  position: absolute;
+  left: 320px;
+}
+#adm .org-add-edit .imya-and-otn .otn select {
+  width: 198px;
+}
+#adm .org-add-edit .adres-salona {
+  position: relative;
+}
+#adm .org-add-edit .adres-salona .control-label {
+  position: relative;
+}
+#adm .org-add-edit .adres-salona .control-input {
+  position: relative;
+  left: 18px;
+  width: 498px;
+}
+#adm .org-add-edit .telefon-and-kod {
+  margin-top: 20px;
+}
+#adm .org-add-edit .telefon-and-kod .telefon-label {
+  margin-right: 38px;
+}
+#adm .org-add-edit .telefon-and-kod .kod-label {
+  margin-left: 30px;
+}
+#adm .org-add-edit .telefon-and-kod .kod-input {
+  width: 150px;
+}
+#adm .photo-source input[type="file"] {
+  width: 10px;
+  top: -23px;
+  left: -10px;
+  position: relative;
+  height: 13px;
+  overflow: hidden;
+  font-size: 32px;
+}
+#adm .org-photo {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+#adm .photo-frame {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  width: 125px;
+  height: 120px;
+  border: 1px black solid;
+  background-color: #fff;
+  box-sizing: content-box;
+}
+#adm .photo-frame img {
+  width: auto;
+  height: auto;
+  max-width: 125px;
+  max-height: 120px;
+}
+#adm .prava {
+  margin-top: 155px;
+  height: 300px;
+  overflow: auto;
+  width: 930px;
+}
+#adm .prava-gr {
+  float: left;
+  margin: 10px 10px 10px 0;
+  width: 32%;
+}
+#adm .prava-gr input[type="checkbox"] {
+  position: relative;
+  top: 6px;
+}
+#adm .prava-gr .btn-sm {
+  padding: 0px 4px;
+}
+#adm .btnSozdatAndOtmena {
+  margin-top: 20px;
+}
+#adm .user-list {
+  position: fixed;
+  width: 1100px;
+  left: 100px;
+  top: 100px;
+  z-index: 2;
+  background-color: #e4e4e4;
+  padding: 20px;
+}
+#adm .user-list-diler-d {
+  left: 0px;
+  top: 80px;
+  width: 100%;
+}
+#adm .user-list .table-1 {
+  height: 380px;
+  overflow-y: scroll;
+}
+#adm .user-list-diler-d .table-1 {
+  height: 470px;
+}
+#adm .user-list .table-1 .td-vertical-align-middle {
+  vertical-align: middle;
+}
+#adm .user-list .button-1 {
+  margin-top: 10px;
+}
+#adm .user-list .user-img {
+  max-width: 80px;
+}
+#adm table input[type="text"],
+#adm table input[type="date"] {
+  width: 140px;
+}
+#adm table select {
+  width: 140px;
+}
+#adm table {
+  table-layout: fixed;
+}
+#adm table thead tr th {
+  width: 130px;
+}
+#adm table thead tr th:nth-child(6),
+#adm table thead tr th:nth-child(7) {
+  width: 80px;
+}
+#adm table thead tr th:first-child {
+  width: 50px;
+}
+#adm table td {
+  line-height: 35px;
+}
+#adm .adm-active-buttons {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+#adm .user-add-edit {
+  position: fixed;
+  width: 1000px;
+  height: 550px;
+  top: 80px;
+  left: 150px;
+  z-index: 4;
+  background-color: #e4e4e4;
+  padding: 30px;
+}
+#adm .user-add-edit .user-photo {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+}
+#adm .user-add-edit .user-photo input[type='file'] {
+  position: absolute;
+  top: 127px;
+  border: 0px;
+}
+#adm .user-add-edit .user-info {
+  position: absolute;
+  left: 200px;
+  top: 20px;
+}
+#adm .user-add-edit .user-info .input-wrapper div.input-group-1 {
+  float: left;
+  margin-left: 10px;
+}
+#adm .user-add-edit .user-info input,
+#adm .user-add-edit .user-info select {
+  width: 180px;
+  margin-left: 0px;
+  margin-bottom: 10px;
+}
+#adm .user-add-edit .buttons-1 {
+  margin-top: 15px;
+}
+#adm .prava-1-warning {
+  text-align: right;
+  padding-right: 20px;
+  font-size: 12px;
+}
+#adm .deistv-org {
+  margin-top: 20px;
+}
+#adm .span-org-deistv {
+  color: forestgreen;
+}
+#adm .span-org-ne-deistv {
+  color: gray;
+}
+/* /администрация */
+/* Справочники */
+#manual {
+  margin-top: 45px;
+}
+#manual .man-vertical-div {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 5px;
+}
+#manual .new-seans-time {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 211px;
+  height: 0px;
+  background-color: #e4e4e4;
+  border: 1px #787878 solid;
+}
+#manual table {
+  border: 1px solid #333333;
+}
+#manual tr {
+  border: 1px solid #333333;
+}
+#manual td {
+  border: 1px solid #333333;
+}
+#manual .new-button {
+  height: 23px;
+  border-radius: 11px;
+  border: 1px solid #333333;
+  background-color: white;
+}
+#manual .new-seans-place {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 0px;
+  background-color: #e4e4e4;
+  border: 1px #787878 solid;
+}
+#manual .new-zabol {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 400px;
+  height: 0px;
+  background-color: #e4e4e4;
+  /*#e4e4e4*/
+  border: 1px #787878 solid;
+}
+#manual .manual-div-hide {
+  display: none;
+}
+#manual .new-manual-name {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 0px;
+  background-color: #e4e4e4;
+  border: 1px #787878 solid;
+}
+/* /справочники */
+#subMenuDilerBefore {
+  height: 49px;
+}
+/* Дилер A */
+#dilerA {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding-left: 20px;
+}
+#dilerA .div-top .table-striped > tbody > tr:nth-child(odd) > td,
+#dilerA .div-top .table-striped > tbody > tr:nth-child(odd) > th {
+  background-color: #e0e0e2;
+}
+#dilerA .saloni-itogo {
+  background-color: yellow;
+}
+#dilerA .div-top table.table-striped tr td.td-saloni-first-col,
+#dilerA .div-top table.table-striped tr .th-saloni-first-row {
+  background-color: #4bacc6;
+}
+#dilerA .div-top table tr td {
+  line-height: 10px;
+  border-color: black;
+  background-color: white;
+}
+#dilerA .div-top table tr th {
+  text-align: center;
+  vertical-align: middle;
+  background-color: white;
+}
+#dilerA .div-top table tr th:last-child {
+  visibility: hidden;
+}
+#dilerA .div-top table tr td {
+  width: 1%;
+  white-space: nowrap;
+  text-align: center;
+}
+#dilerA .div-top table tr td:first-child {
+  text-align: left;
+}
+#dilerA .div-top table tr td:last-child {
+  width: auto;
+  white-space: nowrap;
+  visibility: hidden;
+}
+#dilerA .div-top table tr th {
+  border-color: black;
+  border-bottom: none;
+  border-top: 1px solid black;
+}
+#dilerA .kalen-prod {
+  position: relative;
+}
+#dilerA .kalen-prod .month {
+  margin: 2px;
+  background-color: lightblue;
+  padding: 10px;
+  width: 90px;
+  color: white;
+}
+#dilerA .kalen-prod .month:hover {
+  background-color: cornflowerblue;
+  cursor: pointer;
+}
+#dilerA .kalen-prod .month.selected {
+  background-color: cornflowerblue;
+}
+#dilerA .kalen-prod .div-0 {
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+#dilerA .kalen-prod .div-1 {
+  position: absolute;
+  top: 60px;
+  left: 140px;
+}
+#dilerA .kalen-prod .div-1 .div-1-1 input {
+  margin-left: 14px;
+  width: 334px;
+}
+#dilerA .kalen-prod .div-1 .div-1-2 select {
+  margin-left: 76px;
+  margin-top: 20px;
+  width: 140px;
+}
+#dilerA .kalen-prod .div-1 .div-1-3 select {
+  margin-left: 59px;
+  margin-top: 20px;
+  width: 140px;
+}
+#dilerA .kalen-prod .div-1 .div-1-4 input {
+  margin-left: 85px;
+  margin-top: 20px;
+  width: 140px;
+}
+#dilerA .kalen-prod .div-1 .div-1-5 {
+  margin-top: 20px;
+}
+#dilerA .kalen-prod .div-1 .div-1-5 span:first-child {
+  display: inline-block;
+  width: 109px;
+}
+#dilerA .kalen-prod .div-1 .div-1-5 input {
+  width: 140px;
+}
+#dilerA .kalen-prod .div-1 .div-1-6 {
+  margin-top: 40px;
+}
+#dilerA .btn-save {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+  width: 150px;
+  background-color: white;
+}
+#dilerA .kalen-prod .div-2 {
+  position: absolute;
+  top: 42px;
+  left: 120px;
+  width: 510px;
+  height: 533px;
+  background-color: #f5f5f5;
+  border: 1px solid #d8d8d8;
+}
+#dilerA .datepicker-diler-a {
+  position: relative;
+}
+#dilerA .datepicker-diler-a .napolnyaem a {
+  border: 2px solid green;
+}
+#dilerA .datepicker-diler-a .vlyublyaem a {
+  border: 2px solid blue;
+}
+#dilerA .datepicker-diler-a .prodayom a {
+  border: 2px solid red;
+}
+#dilerA .datepicker-legend {
+  position: relative;
+  top: 15px;
+  left: 20px;
+}
+#dilerA .datepicker-container {
+  position: absolute;
+  top: 42px;
+  left: 670px;
+}
+#dilerA .datepicker-diler-a .ui-state-active,
+#dilerA .datepicker-diler-a .ui-widget-content .ui-state-active,
+#dilerA .datepicker-diler-a .ui-widget-header .ui-state-active,
+#dilerA .datepicker-diler-a a.ui-button:active,
+#dilerA .datepicker-diler-a .ui-button:active,
+#dilerA .datepicker-diler-a .ui-button.ui-state-active:hover {
+  color: #454545;
+  background: #f6f6f6;
+  border: 1px solid #c5c5c5;
+}
+#dilerA .datepicker-diler-a .napolnyaem .ui-state-active,
+#dilerA .datepicker-diler-a .napolnyaem .ui-widget-content .ui-state-active,
+#dilerA .datepicker-diler-a .napolnyaem .ui-widget-header .ui-state-active,
+#dilerA .datepicker-diler-a .napolnyaem a.ui-button:active,
+#dilerA .datepicker-diler-a .napolnyaem .ui-button:active,
+#dilerA .datepicker-diler-a .napolnyaem .ui-button.ui-state-active:hover {
+  border: 2px solid green;
+}
+#dilerA .datepicker-diler-a .vlyublyaem .ui-state-active,
+#dilerA .datepicker-diler-a .vlyublyaem .ui-widget-content .ui-state-active,
+#dilerA .datepicker-diler-a .vlyublyaem .ui-widget-header .ui-state-active,
+#dilerA .datepicker-diler-a .vlyublyaem a.ui-button:active,
+#dilerA .datepicker-diler-a .vlyublyaem .ui-button:active,
+#dilerA .datepicker-diler-a .vlyublyaem .ui-button.ui-state-active:hover {
+  border: 2px solid blue;
+}
+#dilerA .datepicker-diler-a .prodayom .ui-state-active,
+#dilerA .datepicker-diler-a .prodayom .ui-widget-content .ui-state-active,
+#dilerA .datepicker-diler-a .prodayom .ui-widget-header .ui-state-active,
+#dilerA .datepicker-diler-a .prodayom a.ui-button:active,
+#dilerA .datepicker-diler-a .prodayom .ui-button:active,
+#dilerA .datepicker-diler-a .prodayom .ui-button.ui-state-active:hover {
+  border: 2px solid red;
+}
+#dilerA .div-napolnyaem {
+  width: 29px;
+  height: 26px;
+  border: 2px solid green;
+  display: inline-block;
+}
+#dilerA .div-napolnyaem-caption {
+  display: inline-block;
+  top: 3px;
+  position: absolute;
+  left: 35px;
+}
+#dilerA .div-vlyublyaem {
+  width: 29px;
+  height: 26px;
+  border: 2px solid blue;
+  display: inline-block;
+  position: relative;
+  left: 110px;
+}
+#dilerA .div-vlyublyaem-caption {
+  display: inline-block;
+  top: 3px;
+  position: absolute;
+  left: 180px;
+}
+#dilerA .div-prodayom {
+  width: 29px;
+  height: 26px;
+  border: 2px solid red;
+  display: inline-block;
+  position: relative;
+  left: 215px;
+}
+#dilerA .div-prodayom-caption {
+  display: inline-block;
+  top: 3px;
+  position: absolute;
+  left: 320px;
+}
+#dilerA .input-kolvo-na-sklade {
+  width: 60px;
+}
+#dilerA .saloni-name {
+  margin-right: 40px;
+  line-height: 17px;
+}
+#dilerA .saloni-btn {
+  width: 28px;
+  vertical-align: top;
+  line-height: 15px;
+  right: 0px;
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+  float: right;
+  z-index: 2;
+  position: relative;
+}
+#dilerA .diler-a-price tr:last-child td {
+  border-left: 0px;
+  border-right: 0px;
+}
+#dilerA .diler-a-price tr:last-child {
+  border-left: 1px solid black;
+}
+#dilerA .diler-a-price tr:last-child td:nth-child(4) {
+  border-right: 1px solid black;
+  text-align: right;
+}
+#dilerA .diler-a-price tr:last-child td:nth-child(4) .btn-save {
+  height: 25px;
+}
+#dilerA .diler-a-sklad .btn-save {
+  width: 110px;
+  height: 20px;
+}
+#dilerA .diler-a-price input {
+  width: 80px;
+}
+#dilerA .diler-a-price td {
+  vertical-align: middle;
+}
+#dilerA .btn-apply {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+  width: 100px;
+  background-color: white;
+}
+/* /дилер A */
+/* Дилер D */
+#dilerD {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding-top: 60px;
+  padding-left: 20px;
+}
+#dilerD .diler-d-header {
+  text-align: center;
+  /*margin-bottom: 10px;*/
+}
+#dilerD .pokaz-deyat {
+  width: 800px;
+  display: inline-block;
+}
+#dilerD .pokaz-deyat table thead th {
+  text-align: center;
+  vertical-align: middle;
+}
+#dilerD .dolg-po-fran {
+  width: 360px;
+  display: inline-block;
+  margin-left: 10px;
+}
+#dilerD .dolg-po-fran table td,
+#dilerD .dolg-po-fran table th {
+  text-align: center;
+  vertical-align: middle;
+}
+#dilerD .dolg-po-fran table .th-1 {
+  background-color: #ff0000;
+}
+#dilerD .dolg-po-fran table .th-2 {
+  background-color: #00b0f0;
+}
+#dilerD .dolg-po-fran table .td-1 {
+  background-color: #92d050;
+}
+#dilerD .dolg-po-fran table td {
+  background-color: #ffffff;
+}
+#dilerD table tr td {
+  font-size: 12px;
+}
+#dilerD table tr td:nth-child(1) {
+  font-size: 14px;
+}
+#dilerD table tr td,
+#dilerD table tr th {
+  border-color: black;
+  vertical-align: middle;
+}
+#dilerD table tr th {
+  border-bottom: none;
+}
+#dilerD table {
+  border-top: 1px solid black;
+  text-align: center;
+  width: 99%;
+  margin-bottom: 0px;
+}
+#dilerD .rashodi {
+  width: 300px;
+}
+#dilerD .rashodi th {
+  text-align: center;
+}
+/* /дилер D */
+/* Отчеты */
+.reportForm table td {
+  height: 35px;
+  text-align: center;
+  border: 1px solid black;
+}
+.reportForm table th {
+  height: 40px;
+  text-align: center;
+  border: 1px solid black;
+}
+.reportForm tr:nth-child(2n) {
+  background-color: #e4e4e4;
+}
+/* /отчеты */
+/* Отчет День */
+#reportDay {
+  margin-left: 20px;
+}
+#reportDay table {
+  margin-top: 10px;
+}
+#reportDay table .diferentHeader {
+  width: 80px;
+}
+#reportDay table .timeHeader {
+  width: 100px;
+}
+#reportDay table .newHeader {
+  width: 100px;
+}
+#reportDay table .firstHeader {
+  width: 100px;
+}
+#reportDay table .secondHeader {
+  width: 100px;
+}
+#reportDay table .oldHeader {
+  width: 100px;
+}
+#reportDay table .summHeader {
+  width: 100px;
+}
+#reportDay table .natolnHeader {
+  width: 100px;
+}
+#reportDay .arrow-top {
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-bottom-color: green;
+  border-top: 0;
+  margin-left: 30px;
+}
+#reportDay .arrow-bottom {
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: red;
+  border-bottom: 0;
+  margin-left: 30px;
+}
+#reportDay table tfoot tr td {
+  font-weight: bold;
+}
+#reportDay table .goodRow {
+  background-color: limegreen;
+}
+#reportDay table .badRow {
+  background-color: lightcoral;
+}
+#reportDay table .avgRow {
+  background-color: yellow;
+}
+#reportDay .statsPanel {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+#reportDay .statsPanel span {
+  text-decoration: underline;
+  margin-left: 20px;
+}
+#reportDay .statsPanel span:nth-child(1) {
+  margin-left: 0px;
+}
+#reportDay .listAnkInfo {
+  margin-left: 10px;
+}
+#reportDay .listAnkInfo table {
+  margin: 10px 0 0 0;
+  border-collapse: collapse;
+  border: 1px black solid;
+}
+#reportDay .listAnkInfo .buttonsInfo {
+  margin-top: 10px;
+}
+#reportDay .listAnkInfo .buttonsInfo button {
+  margin-right: 10px;
+}
+#reportDay #print-content-one table th:nth-child(1) {
+  width: 600px;
+}
+#reportDay #print-content-one table th:nth-child(2) {
+  width: 300px;
+}
+#reportDay #print-content-second table th:nth-child(1) {
+  width: 250px;
+}
+#reportDay #print-content-second table th:nth-child(2) {
+  width: 200px;
+}
+#reportDay #print-content-second table th:nth-child(3) {
+  width: 180px;
+}
+#reportDay #print-content-second table th:nth-child(4) {
+  width: 160px;
+}
+#reportDay #print-content-second table th:nth-child(5) {
+  width: 180px;
+}
+#reportDay #print-content-second table th:nth-child(6) {
+  width: 180px;
+}
+#reportDay #print-content-three table th:nth-child(1) {
+  width: 350px;
+}
+#reportDay #print-content-three table th:nth-child(2) {
+  width: 250px;
+}
+#reportDay #print-content-three table th:nth-child(3) {
+  width: 210px;
+}
+#reportDay #print-content-three table th:nth-child(4) {
+  width: 210px;
+}
+#reportDay #print-content-three table th:nth-child(5) {
+  width: 210px;
+}
+#reportDay .difYestarday {
+  display: inline-block;
+}
+#reportDay .difYestarday div {
+  display: inline-block;
+}
+#reportDay .difYestarday td {
+  width: 50px;
+}
+#reportDay .divTable {
+  display: inline-block;
+}
+#reportDay .divTommorow {
+  display: inline-block;
+  width: 50px;
+}
+#reportDay .tableBorderAndColorNotVisible {
+  border: none;
+}
+#reportDay .tableBorderAndColorNotVisible td {
+  border: none;
+  background: white;
+}
+#reportDay .tableBorderAndColorNotVisible tr {
+  background: none;
+}
+#reportDay .arrowContainer {
+  display: inline-block;
+}
+#reportDay svg {
+  height: 10px;
+  width: 20px;
+}
+/* /отчет День */
+/* Отчеты день / Продажи */
+#reportProdaji .pr-common {
+  display: inline-block;
+  padding-top: 30px;
+  padding-left: 400px;
+}
+#reportProdaji .pr-dt {
+  display: inline-block;
+  padding-bottom: 5px;
+}
+#reportProdaji .pr-date {
+  width: 130px;
+  margin-right: 7px;
+}
+#reportProdaji .pr-btn {
+  box-shadow: 1px 1px gray;
+  margin-left: 7px;
+  width: 88px;
+}
+#reportProdaji .pr-numb {
+  width: 38px;
+  height: 30px;
+}
+#reportProdaji .pr-seans {
+  display: inline-block;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+}
+#reportProdaji hr {
+  margin-top: 10px;
+  border: 1px;
+  border-top: 1px solid #999999;
+  width: 450px;
+  margin-bottom: 2px;
+  padding-top: 5px;
+}
+#reportProdaji .pr-seans {
+  display: inline-block;
+  padding-top: 10px;
+}
+#reportProdaji .pr-table {
+  display: inline-block;
+  background: white;
+  width: 490px;
+  padding-left: 20px;
+}
+#reportProdaji h3 {
+  font-family: "Arial Обычный", Arial;
+  font-style: normal;
+  font-size: 20px;
+  color: #000000;
+  text-align: center;
+  padding-bottom: 20px;
+}
+#reportProdaji table td:nth-child(1) {
+  width: 290px;
+  text-align: left;
+  padding-left: 10px;
+}
+#reportProdaji table td:nth-child(2) {
+  width: 160px;
+}
+/* /отчеты день / Продажи */
+/* Режим Контакты */
+.kont-container div.kont-search {
+  position: absolute;
+  left: 570px;
+  top: 10px;
+  width: 500px;
+}
+.kont-container div.kont-search input {
+  margin-left: 0px;
+  width: 300px;
+}
+.kont-container div.kont-search div button.clear {
+  position: absolute;
+  top: 0px;
+  left: 333px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-left: none;
+}
+#kont .record-new-date {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  margin-left: 5px;
+  border: 1px solid black;
+  padding: 0 0 0 0;
+  vertical-align: middle;
+}
+#kont .rec-seans-text {
+  text-transform: capitalize;
+}
+#kont .record-button-div {
+  height: 21px;
+  margin-right: 2px;
+  float: right;
+}
+#kont .top-buttons {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#kont .top-buttons span.dt {
+  padding-left: 10px;
+}
+#kont .top-buttons .tomorrow {
+  height: 30px;
+  border: 1px solid #a1a1a1;
+}
+#kont .vsego-nepr {
+  height: 45px;
+}
+#kont .vsego-nepr div {
+  display: inline-block;
+  position: relative;
+  top: 10px;
+}
+#kont .vsego-nepr div.all-count {
+  margin-left: 5px;
+}
+#kont .vsego-nepr div.btn-dob button {
+  line-height: 1;
+  position: relative;
+  top: -1px;
+  margin-left: 20px;
+}
+#kont .vsego-nepr div.m-kont-status-id-label {
+  margin-left: 30px;
+}
+#kont .vsego-nepr div.m-kont-ist-id-label {
+  margin-left: 10px;
+}
+#kont .vsego-nepr div.btn-search button {
+  line-height: 1;
+  width: 100px;
+  position: relative;
+  top: -1px;
+  margin-left: 30px;
+}
+#kont .new-ank-seans {
+  position: fixed;
+  left: 40%;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 301px;
+  background-color: #e4e4e4;
+  border: 1px #787878 solid;
+  z-index: 10;
+}
+#kont .new-ank-seans input {
+  text-transform: capitalize;
+}
+#kont .new-ank-seans .kont-select {
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+#kont .new-ank-seans .kont-select .select-label {
+  display: inline;
+  padding-left: 5px;
+  display: inline-block;
+  width: 49px;
+}
+#kont .new-ank-seans .kont-select .select-value {
+  display: inline;
+  left: 39px;
+  position: relative;
+}
+#kont .new-ank-seans .kont-select .select-value select {
+  width: 165px;
+}
+#kont .new-ank-seans .new-ank-comment .new-ank-label {
+  display: block;
+  float: none;
+}
+#kont .new-ank-seans .new-ank-comment .new-ank-value {
+  display: block;
+  float: none;
+  position: relative;
+  left: 4px;
+}
+#kont .new-ank-seans .new-ank-comment .new-ank-value textarea {
+  width: 261px;
+  height: 70px;
+  text-transform: none;
+}
+#kont .new-ank-seans .new-ank-comment .comment-list {
+  max-height: 200px;
+  width: 261px;
+  overflow-y: scroll;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+  margin-top: 6px;
+  margin-left: 6px;
+}
+#kont .new-ank-seans .new-ank-comment .comment-list table {
+  width: 100%;
+}
+#kont .new-ank-seans .new-ank-comment .comment-list table tr td {
+  border: 1px solid #aaa;
+  padding: 3px;
+  width: 100%;
+}
+#kont .new-ank-seans .new-ank-comment .comment-list table tr:first-child td {
+  border-top: none;
+}
+#kont .new-ank-seans .new-ank-comment .comment-list table tr:last-child td {
+  border-bottom: none;
+}
+#kont .new-ank-label {
+  width: 60px;
+  float: left;
+  padding-left: 5px;
+}
+#kont .new-ank-value {
+  width: 150px;
+  float: right;
+}
+#kont .new-ank-body {
+  float: left;
+  width: 250px;
+}
+#kont .new-ank-save-panel {
+  clear: both;
+  margin: 2px;
+}
+#kont .rec-seans-text {
+  margin: 2px;
+  width: 165px;
+}
+#kont .new-ank-fio {
+  height: 70px;
+}
+#kont .new-ank-phone {
+  height: 25px;
+}
+#kont .new-ank-save-panel {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+#kont .new-ank-save-panel .btnRec {
+  padding: 0px;
+  position: relative;
+  width: 100px;
+  left: 165px;
+}
+#kont .new-ank-close {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  padding: 0px;
+}
+#kont .rec-on-seans {
+  height: 30px;
+}
+#kont .rec-comment {
+  height: 50px;
+}
+#kont .btnSaveChange {
+  float: right;
+  margin-right: 2px;
+}
+#kont .btnCancelChange {
+  margin-left: 2px;
+}
+#kont table tr th {
+  text-align: center;
+}
+#kont .tomorrow {
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: white;
+  width: 100px;
+}
+#kont .errorMessage {
+  color: red;
+  padding-left: 5px;
+}
+#kont .div-pagination {
+  text-align: center;
+}
+#kont .selectedPage {
+  background-color: #eeeeee;
+}
+#kont .kontTable {
+  border: 1px solid #a1a1a1;
+  border-spacing: 0px;
+}
+#kont .kontTable .btn-ne-pr-d-zv-order-by {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  line-height: 16px;
+}
+#kont .kontTable td {
+  border: 1px solid #a1a1a1;
+  border-spacing: 0px;
+  padding: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 0px;
+  vertical-align: inherit;
+  position: relative;
+}
+#kont .kontTable td div.div-border-top,
+#kont .kontTable td div.div-border-right,
+#kont .kontTable td div.div-border-bottom,
+#kont .kontTable td div.div-border-left {
+  position: absolute;
+}
+#kont .kontTable td div.div-border-top {
+  top: 1px;
+  right: 1px;
+  left: 1px;
+  height: 1px;
+}
+#kont .kontTable td div.div-border-right {
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  width: 1px;
+}
+#kont .kontTable td div.div-border-bottom {
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  height: 1px;
+}
+#kont .kontTable td div.div-border-left {
+  top: 1px;
+  bottom: 1px;
+  left: 1px;
+  width: 1px;
+}
+#kont .kontTable td.status-otkaz-color {
+  background-color: #000;
+  color: white;
+}
+#kont .kontTable td.status-perezvon-color {
+  background-color: #f00;
+}
+#kont .kontTable td.status-sroch-color {
+  background-color: #fbff00;
+}
+#kont .kontTable td.status-zn-pozje-color {
+  background-color: #f754e1;
+}
+#kont .kontTable th {
+  margin-top: 10px;
+  border: 1px solid #a1a1a1;
+  border-spacing: 0px;
+  padding: 0px;
+}
+#kont .kontTable th.phone {
+  width: 135px;
+}
+#kont .kontTable th.seans {
+  width: 125px;
+}
+#kont .kontTable th.d-zv {
+  width: 125px;
+}
+#kont td div .buttonField {
+  box-sizing: border-box;
+  display: inline-block;
+  float: right;
+  height: 25px;
+}
+#kont td .textField {
+  box-sizing: border-box;
+  display: inline-block;
+  float: left;
+}
+#kont .buttonField div {
+  display: inline-block;
+}
+#kont .process-a-call-td {
+  position: relative;
+  padding-left: 20px;
+}
+#kont .process-a-call {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 80%;
+  height: 100%;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+#kont .process-a-call div {
+  background: url('Images/ui-anim_basic_16x16.gif') no-repeat left center;
+  padding-left: 20px;
+  line-height: 20px;
+}
+#kont .zapisat-na-seans-ne-pr {
+  position: fixed;
+  background-color: #e4e4e4;
+  width: 280px;
+  border: 1px #787878 solid;
+  left: 40%;
+  top: 50%;
+  transform: translate(0, -50%);
+  padding: 10px;
+}
+#kont .zapisat-na-seans-ne-pr .rec-on-seans input {
+  position: relative;
+  left: 50px;
+}
+#kont .zapisat-na-seans-ne-pr .rec-on-seans select {
+  position: relative;
+  left: 39px;
+  width: 150px;
+}
+#kont .zapisat-na-seans-ne-pr .rec-comment {
+  height: auto;
+  margin-bottom: 10px;
+}
+#kont .zapisat-na-seans-ne-pr .rec-comment textarea {
+  height: 100px;
+  position: relative;
+  left: 3px;
+  width: 150px;
+}
+#kont .zapisat-na-seans-ne-pr .comment-list {
+  max-height: 200px;
+  width: 273px;
+  overflow-y: scroll;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+  margin-top: 6px;
+  margin-left: 2px;
+  width: 244px;
+}
+#kont .zapisat-na-seans-ne-pr .comment-list table {
+  width: 100%;
+}
+#kont .zapisat-na-seans-ne-pr .comment-list table tr td {
+  border: 1px solid #aaa;
+  padding: 3px;
+  width: 100%;
+}
+#kont .zapisat-na-seans-ne-pr .comment-list table tr:first-child td {
+  border-top: none;
+}
+#kont .zapisat-na-seans-ne-pr .comment-list table tr:last-child td {
+  border-bottom: none;
+}
+#kont .zapisat-na-seans-ne-pr .rec-change-buttons {
+  margin-top: 10px;
+}
+#kont .zapisat-na-seans-ne-pr .rec-change-buttons .btnSaveChange {
+  float: none;
+  margin-left: 74px;
+}
+#kont td.td-hover:hover {
+  cursor: pointer;
+}
+#kontBodyDiv {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+/* /Режим Контакты */
+/* Контакта - Статистика */
+#kontStatReport .filter {
+  height: 50px;
+  padding-top: 10px;
+}
+#kontStatReport .filter > div {
+  display: inline-block;
+  margin-left: 10px;
+}
+#kontStatReport .report {
+  padding-left: 10px;
+  padding-top: 10px;
+  background: #fff;
+}
+#kontStatReport .report .table-1 {
+  background-color: #fff;
+  width: auto;
+}
+#kontStatReport .report .table-1 thead,
+#kontStatReport .report .table-1 th:first-child,
+#kontStatReport .report .table-1 td:first-child {
+  background-color: #f2f5f2;
+}
+#kontStatReport .report .table-1 th {
+  border-bottom-color: black;
+}
+#kontStatReport .report .table-1 td,
+#kontStatReport .report .table-1 th {
+  width: 1%;
+  white-space: nowrap;
+}
+#kontStatReport .report .table-1 td:last-child,
+#kontStatReport .report .table-1 th:last-child {
+  width: auto;
+  visibility: hidden;
+}
+#kontStatReport .report .table-1 .bold-row td {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+#kontStatReport .report .table-1 .bold-row td:last-child {
+  border: none;
+}
+/* /контакта - статистика */
+/* Отчет Статистика */
+#reportStatistic {
+  margin-top: 10px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#reportStatistic table {
+  text-align: center;
+  margin-top: 30px;
+}
+/* /отчет Статистика*/
+/* Отчет Специалисты */
+#reportSpecialists {
+  margin-top: 10px;
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#reportSpecialists table td {
+  height: 35px;
+  text-align: center;
+  border: 1px solid black;
+}
+#reportSpecialists table th {
+  height: 40px;
+  text-align: center;
+  border: 1px solid black;
+}
+#reportSpecialists table tfoot tr td {
+  font-weight: bold;
+}
+#reportSpecialists tr:nth-child(2n) {
+  background-color: #e4e4e4;
+}
+#reportSpecialists .fioHeader {
+  width: 300px;
+}
+#reportSpecialists .friendsHeader {
+  width: 75px;
+}
+#reportSpecialists .anketsHeader {
+  width: 75px;
+}
+#reportSpecialists .dialogHeader {
+  width: 75px;
+}
+#reportSpecialists .kontactsHeader {
+  width: 75px;
+}
+#reportSpecialists .cameHeaders {
+  width: 75px;
+}
+#reportSpecialists .notCameHeader {
+  width: 75px;
+}
+#reportSpecialists .percentHeader {
+  width: 75px;
+}
+#reportSpecialists .buyHeader {
+  width: 75px;
+}
+#reportSpecialists .callHeader {
+  width: 75px;
+}
+/* /отчет Специалисты */
+/* Отчет Заболевания*/
+#reportZabol {
+  margin-top: 10px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#reportZabol table {
+  width: 500px;
+}
+/* /отчет Заболевания*/
+/* Отчет Источники*/
+#reportIst {
+  margin-top: 10px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#reportIst table {
+  width: 500px;
+}
+/* /отчет источники*/
+/* Отчет Дни рождения*/
+#reportBirthday {
+  margin-top: 10px;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#reportBirthday table {
+  width: 800px;
+}
+#reportBirthday svg {
+  height: 20px;
+  width: 20px;
+}
+#reportBirthday .callButton:hover {
+  cursor: pointer;
+}
+/* /отчет дни рождения*/
+/* Общее для многострочных полей*/
+textarea {
+  resize: none;
+}
+/* Друзья */
+#druzya option:hover {
+  background: silver;
+  color: #ffe;
+}
+#druzya hr {
+  margin-top: 10px;
+  border: 1px;
+  border-top: 1px solid #999999;
+  width: 400px;
+  margin-bottom: 2px;
+  padding-top: 5px;
+}
+#druzya input {
+  margin-left: 0px;
+}
+/*Блок слева*/
+#druzya .left-block {
+  vertical-align: top;
+  padding-top: 10px;
+  display: inline-block;
+}
+#druzya .left-block-2 {
+  border-right: 1px solid #999999;
+  display: inline-block;
+  width: 130px;
+  height: 360px;
+  margin-left: 270px;
+}
+#druzya .left-block-caption {
+  color: #169BD5;
+  font-family: Arial;
+  font-size: 13px;
+}
+#druzya .caption-1 {
+  padding-left: 50px;
+}
+#druzya .caption-2 {
+  padding-left: 5px;
+}
+#druzya .caption-3 {
+  padding-left: 23px;
+}
+#druzya .left-bl-1 {
+  height: 120px;
+}
+#druzya .left-bl-2 {
+  height: 85px;
+}
+#druzya .left-bl-3 {
+  height: 200px;
+}
+/*Блок справа*/
+#druzya .right-block-common {
+  display: inline-block;
+  width: 400px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+#druzya .right-block-1 {
+  display: inline-block;
+  width: 500px;
+  position: relative;
+  height: 10px;
+}
+#druzya .right-block-1-1 {
+  color: #000000;
+  font-size: 16px;
+  font-family: Arial;
+}
+#druzya .right-block-1-2 {
+  width: 118px;
+  height: 23px;
+  margin-left: 90px;
+}
+#druzya .right-block-recommend {
+  display: inline-block;
+  width: 500px;
+  height: 50px;
+}
+#druzya .friend-select {
+  position: absolute;
+  right: 100px;
+}
+#druzya .right-block-active {
+  display: inline-block;
+  height: 25px;
+}
+#druzya .right-block-button-1 {
+  width: 55px;
+  height: 25px;
+  box-shadow: 1px 1px gray;
+}
+#druzya .right-block-fio {
+  height: 35px;
+  width: 131px;
+}
+#druzya .right-block-phone {
+  height: 35px;
+  margin-top: 5px;
+  width: 131px;
+}
+#druzya .activ-1 {
+  position: relative;
+  top: 6px;
+}
+#druzya .right-block-date-common {
+  display: inline-block;
+  height: 45px;
+  width: 500px;
+  padding-top: 10px;
+}
+#druzya .right-block-date {
+  height: 20px;
+  width: 140px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#druzya .right-block-button-2 {
+  width: 45px;
+  height: 25px;
+  box-shadow: 1px 1px gray;
+}
+#druzya .right-block-button-com {
+  display: inline-block;
+}
+#druzya .right-block-count-2 {
+  padding-left: 8px;
+}
+#druzya .right-block-color {
+  background-color: #00FF00;
+}
+#druzya .right-block-prigl-memo {
+  font-size: 14px;
+  width: 400px;
+  height: 65px;
+}
+#druzya .right-block-priglashen {
+  display: inline-block;
+  height: 30px;
+}
+#druzya .priglashen {
+  border: 1px solid black;
+  width: 450px;
+  height: 80px;
+  background: white;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+/* /друзья */
+/* Учет Зарплаты */
+#uchetZarpl .zp-date {
+  height: 20px;
+  width: 140px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#uchetZarpl .zp-date-common {
+  margin-bottom: 10px;
+}
+#uchetZarpl {
+  padding-bottom: 40px;
+}
+#uchetZarpl .zp_table {
+  border-collapse: collapse;
+  border: 1px solid black;
+  width: 1100px;
+  background: white;
+}
+#uchetZarpl td {
+  border: 1px solid black;
+  height: 30px;
+}
+#uchetZarpl .zp-block-common {
+  display: inline-block;
+  margin-left: 100px;
+  margin-top: 50px;
+}
+#uchetZarpl .zp-bl-zarp {
+  margin-top: 40px;
+  margin-left: 800px;
+  display: inline-block;
+}
+#uchetZarpl .zp-button {
+  border-radius: 5px;
+  background: white;
+  border: 2px solid #00FF00;
+  left: 153px;
+  margin-top: 20px;
+  display: inline-block;
+}
+#uchetZarpl .zp-button-save {
+  border-radius: 5px;
+  background: white;
+  border: 2px solid #0099ff;
+  margin-left: 153px;
+  margin-top: 20px;
+  display: inline-block;
+}
+#uchetZarpl .zp-button-new {
+  border-radius: 5px;
+  background: white;
+  border: 2px solid #0099ff;
+  /*margin-left: 119px;*/
+  margin-top: 20px;
+  display: inline-block;
+  width: 110px;
+}
+#uchetZarpl .zp-buttons {
+  margin-left: 713px;
+}
+#uchetZarpl .zp-input {
+  width: 65px;
+}
+#uchetZarpl .div-pagination {
+  position: relative;
+  left: 420px;
+}
+/* /учет зарплаты */
+/* Учет - Приход на склад */
+#uchetSkladPr {
+  position: relative;
+  height: 500px;
+  padding-left: 280px;
+  padding-top: 20px;
+}
+#uchetSkladPr .d-schet input {
+  width: 150px;
+}
+#uchetSkladPr .n-schet {
+  margin-top: 15px;
+}
+#uchetSkladPr .n-schet input {
+  margin-left: 50px;
+  width: 150px;
+}
+#uchetSkladPr .o-sklad-pr-product {
+  position: absolute;
+  top: 15px;
+  left: 560px;
+}
+#uchetSkladPr .o-sklad-pr-product table {
+  width: 560px;
+  table-layout: fixed;
+}
+#uchetSkladPr .o-sklad-pr-product table th,
+#uchetSkladPr .o-sklad-pr-product table td {
+  border: 1px solid #a29898;
+  text-align: center;
+  vertical-align: middle;
+}
+#uchetSkladPr .o-sklad-pr-product table select,
+#uchetSkladPr .o-sklad-pr-product table input {
+  margin-left: 0px;
+}
+#uchetSkladPr .o-sklad-pr-product tr td {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#uchetSkladPr .o-sklad-pr-product table th {
+  text-align: center;
+}
+#uchetSkladPr .o-sklad-pr-product table th:nth-child(1) {
+  width: 40px;
+}
+#uchetSkladPr .o-sklad-pr-product table th:nth-child(2) {
+  width: 300px;
+}
+#uchetSkladPr .o-sklad-pr-product table th:nth-child(3) {
+  width: 80px;
+}
+#uchetSkladPr .o-sklad-pr-product table th:nth-child(4) {
+  width: 140px;
+}
+#uchetSkladPr .o-sklad-pr-product table .select-product {
+  width: 280px;
+}
+#uchetSkladPr .o-sklad-pr-product table .input-kolvo {
+  width: 60px;
+}
+#uchetSkladPr .o-sklad-pr-product table .input-cost {
+  width: 120px;
+}
+#uchetSkladPr .btn-save {
+  position: absolute;
+  top: 400px;
+  left: 960px;
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+  width: 150px;
+  background-color: white;
+}
+#uchetSkladPr .btn-zapis {
+  position: absolute;
+  top: 450px;
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+  width: 110px;
+  background-color: white;
+}
+#uchetSkladPr .div-pagination {
+  position: absolute;
+  top: 425px;
+  left: 420px;
+}
+#uchetSkladPr .null-product-error {
+  color: red;
+}
+/* /учет - приход на склад */
+/* учет - склад */
+#uchetSklad .uchet-sklad-table table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+#uchetSklad .uchet-sklad-table tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 21px;
+}
+#uchetSklad .uchet-sklad-table td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+#uchetSklad .uchet-sklad-table th {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+#uchetSklad .sklad-block {
+  margin-left: 245px;
+}
+#uchetSklad .sklad-data-block {
+  margin-top: 25px;
+  padding-bottom: 15px;
+}
+#uchetSklad .sklad-pr {
+  margin-top: 25px;
+}
+#uchetSklad .sklad-date {
+  margin-left: 15px;
+  width: 130px;
+}
+#uchetSklad .sklad-span {
+  margin-left: 15px;
+}
+#uchetSklad .sklad-button {
+  margin-left: 15px;
+}
+#uchetSklad .uchet-sklad-container {
+  overflow: auto;
+  height: 400px;
+  width: 770px;
+}
+/* /учет - склад */
+/* Учет - Продажа */
+#uchetSkladRas {
+  position: relative;
+  padding-left: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+#uchetSkladRas .d-schet input {
+  width: 140px;
+}
+#uchetSkladRas .n-schet {
+  margin-top: 10px;
+}
+#uchetSkladRas .n-schet input {
+  margin-left: 49px;
+  width: 140px;
+}
+#uchetSkladRas .input-block {
+  height: 240px;
+  position: relative;
+}
+#uchetSkladRas .vertical-line1 {
+  position: absolute;
+  top: 0px;
+  left: 235px;
+  width: 2px;
+  height: 205px;
+  background-color: #a1a1a1;
+}
+#uchetSkladRas .dob-zv-label {
+  position: absolute;
+  font-size: 16px;
+  color: #0099ff;
+  left: 100px;
+  top: 80px;
+}
+#uchetSkladRas .data-label {
+  position: absolute;
+  left: 194px;
+  top: 171px;
+}
+#uchetSkladRas .fio {
+  position: absolute;
+  left: 250px;
+  top: 0px;
+}
+#uchetSkladRas .fio input:first-child {
+  margin-left: 0px;
+}
+#uchetSkladRas .fio input {
+  width: 140px;
+}
+#uchetSkladRas .fio .fio-surname {
+  text-transform: capitalize;
+}
+#uchetSkladRas .fio .fio-name {
+  text-transform: capitalize;
+}
+#uchetSkladRas .fio .fio-secname {
+  text-transform: capitalize;
+}
+#uchetSkladRas .street {
+  position: absolute;
+  left: 250px;
+  top: 25px;
+}
+#uchetSkladRas .street textarea {
+  width: 230px;
+}
+#uchetSkladRas .semya {
+  position: absolute;
+  top: 210px;
+  left: 50px;
+}
+#uchetSkladRas .semya-vsego {
+  width: 50px;
+}
+#uchetSkladRas .hodit {
+  width: 50px;
+}
+#uchetSkladRas .phone-mobile {
+  position: absolute;
+  top: 30px;
+  left: 486px;
+}
+#uchetSkladRas .phone-mobile input {
+  width: 140px;
+}
+#uchetSkladRas .uvedoml {
+  position: absolute;
+  width: 720px;
+  height: 115px;
+  top: 80px;
+  left: 250px;
+}
+#uchetSkladRas .uvedoml input,
+#uchetSkladRas .uvedoml select {
+  margin: 0px;
+  padding: 0px;
+}
+#uchetSkladRas .uvedoml .vid-sob {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 150px;
+}
+#uchetSkladRas .uvedoml .d-sob {
+  position: absolute;
+  left: 180px;
+  top: 0px;
+  width: 200px;
+}
+#uchetSkladRas .uvedoml .d-sob input {
+  margin-left: 10px;
+}
+#uchetSkladRas .uvedoml .comment {
+  position: absolute;
+  top: 30px;
+  left: 0px;
+  width: 702px;
+}
+#uchetSkladRas .uvedoml .d-sob-group {
+  position: absolute;
+  top: 90px;
+  left: 0px;
+}
+#uchetSkladRas .uvedoml .d-sob-group div {
+  display: inline-block;
+}
+#uchetSkladRas .uvedoml .d-sob-group div input {
+  width: 140px;
+  height: 22px;
+  position: relative;
+}
+#uchetSkladRas .uvedoml .d-sob-group div span {
+  display: inline-block;
+  border: 1px solid #a9a9a9;
+  width: 30px;
+  text-align: center;
+  background-color: white;
+  position: relative;
+  left: -5px;
+  z-index: 1;
+  font-weight: bold;
+}
+#uchetSkladRas .s-user-id {
+  display: inline-block;
+  margin-left: 410px;
+}
+#uchetSkladRas .s-user-id select {
+  margin-left: 14px;
+  width: 260px;
+}
+#uchetSkladRas .o-sklad-ras-product {
+  margin-top: 10px;
+  position: relative;
+}
+#uchetSkladRas .btn-save {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+  width: 110px;
+  background-color: white;
+  margin-left: 25px;
+}
+#uchetSkladRas .btn-zapis {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+  width: 110px;
+  background-color: white;
+}
+#uchetSkladRas .btn-udalit {
+  margin-left: 25px;
+}
+#uchetSkladRas .div-btn-zapis {
+  position: absolute;
+  display: inline-block;
+  vertical-align: top;
+  top: 20px;
+}
+#uchetSkladRas .div-pagination {
+  position: relative;
+  top: 0px;
+  display: block;
+  margin: 0 auto;
+  width: 630px;
+  left: 80px;
+}
+#uchetSkladRas .o-sklad-ras-product table {
+  table-layout: fixed;
+  width: auto;
+}
+#uchetSkladRas .o-sklad-ras-product table th {
+  text-align: center;
+  width: 1%;
+}
+#uchetSkladRas .o-sklad-ras-product table th.hidden-col {
+  visibility: hidden;
+  width: auto;
+}
+#uchetSkladRas .o-sklad-ras-product table td {
+  text-align: center;
+  width: 1%;
+  white-space: nowrap;
+}
+#uchetSkladRas .o-sklad-ras-product table td.hidden-col {
+  visibility: hidden;
+  width: auto;
+}
+#uchetSkladRas .o-sklad-ras-product table.table-prod > thead tr > th:nth-child(1) {
+  border: none;
+  background-color: transparent;
+}
+#uchetSkladRas .o-sklad-ras-product table.table-prod > tbody > tr > td:nth-child(1) {
+  border: none;
+  background-color: transparent;
+}
+#uchetSkladRas .o-sklad-ras-product table tr td:nth-child(2) select {
+  width: 240px;
+  margin-left: 0px;
+}
+#uchetSkladRas .o-sklad-ras-product table tr td:nth-child(3) input {
+  width: 50px;
+}
+#uchetSkladRas .o-sklad-ras-product table tr td:nth-child(4) input {
+  width: 80px;
+}
+#uchetSkladRas .o-sklad-ras-product table tr td:nth-child(5) input {
+  width: 60px;
+}
+#uchetSkladRas .o-sklad-ras-product table tr td:nth-child(6) input {
+  width: 80px;
+}
+#uchetSkladRas .o-sklad-ras-product table tr td:nth-child(7) input {
+  width: 15px;
+}
+#uchetSkladRas .o-sklad-ras-product table tr td:nth-child(8) input {
+  width: 80px;
+}
+#uchetSkladRas .o-sklad-ras-product table tr td:nth-child(9) input {
+  width: 100px;
+}
+#uchetSkladRas .o-sklad-ras-product table tr td:nth-child(10) input {
+  width: 15px;
+}
+#uchetSkladRas .o-sklad-ras-product table tr td:nth-child(11) input {
+  width: 140px;
+}
+#uchetSkladRas .o-sklad-ras-product table tr td:nth-child(12) input {
+  width: 140px;
+}
+#uchetSkladRas .o-sklad-ras-product table tr td:nth-child(13) input {
+  width: 70px;
+}
+#uchetSkladRas .btn-kass-order {
+  background: url('img/u57.png') no-repeat left center;
+  border: 0px;
+  padding-left: 20px;
+}
+#uchetSkladRas .btn-fakt-ost-sklad {
+  background: url('img/u57.png') no-repeat left center;
+  border: 0px;
+  padding-left: 20px;
+}
+#uchetSkladRas .btn-kass-order:hover {
+  text-decoration: underline;
+}
+#uchetSkladRas .dt-1 {
+  display: inline-block;
+}
+#uchetSkladRas .dt-1 input {
+  margin-left: 19px;
+}
+#uchetSkladRas .div-btn-kass-order {
+  display: inline-block;
+  margin-left: 20px;
+}
+#uchetSkladRas .div-btn-fakt-ost-sklad {
+  display: inline-block;
+  margin-left: 20px;
+}
+#uchetSkladRas .dt-2 {
+  margin-top: 10px;
+  display: inline-block;
+}
+#uchetSkladRas .null-product-error {
+  color: red;
+  margin-bottom: 20px;
+}
+#uchetSkladRas .bottom-1 {
+  position: relative;
+}
+#uchetSkladRas .btn-chast-oplat {
+  width: 20px;
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  border: 0px solid white;
+  background-color: transparent;
+  top: 0px;
+  position: relative;
+  transform: rotate(90deg);
+}
+#uchetSkladRas .td-relative {
+  position: relative;
+}
+#uchetSkladRas .td-relative span.stub-for-button {
+  display: inline-block;
+  width: 30px;
+}
+#uchetSkladRas .table-chast-opl {
+  position: absolute;
+  top: 30px;
+  left: 50px;
+  z-index: 5;
+  box-shadow: 3px 3px 12px 2px;
+  background-color: white;
+}
+#uchetSkladRas .table-chast-opl .priost-abon-container-1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#uchetSkladRas .table-chast-opl .priost-abon-s {
+  padding-right: 10px;
+}
+#uchetSkladRas .table-chast-opl .priost-abon-po {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#uchetSkladRas .table-prod input {
+  margin-left: 0px;
+}
+#uchetSkladRas .table-chast-opl th,
+#uchetSkladRas .table-chast-opl td {
+  border: 1px solid black;
+}
+#uchetSkladRas .table-chast-opl table {
+  table-layout: fixed;
+  width: 690px;
+  margin: 0px;
+}
+#uchetSkladRas .table-chast-opl table tr th:nth-child(1) {
+  width: 60px;
+}
+#uchetSkladRas .table-chast-opl table tr th:nth-child(2) {
+  width: 140px;
+}
+#uchetSkladRas .table-chast-opl table tr th:nth-child(3) {
+  width: 160px;
+}
+#uchetSkladRas .table-chast-opl table tr th:nth-child(4) {
+  width: 170px;
+}
+#uchetSkladRas .table-chast-opl table tr th:nth-child(5) {
+  width: 170px;
+}
+#uchetSkladRas .table-chast-opl table tr td input,
+#uchetSkladRas .table-chast-opl table tr td select {
+  margin: 0px;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0px;
+}
+#uchetSkladRas .table-chast-opl table tr td:nth-child(2) input {
+  width: 120px;
+}
+#uchetSkladRas .table-chast-opl table tr td:nth-child(3) input {
+  width: 140px;
+}
+#uchetSkladRas .table-chast-opl table tr td:nth-child(4) select {
+  width: 150px;
+}
+#uchetSkladRas .table-chast-opl table tr td:nth-child(5) input {
+  width: 150px;
+}
+#uchetSkladRas .table-prod > thead th {
+  border: 1px solid black;
+}
+#uchetSkladRas .table-prod > tbody td {
+  border: 1px solid black;
+  padding-left: 13px;
+  padding-right: 13px;
+}
+#uchetSkladRas .btn-add-prod {
+  position: absolute;
+  bottom: 11px;
+  z-index: 5;
+}
+#uchetSkladRas .btn-add-opl {
+  position: absolute;
+  z-index: 5;
+  left: 17px;
+}
+#uchetSkladRas .btn-add-opl.ne-abon {
+  bottom: 4px;
+}
+#uchetSkladRas .btn-add-opl.abon {
+  bottom: 44px;
+}
+#uchetSkladRas .table-chast-opl .close-button-wrap {
+  text-align: right;
+  border: 1px solid black;
+  border-bottom: none;
+}
+#uchetSkladRas .table-chast-opl .close-button {
+  padding: 0px 7px;
+  border: 1px solid gray;
+  border-radius: 4px;
+  margin: 3px 0;
+  display: inline-block;
+  font-weight: bold;
+  margin-right: 1px;
+}
+#uchetSkladRas .table-chast-opl .close-button:hover + span {
+  text-decoration: underline;
+}
+#uchetSkladRas .table-chast-opl .close-button:hover {
+  cursor: pointer;
+}
+#uchetSkladRas .table-chast-opl .close-button + span:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#uchetSkladRas .div-btn-propl-za-per {
+  display: inline-block;
+  margin-left: 20px;
+}
+#uchetSkladRas .btn-propl-za-per {
+  background: url('img/u57.png') no-repeat left center;
+  border: 0px;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+#uchetSkladRas .btn-propl-za-per:hover {
+  text-decoration: underline;
+}
+#uchetSkladRas .btn-vopros {
+  margin-left: 10px;
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+  background-color: white;
+}
+#uchetSkladRas .span-hodit {
+  margin-left: 10px;
+}
+#uchetSkladRas .table-phone-call {
+  position: absolute;
+  top: -4px;
+  left: 200px;
+}
+#uchetSkladRas .btn-call {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+  background-color: white;
+}
+#uchetSkladRas .process-a-call-td {
+  position: relative;
+  padding-left: 20px;
+  width: 200px;
+}
+#uchetSkladRas .process-a-call {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 21px;
+  margin-top: 4px;
+  margin-left: 20px;
+}
+#uchetSkladRas .process-a-call div {
+  background: url('Images/ui-anim_basic_16x16.gif') no-repeat left center;
+  padding-left: 20px;
+  line-height: 20px;
+}
+/* /учет - Продажа */
+/* Учет - Расходные документы*/
+#uchetRasDocDivRight,
+#uchetRasDocDivLeft {
+  display: inline-block;
+  vertical-align: top;
+}
+#uchetSkladRasDoc .left-block {
+  margin-left: 208px;
+}
+#uchetSkladRasDoc .rashod-stat-id {
+  padding-top: 15px;
+}
+#uchetSkladRasDoc .uchet-ras-doc-row {
+  margin-top: 10px;
+}
+#uchetSkladRasDoc textarea {
+  width: 330px;
+}
+#uchetSkladRasDoc input {
+  width: 170px;
+}
+#uchetSkladRasDoc select {
+  width: 170px;
+}
+#uchetSkladRasDoc .n-schet {
+  margin-left: 68px;
+}
+#uchetSkladRasDoc .d-schet {
+  margin-left: 81px;
+}
+#uchetSkladRasDoc .postav-name {
+  margin-left: 40px;
+}
+#uchetSkladRasDoc .rek {
+  margin-left: 45px;
+}
+#uchetSkladRasDoc .cost {
+  margin-left: 78px;
+}
+#uchetSkladRasDoc .kolvo {
+  margin-left: 37px;
+}
+#uchetSkladRasDoc .summa {
+  margin-left: 67px;
+}
+#uchetSkladRasDoc .right-block {
+  margin-left: 50px;
+}
+#uchetSkladRasDoc .header-text {
+  color: #00C8F5;
+}
+#uchetSkladRasDoc .uchet-ras-doc-header {
+  padding-top: 15px;
+}
+#uchetSkladRasDoc .s-user-id {
+  width: 270px;
+  margin-left: 27px;
+}
+#uchetSkladRasDoc .motiv {
+  margin-left: 54px;
+}
+#uchetSkladRasDoc .summa_vid {
+  margin-left: 50px;
+}
+#uchetSkladRasDoc .vozvr {
+  margin-left: 43px;
+}
+#uchetSkladRasDoc .button-block {
+  margin-top: 10px;
+  margin-left: 208px;
+}
+#uchetSkladRasDoc .div-pagination {
+  margin-left: 208px;
+}
+#uchetSkladRasDoc .btn-save {
+  margin-left: 675px;
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+  width: 150px;
+  background-color: white;
+}
+#uchetSkladRasDoc .btn-zapis {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+  width: 110px;
+  background-color: white;
+}
+/* /Учет - Расходные документы*/
+/* Учет - Отчеты - Список покупателей*/
+#uchetReportsSpisPokup .spis-pokup-div {
+  margin-left: 40px;
+  padding-top: 5px;
+  position: relative;
+}
+#uchetReportsSpisPokup .spis-pokup-div span.filter-ostalos-dn-abon-ot-span {
+  margin-left: 10px;
+}
+#uchetReportsSpisPokup .spis-pokup-div input.filter-ostalos-dn-abon-ot {
+  width: 50px;
+}
+#uchetReportsSpisPokup .spis-pokup-div input.filter-ostalos-dn-abon-do {
+  width: 50px;
+}
+#uchetReportsSpisPokup .spis-pokup-div button.spis-pokup-button-apply {
+  margin-left: 20px;
+}
+#uchetReportsSpisPokup .spis-pokup-div button.spis-pokup-button-print {
+  position: absolute;
+}
+#uchetReportsSpisPokup .spis-pokup-div button.spis-pokup-button-clear-filter {
+  border: none;
+}
+#uchetReportsSpisPokup .spis-pokup-header {
+  margin-top: 10px;
+  margin-left: 380px;
+}
+#uchetReportsSpisPokup .spis-pokup-div-table {
+  margin-top: 10px;
+  overflow: auto;
+  padding-bottom: 10px;
+}
+#uchetReportsSpisPokup .spis-pokup-div-table table {
+  width: auto;
+}
+#uchetReportsSpisPokup .spis-pokup-div-table table td {
+  width: 1%;
+  white-space: nowrap;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#uchetReportsSpisPokup .spis-pokup-div-table table td.empty-header,
+#uchetReportsSpisPokup .spis-pokup-div-table table td.empty-body {
+  width: auto;
+  visibility: hidden;
+}
+#uchetReportsSpisPokup .spis-pokup-div-table table td.vip {
+  color: #f1cc0d;
+}
+#uchetReportsSpisPokup .span-dt-from {
+  margin-left: 10px;
+}
+#uchetReportsSpisPokup .date-dt-from,
+#uchetReportsSpisPokup .date-dt-to {
+  width: 130px;
+}
+#uchetReportsSpisPokup table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 0 0 0 0;
+  word-wrap: break-word;
+}
+#uchetReportsSpisPokup tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+#uchetReportsSpisPokup td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 21px;
+}
+#uchetReportsSpisPokup .call-action-border {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+#uchetReportsSpisPokup .info1 {
+  width: 240px;
+}
+#uchetReportsSpisPokup .info2 {
+  width: 80px;
+}
+#uchetReportsSpisPokup .info3 {
+  width: 250px;
+}
+#uchetReportsSpisPokup .info4 {
+  width: 200px;
+}
+#uchetReportsSpisPokup .info5 {
+  width: 120px;
+}
+#uchetReportsSpisPokup .info6 {
+  width: 120px;
+}
+#uchetReportsSpisPokup .hover-cursor-underline:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#uchetReportsSpisPokup button {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+}
+#uchetReportsSpisPokup .process-a-call-td {
+  position: relative;
+}
+#uchetReportsSpisPokup .process-a-call-td a {
+  color: #007EFF;
+  font-weight: bold;
+  text-decoration: underline;
+}
+#uchetReportsSpisPokup .process-a-call {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#uchetReportsSpisPokup .process-a-call div {
+  background: url('Images/ui-anim_basic_16x16.gif') no-repeat left center;
+  padding-left: 20px;
+  line-height: 20px;
+}
+#uchetReportsSpisPokup .div-pagination nav {
+  text-align: center;
+}
+#uchetReportsSpisPokup .div-pagination nav ul {
+  margin: 0px;
+}
+/* /Учет - Отчеты - Список покупателей*/
+/* Учет - Отчеты - Дебиторская задолженность*/
+#uchetReportsDebetZadol .debet-zadol-div {
+  margin-left: 120px;
+  height: 480px;
+}
+#uchetReportsDebetZadol .debet-zadol-div-table {
+  margin-top: 10px;
+  overflow: auto;
+  height: 400px;
+  width: 980px;
+}
+#uchetReportsDebetZadol .debet-zadol-first-row {
+  margin-top: 20px;
+}
+#uchetReportsDebetZadol .span-dt-from {
+  margin-left: 120px;
+}
+#uchetReportsDebetZadol .info1 {
+  width: 245px;
+}
+#uchetReportsDebetZadol .info2 {
+  width: 265px;
+}
+#uchetReportsDebetZadol .info3 {
+  width: 130px;
+}
+#uchetReportsDebetZadol .info4 {
+  width: 200px;
+}
+#uchetReportsDebetZadol .info5 {
+  width: 140px;
+}
+#uchetReportsDebetZadol table {
+  word-wrap: break-word;
+}
+#uchetReportsDebetZadol tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px 0;
+}
+#uchetReportsDebetZadol td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 21px;
+  /*padding-bottom: 10px;*/
+}
+#uchetReportsDebetZadol .debet-zadol-table-itog {
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+#uchetReportsDebetZadol .debet-zadol-space {
+  border: none;
+}
+#uchetReportsDebetZadol button {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+}
+#uchetReportsDebetZadol .hover-cursor-underline:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#uchetReportsDebetZadol .process-a-call-td {
+  position: relative;
+}
+#uchetReportsDebetZadol .process-a-call {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#uchetReportsDebetZadol .process-a-call div {
+  background: url('Images/ui-anim_basic_16x16.gif') no-repeat left center;
+  padding-left: 20px;
+  line-height: 20px;
+}
+/* /учет - отчеты - дебиторская задолженность*/
+/* Учет - Отчеты - Отчет о доходах*/
+#uchetReportsOtchetDohod .otchet-dohod-div {
+  margin-left: 120px;
+}
+#uchetReportsOtchetDohod .otchet-dohod-div-table {
+  overflow: auto;
+  height: 350px;
+  width: 998px;
+  margin-top: 10px;
+}
+#uchetReportsOtchetDohod .otchet-dohod-print-button {
+  margin-left: 35px;
+}
+#uchetReportsOtchetDohod .span-dt-from {
+  margin-left: 120px;
+}
+#uchetReportsOtchetDohod .info1 {
+  width: 245px;
+}
+#uchetReportsOtchetDohod .info2 {
+  width: 265px;
+}
+#uchetReportsOtchetDohod .info3 {
+  width: 130px;
+}
+#uchetReportsOtchetDohod .info4 {
+  width: 200px;
+}
+#uchetReportsOtchetDohod .info5 {
+  width: 140px;
+}
+#uchetReportsOtchetDohod table {
+  word-wrap: break-word;
+  width: 980px;
+}
+#uchetReportsOtchetDohod tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px 0;
+}
+#uchetReportsOtchetDohod td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+  width: 16.66%;
+  height: 21px;
+}
+#uchetReportsOtchetDohod .orange-text {
+  color: #FF6600;
+}
+#uchetReportsOtchetDohod button {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+}
+#uchetReportsOtchetDohod .hover-cursor-underline:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#uchetReportsOtchetDohod .otchet-dohod-rashod-button {
+  margin-top: 10px;
+}
+/* /Учет - Отчеты - Отчет о доходах*/
+/*multiselect*/
+multiselect {
+  display: block;
+}
+multiselect .btn {
+  width: 100%;
+  background-color: #FFF;
+}
+multiselect .btn.error {
+  border: 1px solid #da4f49 !important;
+}
+multiselect .dropdown-menu {
+  max-height: 300px;
+  overflow-y: auto;
+}
+multiselect .dropdown-menu {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2px;
+}
+multiselect .dropdown-menu > li > a {
+  padding: 3px 10px;
+  cursor: pointer;
+}
+/*/multiselect*/
+/* Учёт - Отчёты - Отчёт за период */
+#uchetReportsOtchetZaPer {
+  position: relative;
+}
+#uchetReportsOtchetZaPer .container-1 {
+  width: 1000px;
+  height: 550px;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+#uchetReportsOtchetZaPer table {
+  table-layout: fixed;
+  margin-top: 10px;
+}
+#uchetReportsOtchetZaPer table tr td {
+  padding: 0px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 20px;
+  border: 1px solid black;
+}
+#uchetReportsOtchetZaPer table tr th {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+}
+#uchetReportsOtchetZaPer table tr th:nth-child(1) {
+  width: 30px;
+}
+#uchetReportsOtchetZaPer table tr th:nth-child(2) {
+  width: 80px;
+}
+#uchetReportsOtchetZaPer table tr th:nth-child(3) {
+  width: 80px;
+}
+#uchetReportsOtchetZaPer table tr th:nth-child(4) {
+  width: 80px;
+}
+#uchetReportsOtchetZaPer table tr th:nth-child(5) {
+  width: 80px;
+}
+#uchetReportsOtchetZaPer table tr th:nth-child(6) {
+  width: 80px;
+}
+#uchetReportsOtchetZaPer table tr th:nth-child(7) {
+  width: 80px;
+}
+#uchetReportsOtchetZaPer table tr th:nth-child(8) {
+  width: 80px;
+}
+#uchetReportsOtchetZaPer table tr th:nth-child(9) {
+  visibility: hidden;
+}
+#uchetReportsOtchetZaPer table tr td:nth-child(9) {
+  visibility: hidden;
+}
+#uchetReportsOtchetZaPer table tr:nth-child(14) {
+  visibility: hidden;
+}
+#uchetReportsOtchetZaPer > div:nth-child(2) {
+  position: absolute;
+  top: 0px;
+  left: 611px;
+}
+/* учёт - отчёты - отчёт за период */
+/* Учёт - Отчёты - Фильтр товаров */
+#uchetReportsFilterTovarov {
+  padding-top: 10px;
+}
+#uchetReportsFilterTovarov .multiselect-specialist {
+  width: 300px;
+  display: inline-block;
+}
+#uchetReportsFilterTovarov .multiselect-tovar {
+  width: 200px;
+  display: inline-block;
+}
+#uchetReportsFilterTovarov .div-pagination {
+  text-align: center;
+}
+#uchetReportsFilterTovarov .process-a-call-td {
+  position: relative;
+}
+#uchetReportsFilterTovarov .process-a-call {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#uchetReportsFilterTovarov .process-a-call div {
+  background: url('Images/ui-anim_basic_16x16.gif') no-repeat left center;
+  padding-left: 20px;
+  line-height: 20px;
+}
+#uchetReportsFilterTovarov .filter-tovarov-header {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#uchetReportsFilterTovarov .filter-tovarov-span {
+  margin-left: 10px;
+}
+#uchetReportsFilterTovarov .filter-tovarov-body {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+#uchetReportsFilterTovarov .filter-tovarov-body table {
+  width: auto;
+}
+#uchetReportsFilterTovarov .filter-tovarov-body table th,
+#uchetReportsFilterTovarov .filter-tovarov-body table td {
+  border: 1px solid black;
+  width: 1%;
+  white-space: nowrap;
+}
+#uchetReportsFilterTovarov .filter-tovarov-body table th.empty-header,
+#uchetReportsFilterTovarov .filter-tovarov-body table td.empty-body {
+  width: auto;
+  visibility: hidden;
+}
+#uchetReportsFilterTovarov .apply-button {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+#uchetReportsFilterTovarov .filter-tovarov {
+  margin-top: 10px;
+}
+#uchetReportsFilterTovarov .caret {
+  border-top: 8px solid #000000;
+  border-right-width: 6px;
+  border-left-width: 6px;
+  margin-top: 6px;
+}
+/* /учёт - отчёты - фильтр товаров */
+/* Учёт - Инвентаризация */
+#uchetInvent {
+  padding-bottom: 20px;
+}
+#uchetInvent .inv-block-common {
+  width: 1205px;
+  margin-left: 70px;
+  height: 490px;
+  padding-top: 10px;
+}
+#uchetInvent .inv-block-table {
+  overflow: auto;
+  height: 450px;
+  padding-top: 20px;
+}
+#uchetInvent .inv-block-itogo {
+  float: right;
+  padding-top: 10px;
+}
+#uchetInvent .inv-text-itogo {
+  font-size: 16px;
+  font-weight: bold;
+}
+#uchetInvent table {
+  word-wrap: break-word;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+#uchetInvent tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+#uchetInvent td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+#uchetInvent button {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+}
+#uchetInvent .inv-button-new {
+  margin-right: 5px;
+}
+#uchetInvent .inv-button-print {
+  margin-right: 20px;
+}
+#uchetInvent .photo {
+  width: 125px;
+  height: 125px;
+}
+#uchetInvent .inv-edit-div {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 400px;
+  height: 400px;
+  margin-left: 150px;
+  background-color: #e4e4e4;
+  border: 1px #787878 solid;
+}
+#uchetInvent .inv-photo-document {
+  margin-left: 20px;
+}
+#uchetInvent .photo-frame {
+  position: relative;
+  height: 120px;
+}
+#uchetInvent .image {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+#uchetInvent .inv-file {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 10px;
+}
+#uchetInvent .inv-photo {
+  border: 1px black solid;
+  width: 125px;
+  height: 125px;
+}
+#uchetInvent .inv-photo-file {
+  width: 121px;
+  height: 22px;
+  overflow: hidden;
+  margin-top: 9px;
+  margin-left: 1px;
+}
+/*#editInvForm span {
+  font-weight: bold;
+}*/
+#editInvForm .inv-input-div {
+  margin-left: 20px;
+  margin-top: 40px;
+}
+#editInvForm .inv-button-div {
+  margin-top: 5px;
+  margin-left: 204px;
+}
+#editInvForm .inv-div-input-data {
+  margin-top: 5px;
+}
+#editInvForm .inv-name {
+  width: 260px;
+  margin-left: 27px;
+}
+#editInvForm .inv-kolvo {
+  width: 50px;
+  margin-left: 15px;
+}
+#editInvForm .inv-cost {
+  width: 90px;
+  margin-left: 56px;
+}
+#editInvForm .inv-inv-num {
+  width: 90px;
+  margin-left: 42px;
+}
+#editInvForm .inv-comment {
+  width: 260px;
+}
+/*/ учет - инвентаризация*/
+#subMenuApp {
+  height: 49px;
+  background-color: #f2f2f2;
+  position: relative;
+}
+#telephony {
+  position: relative;
+}
+/* Настройки */
+#subMenuNastr {
+  height: 49px;
+  background-color: #f2f2f2;
+  position: fixed;
+  left: 0px;
+  width: 100%;
+  top: 80px;
+}
+#nastr {
+  margin-top: 49px;
+}
+#nastr td {
+  text-align: left;
+}
+#nastr span {
+  margin-left: 10px;
+}
+#nastr table {
+  margin-left: 10px;
+}
+#nastr div {
+  padding-top: 10px;
+}
+#nastr-save-div {
+  padding-bottom: 10px;
+  margin-left: 347px;
+}
+#nastr button {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+}
+#nastr .barcodePanel {
+  width: 99%;
+  height: 89%;
+  position: fixed;
+  top: 80px;
+  background-color: #f2f2f2;
+  border: 1px black solid;
+  z-index: 5;
+  padding-top: 0px;
+}
+#nastr .barcode-main-div {
+  overflow: auto;
+  height: 98%;
+  margin-left: 0.1%;
+  margin-top: 10px;
+  padding-top: 0px;
+}
+#nastr .barcode-div {
+  display: inline-flex;
+  margin-left: 10px;
+}
+#nastr .barcode-img {
+  width: 60mm;
+  height: 18mm;
+}
+#nastr .barcode-save {
+  margin-left: 10px;
+}
+#nastr .barcode-button-div {
+  padding-top: 0px;
+}
+#nastr .nastr-second-col {
+  width: 226px;
+}
+#nastr .div-show-kont {
+  padding: 0 0 0 0;
+}
+#nastr .checkbox-show-kont {
+  position: relative;
+  top: 16px;
+  width: 16px;
+  left: 10px;
+}
+#nastr .label-show-kont {
+  top: 11px;
+  position: relative;
+  margin-left: 15px;
+  margin-bottom: 0px;
+  font-weight: normal;
+}
+/*/ Настройки*/
+/*Журнал*/
+#subMenuJur {
+  height: 49px;
+  background-color: #f2f2f2;
+  position: fixed;
+  left: 0px;
+  width: 100%;
+  top: 80px;
+}
+/*/Журнал*/
+/*Журнал - действие*/
+#jurnalDeistv {
+  padding-top: 49px;
+}
+#jurnalDeistv .jur-deistv-usl-block {
+  padding-top: 20px;
+}
+#jurnalDeistv .jur-deistv-data-block {
+  margin-left: 10px;
+  padding-top: 10px;
+  height: 500px;
+  width: 99%;
+  overflow: auto;
+}
+#jurnalDeistv table {
+  word-wrap: break-word;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 99.8%;
+}
+#jurnalDeistv tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+#jurnalDeistv td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#jurnalDeistv span {
+  margin-left: 10px;
+}
+#jurnalDeistv button {
+  margin-left: 10px;
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+}
+/*/Журнал - действие*/
+/*Журнал - Уведомление */
+#uvedoml {
+  margin-top: 49px;
+}
+#uvedoml .prevMonth {
+  background-color: black;
+  color: antiquewhite;
+}
+#uvedoml .nextMonth {
+  background-color: black;
+  color: antiquewhite;
+}
+#uvedoml .currentMonth {
+  background-color: white;
+  color: black;
+}
+#uvedoml .weekend {
+  color: red;
+}
+#uvedoml .getData {
+  cursor: pointer;
+}
+#uvedoml .dayDiv {
+  position: fixed;
+  top: 0px;
+  height: 2px;
+}
+#uvedoml .selectedItem {
+  width: 18px;
+  height: 18px;
+  top: 0px;
+  left: -1px;
+  position: relative;
+}
+#uvedoml .dateDiv {
+  height: 19px;
+}
+#uvedoml .dayText {
+  background-color: transparent;
+}
+#uvedoml .daytextSelected {
+  top: 50px;
+  color: white;
+  position: absolute;
+  background-color: transparent;
+}
+#uvedoml .dataTable th {
+  border: 2px solid gray;
+  width: 160px;
+  height: 20px;
+  padding-left: 5px;
+}
+#uvedoml .dataTable th span {
+  display: inline;
+}
+#uvedoml .dataTable th svg {
+  display: inline;
+  width: 10px;
+  height: 10px;
+  padding-top: 1px;
+}
+#uvedoml .dataTable td {
+  border: 2px solid gray;
+}
+#uvedoml .dataTable th {
+  background-color: black;
+  color: white;
+}
+#uvedoml .dataTable .selectedHeader {
+  background-color: white;
+  color: black;
+}
+#uvedoml .new-item-window {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  background-color: #e4e4e4;
+  border: 1px #787878 solid;
+  width: 286px;
+  z-index: 5;
+}
+#uvedoml .new-item-window .btnRec {
+  position: relative;
+  left: 187px;
+}
+#uvedoml .new-item-window-close {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  padding: 0px;
+  width: 20px;
+}
+#uvedoml .new-item-window-label {
+  width: 100px;
+  float: left;
+}
+#uvedoml .new-ank-value {
+  width: 150px;
+  float: right;
+}
+#uvedoml .new-item-window-body {
+  float: left;
+  width: 280px;
+}
+#uvedoml .new-item-window-body .gr-comment textarea {
+  width: 247px;
+  height: 90px;
+}
+#uvedoml .new-item-window-body .gr-comment button {
+  position: relative;
+  top: 64px;
+}
+#uvedoml .new-item-window-body .gr-comment .list {
+  max-height: 350px;
+  overflow-y: auto;
+  padding-right: 5px;
+  width: 269px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#uvedoml .new-item-window-body .gr-comment .list .list-item {
+  border: 1px solid #a1a1a1;
+  padding: 5px;
+  margin-top: 10px;
+}
+#uvedoml .new-item-window-body .gr-comment .list .list-item:first-child {
+  margin-top: 0px;
+}
+#uvedoml .new-item-window-body .gr-comment .list .list-item .date {
+  color: #0099ff;
+}
+#uvedoml .new-item-window-save-panel {
+  clear: both;
+  margin: 2px;
+}
+#uvedoml .errorMessage {
+  color: red;
+}
+#uvedoml .rec-seans-text {
+  margin: 2px;
+  width: 145px;
+}
+#uvedoml .newItemVidSob {
+  margin: 2px;
+  width: 145px;
+}
+#uvedoml .dataTable td {
+  width: 180px;
+}
+#uvedoml .cellInfo {
+  box-sizing: border-box;
+  display: inline-block;
+  float: left;
+  width: 151px;
+}
+#uvedoml .countUvedomlDiv {
+  height: 20px;
+  text-align: center;
+}
+#uvedoml .countInWeek {
+  color: blue;
+  font-weight: bold;
+}
+#uvedoml .countNotPerform {
+  color: red;
+  font-weight: bold;
+}
+#uvedoml .vipol {
+  color: blue;
+  font-weight: bold;
+}
+#uvedoml .cellInfoTable {
+  box-sizing: border-box;
+  display: inline-block;
+}
+#uvedoml .cellButton {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 25px;
+}
+#uvedoml .cellButton > div {
+  display: inline-block;
+}
+#uvedoml .newUvedomlCellButton {
+  height: 40px;
+}
+#uvedoml .record-new-date {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  margin-left: 5px;
+  border: none;
+  padding: 0 0 0 0;
+}
+#uvedoml .callButtonClass,
+#uvedoml .k-pokupke {
+  width: 25px;
+  padding: 0px;
+}
+#uvedoml .performUvedoml {
+  text-decoration: line-through;
+}
+#uvedoml .cellSpec {
+  font-size: 11px;
+}
+#uvedoml .innerMenu {
+  background-color: white;
+  height: 40px;
+}
+#uvedoml .innerMenu .innerMenuButton {
+  display: inline-block;
+  width: 220px;
+  background-color: #f2f2f2;
+}
+#uvedoml .innerMenu .selectedInnerMenuButton {
+  background-color: #e4e4e4;
+}
+#uvedoml .kontTable {
+  border: 1px solid #a1a1a1;
+  border-spacing: 0px;
+}
+#uvedoml .kontTable th {
+  width: 1%;
+}
+#uvedoml .kontTable th:last-child {
+  width: auto;
+  visibility: hidden;
+}
+#uvedoml .kontTable th.fio {
+  border-right: none;
+}
+#uvedoml .kontTable th.buttons {
+  border-left: none;
+}
+#uvedoml .kontTable td {
+  border: 1px solid #a1a1a1;
+  border-spacing: 0px;
+  padding: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 0px;
+  vertical-align: inherit;
+  width: 1%;
+  height: 27px;
+}
+#uvedoml .kontTable td:last-child {
+  width: auto;
+  visibility: hidden;
+}
+#uvedoml .kontTable td.fio {
+  white-space: nowrap;
+  border-right: none;
+}
+#uvedoml .kontTable td.buttons {
+  white-space: nowrap;
+  border-left: none;
+  vertical-align: middle;
+}
+#uvedoml .kontTable td.phone {
+  white-space: nowrap;
+}
+#uvedoml .kontTable td.comment {
+  white-space: pre;
+}
+#uvedoml .kontTable td.user-name {
+  white-space: nowrap;
+}
+#uvedoml .kontTable td div.cellInfoTable:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#uvedoml .kontTable th {
+  margin-top: 10px;
+  border: 1px solid #a1a1a1;
+  text-align: center;
+  border-spacing: 0px;
+  padding: 0px;
+}
+#uvedoml .div-pagination {
+  text-align: center;
+}
+#uvedoml .prevMonthButton svg {
+  width: 20px;
+  height: 62px;
+}
+#uvedoml .prevMonthButton {
+  width: 20px;
+  height: 62px;
+  box-sizing: border-box;
+  display: inline-block;
+}
+#uvedoml .tableDates {
+  box-sizing: border-box;
+  display: inline-block;
+}
+#uvedoml .nextMonthButton {
+  width: 20px;
+  height: 62px;
+  box-sizing: border-box;
+  display: inline-block;
+}
+#uvedoml .nextMonthButton svg {
+  width: 20px;
+  height: 62px;
+}
+#uvedoml .uvedoml-vertical-div {
+  display: inline-block;
+  vertical-align: top;
+}
+#uvedoml .process-a-call-th {
+  width: 11%;
+}
+#uvedoml .process-a-call-td {
+  position: relative;
+}
+#uvedoml .process-a-call {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#uvedoml .process-a-call div {
+  background: url('Images/ui-anim_basic_16x16.gif') no-repeat left center;
+  padding-left: 20px;
+  line-height: 20px;
+}
+/*/журнал - уведомление */
+/* Отчет - Карта */
+#reportKarta {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+}
+#reportKarta .karta-header {
+  padding-bottom: 10px;
+}
+#reportKarta #myMap {
+  display: inline-block;
+}
+#reportKarta .karta-status {
+  background-color: transparent;
+  display: inline-block;
+  width: 300px;
+  height: 450px;
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 1px solid #a1a1a1;
+  vertical-align: top;
+}
+/* /отчет - карта */
+/* Анкета - вопросы*/
+#vopros .blue-text {
+  color: #009DD9;
+}
+#vopros .div-menu-button {
+  padding-top: 10px;
+  padding-bottom: 9px;
+}
+#vopros .plus-button {
+  border: 1px solid black;
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  margin-left: 10px;
+}
+#vopros .sub-menu-item-no-active {
+  background-color: white;
+}
+#vopros .add-tab-form {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 195px;
+  height: 0px;
+  background-color: #e4e4e4;
+  border: 1px #787878 solid;
+}
+#addTabForm input {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#addTabForm button {
+  margin-left: 10px;
+}
+#addTabForm .add-tab-form-button-close {
+  float: right;
+  margin-right: 10px;
+}
+#vopros .div-vopros-row {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+#vopros textarea {
+  margin-left: 10px;
+}
+#vopros select {
+  margin-left: 10px;
+}
+#vopros .btnCircle {
+  border: 1px solid black;
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  margin-left: 10px;
+}
+#vopros .button-vopros-save {
+  margin-left: 30px;
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+/* /Анкета - вопросы*/
+/* Отчеты - опрос*/
+#reportOpros .opros-header {
+  margin-left: 265px;
+  padding-top: 15px;
+}
+#reportOpros button {
+  margin-left: 10px;
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+}
+#reportOpros .opros-span {
+  margin-left: 10px;
+}
+#reportOpros .opros-all-count {
+  font-size: 16px;
+  color: #169BD5;
+}
+#reportOpros table {
+  /*margin-left: 165px;*/
+}
+#reportOpros td {
+  text-align: center;
+}
+#reportOpros .opros-td-name {
+  width: 200px;
+}
+#reportOpros .opros-td-da {
+  width: 50px;
+}
+#reportOpros .opros-td-net {
+  width: 50px;
+}
+#reportOpros .opros-td-pusto {
+  width: 50px;
+}
+#reportOpros select {
+  width: 180px;
+}
+#opros-data-header,
+#opros-data-data {
+  vertical-align: top;
+  display: inline-block;
+  margin-top: 20px;
+}
+#opros-data-header {
+  margin-left: 50px;
+}
+/* /Отчеты - опрос*/
+/* Отчеты - Метрика */
+#report-uvedoml-data table {
+  margin-left: 80px;
+  margin-top: 15px;
+  width: 800px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+}
+#report-uvedoml-data th {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+}
+#report-uvedoml-data td {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+}
+#report-uvedoml-header {
+  margin-left: 220px;
+  margin-top: 10px;
+}
+#reportUvedoml button {
+  margin-left: 10px;
+}
+/*/Отчеты - Метрика */
+/* Отчёты - Маркетинг */
+#reportMarketing {
+  position: relative;
+  overflow: auto;
+}
+#reportMarketing .container-1 {
+  width: 650px;
+  height: 550px;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+#reportMarketing table {
+  /*table-layout: fixed;*/
+  margin-top: 10px;
+}
+#reportMarketing table tr td {
+  padding: 0px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 20px;
+  border: 1px solid black;
+}
+#reportMarketing table tr th {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+}
+#reportMarketing table tr th:nth-child(1) {
+  width: 20px;
+}
+#reportMarketing table tr th:nth-child(2) {
+  width: 30px;
+}
+#reportMarketing table tr th:nth-child(3) {
+  width: 30px;
+}
+#reportMarketing table tr th:nth-child(4) {
+  width: 30px;
+}
+#reportMarketing table tr th:nth-child(5) {
+  width: 30px;
+}
+#reportMarketing table tr th:nth-child(6) {
+  width: 50px;
+}
+#reportMarketing table tr th:nth-child(7) {
+  width: 30px;
+}
+#reportMarketing table tr th:nth-child(8) {
+  width: 50px;
+}
+#reportMarketing table tr th:nth-child(9) {
+  width: 30px;
+}
+#reportMarketing table tr td:nth-child(9) {
+  width: 30px;
+}
+#reportMarketing > div:nth-child(2) {
+  position: absolute;
+  top: 0px;
+  left: 655px;
+}
+#reportMarketing tr.month td.name-column {
+  text-align: left;
+  padding-left: 5px;
+}
+#reportMarketing tr.week td.name-column {
+  text-align: center;
+}
+#reportMarketing tr.day td.name-column {
+  text-align: right;
+  padding-right: 5px;
+}
+#reportMarketing tr.day td button {
+  display: none;
+}
+#reportMarketing tr.year td button {
+  display: none;
+}
+/* Отчёты - Маркетинг */
+/* Отчеты - Метрика */
+#reportMetrika table {
+  margin-left: 50px;
+  margin-top: 20px;
+  width: 800px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+}
+#reportMetrika th {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+}
+#reportMetrika td {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+}
+/*/Отчеты - Метрика */
+/* Отчеты - Метрика */
+#reportService {
+  margin-top: 10px;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#reportService table {
+  width: 800px;
+}
+#reportService table tr {
+  background-color: white;
+  height: 10px;
+}
+#reportService table td {
+  text-align: left;
+  height: 10px;
+}
+#reportService table .forRepairs {
+  background-color: #ffff66;
+}
+#reportService table .isReady {
+  background-color: #00ff00;
+}
+/*table {
+  margin-left: 50px;
+  margin-top: 20px;
+  width: 800px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+}
+
+#reportMetrika th {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+}
+
+#reportMetrika td {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+}*/
+/*/Отчеты - Метрика */
+/* Техотдел */
+#tehOtdelSalon,
+#tehOtdelProduct,
+#tehOtdelStatus {
+  display: inline-block;
+  vertical-align: top;
+}
+#tehOtdel table {
+  margin-left: 50px;
+  margin-top: 20px;
+  width: 800px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+#tehOtdel th {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+}
+#tehOtdel td {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+}
+#tehOtdel select {
+  margin-top: 65px;
+  margin-left: 20px;
+}
+#tehOtdel .find-text {
+  margin-left: 50px;
+  margin-top: 20px;
+  width: 520px;
+}
+#tehOtdel .status-div {
+  margin-left: 25px;
+  margin-top: 20px;
+}
+#tehOtdel .status-text {
+  color: #009DD9;
+}
+#tehOtdel .status-div-row {
+  margin-left: 25px;
+  margin-top: 17px;
+}
+#tehOtdel .teh-otdel-na-remont,
+.teh-otdel-sdelal {
+  height: 250px;
+  overflow: auto;
+}
+#tehOtdel .modal-div {
+  position: absolute;
+  top: 0;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 900px;
+  height: 500px;
+  background: #e4e4e4;
+  border: 1px solid black;
+}
+#tehOtdel .teh-otdel-image {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 10px;
+  border: 1px solid black;
+}
+#tehOtdel .teh-otdel-info {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 20px;
+  margin-left: 15px;
+  height: 30px;
+  vertical-align: middle;
+}
+#orgInfo .teh-otdel-adres,
+.teh-otdel-phone,
+.teh-otdel-product {
+  border: 1px solid black;
+  text-align: center;
+}
+#orgInfo .teh-otdel-adres {
+  width: 300px;
+}
+#orgInfo .teh-otdel-phone {
+  width: 150px;
+}
+#orgInfo .teh-otdel-product {
+  width: 165px;
+}
+#tehOtdel .teh-otdel-prod {
+  margin-left: 15px;
+}
+#tehOtdel .teh-otdel-garantee {
+  margin-left: 135px;
+}
+#tehOtdel .teh-otdel-check {
+  margin-left: 135px;
+}
+#tehOtdel .ank-comment {
+  margin-top: 10px;
+  margin-left: 15px;
+}
+#tehOtdel .teh-comment {
+  margin-top: 10px;
+  margin-left: 15px;
+}
+#tehOtdel .serial-text {
+  font-size: 20px;
+}
+#tehOtdel .tehnik-info {
+  margin-top: 10px;
+}
+#tehOtdel .tehnik-do {
+  margin-left: 15px;
+}
+#tehOtdel .teh-otdel-new-status {
+  margin-top: 0px;
+}
+#tehOtdel .teh-otdel-status-span {
+  margin-left: 15px;
+}
+#tehOtdel button {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+}
+#tehOtdel .btn-close {
+  margin-top: 10px;
+  margin-left: 707px;
+}
+#tehOtdel .btn-save {
+  margin-top: 10px;
+  margin-left: 15px;
+}
+/* /Техотдел */
+/* Отчет Итог */
+#reportItog {
+  margin-top: 60px;
+  width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#reportItog .cellData {
+  width: 25px;
+}
+#reportItog .lastItem {
+  width: 70px;
+}
+/* /Отчет Итог */
+/* Результаты */
+#vipis {
+  position: relative;
+  background-color: #e4e4e4;
+  padding-top: 15px;
+  height: 480px;
+}
+#vipis .inf {
+  position: absolute;
+  left: 25px;
+  color: #0099FF;
+}
+#vipis .status {
+  position: absolute;
+  left: 145px;
+}
+#vipis .vertical-line3 {
+  position: absolute;
+  left: 125px;
+  width: 1px;
+  height: 450px;
+  background-color: #aeaeae;
+}
+#vipis .status-label {
+  font-size: 18px;
+}
+#vipis .status-select {
+  width: 530px;
+  display: inline-block;
+}
+#vipis input[type='file'] {
+  margin-left: 0px;
+}
+#vipis div.file-button-outer:hover button {
+  cursor: pointer;
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+#vipis div.zabol-foto-video-outer {
+  position: absolute;
+  top: 80px;
+  left: 145px;
+}
+#vipis .btn-zabol-foto-video {
+  position: absolute;
+}
+#vipis input.zabol-foto-video {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  width: 121px;
+  height: 35px;
+}
+#vipis div.zabol-dob-file-outer {
+  position: absolute;
+  top: 80px;
+  left: 275px;
+}
+#vipis .btn-zabol-dob-file {
+  position: absolute;
+}
+#vipis input.zabol-dob-file {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  width: 145px;
+  height: 35px;
+}
+#vipis .zabol-area {
+  position: absolute;
+  top: 120px;
+  left: 145px;
+  width: 600px;
+  height: 60px;
+}
+#vipis .btn-zabol-skach-file {
+  position: absolute;
+  top: 80px;
+  left: 600px;
+}
+#vipis .btn-dob-info {
+  position: absolute;
+  top: 190px;
+  left: 550px;
+}
+#vipis .horizontal-line2 {
+  position: absolute;
+  top: 250px;
+  left: 145px;
+  height: 1px;
+  width: 600px;
+  background-color: #aeaeae;
+}
+#vipis div.uluch-foto-video-outer {
+  position: absolute;
+  top: 280px;
+  left: 145px;
+}
+#vipis .btn-uluch-foto-video {
+  position: absolute;
+}
+#vipis input.uluch-foto-video {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  width: 121px;
+  height: 35px;
+}
+#vipis div.uluch-dob-file-outer {
+  position: absolute;
+  top: 280px;
+  left: 275px;
+}
+#vipis .btn-uluch-dob-file {
+  position: absolute;
+}
+#vipis input.uluch-dob-file {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  width: 145px;
+  height: 35px;
+}
+#vipis .uluch-area {
+  position: absolute;
+  top: 320px;
+  left: 145px;
+  width: 600px;
+  height: 60px;
+}
+#vipis .btn-uluch-skach-file {
+  position: absolute;
+  top: 280px;
+  left: 600px;
+}
+#vipis .uluch-select {
+  position: absolute;
+  top: 390px;
+  left: 145px;
+  width: 350px;
+}
+#vipis .d-uluch {
+  position: absolute;
+  top: 390px;
+  left: 565px;
+  width: 170px;
+}
+#vipis .zabol-files-download,
+#vipis .uluch-files-download {
+  position: absolute;
+  left: 600px;
+  top: 114px;
+  background: #fff;
+  padding: 10px;
+  z-index: 1;
+  border: 1px solid #b3abab;
+  box-shadow: 5px 4px 14px 0px;
+}
+#vipis .zabol-files-download a:hover,
+#vipis .uluch-files-download a:hover {
+  text-decoration: underline;
+}
+#vipis .zabol-files-download-close,
+#vipis .uluch-files-download-close {
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 4px;
+  position: relative;
+  width: 20px;
+  float: right;
+}
+#vipis .zabol-files-download-close:hover,
+#vipis .uluch-files-download-close:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+#vipis .uluch-files-download {
+  top: 314px;
+  max-height: 200px;
+  overflow: scroll;
+}
+#vipis .vipis-video-do {
+  position: absolute;
+  left: 755px;
+}
+#vipis .frame-video {
+  position: relative;
+  width: 380px;
+  height: 300px;
+}
+#vipis .link-video {
+  width: 475px;
+}
+#vipisVideoDo {
+  display: inline-block;
+  vertical-align: initial;
+  margin-left: 39px;
+}
+#vipis .video-label {
+  margin-bottom: 0px;
+  font-weight: normal;
+  font-size: 18px;
+}
+#vipisVideoPosle {
+  display: inline-block;
+  vertical-align: initial;
+}
+#vipis .vipis-video-posle {
+  position: absolute;
+  left: 755px;
+  top: 80px;
+}
+#vipis .div-video-do {
+  position: absolute;
+  left: 755px;
+  top: 125px;
+}
+#vipis .div-video-posle {
+  position: absolute;
+  left: 1140px;
+  top: 125px;
+}
+/* /выписки */
+/* Колокольчик напоминаний */
+#bell {
+  width: 60px;
+  height: 60px;
+  top: 9px;
+  right: 280px;
+  position: absolute;
+}
+#bell svg {
+  display: inline-block;
+}
+#bell .countUvedoml {
+  color: #333333;
+  font-size: 40px;
+  text-align: center;
+  font-size: 24px;
+  display: block;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  top: -9px;
+  left: 8px;
+}
+#bell .bellImage {
+  position: relative;
+  display: block;
+  margin-left: 11px;
+}
+/* /колокольчик напоминаний */
+/* Дилер C */
+#dilerC {
+  width: 1200px;
+  height: 1700px;
+  position: relative;
+  padding-left: 20px;
+}
+#dilerC .div-top .table-striped > tbody > tr:nth-child(odd) > td,
+#dilerC .div-top .table-striped > tbody > tr:nth-child(odd) > th {
+  background-color: #e0e0e2;
+}
+#dilerC .saloni-itogo {
+  background-color: yellow;
+}
+#dilerC .div-top table.table-striped tr td.td-saloni-first-col,
+#dilerC .div-top table.table-striped tr .th-saloni-first-row {
+  background-color: #4bacc6;
+}
+#dilerC .div-top table tr td {
+  line-height: 10px;
+  border-color: black;
+  background-color: white;
+}
+#dilerC .div-top table tr th {
+  text-align: center;
+  vertical-align: middle;
+  background-color: white;
+}
+#dilerC .div-top table tr th:last-child {
+  visibility: hidden;
+}
+#dilerC .div-top table tr td {
+  width: 1%;
+  white-space: nowrap;
+  text-align: center;
+}
+#dilerC .div-top table tr td:first-child {
+  text-align: left;
+}
+#dilerC .div-top table tr td:last-child {
+  width: auto;
+  white-space: nowrap;
+  visibility: hidden;
+}
+#dilerC .div-top table tr th {
+  border-color: black;
+  border-bottom: none;
+  border-top: 1px solid black;
+}
+#dilerC .btn-save {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+  width: 150px;
+  background-color: white;
+}
+#dilerC .input-kolvo-na-sklade {
+  width: 60px;
+}
+#dilerC .saloni-name {
+  margin-right: 40px;
+  line-height: 17px;
+}
+#dilerC .saloni-btn {
+  width: 28px;
+  vertical-align: top;
+  line-height: 15px;
+  right: 0px;
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+  float: right;
+  z-index: 2;
+  position: relative;
+}
+#dilerC .saloni-btn.disabled-btn {
+  background-color: #bfe2eb;
+}
+#dilerC .diler-a-price tr:last-child td {
+  border-left: 0px;
+  border-right: 0px;
+}
+#dilerC .diler-a-price tr:last-child {
+  border-left: 1px solid black;
+}
+#dilerC .diler-a-price tr:last-child td:nth-child(4) {
+  border-right: 1px solid black;
+  text-align: right;
+}
+#dilerC .diler-a-price tr:last-child td:nth-child(4) .btn-save {
+  height: 25px;
+}
+#dilerC .diler-a-sklad .btn-save {
+  width: 110px;
+  height: 20px;
+}
+#dilerC .diler-a-price input {
+  width: 80px;
+}
+#dilerC .diler-a-price td {
+  vertical-align: middle;
+}
+/* /дилер C */
+/* Задачи */
+#zadachi .vkladki {
+  height: 49px;
+  background-color: #f2f2f2;
+}
+#zadachi .vkladki .vkladka {
+  width: 100px;
+  float: left;
+  text-align: center;
+  padding-top: 14px;
+  height: 49px;
+}
+#zadachi .vkladki .vkladka:hover,
+#zadachi .vkladki .vkladka.active {
+  background-color: #e4e4e4;
+  cursor: pointer;
+}
+#zadachi .content {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+#zadachi .content .novie .saloni {
+  float: left;
+  max-width: 450px;
+}
+#zadachi .content .novie .saloni th {
+  text-align: center;
+}
+#zadachi .content .novie .saloni th,
+#zadachi .content .novie .saloni td {
+  width: 1%;
+  white-space: nowrap;
+}
+#zadachi .content .novie .saloni tr {
+  background-color: white;
+}
+#zadachi .content .novie .saloni th:last-child,
+#zadachi .content .novie .saloni td:last-child {
+  width: auto;
+  visibility: hidden;
+  background-color: #e4e4e4;
+}
+#zadachi .content .novie .saloni td.active {
+  text-decoration: underline;
+}
+#zadachi .content .novie .new-task {
+  float: left;
+}
+#zadachi .content .novie .new-task > div {
+  margin-bottom: 15px;
+}
+#zadachi .content .novie .new-task > div > span:first-child {
+  display: inline-block;
+  width: 100px;
+}
+#zadachi .content .novie .new-task > div input {
+  width: 150px;
+}
+#zadachi .content .novie .new-task > div input[ng-model="new.tema"] {
+  width: 323px;
+}
+#zadachi .content .novie .new-task > div textarea {
+  margin-left: 10px;
+  width: 323px;
+  height: 150px;
+}
+/* /задачи */
+/* Оповещения */
+#opov {
+  padding-left: 240px;
+  padding-top: 20px;
+}
+#opov .caption {
+  font-size: 16px;
+}
+#opov .opov-list {
+  width: 700px;
+  background-color: white;
+  border: 1px solid #cccccc;
+  margin-bottom: 40px;
+}
+#opov .opov-list .opov-item {
+  border-bottom: 1px solid #cccccc;
+  padding: 5px;
+}
+#opov .opov-list .opov-item.odd {
+  background-color: #f5f5f5;
+}
+/* /оповещения */
+#bundle .comment-list {
+  max-height: 200px;
+  width: 273px;
+  overflow-y: scroll;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+  margin-top: 6px;
+  margin-left: 2px;
+}
+#bundle .comment-list table {
+  width: 100%;
+}
+#bundle .comment-list table tr td {
+  border: 1px solid #aaa;
+  padding: 3px;
+  width: 100%;
+}
+#bundle .comment-list table tr:first-child td {
+  border-top: none;
+}
+#bundle .comment-list table tr:last-child td {
+  border-bottom: none;
+}
+/* Окно редактирования контакта */
+div.kont-edit {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  background-color: #e4e4e4;
+  border: 1px #787878 solid;
+  padding: 10px;
+  z-index: 13;
+}
+div.kont-edit .fio td {
+  border: none;
+}
+div.kont-edit .fio td:first-child {
+  vertical-align: top;
+}
+div.kont-edit .fio td:last-child {
+  vertical-align: top;
+}
+div.kont-edit .fio td span {
+  position: relative;
+  top: 5px;
+  margin-right: 10px;
+}
+div.kont-edit .fio td input,
+div.kont-edit .fio td textarea,
+div.kont-edit .fio td select {
+  margin-top: 5px;
+  border: 1px solid #adadad;
+  margin-left: 0px;
+}
+div.kont-edit .fio td input {
+  text-transform: capitalize;
+}
+div.kont-edit .fio td textarea,
+div.kont-edit .fio td select {
+  width: 100%;
+}
+div.kont-edit .fio td .textarea-comment {
+  height: 70px;
+}
+div.kont-edit .fio td .close-button {
+  position: relative;
+  top: -10px;
+  right: -10px;
+}
+div.kont-edit .comment-list {
+  max-height: 200px;
+  width: 273px;
+  overflow-y: scroll;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+  margin-top: 6px;
+  margin-left: 2px;
+}
+div.kont-edit .comment-list table {
+  width: 100%;
+}
+div.kont-edit .comment-list table tr td {
+  border: 1px solid #aaa;
+  padding: 3px;
+  width: 100%;
+}
+div.kont-edit .comment-list table tr:first-child td {
+  border-top: none;
+}
+div.kont-edit .comment-list table tr:last-child td {
+  border-bottom: none;
+}
+div.kont-edit .error {
+  color: red;
+}
+div.kont-edit .div-btn-save {
+  margin-top: 10px;
+  margin-right: 26px;
+}
+/* /окно редактирования контакта */
+/* Окно редактирования сеанса контакта */
+.kont-edit-seans {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #e4e4e4;
+  border: 1px #787878 solid;
+  z-index: 12;
+}
+.kont-edit-seans div.kont-edit-container {
+  margin: 5px;
+}
+.kont-edit-seans div.rec-change-buttons {
+  margin-top: 10px;
+}
+.kont-edit-seans input,
+.kont-edit-seans select,
+.kont-edit-seans textarea {
+  margin-left: 0px;
+  width: 229px;
+}
+.kont-edit-seans div.error {
+  color: red;
+}
+.kont-edit-seans .comment-list {
+  max-height: 200px;
+  width: 273px;
+  overflow-y: scroll;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+  margin-top: 6px;
+  margin-left: 2px;
+  width: 319px;
+}
+.kont-edit-seans .comment-list table {
+  width: 100%;
+}
+.kont-edit-seans .comment-list table tr td {
+  border: 1px solid #aaa;
+  padding: 3px;
+  width: 100%;
+}
+.kont-edit-seans .comment-list table tr:first-child td {
+  border-top: none;
+}
+.kont-edit-seans .comment-list table tr:last-child td {
+  border-bottom: none;
+}
+/* /окно редактирования сеанса контакта */
+/*Дилер А - Маркетинговый календарь*/
+#marketingKalend td.td-saloni-first-col {
+  background-color: #4bacc6;
+  text-align: left;
+  padding-left: 5px;
+}
+#marketingKalend {
+  position: relative;
+}
+#marketingKalend .container-1 {
+  width: 700px;
+  height: 550px;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+#marketingKalend .saloni-itogo-name {
+  text-align: right;
+}
+#marketingKalend table {
+  table-layout: fixed;
+  margin-top: 10px;
+  width: 680px;
+}
+#marketingKalend table tr td {
+  padding: 0px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 20px;
+  border: 1px solid black;
+}
+#marketingKalend table tr th {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+}
+#marketingKalend table tr th:nth-child(1) {
+  width: 350px;
+}
+#marketingKalend table tr th:nth-child(2) {
+  width: 120px;
+}
+#marketingKalend table tr th:nth-child(3) {
+  width: 80px;
+}
+#marketingKalend table tr th:nth-child(4) {
+  width: 80px;
+}
+#marketingKalend table tr th:nth-child(5) {
+  width: 80px;
+}
+#DilerAMarketingKalend > div:nth-child(2) {
+  position: absolute;
+  top: 49px;
+  left: 735px;
+}
+/* /Дилер А - Маркетинговый календарь*/
+/* Дилер А,С - Карта */
+#dilerACKarta {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+}
+#dilerACKarta .karta-header {
+  padding-bottom: 10px;
+}
+#dilerACKarta #mapDiler {
+  display: inline-block;
+}
+#dilerACKarta .karta-status {
+  background-color: transparent;
+  display: inline-block;
+  width: 300px;
+  height: 450px;
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 1px solid #a1a1a1;
+  vertical-align: top;
+}
+#dilerSubMenuAll .diler-no-submenu {
+  height: 0px;
+}
+/* /дилер А,С - Карта */
+/*сопровождение*/
+#sopr {
+  margin-top: 49px;
+  background-color: #f9f9f9;
+}
+#sopr .sopr-main-div {
+  margin-left: 10px;
+  margin-right: 5px;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+}
+#sopr .sopr-poisk {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 350px;
+  border: 1px solid black;
+  margin-left: 10px;
+  height: 22px;
+}
+#sopr .sopr-clear-filter {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+  background-color: #fff;
+}
+#sopr .sopr-scroll-div {
+  margin-left: 0px;
+  height: 500px;
+  overflow: auto;
+  border-collapse: collapse;
+}
+#sopr .sopr-scroll-header-div {
+  margin-left: 0px;
+  margin-top: 5px;
+  border-collapse: collapse;
+}
+#sopr table {
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+#sopr thead {
+  display: block;
+  box-sizing: border-box;
+}
+#sopr tbody {
+  height: 500px;
+  overflow-y: auto;
+  display: block;
+  box-sizing: border-box;
+}
+#sopr tr {
+  border: 1px solid #dddddd;
+}
+#sopr th {
+  text-align: center;
+}
+#sopr td {
+  border: 1px solid #dddddd;
+  text-align: center;
+  align-items: center;
+  word-wrap: break-word;
+}
+#sopr .s-header-div {
+  text-align: center;
+  display: table-cell;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  height: 40px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #e4e4e4;
+  border-collapse: collapse;
+  display: inline-block;
+  vertical-align: top;
+}
+#sopr .s-body-div {
+  text-align: center;
+  border: 1px solid #dddddd;
+  display: table-cell;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#sopr .s-green {
+  background-color: #92D050;
+}
+#sopr .sopr-cont {
+  display: table;
+  border-collapse: collapse;
+}
+#sopr .s-column {
+  display: table-row;
+  overflow: hidden;
+}
+#sopr select {
+  height: 20px;
+  margin-left: 0px;
+}
+#sopr .div-pagination {
+  margin-top: 10px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+#sopr .div-pagination ul.pagination {
+  margin: 0 0;
+}
+#sopr .find-text {
+  left: 75%;
+  height: 22px;
+  width: 280px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-image: initial;
+}
+#sopr p {
+  margin: 0 0 0 0;
+}
+#sopr .fio-div {
+  margin: 1px 1px 1px 1px;
+  border: 1px solid #cccccc;
+  border-color: transparent;
+  padding-top: 3px;
+}
+#sopr .fio-div-border-red {
+  margin: 1px 1px 1px 1px;
+  border: 1px solid red;
+  padding-top: 3px;
+}
+#sopr .odd {
+  background-color: #f9f9f9;
+}
+#sopr .even {
+  background-color: #f5f5f5;
+}
+#sopr .sopr-modal-div {
+  position: absolute;
+  background-color: #dddddd;
+  border: 1px solid black;
+  z-index: 250;
+  width: 800px;
+  height: 500px;
+  margin-left: 25%;
+  margin-top: 50px;
+}
+#sopr .sopr-comment-table-header-div {
+  position: relative;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-right: 20px;
+  height: 25px;
+}
+#sopr .sopr-comment-table-header-div table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+#sopr .sopr-comment-table-header-div tbody {
+  height: 30px;
+}
+#sopr .sopr-comment-table-header-div tr {
+  border: 1px solid black;
+}
+#sopr .sopr-comment-table-header-div th {
+  border: 1px solid black;
+  text-align: center;
+}
+#sopr .sopr-comment-table-header-div table tr th:nth-child(1) {
+  width: 38px;
+}
+#sopr .sopr-comment-table-header-div table tr th:nth-child(2) {
+  width: 150px;
+}
+#sopr .sopr-comment-table-header-div table tr th:nth-child(3) {
+  width: 311px;
+}
+#sopr .sopr-comment-table-header-div table tr th:nth-child(4) {
+  width: 250px;
+}
+#sopr .sopr-comment-table-div {
+  position: relative;
+  margin-left: 10px;
+  margin-right: 19px;
+  height: 225px;
+  overflow: auto;
+}
+#sopr .sopr-comment-table-div table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+#sopr .sopr-comment-table-div tr {
+  border: 1px solid black;
+}
+#sopr .sopr-comment-table-div td {
+  border: 1px solid black;
+  padding: 4px;
+  word-wrap: break-word;
+}
+#sopr .sopr-modal-div button {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #0099ff;
+  border-image: initial;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+#sopr .sopr-comment-div {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+#sopr .sopr-zadacha {
+  margin-left: 0px;
+  width: 565px;
+  height: 22px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-image: initial;
+}
+#sopr .sopr-comment-text {
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-image: initial;
+  width: 750px;
+}
+#sopr .sopr-comment-add {
+  margin-top: 80px;
+}
+#sopr .sopr-comment-div-button {
+  margin-top: 10px;
+  float: right;
+  margin-right: 10px;
+}
+#sopr .sopr-date {
+  width: 130px;
+}
+#sopr input {
+  margin-right: 10px;
+}
+#sopr .sopr-user {
+  margin-left: 10px;
+}
+#sopr .process-a-call-td {
+  position: relative;
+  width: 50px;
+}
+#sopr .process-a-call {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  /* background-color: white; */
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-left: 20px; */
+}
+#sopr .process-a-call div {
+  background: url('Images/ui-anim_basic_16x16.gif') no-repeat left center;
+  padding-left: 20px;
+  line-height: 20px;
+}
+#sopr .color1 {
+  background-color: #f754e1;
+}
+#sopr .color2 {
+  background-color: #f00;
+}
+#sopr .color3 {
+  background-color: #fbff00;
+}
+#sopr .color4 {
+  background-color: #001eff;
+}
+#sopr .color5 {
+  background-color: #66ff00;
+}
+#sopr .color6 {
+  background-color: #00b3ff;
+}
+#sopr .color7 {
+  background-color: #000;
+}
+/*/сопровождение*/
+/* Учет - Отчеты - Не продлил*/
+#uchetReportsNeProdlil .ne-prodlil-div {
+  margin-left: 20px;
+  height: 480px;
+}
+#uchetReportsNeProdlil .ne-prodlil-div-table {
+  margin-top: 10px;
+  overflow: auto;
+  height: 400px;
+}
+#uchetReportsNeProdlil .ne-prodlil-first-row {
+  margin-top: 20px;
+}
+#uchetReportsNeProdlil .span-dt-from {
+  margin-left: 120px;
+}
+#uchetReportsNeProdlil .info1 {
+  width: 40px;
+}
+#uchetReportsNeProdlil .info2 {
+  width: 300px;
+}
+#uchetReportsNeProdlil .info3 {
+  width: 105px;
+}
+#uchetReportsNeProdlil .info4 {
+  width: 160px;
+}
+#uchetReportsNeProdlil .info5 {
+  width: 200px;
+}
+#uchetReportsNeProdlil .info6 {
+  width: 75px;
+}
+#uchetReportsNeProdlil .info7 {
+  width: 85px;
+}
+#uchetReportsNeProdlil table {
+  word-wrap: break-word;
+}
+#uchetReportsNeProdlil tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px 0;
+}
+#uchetReportsNeProdlil td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 21px;
+  /*padding-bottom: 10px;*/
+}
+#uchetReportsNeProdlil .ne-prodlil-table-itog {
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+#uchetReportsNeProdlil .ne-prodlil-space {
+  border: none;
+}
+#uchetReportsNeProdlil button {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+}
+#uchetReportsNeProdlil .hover-cursor-underline:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#uchetReportsNeProdlil .process-a-call-td {
+  position: relative;
+}
+#uchetReportsNeProdlil .process-a-call {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#uchetReportsNeProdlil .process-a-call div {
+  background: url('Images/ui-anim_basic_16x16.gif') no-repeat left center;
+  padding-left: 20px;
+  line-height: 20px;
+}
+#uchetReportsNeProdlil .vip {
+  color: #f1cc0d;
+}
+/* /учет - отчеты - Не продлил*/
+/*Продление*/
+#subMenuProdl {
+  height: 49px;
+  background-color: #f2f2f2;
+  position: fixed;
+  left: 0px;
+  width: 100%;
+  top: 80px;
+}
+#prodl {
+  margin-top: 49px;
+  background-color: #f9f9f9;
+}
+#prodl .prodl-main-div {
+  margin-left: 10px;
+  margin-right: 5px;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+}
+#prodl .prodl-poisk {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 350px;
+  border: 1px solid black;
+  margin-left: 10px;
+  height: 22px;
+}
+#prodl .prodl-clear-filter {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+  background-color: #fff;
+}
+#prodl .prodl-scroll-div {
+  margin-left: 0px;
+  height: 500px;
+  overflow: auto;
+  border-collapse: collapse;
+}
+#prodl .prodl-scroll-header-div {
+  margin-left: 0px;
+  margin-top: 5px;
+  border-collapse: collapse;
+}
+#prodl table {
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+#prodl thead {
+  display: block;
+  box-sizing: border-box;
+}
+#prodl tbody {
+  height: 500px;
+  overflow-y: auto;
+  display: block;
+  box-sizing: border-box;
+}
+#prodl tr {
+  border: 1px solid #dddddd;
+}
+#prodl th {
+  text-align: center;
+}
+#prodl td {
+  border: 1px solid #dddddd;
+  text-align: center;
+  align-items: center;
+  word-wrap: break-word;
+}
+#prodl .s-header-div {
+  text-align: center;
+  display: table-cell;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  height: 40px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #e4e4e4;
+  border-collapse: collapse;
+  display: inline-block;
+  vertical-align: top;
+}
+#prodl .s-body-div {
+  text-align: center;
+  border: 1px solid #dddddd;
+  display: table-cell;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#prodl .s-green {
+  background-color: #92D050;
+}
+#prodl .prodl-cont {
+  display: table;
+  border-collapse: collapse;
+}
+#prodl .s-column {
+  display: table-row;
+  overflow: hidden;
+}
+#prodl select {
+  height: 20px;
+  margin-left: 0px;
+}
+#prodl .div-pagination {
+  margin-top: 10px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+#prodl .div-pagination ul.pagination {
+  margin: 0 0;
+}
+#prodl .find-text {
+  left: 75%;
+  height: 22px;
+  width: 280px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-image: initial;
+}
+#prodl p {
+  margin: 0 0 0 0;
+}
+#prodl .fio-div {
+  margin: 1px 1px 1px 1px;
+  border: 1px solid #cccccc;
+  border-color: transparent;
+  padding-top: 3px;
+}
+#prodl .fio-div-border-red {
+  margin: 1px 1px 1px 1px;
+  border: 1px solid red;
+  padding-top: 3px;
+}
+#prodl .odd {
+  background-color: #f9f9f9;
+}
+#prodl .even {
+  background-color: #f5f5f5;
+}
+#prodl .prodl-modal-div {
+  position: absolute;
+  background-color: #dddddd;
+  border: 1px solid black;
+  z-index: 250;
+  width: 800px;
+  height: 500px;
+  margin-left: 25%;
+  margin-top: 50px;
+}
+#prodl .prodl-comment-table-header-div {
+  position: relative;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-right: 20px;
+  height: 25px;
+}
+#prodl .prodl-comment-table-header-div table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+#prodl .prodl-comment-table-header-div tbody {
+  height: 30px;
+}
+#prodl .prodl-comment-table-header-div tr {
+  border: 1px solid black;
+}
+#prodl .prodl-comment-table-header-div th {
+  border: 1px solid black;
+  text-align: center;
+}
+#prodl .prodl-comment-table-header-div table tr th:nth-child(1) {
+  width: 38px;
+}
+#prodl .prodl-comment-table-header-div table tr th:nth-child(2) {
+  width: 150px;
+}
+#prodl .prodl-comment-table-header-div table tr th:nth-child(3) {
+  width: 311px;
+}
+#prodl .prodl-comment-table-header-div table tr th:nth-child(4) {
+  width: 250px;
+}
+#prodl .prodl-comment-table-div {
+  position: relative;
+  margin-left: 10px;
+  margin-right: 19px;
+  height: 225px;
+  overflow: auto;
+}
+#prodl .prodl-comment-table-div table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+#prodl .prodl-comment-table-div tr {
+  border: 1px solid black;
+}
+#prodl .prodl-comment-table-div td {
+  border: 1px solid black;
+  padding: 4px;
+  word-wrap: break-word;
+}
+#prodl .prodl-modal-div button {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #0099ff;
+  border-image: initial;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+#prodl .prodl-comment-div {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+#prodl .prodl-zadacha {
+  margin-left: 0px;
+  width: 565px;
+  height: 22px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-image: initial;
+}
+#prodl .prodl-comment-text {
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-image: initial;
+  width: 750px;
+}
+#prodl .prodl-comment-add {
+  margin-top: 80px;
+}
+#prodl .prodl-comment-div-button {
+  margin-top: 10px;
+  float: right;
+  margin-right: 10px;
+}
+#prodl .prodl-date {
+  width: 130px;
+}
+#prodl input {
+  margin-right: 10px;
+}
+#prodl .prodl-user {
+  margin-left: 10px;
+}
+#prodl .process-a-call-td {
+  position: relative;
+  width: 50px;
+}
+#prodl .process-a-call {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#prodl .process-a-call div {
+  background: url('Images/ui-anim_basic_16x16.gif') no-repeat left center;
+  padding-left: 20px;
+  line-height: 20px;
+}
+#prodl .color1 {
+  background-color: #f754e1;
+}
+#prodl .color2 {
+  background-color: #f00;
+}
+#prodl .color3 {
+  background-color: #fbff00;
+}
+#prodl .color4 {
+  background-color: #001eff;
+}
+#prodl .color5 {
+  background-color: #66ff00;
+}
+#prodl .color6 {
+  background-color: #00b3ff;
+}
+#prodl .color7 {
+  background-color: #000;
+}
+#prodl .prodl-grey-th {
+  background-color: #9F9F9F;
+  border: 1px solid black;
+}
+#prodl .prodl-green-th {
+  background-color: #92D050;
+  border: 1px solid black;
+}
+#prodl .vip {
+  color: #f1cc0d;
+}
+/*/Продление*/
+/* Учет - Отчеты - Гость*/
+#uchetReportsGost .gost-div {
+  margin-left: 120px;
+  height: 480px;
+}
+#uchetReportsGost .gost-div-table {
+  margin-top: 10px;
+  overflow: auto;
+  height: 400px;
+  width: 1290px;
+}
+#uchetReportsGost .gost-first-row {
+  margin-top: 20px;
+}
+#uchetReportsGost .span-dt-from {
+  margin-left: 120px;
+}
+#uchetReportsGost .info1 {
+  width: 100px;
+}
+#uchetReportsGost .info2 {
+  width: 350px;
+}
+#uchetReportsGost .info3 {
+  width: 150px;
+}
+#uchetReportsGost .info4 {
+  width: 500px;
+}
+#uchetReportsGost .info5 {
+  width: 100px;
+}
+#uchetReportsGost table {
+  word-wrap: break-word;
+}
+#uchetReportsGost tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px 0;
+}
+#uchetReportsGost td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 21px;
+}
+#uchetReportsGost button {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+}
+#uchetReportsGost .hover-cursor-underline:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#uchetReportsGost .process-a-call-td {
+  position: relative;
+}
+#uchetReportsGost .process-a-call {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#uchetReportsGost .process-a-call div {
+  background: url('Images/ui-anim_basic_16x16.gif') no-repeat left center;
+  padding-left: 20px;
+  line-height: 20px;
+}
+/* /учет - отчеты - гость*/
+/*Дилер Д - подменю*/
+#subMenuDilerD {
+  height: 49px;
+  background-color: #f2f2f2;
+  position: fixed;
+  left: 0px;
+  width: 100%;
+  top: 80px;
+  z-index: 240;
+}
+/*/Дилер Д - подменю*/
+/*Дилер Д - Мотивация*/
+#motiv {
+  margin-top: 49px;
+}
+#motiv span {
+  margin-left: 15px;
+}
+#motiv button {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #0099ff;
+  border-image: initial;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+/*/Дилер Д - Мотивация*/
+/* План для салона */
+#dilerPlan {
+  width: 46px;
+  height: 46px;
+  top: 22px;
+  right: 420px;
+  position: absolute;
+}
+#dilerOverPlan {
+  width: 81px;
+  height: 64px;
+  top: 8px;
+  right: 323px;
+  position: absolute;
+}
+#dilerOverZarplata {
+  right: 330px;
+  top: 30px;
+  z-index: 4;
+  text-align: center;
+  position: absolute;
+  font-size: 24px;
+  width: 81px;
+  height: 64px;
+}
+/* /План для салона */
+/* Скрипты */
+#scriptAnalysis {
+  height: 700px;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+}
+#scriptAnalysis span.blue-label {
+  color: #0099ff;
+}
+#scriptAnalysis .container-9 {
+  position: absolute;
+  left: 180px;
+  top: 180px;
+  width: 500px;
+}
+#scriptAnalysis .container-9 .zadol {
+  width: 420px;
+  text-align: center;
+  color: red;
+}
+#scriptAnalysis .container-9 .priost-snyata {
+  width: 420px;
+  text-align: center;
+  color: red;
+}
+#scriptAnalysis .container-9 .container-10 {
+  position: relative;
+}
+#scriptAnalysis .container-9 .container-10 .fio {
+  left: 0px;
+  top: 0px;
+}
+#scriptAnalysis .container-9 .container-10 .seans {
+  left: 0px;
+  top: 20px;
+}
+#scriptAnalysis .container-9 .container-10 .do-okonchaniya-registratsii-ostalos {
+  left: 0px;
+  top: 40px;
+}
+#scriptAnalysis .container-9 .container-10 .zapolnennost {
+  left: 60px;
+  top: 65px;
+}
+#scriptAnalysis .container-9 .container-10 .spetsialist {
+  left: 60px;
+  top: 90px;
+}
+#scriptAnalysis .container-9 .container-10 .horizontal-line1 {
+  left: 60px;
+  top: 120px;
+}
+#scriptAnalysis .container-9 .container-10 .dannie-o-posetitele {
+  left: 60px;
+  top: 140px;
+}
+#scriptAnalysis .reg-list {
+  position: absolute;
+  top: 10px;
+  left: 670px;
+}
+#scriptAnalysis .reg-list tr.reg-list-item td {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-size: 14px;
+}
+#scriptAnalysis .reg-list tr.reg-list-item td.rn {
+  border: 1px solid #a1a1a1;
+}
+#scriptAnalysis .reg-list tr.reg-list-item td.container-1 {
+  border-top: 1px solid #a1a1a1;
+  border-bottom: 1px solid #a1a1a1;
+}
+#scriptAnalysis .reg-list tr.reg-list-item td.container-1 span.tort {
+  background-image: url('/Content/img/cake.png');
+  background-repeat: no-repeat;
+}
+#scriptAnalysis .reg-list tr.reg-list-item td.container-1 div.container-2 {
+  display: inline-block;
+  position: relative;
+}
+#scriptAnalysis .reg-list tr.reg-list-item td.container-1 div.container-2 span.vip {
+  font-size: 8px;
+  color: #f1cc0d;
+  display: block;
+  position: relative;
+  height: 5px;
+  padding-left: 2px;
+}
+#scriptAnalysis .reg-list tr.reg-list-item td.container-1 div.container-2 span.ostalos-dn-abon {
+  font-size: 12px;
+  display: block;
+  position: relative;
+  height: 5px;
+  top: 3px;
+}
+#scriptAnalysis .reg-list tr.reg-list-item td.container-1 span.reg-fio {
+  font-weight: bold;
+}
+#scriptAnalysis .reg-list tr.reg-list-item td.container-3 {
+  text-align: right;
+  border-top: 1px solid #a1a1a1;
+  border-bottom: 1px solid #a1a1a1;
+  border-right: 1px solid #a1a1a1;
+}
+/* /Учет - Отчеты - Не ходят*/
+#uchetReportsNeHodyat .ne-hodyat-div {
+  margin-left: 40px;
+  padding-top: 5px;
+  position: relative;
+}
+#uchetReportsNeHodyat .ne-hodyat-div button.ne-hodyat-button-print {
+  margin-left: 10px;
+}
+#uchetReportsNeHodyat .ne-hodyat-header {
+  margin-top: 10px;
+  margin-left: 380px;
+}
+#uchetReportsNeHodyat .ne-hodyat-div-table {
+  margin-top: 10px;
+  overflow: auto;
+  padding-bottom: 10px;
+  height: 450px;
+}
+#uchetReportsNeHodyat .ne-hodyat-div-table table {
+  width: auto;
+}
+#uchetReportsNeHodyat .ne-hodyat-div-table table td {
+  white-space: nowrap;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#uchetReportsNeHodyat .ne-hodyat-div-table table td.vip {
+  color: #f1cc0d;
+}
+#uchetReportsNeHodyat table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 0 0 0 0;
+  word-wrap: break-word;
+}
+#uchetReportsNeHodyat tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+#uchetReportsNeHodyat td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 21px;
+}
+#uchetReportsNeHodyat .call-action-border {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+#uchetReportsNeHodyat .info1 {
+  width: 200px;
+}
+#uchetReportsNeHodyat .info2 {
+  width: 80px;
+}
+#uchetReportsNeHodyat .info3 {
+  width: 200px;
+}
+#uchetReportsNeHodyat .info4 {
+  width: 250px;
+}
+#uchetReportsNeHodyat .info5 {
+  width: 60px;
+}
+#uchetReportsNeHodyat .info6 {
+  width: 60px;
+}
+#uchetReportsNeHodyat .info7 {
+  width: 80px;
+}
+#uchetReportsNeHodyat .hover-cursor-underline:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#uchetReportsNeHodyat button {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+}
+#uchetReportsNeHodyat .process-a-call-td {
+  position: relative;
+}
+#uchetReportsNeHodyat .process-a-call-td a {
+  color: #007EFF;
+  font-weight: bold;
+  text-decoration: underline;
+}
+#uchetReportsNeHodyat .process-a-call {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#uchetReportsNeHodyat .process-a-call div {
+  background: url('Images/ui-anim_basic_16x16.gif') no-repeat left center;
+  padding-left: 20px;
+  line-height: 20px;
+}
+#uchetReportsNeHodyat .div-pagination {
+  margin-top: 10px;
+}
+#uchetReportsNeHodyat .div-pagination nav {
+  text-align: center;
+}
+#uchetReportsNeHodyat .div-pagination nav ul {
+  margin: 0px;
+}
+/* /Учет - Отчеты - Не ходят*/
+/* Дилер D - Рассылка */
+#dilerDSmsAutoSend {
+  margin-top: 49px;
+  height: 400px;
+}
+#dilerDSmsAutoSend .diler-d-sms-active-div {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+#dilerDSmsAutoSend .diler-d-sms-save-div {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 600px;
+}
+#dilerDSmsAutoSend .diler-d-sms-active {
+  margin-top: 0px;
+  position: relative;
+  top: 5px;
+  width: 16px;
+}
+#dilerDSmsAutoSend .diler-d-sms-save-text {
+  width: 600px;
+  height: 270px;
+  margin-bottom: 10px;
+}
+#dilerDSmsAutoSend button {
+  border: 2px #0099ff solid;
+  border-radius: 5px;
+  float: right;
+}
+#dilerDSmsAutoSend select {
+  width: 270px;
+  margin-left: 0px;
+  margin-bottom: 10px;
+}
+/* /Дилер D - Рассылка */

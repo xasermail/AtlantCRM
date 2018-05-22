@@ -1,0 +1,178 @@
+﻿<!-- Запись -->
+<div id="record" class="tab-content" ng-controller="recordCtrl" ng-show="global.selectedMenuItem === 'menuItemZapis' && global.recordPravoRead === 1">
+  <div ng-hide="previewInfoShow === 1">
+    <div>
+      <button class="record-button-style tomorrow custom-radius" ng-click="getDataClick(0)" ng-disabled="(tomorrowClick === 0)">Завтра</button>
+      <button class="record-button-style record-date" ng-click="getDataClick(-1)" ng-disabled="(backClick === 0)"><</button>
+      <button class="record-button-style record-date" ng-click="getDataClick(1)" ng-disabled="(nextClick === 0)">></button>
+      <span class="text dt">{{dayWeekDate}}</span>
+      <span class="text dt" style="color: red">{{workDayError}}</span>
+    </div>
+
+    <div style="margin-left: 10px; margin-top: 10px">
+      <span class="record-one"  ng-click="previewInfo(1)">Записалось {{record}}</span>
+      <span class="record-link" ng-click="previewInfo(2)">Пришло {{regist}}</span>
+      <span class="record-link" ng-click="previewInfo(3)">Не пришло {{notGo}}</span>
+      <span class="record-link" ng-click="previewInfo(4)">Новенькие {{new}}</span>
+      <span class="record-link" ng-click="previewInfo(5)">Ушли и не записались {{notRecord}}</span>
+      <span class="record-link" ng-click="previewInfo(6)">Не зарегистрировано {{notRegist}}</span>
+      <span class="record-link" ng-click="previewInfo(7)">На презентации {{onPresent}}</span>
+
+      <select ng-model="presentTime" ng-options="c.ID as c.NAME for c in global.manual.M_SEANS_TIME" ng-change="changePresent()"></select>
+    </div>
+
+    <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px;">
+      <table class="record-info" style="{{tableWidth}}">
+        <tr>
+          <td align="center">№</td>
+          <td align="center" ng-repeat="item in o_seans_header">{{item.time}}</td>
+        </tr>
+        <tr ng-repeat="data in o_seans"
+            ng-style="{ 'background-color' : ($index === 1 || ($index % 2) > 0 ) ? 'white' : '' }">
+
+          <td align="center">{{data.id}}</td>
+
+          <td ng-repeat="row in o_seans_header"
+              style="background-color: {{getTdData(data.nRow,row.id,'tdColor')}}"
+              data-time-id="{{row.id}}"
+              data-fio="{{getTdData(data.nRow,row.id,'fio')}}"
+              ng-click="tdZapisatNaSeansClickHandler($event)">
+
+            <div class="record-td-div" ng-class="{{getTdData(data.nRow,row.id,'birthClass')}}">
+              <img ng-src="{{getTdData(data.nRow,row.id,'birth')}}">
+            </div>
+
+            <div class="record-td-div">
+              <span style="color: {{getTdData(data.nRow,row.id,'textColor')}}"
+                    data-ank-id="{{getTdData(data.nRow,row.id,'o_ank_id')}}"
+                    data-seans-id="{{getTdData(data.nRow,row.id,'id')}}"
+                    ng-click="openDialogRej($event)"
+                    class="hover-cursor-underline">{{getTdData(data.nRow,row.id,'fio')}}</span>
+              <span style="color: black">{{getTdData(data.nRow,row.id,'visits')}}</span>
+            </div>
+            <div class="record-button-div">
+              <div class="record-td-div">
+                <button class="record-new-date" style="background-color: white"
+                        ng-show="{{(getTdData(data.nRow,row.id,'state')=== 0)}}"
+                        ng-disabled="global.recordPravoWrite === 0"
+                        ng-click="btnUdalitSeansClickHandler(data.nRow, row.id)">X</button>
+              </div>
+              <div class="record-td-div">
+                <button class="record-new-date"
+                        data-ank-id="{{getTdData(data.nRow,row.id,'o_ank_id')}}"
+                        data-time-id="{{row.id}}"
+                        data-seans-id="{{getTdData(data.nRow,row.id,'id')}}"
+                        ng-hide="{{(getTdData(data.nRow,row.id,'btn')=== '')}}"
+                        ng-click="btnZapisatNaSeansClickHandler($event)"
+                        ng-disabled="global.recordPravoWrite === 0"></button>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+      @*<td ng-repeat="row in o_seans_header" style="background-color: {{getTdColor(data.nRow,row.id)}}">
+          <div ng-bind-html="здесь из функции возвращается разметка | html"></div>
+          </td>
+        </tr>*@
+      </table>
+
+      <div class="zapisat-na-seans"
+           style="left: {{zapisatNaSeansLeft}}px; top: {{zapisatNaSeansTop}}px; height: {{zapisatNaSeansHeight}}px" ng-show="zapisatNaSeans === 1">
+        <div class="rec-on-seans">
+          <span style="font-weight: bold">{{recordHeader}}</span>
+        </div>
+        <div class="rec-on-seans">
+          <span>Дата</span>
+          <input class="stat_date rec-date" ng-model="O_SEANS[0].seans_date" type="date" date-format="short" />
+        </div>
+        <div style="height: {{notValidDateHeight}}px">
+          <span class="rec-on-seans" style="color: red">{{notValidDate}}</span>
+        </div>
+        <div class="rec-on-seans">
+          <span>Сеанс</span>
+          <select class="rec-seans-id" ng-model="O_SEANS[0].m_seans_time_id" ng-options="c.ID as c.NAME for c in global.manual.M_SEANS_TIME"></select>
+        </div>
+        <button class="btnRec" ng-click="btnOtmenitZapis(0)">Отменить</button>
+        <button class="btnRec" ng-click="btnZapisatNaSeans(0)" style="margin-left: 30px">Сохранить</button>
+      </div>
+
+      <div class="new-ank-seans" style="left: {{newAnkNaSeansLeft}}px; top: {{newAnkNaSeansTop}}px; height: {{newAnkHeight}}px" ng-show="newAnkNaSeans === 1">
+        <div class="rec-seans-fio">
+          <span>ФИО</span>
+          <input class="rec-seans-text" style="margin-left: 38px" ng-model="O_SEANS_ANK[0].surname" placeholder="Фамилия" />
+          <input class="rec-seans-text rec-seans-data" ng-model="O_SEANS_ANK[0].name" placeholder="Имя" />
+          <input class="rec-seans-text rec-seans-data" ng-model="O_SEANS_ANK[0].secname" placeholder="Отчество" />
+        </div>
+        <div style="height: {{newAnkErrorHeight}}px">
+          <span class="rec-on-seans" style="color: red">{{newAnkError}}</span>
+        </div>
+        <div class="rec-seans-phone">
+          <span>Телефон</span>
+          <input id="recordPhoneMobile" class="rec-seans-text" ng-model="O_SEANS_ANK[0].phone_mobile" />
+        </div>
+        <div style="height: {{existsSeansHeight}}px">
+          <span class="rec-on-seans" style="color: red">{{existsSeans}}</span>
+        </div>
+        <button class="btnRec" ng-click="btnNewdAnk()">Расширенно</button>
+        <button class="btnRec" ng-click="btnSozdatAnk()" style="margin-left: 73px">Сохранить</button>
+      </div>
+    </div>
+  </div>
+
+  <div ng-style="{ 'margin-top:' : (previewInfoShow === 0 ) ? '30px' : '' }" style="background-color: white" ng-show="previewInfoShow === 1">
+
+    <div style="margin-left: 10px" ng-show="previewFirstTypeInfo === 1">
+      <div id="print-content-one">
+        <table style="margin: 10px 0 0 0; border-collapse: collapse; border: 1px black solid">
+          <tr ng-repeat="item in o_info" style="border: 1px black solid">
+            <td align="center" style="border: 1px black solid; width: {{infoTdWidth1}}px">{{item.info1}}</td>
+            <td align="center" style="border: 1px black solid; width: {{infoTdWidth2}}px">{{item.info2}}</td>
+          </tr>
+        </table>
+      </div>
+      <div style="margin-top: 10px">
+        <button ng-click="global.function.printDiv('record','print-content-one')">Печать</button>
+        <button style="margin-left: 10px" ng-click="goBack()">Вернуться</button>
+      </div>
+    </div>
+
+    <div style="margin-left: 10px" ng-show="previewSecondTypeInfo === 1">
+      <div id="print-content-two">
+        <table style="margin: 10px 0 0 0; border-collapse: collapse; border: 1px black solid">
+          <tr ng-repeat="item in o_info" style="border: 1px black solid">
+            <td align="center" style="border: 1px black solid; width: {{infoTdWidth1}}px">{{item.info1}}</td>
+            <td align="center" style="border: 1px black solid; width: {{infoTdWidth2}}px">{{item.info2}}</td>
+            <td align="center" style="border: 1px black solid; width: {{infoTdWidth3}}px">{{item.info3}}</td>
+            <td align="center" style="border: 1px black solid; width: {{infoTdWidth4}}px">{{item.info4}}</td>
+            <td align="center" style="border: 1px black solid; width: {{infoTdWidth5}}px">{{item.info5}}</td>
+          </tr>
+        </table>
+      </div>
+      <div style="margin-top: 10px">
+        <button ng-click="global.function.printDiv('record','print-content-two')">Печать</button>
+        <button style="margin-left: 10px" ng-click="goBack()">Вернуться</button>
+      </div>
+    </div>
+
+    <div style="margin-left: 10px" ng-show="previewThirdTypeInfo === 1">
+      <div id="print-content-third">
+        <table style="margin: 10px 0 0 0; border-collapse: collapse; border: 1px black solid">
+          <tr ng-repeat="item in o_info" style="border: 1px black solid">
+            <td align="center" style="border: 1px black solid; width: {{infoTdWidth1}}px">{{item.info1}}</td>
+            <td align="center" style="border: 1px black solid; width: {{infoTdWidth2}}px">{{item.info2}}</td>
+            <td align="center" style="border: 1px black solid; width: {{infoTdWidth3}}px">{{item.info3}}</td>
+            <td align="center" style="border: 1px black solid; width: {{infoTdWidth4}}px">{{item.info4}}</td>
+            <td align="center" style="border: 1px black solid; width: {{infoTdWidth5}}px">{{item.info5}}</td>
+            <td align="center" style="border: 1px black solid; width: {{infoTdWidth6}}px">{{item.info6}}</td>
+          </tr>
+        </table>
+      </div>
+      <div style="margin-top: 10px">
+        <button ng-click="global.function.printDiv('record','print-content-third')">Печать</button>
+        <button style="margin-left: 10px" ng-click="goBack()">Вернуться</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Запись -->

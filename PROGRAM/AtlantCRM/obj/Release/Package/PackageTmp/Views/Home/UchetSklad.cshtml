@@ -1,0 +1,33 @@
+﻿<!-- Учёт - Склад -->
+<div id="uchetSklad" class="tab-content" ng-controller="uchetSkladCtrl"
+     ng-show="global.selectedUchetSubMenuItem === 1 && global.function.havePravoRead(8,26)">
+
+  <div class="sklad-block">
+    <span class="sklad-pr">Дата с</span>
+    <input class="sklad-pr sklad-date" type="date" ng-model="sklad_pr.DT_FROM" />
+
+    <span class="sklad-pr sklad-span">Дата по</span>
+    <input class="sklad-pr sklad-date" type="date" ng-model="sklad_pr.DT_TO" />
+
+    <button class="sklad-pr sklad-button" ng-click="printPr()">Приход на склады</button>
+  </div>
+
+  <div class="sklad-block sklad-data-block">
+    <div class="uchet-sklad-container">
+      <table class="uchet-sklad-table" width="750">
+        <tr>
+          <th>Продукция</th>
+          <th>Количество</th>
+          <th ng-hide="global.function.noHavePravoRead(8,40)">Стоимость</th>
+        </tr>
+        <tr ng-repeat="item in sklad" ng-style="{ 'background-color' : ($index === 0 || ($index % 2) === 0 ) ? 'white' : '' }">
+          <td width="50%">{{item.name}}</td>
+          <td width="25%">{{item.kolvo}}</td>
+          <td width="25%" ng-hide="global.function.noHavePravoRead(8,40)">{{item.cost}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+<!-- /учёт - склад -->

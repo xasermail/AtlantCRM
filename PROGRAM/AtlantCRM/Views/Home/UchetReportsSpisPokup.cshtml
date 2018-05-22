@@ -1,0 +1,84 @@
+﻿<!-- Учёт - Отчёты - Список покупателей -->
+<div id="uchetReportsSpisPokup" class="tab-content" ng-controller="uchetReportsSpisPokupCtrl"
+     ng-show="global.selectedUchetSubMenuItem === 4 && global.selectedUchetReportsSubMenuItem === 0">
+
+  <div class="spis-pokup-div">
+    
+    <div>
+      <span class="spis-pokup-first-row span-dt-from">Дата с</span>
+      <input class="spis-pokup-first-row date-dt-from" type="date" ng-model="dt_from"/>
+
+      <span class="spis-pokup-first-row span-dt-to">по</span>
+      <input class="spis-pokup-first-row date-dt-to" type="date" ng-model="dt_to"/>
+
+      <span class="filter-ostalos-dn-abon-ot-span" title="Осталось дней абонемента">Осталось от</span>
+      <input class="filter-ostalos-dn-abon-ot" type="number" ng-model="ostalos_dn_abon_ot" placeholder="от" title="Осталось дней абонемента от"/>
+
+      <span class="">до</span>
+      <input class="filter-ostalos-dn-abon-do" type="number" ng-model="ostalos_dn_abon_do" placeholder="до" title="Осталось дней абонемента до"/>
+
+
+      <select ng-options="item.ID as item.NAME for item in global.manual.M_METOD_OPL" ng-model="m_method_opl_id">
+        <option value="">-- Форма оплаты --</option>
+      </select>
+
+      <select ng-model="vip" ng-options="item.ID as item.NAME for item in vipList">
+        <option value="">-- VIP --</option>
+      </select>
+
+
+      <button class="spis-pokup-first-row spis-pokup-button-apply" ng-click="refreshSpisPokup()">Применить</button>
+      <button class="spis-pokup-button-clear-filter btn-link" type="button" ng-click="clearFilter()">Сброс фильров</button>
+    </div>
+
+    <div class="spis-pokup-div-table">
+      <table>
+        <tr>
+          <td align="center">&nbsp;VIP&nbsp;</td>
+          <td align="center">ФИО</td>
+          <td align="center">Дата выдачи</td>
+          <td align="center">Телефон</td>
+          <td align="center">Наименование товара</td>
+          <td align="center">Выдано</td>
+          <td align="center">Сумма</td>
+          <td align="center" title="Осталось дней абонемента">Осталось</td>
+          <td align="center">Посещения</td>
+          <td class="empty-header">empty</td>
+        </tr>
+        <tr ng-repeat="item in data" ng-style="{ 'background-color' : ($index + 1 === 1 || (($index + 1) % 2) > 0 ) ? 'white' : '' }">
+          <td align="center" class="vip">{{item.VIP === 1 ? "VIP": ""}}</td>
+          <td align="center" class="info1">
+            <span ng-click="openAnkRej(item.O_ANK_ID)" ng-class="(item.O_ANK_ID === null) ? '' : 'hover-cursor-underline'">{{item.FIO}}</span>
+          </td>
+          <td align="center" class="info2">{{item.D_VID | date:'dd.MM.yyyy'}}</td>
+
+          <td align="center" class="process-a-call-td info3">
+            <a href="#"
+               ng-click="global.function.phoneClick(item.PHONE, item)"
+               ng-hide="item.showProcessACall"
+               title="Нажмите на номер телефона для совершения вызова">{{item.PHONE}}</a>
+            <div class="process-a-call" ng-show="item.showProcessACall"><div>Совершается вызов</div></div>
+          </td>
+
+          <td align="center" class="info4">
+            <span ng-click="global.openUchetSkladRasProduct(item.O_SKLAD_RAS_ID)"
+                  ng-class="(item.O_SKLAD_RAS_ID === null) ? '' : 'hover-cursor-underline'">{{item.NAME}}</span>
+          </td>
+
+          <td align="center" class="info5">{{item.VID}}</td>
+          <td align="center" class="info6">{{item.SUMMA}}</td>
+          <td align="center" class="ostalos-dn-abon">{{item.OSTALOS_DN_ABON > 0 ? item.OSTALOS_DN_ABON : ""}}</td>
+          <td align="center" class="seans_cnt">{{item.SEANS_CNT}}</td>
+          <td class="empty-body">empty</td>
+        </tr>
+      </table>
+    </div>
+    <button class="spis-pokup-first-row spis-pokup-button-print" ng-click="print()">Печать</button>
+  </div>
+
+  <pagination class="div-pagination" page-nums="pageNums" refresh-fn="refreshSpisPokup" page="page" max-pages-count="10" />
+
+
+</div>
+<!-- /учёт - отчёты - список покупателей -->
+

@@ -1,0 +1,67 @@
+﻿<!-- Учёт - Отчёты - Отчет о доходах -->
+<div id="uchetReportsOtchetDohod" class="tab-content" ng-controller="uchetReportsOtchetDohodCtrl"
+     ng-show="global.selectedUchetSubMenuItem === 4 && global.selectedUchetReportsSubMenuItem === 3">
+
+  <div class="otchet-dohod-div">
+    
+    <div style="padding-top: 20px">
+      <span class="span-dt-from">Дата с</span>
+      <input type="date" ng-model="DT_FROM"/>
+
+      <span>Дата по</span>
+      <input type="date" ng-model="DT_TO"/>
+
+      <button ng-click="refreshOtchetDohod()">Применить</button>
+    </div>
+
+    <div>
+      <table>
+        <tr>
+          <td>Товарооборот</td>
+          <td>Себестоимость</td>
+          <td>Брутто Прибыль</td>
+          <td>Расходы</td>
+          <td>Чистая прибыль</td>
+          <td>Рентабельность</td>
+        </tr>
+        <tr style="background-color: white">
+          <td>{{buh[0].TOVAROOB}}</td>
+          <td>{{buh[0].SEBEST}}</td>
+          <td>{{buh[0].BRUTTO_PR}}</td>
+          <td>{{buh[0].RASHOD}}</td>
+          <td>{{buh[0].CHIST_PR}}</td>
+          <td>{{buh[0].RENT}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div>
+      <div class="otchet-dohod-rashod-button">
+        <span class="span-dt-from">Расходы:</span>
+        <span class="orange-text">детально</span>
+        <button ng-click="print()">Печать</button>
+      </div>
+
+      <div class="otchet-dohod-div-table">
+        <table>
+          <tr>
+            <td>Дата</td>
+            <td>Сумма</td>
+            <td>Кто</td>
+          </tr>
+          <tr ng-repeat="item in data" ng-style="{ 'background-color' : ($index === 0 || ($index % 2) === 0 ) ? 'white' : '' }">
+            <td width="16%" ng-style="{'font-weight' : (item.BR === 1 ) ? 'bold' : '' }">{{item.D_SCHET | date:'dd.MM.yyyy'}}</td>
+            <td width="43%" ng-style="{'font-weight' : (item.BR === 1 ) ? 'bold' : '' }">{{item.SUMMA}}</td>
+            <td width="41%">
+              <span ng-click="openRasDocRej(item.ID)" class="hover-cursor-underline">{{item.KTO}}</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!-- /Учёт - Отчёты - Отчет о доходах -->
+

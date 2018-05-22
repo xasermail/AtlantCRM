@@ -1,0 +1,68 @@
+﻿<!-- Отчеты - Специалисты -->
+<div id="reportSpecialists" ng-controller="reportSpecialistsCtrl" ng-show="global.selectedReportSubMenuItem === 2 && global.function.havePravoRead(4,11)">
+  <div>
+    <span>Дата</span>
+    <input type="date" ng-model="fromDate"/>
+    <span> - </span>
+    <input type="date" ng-model="toDate"/>
+
+    <select ng-model="currentMode" ng-options="item for item in modes"></select>
+    <button ng-click="btnChangeSeansClick($event)">Применить</button>
+  </div>
+  <div ng-show="currentMode == 'По сотруднику'">
+    <select ng-model="selectedSpecialist"
+            ng-options="item.ID as ((item.SURNAME || '') + ' ' + (item.NAME || ' ')
+                        + ' ' + (item.SECNAME || ' ')) for item in
+                        global.manual.S_USER | filter:{M_ORG_ID: global.userContext.M_ORG_ID}:true"
+                        ng-disabled="reporl.length == 0"></select>
+  </div>
+
+  <div>
+    <table>
+      <tr>
+        <td class="fioHeader">ФИО</td>
+        <td class="friendsHeader"
+            ng-hide="currentMode == 'Контакты' || currentMode == 'Друзья'">Друзья</td>
+        <td class="anketsHeader"
+            ng-hide="currentMode == 'Контакты'  || currentMode == 'Друзья'">Анкеты</td>
+        <td class="dialogHeader"
+            ng-hide="currentMode == 'Контакты'  || currentMode == 'Друзья'">Общение</td>
+        <td class="kontactsHeader"
+            ng-hide="currentMode == 'Контакты'">Записал</td>
+        <td class="cameHeaders">Пришло</td>
+        <td class="notCameHeader">Не пришло</td>
+        <td class="percentHeader">%</td>
+        <td class="buyHeader">Купил</td>
+        <td class="callHeader">Звонков</td>
+      </tr>
+      <tr ng-repeat="item in report | filter:filterFn">
+        <td>{{item.FIO}}</td>
+        <td ng-hide="currentMode == 'Контакты' || currentMode == 'Друзья'">{{item.FRIENDS}}</td>
+        <td ng-hide="currentMode == 'Контакты' || currentMode == 'Друзья'">{{item.ANKETS}}</td>
+        <td ng-hide="currentMode == 'Контакты' || currentMode == 'Друзья'">{{item.DIALOG}}</td>
+        <td ng-hide="currentMode == 'Контакты'">{{item.KONTACTS}}</td>
+        <td>{{item.CAME}}</td>
+        <td>{{item.NOT_CAME}}</td>
+        <td>{{item.PERCENT}}</td>
+        <td>{{item.BUY}}</td>
+        <td>{{item.COUNT_CALL}}</td>
+      </tr>
+      <tfoot>
+        <tr>
+          <td>Всего</td>
+          <td ng-hide="currentMode == 'Контакты' || currentMode == 'Друзья'">{{getSumFriends()}}</td>
+          <td ng-hide="currentMode == 'Контакты' || currentMode == 'Друзья'">{{getSumAnkets()}}</td>
+          <td ng-hide="currentMode == 'Контакты' || currentMode == 'Друзья'">{{getSumDialog()}}</td>
+          
+          <td ng-hide="currentMode == 'Контакты'">{{getSumKontacts()}}</td>
+          <td>{{getSumCame()}}</td>
+          <td>{{getSumNotCame()}}</td>
+          <td>{{getAvgPercent()}}</td>
+          <td>{{getSumBuy()}}</td>
+          <td>{{getSumCountCall()}}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+<!-- /отчеты - Специалисты -->

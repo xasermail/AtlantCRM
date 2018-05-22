@@ -1,0 +1,56 @@
+﻿<div id="reportStatistic"  class="reportForm" ng-controller="reportStatisticCtrl" ng-show="global.selectedReportSubMenuItem === 1">
+    <div>
+        <span>Дата</span>
+        <input type="date" ng-model="fromDate"/>
+        <span> - </span>
+        <input type="date" ng-model="toDate" />
+        <button ng-click="btnChangeSeansClick($event)">Применить</button>
+    </div>
+    @*<table class="table table-bordered table-striped">*@
+    <table>
+        <tr>
+            <td>Название</td>
+            <td>Количество</td>
+        </tr>
+        <tr>
+            <td>Общее количество посетителей</td>
+            <td>{{report.ALL_COUNT}}</td>
+        </tr>
+        <tr>
+            <td>Средний возраст</td>
+            <td>{{report.AVG_AGE}}</td>
+        </tr>
+        <tr>
+            <td>Диапозон возраста</td>
+            <td>{{report.RANGE_AGE}}</td>
+        </tr>
+        <tr>
+            <td>Наиболее распространенный возраст</td>
+            <td>{{report.POPULAR_AGE}}</td>
+        </tr>
+        <tr>
+            <td>Соотношение М/Ж</td>
+            <td>{{report.RATIO_MAN_AND_WOMAN}}</td>
+        </tr>
+        <tr>
+            <td>Сколько знают</td>
+            <td>{{report.ZNAUT}}</td>
+        </tr>
+        <tr>
+            <td>Продажи БХМ</td>
+            <td>{{report.SALE_BHM}}</td>
+        </tr>
+        <tr>
+            <td>Продажи МХМ</td>
+            <td>{{report.SALE_MHM}}</td>
+        </tr>
+        <tr>
+            <td>Продажи Проектор</td>
+            <td>{{report.SALE_PROECTOR}}</td>
+        </tr>
+        <tr>
+            <td>Общее число продаж</td>
+            <td>{{report.ALL_COUNT_SALE}}</td>
+        </tr>
+    </table>
+</div>

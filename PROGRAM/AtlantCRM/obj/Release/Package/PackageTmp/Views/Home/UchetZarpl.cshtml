@@ -1,0 +1,107 @@
+﻿<!-- Учёт - Зарплата -->
+<div id="uchetZarpl" class="tab-content" ng-controller="uchetZarplCtrl"
+     ng-show="global.selectedUchetSubMenuItem === 5 && global.function.havePravoRead(8,34)">
+
+  <div class="zp-block-common">
+  <div class="zp-date-common">
+    <span>Период с</span>
+    <input type="date" size="3" class="zp-date" ng-model="zarpl.D_PERIOD_S" ng-change="getZarplValovDohod()">
+    <span>по</span>
+    <input type="date" size="3" class="zp-date" ng-model="zarpl.D_PERIOD_PO" ng-change="getZarplValovDohod()">
+  </div>
+    <div>
+      <center>
+        <table class="zp_table">
+          <col width="35">
+          <col width="270">
+          <tr>
+            <td></td>
+            <td><center>ФИО</center></td>
+            <td><center>Дни</center></td>
+            <td><center>Час</center></td>
+            <td><center>Сумма</center></td>
+            <td><center>С/Ч</center></td>
+            <td><center>Валовой</center></td>
+            <td><center>%</center></td>
+            <td><center>Бонус</center></td>
+            <td><center>Штраф</center></td>
+            <td><center>Зарплата</center></td>
+            <td></td>
+          </tr>
+          <tr ng-repeat="x in sotrudnik">
+            <td><center>{{$index + 1}}</center></td>
+            <td>{{x.fio}}</td>
+            <td>
+              <input type="number" ng-model="x.DNI" class="zp-input" ng-change="schChanged(x)"/>
+            </td>
+            <td>
+              <input type="number" class="zp-input" ng-model="x.CHAS" ng-change="schChanged(x)"/>
+            </td>
+            <td>
+              <input type="number" class="zp-input" ng-model="x.SUMMA" ng-change="schChanged(x)"/>
+            </td>
+            <td>
+              <input type="number" class="zp-input" ng-disabled="true" ng-model="x.S_CH" ng-change="schChanged(x)"/>
+            </td>
+            <td>
+              <input type="number" class="zp-input" ng-model="x.VALOV_DOHOD" ng-disabled="true" ng-change="schChanged(x)"/>
+            </td>
+            <td>
+              <input type="number" class="zp-input"  ng-model="x.PROTS" ng-change="schChanged(x)"/>
+            </td>
+            <td>
+              <input type="number" class="zp-input"  ng-model="x.BONUS" ng-change="schChanged(x)" />
+            </td>
+            <td>
+              <input type="number" class="zp-input" ng-model="x.SHTRAF" ng-change="schChanged(x)"/>
+            </td>
+            <td>
+              <input type="number" class="zp-input" ng-model="x.ZARPL" ng-disabled="true" ng-change="schChanged(x)"/>
+            </td>
+            
+            <td>
+             <button ng-click="printZp1(x)">Печать</button>
+            </td>
+          </tr>
+        </table>
+      </center>
+    </div>
+    <button class="zp-button-new" ng-click="zpGet()">Новая запись</button>
+    <div >
+      
+      <div class="zp-bl-zarp">
+        
+      </div>
+        <span>Общая зарплата</span>
+        <input type="number" ng-disabled="true" ng-model="zp" ng-change="schChanged(x)" >
+      </div>
+      <div class="zp-buttons">
+        <button class="zp-button-save" ng-click="zpSave()">Сохранить</button>
+        <button class="zp-button" ng-click="printZp()" >Отправка на печать</button>
+      </div>
+    </div>
+
+  @*Навигация по страницам*@
+  <div class="div-pagination">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li>
+          <a href="#" aria-label="Previous" ng-click="prevPageClickHandler()">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li ng-repeat="item in pageNums" ng-class="{ 'active': item === page }">
+          <a href="#" ng-click="pageNumClickHandler(item)">{{item}}</a>
+        </li>
+        <li>
+          <a href="#" aria-label="Next" ng-click="nextPageClickHandler()">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+ </div>
+
+
+<!-- /учёт - зарплата -->

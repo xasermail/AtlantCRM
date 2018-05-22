@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/x-icon" href="/content/img/favicon.ico" />
+  <title>@ViewBag.Title</title>
+
+  @RenderSection("styles",required: false)
+
+</head>
+<body ng-app="myAppPrint" ng-controller="printCtrl" id="print">
+
+  @RenderBody()
+
+  <script>
+
+    window.onerror = function (msg, url, lineNo, columnNo, error) {
+      var string = msg.toLowerCase();
+      var substring = "script error";
+      if (string.indexOf(substring) > -1) {
+        alert('Script Error: See Browser Console for Detail');
+      } else {
+        var message = [
+            'Message: ' + msg,
+            'URL: ' + url,
+            'Line: ' + lineNo,
+            'Column: ' + columnNo,
+            'Error object: ' + JSON.stringify(error)
+        ].join(' - ');
+
+        alert(message);
+      }
+
+      return false;
+    };
+
+  </script>
+
+
+  @Scripts.Render("~/bundles/jquery")
+  <script src="~/Scripts/angular.js"></script>
+  <script src="~/Scripts/angular-locale_ru-ru.js"></script>
+  <script src="~/Scripts/JsBarcode.ean-upc.min.js"></script>
+
+  <script>
+
+    myAppPrint = angular.module("myAppPrint", []);
+
+    myAppPrint.controller("printCtrl", function appCtrl($scope, $http, $timeout, $interval) {
+
+      $scope.print = function print() {
+
+
+        if (window.printData == null) {
+
+          $timeout($scope.print, 1000);
+
+        } else {
+
+          for (var item in window.printData) {
+            $scope[item] = window.printData[item];
+          }
+
+          // штрих-код
+          if ($scope.ID != null) {
+            $("#newAnkPrintPreview1 .new-ank-print-preview .new-ank-print-barcode").JsBarcode(
+              // надо дополнять ID нулями до 12 символов
+              ("000000000000" + $scope.ID_CODE).substr(($scope.ID_CODE + "").length),
+              { width: 3, height: 60, format: "EAN13" }
+            );
+
+            $("#ankAbonementPrint .wrap .barcode-photo").JsBarcode(
+              // надо дополнять ID нулями до 12 символов
+              ("000000000000" + $scope.ID_CODE).substr(($scope.ID_CODE + "").length),
+              { width: 3, height: 60, format: "EAN13" }
+            );
+          }
+
+          $timeout(window.print, 500); 
+          $timeout(window.close, 2000);
+
+        }
+
+      };
+
+      $scope.print();
+
+    });
+
+  </script>
+
+  @RenderSection("scripts",required: false)
+
+  
+</body>
+</html>

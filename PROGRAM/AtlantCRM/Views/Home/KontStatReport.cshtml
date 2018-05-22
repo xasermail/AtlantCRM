@@ -1,0 +1,62 @@
+﻿<!-- Контакты - Статистика -->
+<div id="kontStatReport" class="tab-content" ng-controller="kontStatReportCtrl"
+     ng-show="global.selectedKontSubMenuItem === 4 && global.function.havePravoRead(7,54)">
+
+  <div class="filter">
+
+    <div class="s-user-id">
+      <select ng-options="item.ID as item.UserName for item in global.manual.S_USER |filter:{M_ORG_ID: global.userContext.M_ORG_ID}:true"
+              ng-model="filter.S_USER_ID"
+              ng-disabled="global.function.noHavePravoWrite(8,27)">
+        <option value="">Сотрудник</option>
+      </select>
+    </div>
+
+    <div class="period-s">
+      <span>Дата с:</span><input type="date" ng-model="filter.periodS" />
+    </div>
+    <div class="period-po">
+      <span>Дата по:</span><input type="date" ng-model="filter.periodPo" />
+    </div>
+
+    <div class="btn-search"><button type="button" class="btn btn-primary" ng-click="btnPrimClick()">Применить</button></div>
+
+  </div>
+
+  <div class="report">
+    <table class="table table-bordered table-1">
+      <thead>
+        <tr>
+          <th>Логин</th>
+          <th>Звонок</th>
+          <th>Контакт</th>
+          <th>Комментарий</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bold-row">
+          <td>{{report.UserName}}</td>
+          <td>{{report.zvonok}}</td>
+          <td>{{report.kontakt}}</td>
+          <td>{{report.comment}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Статус</td>
+          <td ng-repeat="item in report.status" colspan="{{$first ? 2 : 1}}">{{item.name}}/{{item.kolvo}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Источник</td>
+          <td ng-repeat="item in report.istochnik" colspan="{{$first ? 2 : 1}}">{{item.name}}/{{item.kolvo}}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+<!-- /контакты - статистика -->

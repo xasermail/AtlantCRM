@@ -1,0 +1,1272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ATLANTCRMModelStoreContainer" CdmEntityContainer="ATLANTEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="OldPasswordHash" ColumnName="OldPasswordHash" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_DEISTV">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_DEISTV">
+        <MappingFragment StoreEntitySet="M_DEISTV">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_IST_INF">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_IST_INF">
+        <MappingFragment StoreEntitySet="M_IST_INF">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_KONT_IST">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_KONT_IST">
+        <MappingFragment StoreEntitySet="M_KONT_IST">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_KONT_STATUS">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_KONT_STATUS">
+        <MappingFragment StoreEntitySet="M_KONT_STATUS">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_MANUAL">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_MANUAL">
+        <MappingFragment StoreEntitySet="M_MANUAL">
+          <ScalarProperty Name="NAME_RU" ColumnName="NAME_RU" />
+          <ScalarProperty Name="NAME_ENG" ColumnName="NAME_ENG" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_METOD_OPL">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_METOD_OPL">
+        <MappingFragment StoreEntitySet="M_METOD_OPL">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_NAME_AND_SEX">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_NAME_AND_SEX">
+        <MappingFragment StoreEntitySet="M_NAME_AND_SEX">
+          <ScalarProperty Name="SEX" ColumnName="SEX" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_ORG">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_ORG">
+        <MappingFragment StoreEntitySet="M_ORG">
+          <ScalarProperty Name="DEISTV" ColumnName="DEISTV" />
+          <ScalarProperty Name="M_ORG_ID_TEH_OTDEL" ColumnName="M_ORG_ID_TEH_OTDEL" />
+          <ScalarProperty Name="TZ" ColumnName="TZ" />
+          <ScalarProperty Name="M_ORG_TYPE_ID" ColumnName="M_ORG_TYPE_ID" />
+          <ScalarProperty Name="KOD_PODTV" ColumnName="KOD_PODTV" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+          <ScalarProperty Name="PARENT_ID" ColumnName="PARENT_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_ORG_TYPE">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_ORG_TYPE">
+        <MappingFragment StoreEntitySet="M_ORG_TYPE">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_PRAVO_GR">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_PRAVO_GR">
+        <MappingFragment StoreEntitySet="M_PRAVO_GR">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_PRAVO_REJ">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_PRAVO_REJ">
+        <MappingFragment StoreEntitySet="M_PRAVO_REJ">
+          <ScalarProperty Name="M_PRAVO_GR_ID" ColumnName="M_PRAVO_GR_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_PRICH_ISKL">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_PRICH_ISKL">
+        <MappingFragment StoreEntitySet="M_PRICH_ISKL">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_PRODUCT">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_PRODUCT">
+        <MappingFragment StoreEntitySet="M_PRODUCT">
+          <ScalarProperty Name="IS_ABON" ColumnName="IS_ABON" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_RASHOD_STAT">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_RASHOD_STAT">
+        <MappingFragment StoreEntitySet="M_RASHOD_STAT">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_RYAD">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_RYAD">
+        <MappingFragment StoreEntitySet="M_RYAD">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_SEANS_PLACE">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_SEANS_PLACE">
+        <MappingFragment StoreEntitySet="M_SEANS_PLACE">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="M_RYAD_ID" ColumnName="M_RYAD_ID" />
+          <ScalarProperty Name="M_PRODUCT_ID" ColumnName="M_PRODUCT_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_SEANS_TIME">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_SEANS_TIME">
+        <MappingFragment StoreEntitySet="M_SEANS_TIME">
+          <ScalarProperty Name="MAX_TIME_MINUTES" ColumnName="MAX_TIME_MINUTES" />
+          <ScalarProperty Name="MIN_TIME_MINUTES" ColumnName="MIN_TIME_MINUTES" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="MAX_TIME" ColumnName="MAX_TIME" />
+          <ScalarProperty Name="MIN_TIME" ColumnName="MIN_TIME" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_SECNAME">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_SECNAME">
+        <MappingFragment StoreEntitySet="M_SECNAME">
+          <ScalarProperty Name="SECNAME" ColumnName="SECNAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_SERVICE_TYPE">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_SERVICE_TYPE">
+        <MappingFragment StoreEntitySet="M_SERVICE_TYPE">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_SEX">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_SEX">
+        <MappingFragment StoreEntitySet="M_SEX">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_SHABLON">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_SHABLON">
+        <MappingFragment StoreEntitySet="M_SHABLON">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="OPERATOR" ColumnName="OPERATOR" />
+          <ScalarProperty Name="D_CREATE" ColumnName="D_CREATE" />
+          <ScalarProperty Name="SHABLON_TEXT" ColumnName="SHABLON_TEXT" />
+          <ScalarProperty Name="SHABLON_NAME" ColumnName="SHABLON_NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_SMS_SEND_ERROR">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_SMS_SEND_ERROR">
+        <MappingFragment StoreEntitySet="M_SMS_SEND_ERROR">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_SOPR_DOP">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_SOPR_DOP">
+        <MappingFragment StoreEntitySet="M_SOPR_DOP">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_SOPR_FORM_OPL">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_SOPR_FORM_OPL">
+        <MappingFragment StoreEntitySet="M_SOPR_FORM_OPL">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_SOPR_PRODUCT">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_SOPR_PRODUCT">
+        <MappingFragment StoreEntitySet="M_SOPR_PRODUCT">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_SOPR_STATUS">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_SOPR_STATUS">
+        <MappingFragment StoreEntitySet="M_SOPR_STATUS">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_STATUS">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_STATUS">
+        <MappingFragment StoreEntitySet="M_STATUS">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_SURNAME">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_SURNAME">
+        <MappingFragment StoreEntitySet="M_SURNAME">
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_VID_SOB">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_VID_SOB">
+        <MappingFragment StoreEntitySet="M_VID_SOB">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_VOPROS">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_VOPROS">
+        <MappingFragment StoreEntitySet="M_VOPROS">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_VOPROS_TAB">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_VOPROS_TAB">
+        <MappingFragment StoreEntitySet="M_VOPROS_TAB">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_WORK_DAY">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_WORK_DAY">
+        <MappingFragment StoreEntitySet="M_WORK_DAY">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="DAY_ID" ColumnName="DAY_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_YES_NO">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_YES_NO">
+        <MappingFragment StoreEntitySet="M_YES_NO">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_ZABOL">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_ZABOL">
+        <MappingFragment StoreEntitySet="M_ZABOL">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="M_ZABOL_GROUP_ID" ColumnName="M_ZABOL_GROUP_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_ZABOL_GROUP">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_ZABOL_GROUP">
+        <MappingFragment StoreEntitySet="M_ZABOL_GROUP">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_ANK">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_ANK">
+        <MappingFragment StoreEntitySet="O_ANK">
+          <ScalarProperty Name="D_SKRYT_PO" ColumnName="D_SKRYT_PO" />
+          <ScalarProperty Name="VIP" ColumnName="VIP" />
+          <ScalarProperty Name="GPS_LT" ColumnName="GPS_LT" />
+          <ScalarProperty Name="GPS_LG" ColumnName="GPS_LG" />
+          <ScalarProperty Name="AKTIVIST" ColumnName="AKTIVIST" />
+          <ScalarProperty Name="BONUS" ColumnName="BONUS" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+          <ScalarProperty Name="DATE_REG" ColumnName="DATE_REG" />
+          <ScalarProperty Name="USER_REG" ColumnName="USER_REG" />
+          <ScalarProperty Name="FIO_INFO_ID" ColumnName="FIO_INFO_ID" />
+          <ScalarProperty Name="IST_INFO" ColumnName="IST_INFO" />
+          <ScalarProperty Name="POST_INDEX" ColumnName="POST_INDEX" />
+          <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+          <ScalarProperty Name="CORPUS" ColumnName="CORPUS" />
+          <ScalarProperty Name="FLAT" ColumnName="FLAT" />
+          <ScalarProperty Name="HOUSE" ColumnName="HOUSE" />
+          <ScalarProperty Name="STREET" ColumnName="STREET" />
+          <ScalarProperty Name="CITY" ColumnName="CITY" />
+          <ScalarProperty Name="REGION" ColumnName="REGION" />
+          <ScalarProperty Name="PHONE_HOME" ColumnName="PHONE_HOME" />
+          <ScalarProperty Name="PHONE_MOBILE" ColumnName="PHONE_MOBILE" />
+          <ScalarProperty Name="BIRTHDAY" ColumnName="BIRTHDAY" />
+          <ScalarProperty Name="SEX" ColumnName="SEX" />
+          <ScalarProperty Name="SECNAME" ColumnName="SECNAME" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_ANK_ZABOL">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_ANK_ZABOL">
+        <MappingFragment StoreEntitySet="O_ANK_ZABOL">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="M_ZABOL_ID" ColumnName="M_ZABOL_ID" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_COMPLAINT">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_COMPLAINT">
+        <MappingFragment StoreEntitySet="O_COMPLAINT">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_DEISTV">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_DEISTV">
+        <MappingFragment StoreEntitySet="O_DEISTV">
+          <ScalarProperty Name="O_RAS_DOK_ID" ColumnName="O_RAS_DOK_ID" />
+          <ScalarProperty Name="O_SKLAD_RAS_ID" ColumnName="O_SKLAD_RAS_ID" />
+          <ScalarProperty Name="O_SKLAD_PR_ID" ColumnName="O_SKLAD_PR_ID" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="MESS" ColumnName="MESS" />
+          <ScalarProperty Name="M_DEISTV_ID" ColumnName="M_DEISTV_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_FIN" ColumnName="D_FIN" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_DIALOG">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_DIALOG">
+        <MappingFragment StoreEntitySet="O_DIALOG">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="O_SEANS_ID" ColumnName="O_SEANS_ID" />
+          <ScalarProperty Name="DIALOG_DATE" ColumnName="DIALOG_DATE" />
+          <ScalarProperty Name="NPOS" ColumnName="NPOS" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_DILER_A_PRICE">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_DILER_A_PRICE">
+        <MappingFragment StoreEntitySet="O_DILER_A_PRICE">
+          <ScalarProperty Name="C" ColumnName="C" />
+          <ScalarProperty Name="M_PRODUCT_ID_PODAROK" ColumnName="M_PRODUCT_ID_PODAROK" />
+          <ScalarProperty Name="ROZN" ColumnName="ROZN" />
+          <ScalarProperty Name="D" ColumnName="D" />
+          <ScalarProperty Name="M_PRODUCT_ID_TOVAR" ColumnName="M_PRODUCT_ID_TOVAR" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_DILER_A_SKLAD">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_DILER_A_SKLAD">
+        <MappingFragment StoreEntitySet="O_DILER_A_SKLAD">
+          <ScalarProperty Name="KOLVO" ColumnName="KOLVO" />
+          <ScalarProperty Name="M_PRODUCT_ID" ColumnName="M_PRODUCT_ID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_DILER_C_SKLAD">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_DILER_C_SKLAD">
+        <MappingFragment StoreEntitySet="O_DILER_C_SKLAD">
+          <ScalarProperty Name="KOLVO" ColumnName="KOLVO" />
+          <ScalarProperty Name="M_PRODUCT_ID" ColumnName="M_PRODUCT_ID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_INVENT">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_INVENT">
+        <MappingFragment StoreEntitySet="O_INVENT">
+          <ScalarProperty Name="CHECK_PHOTO" ColumnName="CHECK_PHOTO" />
+          <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="IS_SPISAN" ColumnName="IS_SPISAN" />
+          <ScalarProperty Name="INV_NUM" ColumnName="INV_NUM" />
+          <ScalarProperty Name="COST" ColumnName="COST" />
+          <ScalarProperty Name="KOLVO" ColumnName="KOLVO" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_KALEN_PROD">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_KALEN_PROD">
+        <MappingFragment StoreEntitySet="O_KALEN_PROD">
+          <ScalarProperty Name="D_PERIOD_PO" ColumnName="D_PERIOD_PO" />
+          <ScalarProperty Name="D_PERIOD_S" ColumnName="D_PERIOD_S" />
+          <ScalarProperty Name="D_PROD_PO" ColumnName="D_PROD_PO" />
+          <ScalarProperty Name="D_PROD_S" ColumnName="D_PROD_S" />
+          <ScalarProperty Name="D_VLYUB_PO" ColumnName="D_VLYUB_PO" />
+          <ScalarProperty Name="D_VLYUB_S" ColumnName="D_VLYUB_S" />
+          <ScalarProperty Name="D_NAPOLN_PO" ColumnName="D_NAPOLN_PO" />
+          <ScalarProperty Name="D_NAPOLN_S" ColumnName="D_NAPOLN_S" />
+          <ScalarProperty Name="COST" ColumnName="COST" />
+          <ScalarProperty Name="M_PRODUCT_ID_PODAROK" ColumnName="M_PRODUCT_ID_PODAROK" />
+          <ScalarProperty Name="M_PRODUCT_ID_TOVAR" ColumnName="M_PRODUCT_ID_TOVAR" />
+          <ScalarProperty Name="NAME_AK" ColumnName="NAME_AK" />
+          <ScalarProperty Name="MES" ColumnName="MES" />
+          <ScalarProperty Name="GOD" ColumnName="GOD" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_KONT_ANK">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_KONT_ANK">
+        <MappingFragment StoreEntitySet="O_KONT_ANK">
+          <ScalarProperty Name="SKR_IZ_RECORD" ColumnName="SKR_IZ_RECORD" />
+          <ScalarProperty Name="M_KONT_IST_ID" ColumnName="M_KONT_IST_ID" />
+          <ScalarProperty Name="M_KONT_STATUS_ID" ColumnName="M_KONT_STATUS_ID" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="SKR" ColumnName="SKR" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="SECNAME" ColumnName="SECNAME" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_KONT_SEANS">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_KONT_SEANS">
+        <MappingFragment StoreEntitySet="O_KONT_SEANS">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="M_SEANS_TIME_ID" ColumnName="M_SEANS_TIME_ID" />
+          <ScalarProperty Name="SEANS_DATE" ColumnName="SEANS_DATE" />
+          <ScalarProperty Name="D_ZV" ColumnName="D_ZV" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="O_KONT_ANK_ID" ColumnName="O_KONT_ANK_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_KONT_SEANS_COMMENT">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_KONT_SEANS_COMMENT">
+        <MappingFragment StoreEntitySet="O_KONT_SEANS_COMMENT">
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="O_KONT_SEANS_ID" ColumnName="O_KONT_SEANS_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_KONT_STAT">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_KONT_STAT">
+        <MappingFragment StoreEntitySet="O_KONT_STAT">
+          <ScalarProperty Name="M_KONT_IST_ID" ColumnName="M_KONT_IST_ID" />
+          <ScalarProperty Name="M_KONT_STATUS_ID" ColumnName="M_KONT_STATUS_ID" />
+          <ScalarProperty Name="TIP_IZM" ColumnName="TIP_IZM" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_NASTR">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_NASTR">
+        <MappingFragment StoreEntitySet="O_NASTR">
+          <ScalarProperty Name="SMS_AUTO_SEND" ColumnName="SMS_AUTO_SEND" />
+          <ScalarProperty Name="SHOW_KONT" ColumnName="SHOW_KONT" />
+          <ScalarProperty Name="VNESH_VID_REG" ColumnName="VNESH_VID_REG" />
+          <ScalarProperty Name="DILER_C_ACCESS" ColumnName="DILER_C_ACCESS" />
+          <ScalarProperty Name="SIP_SECRET" ColumnName="SIP_SECRET" />
+          <ScalarProperty Name="SIP_KEY" ColumnName="SIP_KEY" />
+          <ScalarProperty Name="PHONE_MOBILE" ColumnName="PHONE_MOBILE" />
+          <ScalarProperty Name="SMS_SENDER" ColumnName="SMS_SENDER" />
+          <ScalarProperty Name="SMS_PASSWORD" ColumnName="SMS_PASSWORD" />
+          <ScalarProperty Name="SMS_LOGIN" ColumnName="SMS_LOGIN" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_OPOV">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_OPOV">
+        <MappingFragment StoreEntitySet="O_OPOV">
+          <ScalarProperty Name="M_ORG_ID_A" ColumnName="M_ORG_ID_A" />
+          <ScalarProperty Name="TIP" ColumnName="TIP" />
+          <ScalarProperty Name="O_SKLAD_RAS_PRODUCT_ID" ColumnName="O_SKLAD_RAS_PRODUCT_ID" />
+          <ScalarProperty Name="O_SKLAD_RAS_ID" ColumnName="O_SKLAD_RAS_ID" />
+          <ScalarProperty Name="O_ANK_ID_SOURCE" ColumnName="O_ANK_ID_SOURCE" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID_SOURCE" ColumnName="M_ORG_ID_SOURCE" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_PRAVO_GR">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_PRAVO_GR">
+        <MappingFragment StoreEntitySet="O_PRAVO_GR">
+          <ScalarProperty Name="M_PRAVO_GR_ID" ColumnName="M_PRAVO_GR_ID" />
+          <ScalarProperty Name="S_USER_ID" ColumnName="S_USER_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_PRAVO_REJ">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_PRAVO_REJ">
+        <MappingFragment StoreEntitySet="O_PRAVO_REJ">
+          <ScalarProperty Name="WRITE1" ColumnName="WRITE1" />
+          <ScalarProperty Name="READ1" ColumnName="READ1" />
+          <ScalarProperty Name="M_PRAVO_REJ_ID" ColumnName="M_PRAVO_REJ_ID" />
+          <ScalarProperty Name="S_USER_ID" ColumnName="S_USER_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_PRODL">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_PRODL">
+        <MappingFragment StoreEntitySet="O_PRODL">
+          <ScalarProperty Name="IS_SROCHNO" ColumnName="IS_SROCHNO" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="M_SOPR_DOP_ID" ColumnName="M_SOPR_DOP_ID" />
+          <ScalarProperty Name="M_SOPR_STATUS_ID" ColumnName="M_SOPR_STATUS_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_PRODL_COMMENT">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_PRODL_COMMENT">
+        <MappingFragment StoreEntitySet="O_PRODL_COMMENT">
+          <ScalarProperty Name="ZADACHA" ColumnName="ZADACHA" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="O_PRODL_ID" ColumnName="O_PRODL_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_RAS_DOK">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_RAS_DOK">
+        <MappingFragment StoreEntitySet="O_RAS_DOK">
+          <ScalarProperty Name="RASHOD" ColumnName="RASHOD" />
+          <ScalarProperty Name="VOZVR" ColumnName="VOZVR" />
+          <ScalarProperty Name="SUMMA_VID" ColumnName="SUMMA_VID" />
+          <ScalarProperty Name="MOTIV" ColumnName="MOTIV" />
+          <ScalarProperty Name="S_USER_ID" ColumnName="S_USER_ID" />
+          <ScalarProperty Name="SUMMA_RASH" ColumnName="SUMMA_RASH" />
+          <ScalarProperty Name="KOLVO" ColumnName="KOLVO" />
+          <ScalarProperty Name="COST" ColumnName="COST" />
+          <ScalarProperty Name="REK" ColumnName="REK" />
+          <ScalarProperty Name="POSTAV_NAME" ColumnName="POSTAV_NAME" />
+          <ScalarProperty Name="N_SCHET" ColumnName="N_SCHET" />
+          <ScalarProperty Name="D_SCHET" ColumnName="D_SCHET" />
+          <ScalarProperty Name="M_RASHOD_STAT_ID" ColumnName="M_RASHOD_STAT_ID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_REK_ANK">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_REK_ANK">
+        <MappingFragment StoreEntitySet="O_REK_ANK">
+          <ScalarProperty Name="O_ANK_ID_REK" ColumnName="O_ANK_ID_REK" />
+          <ScalarProperty Name="SKR" ColumnName="SKR" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="SECNAME" ColumnName="SECNAME" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_REPORT_BIRTHDAY_CALL">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_REPORT_BIRTHDAY_CALL">
+        <MappingFragment StoreEntitySet="O_REPORT_BIRTHDAY_CALL">
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_SEANS">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_SEANS">
+        <MappingFragment StoreEntitySet="O_SEANS">
+          <ScalarProperty Name="IS_GOST" ColumnName="IS_GOST" />
+          <ScalarProperty Name="FROM_ZVONOK" ColumnName="FROM_ZVONOK" />
+          <ScalarProperty Name="IS_FIRST_KONT_SEANS" ColumnName="IS_FIRST_KONT_SEANS" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="ANK" ColumnName="ANK" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="BEZ_REG" ColumnName="BEZ_REG" />
+          <ScalarProperty Name="D_REG" ColumnName="D_REG" />
+          <ScalarProperty Name="USERID_REG" ColumnName="USERID_REG" />
+          <ScalarProperty Name="LANE" ColumnName="LANE" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_RYAD_ID" ColumnName="M_RYAD_ID" />
+          <ScalarProperty Name="SEANS_STATE" ColumnName="SEANS_STATE" />
+          <ScalarProperty Name="SEANS_DATE" ColumnName="SEANS_DATE" />
+          <ScalarProperty Name="M_SEANS_PLACE_ID" ColumnName="M_SEANS_PLACE_ID" />
+          <ScalarProperty Name="M_SEANS_TIME_ID" ColumnName="M_SEANS_TIME_ID" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_SEANS_COMMENT">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_SEANS_COMMENT">
+        <MappingFragment StoreEntitySet="O_SEANS_COMMENT">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="SEANS_DATE" ColumnName="SEANS_DATE" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_SERVICE">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_SERVICE">
+        <MappingFragment StoreEntitySet="O_SERVICE">
+          <ScalarProperty Name="M_ORG_ID_TEH_OTDEL" ColumnName="M_ORG_ID_TEH_OTDEL" />
+          <ScalarProperty Name="COMMENT_TEH_OTDEL" ColumnName="COMMENT_TEH_OTDEL" />
+          <ScalarProperty Name="S_USER_ID_TEH_OTDEL" ColumnName="S_USER_ID_TEH_OTDEL" />
+          <ScalarProperty Name="DATE_TEH_OTDEL" ColumnName="DATE_TEH_OTDEL" />
+          <ScalarProperty Name="M_SERVICE_TYPE_ID_TEH_OTDEL" ColumnName="M_SERVICE_TYPE_ID_TEH_OTDEL" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="PRODUCT_CHECK" ColumnName="PRODUCT_CHECK" />
+          <ScalarProperty Name="GUARANTEE_PHOTO" ColumnName="GUARANTEE_PHOTO" />
+          <ScalarProperty Name="PRODUCT_PHOTO" ColumnName="PRODUCT_PHOTO" />
+          <ScalarProperty Name="SERIAL_NUMBER" ColumnName="SERIAL_NUMBER" />
+          <ScalarProperty Name="M_PRODUCT_ID" ColumnName="M_PRODUCT_ID" />
+          <ScalarProperty Name="M_SERVICE_TYPE_ID" ColumnName="M_SERVICE_TYPE_ID" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_SKLAD_PR">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_SKLAD_PR">
+        <MappingFragment StoreEntitySet="O_SKLAD_PR">
+          <ScalarProperty Name="N_SCHET" ColumnName="N_SCHET" />
+          <ScalarProperty Name="D_SCHET" ColumnName="D_SCHET" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_SKLAD_PR_PRODUCT">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_SKLAD_PR_PRODUCT">
+        <MappingFragment StoreEntitySet="O_SKLAD_PR_PRODUCT">
+          <ScalarProperty Name="COST" ColumnName="COST" />
+          <ScalarProperty Name="KOLVO" ColumnName="KOLVO" />
+          <ScalarProperty Name="M_PRODUCT_ID" ColumnName="M_PRODUCT_ID" />
+          <ScalarProperty Name="O_SKLAD_PR_ID" ColumnName="O_SKLAD_PR_ID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_SKLAD_RAS">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_SKLAD_RAS">
+        <MappingFragment StoreEntitySet="O_SKLAD_RAS">
+          <ScalarProperty Name="HODIT" ColumnName="HODIT" />
+          <ScalarProperty Name="SEMYA_VSEGO" ColumnName="SEMYA_VSEGO" />
+          <ScalarProperty Name="S_USER_ID" ColumnName="S_USER_ID" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="PHONE_MOBILE" ColumnName="PHONE_MOBILE" />
+          <ScalarProperty Name="POST_INDEX" ColumnName="POST_INDEX" />
+          <ScalarProperty Name="STREET" ColumnName="STREET" />
+          <ScalarProperty Name="SECNAME" ColumnName="SECNAME" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="N_SCHET" ColumnName="N_SCHET" />
+          <ScalarProperty Name="D_SCHET" ColumnName="D_SCHET" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_SKLAD_RAS_PRODUCT_OPL">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_SKLAD_RAS_PRODUCT_OPL">
+        <MappingFragment StoreEntitySet="O_SKLAD_RAS_PRODUCT_OPL">
+          <ScalarProperty Name="SERIAL" ColumnName="SERIAL" />
+          <ScalarProperty Name="M_METOD_OPL_ID" ColumnName="M_METOD_OPL_ID" />
+          <ScalarProperty Name="D_OPL" ColumnName="D_OPL" />
+          <ScalarProperty Name="OPL" ColumnName="OPL" />
+          <ScalarProperty Name="O_SKLAD_RAS_PRODUCT_ID" ColumnName="O_SKLAD_RAS_PRODUCT_ID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_SMS_SEND">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_SMS_SEND">
+        <MappingFragment StoreEntitySet="O_SMS_SEND">
+          <ScalarProperty Name="M_SMS_TEMPLATE_ID" ColumnName="M_SMS_TEMPLATE_ID" />
+          <ScalarProperty Name="SEND_NUM" ColumnName="SEND_NUM" />
+          <ScalarProperty Name="SEND_STATE" ColumnName="SEND_STATE" />
+          <ScalarProperty Name="SEND_LOGIN" ColumnName="SEND_LOGIN" />
+          <ScalarProperty Name="SEND_DATE" ColumnName="SEND_DATE" />
+          <ScalarProperty Name="SOOB" ColumnName="SOOB" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_SOPR">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_SOPR">
+        <MappingFragment StoreEntitySet="O_SOPR">
+          <ScalarProperty Name="IS_SROCHNO" ColumnName="IS_SROCHNO" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="M_SOPR_DOP_ID" ColumnName="M_SOPR_DOP_ID" />
+          <ScalarProperty Name="M_SOPR_STATUS_ID" ColumnName="M_SOPR_STATUS_ID" />
+          <ScalarProperty Name="M_SOPR_FORM_OPL_ID" ColumnName="M_SOPR_FORM_OPL_ID" />
+          <ScalarProperty Name="M_SOPR_PRODUCT_ID" ColumnName="M_SOPR_PRODUCT_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_SOPR_COMMENT">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_SOPR_COMMENT">
+        <MappingFragment StoreEntitySet="O_SOPR_COMMENT">
+          <ScalarProperty Name="ZADACHA" ColumnName="ZADACHA" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="O_SOPR_ID" ColumnName="O_SOPR_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_STATUS">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_STATUS">
+        <MappingFragment StoreEntitySet="O_STATUS">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="STATUS_DATE" ColumnName="STATUS_DATE" />
+          <ScalarProperty Name="M_PRODUCT_ID" ColumnName="M_PRODUCT_ID" />
+          <ScalarProperty Name="M_STATUS_ID" ColumnName="M_STATUS_ID" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_UVEDOML">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_UVEDOML">
+        <MappingFragment StoreEntitySet="O_UVEDOML">
+          <ScalarProperty Name="O_SKLAD_RAS_NOMER" ColumnName="O_SKLAD_RAS_NOMER" />
+          <ScalarProperty Name="GR" ColumnName="GR" />
+          <ScalarProperty Name="O_SKLAD_RAS_ID" ColumnName="O_SKLAD_RAS_ID" />
+          <ScalarProperty Name="O_KONT_ANK_ID" ColumnName="O_KONT_ANK_ID" />
+          <ScalarProperty Name="O_SEANS_ID" ColumnName="O_SEANS_ID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ISP" ColumnName="ISP" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="D_SOB" ColumnName="D_SOB" />
+          <ScalarProperty Name="M_VID_SOB_ID" ColumnName="M_VID_SOB_ID" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_UVEDOML_GR_COMMENT">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_UVEDOML_GR_COMMENT">
+        <MappingFragment StoreEntitySet="O_UVEDOML_GR_COMMENT">
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="O_UVEDOML_ID" ColumnName="O_UVEDOML_ID" />
+          <ScalarProperty Name="O_UVEDOML_GR" ColumnName="O_UVEDOML_GR" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_VIPIS">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_VIPIS">
+        <MappingFragment StoreEntitySet="O_VIPIS">
+          <ScalarProperty Name="LINK_POSLE" ColumnName="LINK_POSLE" />
+          <ScalarProperty Name="LINK" ColumnName="LINK" />
+          <ScalarProperty Name="D_ULUCH" ColumnName="D_ULUCH" />
+          <ScalarProperty Name="ULUCH_TEXT" ColumnName="ULUCH_TEXT" />
+          <ScalarProperty Name="ZABOL_TEXT" ColumnName="ZABOL_TEXT" />
+          <ScalarProperty Name="M_ZABOL_GROUP_ID" ColumnName="M_ZABOL_GROUP_ID" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_VIPIS_FILE_ULUCH">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_VIPIS_FILE_ULUCH">
+        <MappingFragment StoreEntitySet="O_VIPIS_FILE_ULUCH">
+          <ScalarProperty Name="F" ColumnName="F" />
+          <ScalarProperty Name="FNAME" ColumnName="FNAME" />
+          <ScalarProperty Name="O_VIPIS_ID" ColumnName="O_VIPIS_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_VIPIS_FILE_ZABOL">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_VIPIS_FILE_ZABOL">
+        <MappingFragment StoreEntitySet="O_VIPIS_FILE_ZABOL">
+          <ScalarProperty Name="F" ColumnName="F" />
+          <ScalarProperty Name="FNAME" ColumnName="FNAME" />
+          <ScalarProperty Name="O_VIPIS_ID" ColumnName="O_VIPIS_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_VIPIS_ULUCH">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_VIPIS_ULUCH">
+        <MappingFragment StoreEntitySet="O_VIPIS_ULUCH">
+          <ScalarProperty Name="M_ZABOL_ID" ColumnName="M_ZABOL_ID" />
+          <ScalarProperty Name="O_VIPIS_ID" ColumnName="O_VIPIS_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_VOPROS">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_VOPROS">
+        <MappingFragment StoreEntitySet="O_VOPROS">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="M_YES_NO_ID" ColumnName="M_YES_NO_ID" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="M_VOPROS_TAB_ID" ColumnName="M_VOPROS_TAB_ID" />
+          <ScalarProperty Name="M_VOPROS_ID" ColumnName="M_VOPROS_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_ZADACHA">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_ZADACHA">
+        <MappingFragment StoreEntitySet="O_ZADACHA">
+          <ScalarProperty Name="USERID_VIP" ColumnName="USERID_VIP" />
+          <ScalarProperty Name="D_VIP" ColumnName="D_VIP" />
+          <ScalarProperty Name="ZADACHA" ColumnName="ZADACHA" />
+          <ScalarProperty Name="TEMA" ColumnName="TEMA" />
+          <ScalarProperty Name="D_END" ColumnName="D_END" />
+          <ScalarProperty Name="D_BEG" ColumnName="D_BEG" />
+          <ScalarProperty Name="M_ORG_ID_ZADACHA" ColumnName="M_ORG_ID_ZADACHA" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_ZARPL">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_ZARPL">
+        <MappingFragment StoreEntitySet="O_ZARPL">
+          <ScalarProperty Name="D_PERIOD_PO" ColumnName="D_PERIOD_PO" />
+          <ScalarProperty Name="D_PERIOD_S" ColumnName="D_PERIOD_S" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_ZARPL_FIO">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_ZARPL_FIO">
+        <MappingFragment StoreEntitySet="O_ZARPL_FIO">
+          <ScalarProperty Name="ZARPL" ColumnName="ZARPL" />
+          <ScalarProperty Name="SHTRAF" ColumnName="SHTRAF" />
+          <ScalarProperty Name="BONUS" ColumnName="BONUS" />
+          <ScalarProperty Name="PROTS" ColumnName="PROTS" />
+          <ScalarProperty Name="VALOV_DOHOD" ColumnName="VALOV_DOHOD" />
+          <ScalarProperty Name="SUMMA" ColumnName="SUMMA" />
+          <ScalarProperty Name="S_CH" ColumnName="S_CH" />
+          <ScalarProperty Name="CHAS" ColumnName="CHAS" />
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="O_ZARPL_ID" ColumnName="O_ZARPL_ID" />
+          <ScalarProperty Name="S_USER_ID" ColumnName="S_USER_ID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_ZVONOK">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_ZVONOK">
+        <MappingFragment StoreEntitySet="O_ZVONOK">
+          <ScalarProperty Name="D_END_ISKL_USER_ID" ColumnName="D_END_ISKL_USER_ID" />
+          <ScalarProperty Name="D_MODIF_USER_ID" ColumnName="D_MODIF_USER_ID" />
+          <ScalarProperty Name="D_START_USER_ID" ColumnName="D_START_USER_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="OPERATOR" ColumnName="OPERATOR" />
+          <ScalarProperty Name="M_ISKL_ID" ColumnName="M_ISKL_ID" />
+          <ScalarProperty Name="D_END_ISKL" ColumnName="D_END_ISKL" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_USER">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.S_USER">
+        <MappingFragment StoreEntitySet="S_USER">
+          <ScalarProperty Name="DISMISS_DATE" ColumnName="DISMISS_DATE" />
+          <ScalarProperty Name="M_ORG_ID_DILER_C" ColumnName="M_ORG_ID_DILER_C" />
+          <ScalarProperty Name="M_ORG_ID_DILER_A" ColumnName="M_ORG_ID_DILER_A" />
+          <ScalarProperty Name="IS_DILER_C" ColumnName="IS_DILER_C" />
+          <ScalarProperty Name="IS_DILER_A" ColumnName="IS_DILER_A" />
+          <ScalarProperty Name="PHONE_MOBILE" ColumnName="PHONE_MOBILE" />
+          <ScalarProperty Name="SIP_PASSWORD" ColumnName="SIP_PASSWORD" />
+          <ScalarProperty Name="SIP_LOGIN" ColumnName="SIP_LOGIN" />
+          <ScalarProperty Name="IS_ADM" ColumnName="IS_ADM" />
+          <ScalarProperty Name="HIRE_DATE" ColumnName="HIRE_DATE" />
+          <ScalarProperty Name="BIRTHDAY" ColumnName="BIRTHDAY" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+          <ScalarProperty Name="AspNetUsersId" ColumnName="AspNetUsersId" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="SECNAME" ColumnName="SECNAME" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="S_USER_ROLE_ID" ColumnName="S_USER_ROLE_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_USER_ROLE">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.S_USER_ROLE">
+        <MappingFragment StoreEntitySet="S_USER_ROLE">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_USER_SIGN_LOG">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.S_USER_SIGN_LOG">
+        <MappingFragment StoreEntitySet="S_USER_SIGN_LOG">
+          <ScalarProperty Name="D_SIGN" ColumnName="D_SIGN" />
+          <ScalarProperty Name="S_USER_ID" ColumnName="S_USER_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="ATLANTCRMModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="O_MOTIV">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_MOTIV">
+        <MappingFragment StoreEntitySet="O_MOTIV">
+          <ScalarProperty Name="PROCENT" ColumnName="PROCENT" />
+          <ScalarProperty Name="SUMMA" ColumnName="SUMMA" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_END" ColumnName="D_END" />
+          <ScalarProperty Name="D_BEG" ColumnName="D_BEG" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_SMS_TEMPLATE_TYPE">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_SMS_TEMPLATE_TYPE">
+        <MappingFragment StoreEntitySet="M_SMS_TEMPLATE_TYPE">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_SMS_TEMPLATE">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_SMS_TEMPLATE">
+        <MappingFragment StoreEntitySet="M_SMS_TEMPLATE">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="SOOB" ColumnName="SOOB" />
+          <ScalarProperty Name="M_SMS_TEMPLATE_TYPE_ID" ColumnName="M_SMS_TEMPLATE_TYPE_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_ABON_PRIOST">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_ABON_PRIOST">
+        <MappingFragment StoreEntitySet="O_ABON_PRIOST">
+          <ScalarProperty Name="D_PRIOST_PO" ColumnName="D_PRIOST_PO" />
+          <ScalarProperty Name="D_PRIOST_S" ColumnName="D_PRIOST_S" />
+          <ScalarProperty Name="O_SKLAD_RAS_PRODUCT_ID" ColumnName="O_SKLAD_RAS_PRODUCT_ID" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_PRODUCT_ORG">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.M_PRODUCT_ORG">
+        <MappingFragment StoreEntitySet="M_PRODUCT_ORG">
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="M_PRODUCT_ID" ColumnName="M_PRODUCT_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_SKLAD_RAS_PRODUCT">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_SKLAD_RAS_PRODUCT">
+        <MappingFragment StoreEntitySet="O_SKLAD_RAS_PRODUCT">
+          <ScalarProperty Name="KOLVO_POS" ColumnName="KOLVO_POS" />
+          <ScalarProperty Name="D_SKRYT_PO" ColumnName="D_SKRYT_PO" />
+          <ScalarProperty Name="D_DEISTV" ColumnName="D_DEISTV" />
+          <ScalarProperty Name="OPL_OST" ColumnName="OPL_OST" />
+          <ScalarProperty Name="OPL_VSEGO" ColumnName="OPL_VSEGO" />
+          <ScalarProperty Name="D_VID" ColumnName="D_VID" />
+          <ScalarProperty Name="IS_VID" ColumnName="IS_VID" />
+          <ScalarProperty Name="IS_AKTSIYA" ColumnName="IS_AKTSIYA" />
+          <ScalarProperty Name="COST" ColumnName="COST" />
+          <ScalarProperty Name="SKIDKA" ColumnName="SKIDKA" />
+          <ScalarProperty Name="TSENA" ColumnName="TSENA" />
+          <ScalarProperty Name="KOLVO" ColumnName="KOLVO" />
+          <ScalarProperty Name="M_PRODUCT_ID" ColumnName="M_PRODUCT_ID" />
+          <ScalarProperty Name="O_SKLAD_RAS_ID" ColumnName="O_SKLAD_RAS_ID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="O_ABON_DOP_USL_IZM">
+      <EntityTypeMapping TypeName="ATLANTCRMModel.O_ABON_DOP_USL_IZM">
+        <MappingFragment StoreEntitySet="O_ABON_DOP_USL_IZM">
+          <ScalarProperty Name="D_IZM" ColumnName="D_IZM" />
+          <ScalarProperty Name="O_SKLAD_RAS_PRODUCT_ID" ColumnName="O_SKLAD_RAS_PRODUCT_ID" />
+          <ScalarProperty Name="O_ANK_ID" ColumnName="O_ANK_ID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="M_ORG_ID" ColumnName="M_ORG_ID" />
+          <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+          <ScalarProperty Name="D_START" ColumnName="D_START" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

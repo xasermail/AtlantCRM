@@ -1,0 +1,104 @@
+﻿<!-- Контакты -->
+<div id="kont" class="tab-content" ng-controller="kontCtrl" ng-show="global.selectedKontSubMenuItem === 0 && global.function.havePravoRead(7,24)">
+
+    <div class="top-buttons">
+        <button class="record-button-style tomorrow custom-radius" ng-click="getDataClick(0)" ng-disabled="(tomorrowClick === 0)">Завтра</button>
+        <button class="record-button-style record-date" ng-click="getDataClick(-1)" ng-disabled="(backClick === 0)"><</button>
+        <button class="record-button-style record-date" ng-click="getDataClick(1)" ng-disabled="(nextClick === 0)">></button>
+        <span class="text dt">{{dayWeekDate}}</span>
+        <span class="text dt" style="color: red">{{workDayError}}</span>
+    </div>
+
+    <div id="kontBodyDiv">
+      
+        <table  class="table table-bordered table-hover table-striped kontTable">
+            <tr>
+                <th>№</th>
+                <th ng-repeat="item in o_seans_header">{{item.time}}</th>
+            </tr>
+            <tr ng-repeat="dataRow in dataForTable">
+                <td><span>{{$index + 1}}</span></td>
+                <td ng-repeat="dataColumn in dataRow"
+                   style="position:relative">
+                    <!-- Моргающая рамка вокруг Контакта со статусом "Срочно" -->
+                    <div class="div-border-top" ng-class="{'blink-background-red': dataColumn.M_KONT_STATUS_ID === global.const.M_KONT_STATUS_ID_SROCHNO}"></div>
+                    <div class="div-border-right" ng-class="{'blink-background-red': dataColumn.M_KONT_STATUS_ID === global.const.M_KONT_STATUS_ID_SROCHNO}"></div>
+                    <div class="div-border-bottom" ng-class="{'blink-background-red': dataColumn.M_KONT_STATUS_ID === global.const.M_KONT_STATUS_ID_SROCHNO}"></div>
+                    <div class="div-border-left" ng-class="{'blink-background-red': dataColumn.M_KONT_STATUS_ID === global.const.M_KONT_STATUS_ID_SROCHNO}"></div>
+                    <!-- /моргающая рамка вокруг Контакта со статусом "Срочно" -->
+                    <div ng-show="{{dataColumn.Shown}}">
+                        <div class="textField ">
+                            <div><a item-SURNAME="{{dataColumn.SURNAME}}"
+                                    item-NAME="{{dataColumn.NAME}}" 
+                                    item-SECNAME="{{dataColumn.SECNAME}}" 
+                                    item-Phone="{{dataColumn.Phone}}"
+                                    item-Comment="{{dataColumn.Comment}}"
+                                    item-KontId="{{dataColumn.KontId}}"
+                                    href="#"
+                                    ng-style="dataColumn.KontId === global.searchO_KONT_ANK_ID ? {'color': 'red'} : {}"
+                                    ng-click="tdChangeKontClickHandler(dataColumn)"
+                                    ng-disabled="global.function.noHavePravoWrite(7,24)"
+                                    ng-hide="((dataColumn.showProcessACall) && (dataColumn.Phone === dataColumn.call))">{{dataColumn.FIO}}</a></div>
+
+                          <div>
+                            <a href="#"
+                               style="color: #333333; font-weight:normal"
+                               ng-click="global.function.phoneClick(dataColumn.Phone, dataColumn)"
+                               ng-hide="((dataColumn.showProcessACall) && (dataColumn.Phone === dataColumn.call))">{{dataColumn.Phone}}</a>
+                            <div class="process-a-call" ng-show="((dataColumn.showProcessACall) && (dataColumn.Phone === dataColumn.call))"><div>Совершается вызов</div></div>
+                          </div>
+
+                        </div>
+                      <div class="buttonField">
+                        <div >
+                          <div kont-seans-id="{{dataColumn.KontSeansID}}"
+                               class="record-td-div record-button-div">
+                          </div>
+                        </div>
+
+                        <div>
+                          <button kont-seans-id="{{dataColumn.KontSeansID}}"
+                                  time-id="{{dataColumn.SeansTimeID}}"
+                                  commentForChange="{{dataColumn.Comment}}"
+                                  ng-click="btnChangeSeansClick(dataColumn)"
+                                  ng-disabled="global.function.noHavePravoWrite(7,24)"
+                                  class="record-new-date"></button>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div ng-hide="{{dataColumn.Shown}}"
+                         data-time-id="{{dataColumn.SeansTimeID}}"
+                         ng-click="tdAddKontClickHandler($event)"
+                         style="position: absolute;
+                                top: 0px;
+                                left: 0px;
+                                right: 0px;
+                                bottom: 0px;">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td ng-repeat="item in o_seans_header"
+                    data-time-id="{{item.id}}"
+                    ng-click="tdAddKontClickHandler($event)"
+                    style="height: 30px;"></td>
+            </tr>
+        </table>
+
+
+        @* Окошко добавления/редактирования нового контакта *@
+        @Html.Partial("_KontEdit")
+
+        @*Окошко переноса сеанса*@
+        @Html.Partial("_KontEditSeans")
+
+    </div>
+
+  
+
+</div>
+
+
+<!-- /контакты -->

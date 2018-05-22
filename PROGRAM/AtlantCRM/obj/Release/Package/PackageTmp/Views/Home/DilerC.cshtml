@@ -1,0 +1,139 @@
+﻿<!-- Дилер C -->
+<div id="dilerC" class="tab-content" ng-controller="dilerCCtrl"
+     ng-show="global.selectedMenuItem === 'menuItemDilerC' && global.selectedDilerSubMenuItem === 0">
+
+  <br />
+  <div>
+    <input type="date" ng-model="toDate" ng-change="toDateChangeHandler()" date-format="short"/>
+  </div>
+
+  
+  <div class="div-top">
+
+    <!-- Салоны -->
+    <table class="table table-bordered table-condensed table-striped">
+      <thead>
+        <tr>
+          <th>Салоны</th>
+          <th>Наполняемость</th>
+          <th>Новые посетители</th>
+          <th>Звонки</th>
+          <th>Сотрудники</th>
+          <th>Контакты</th>
+          <th>Продажи</th>
+          <th>План</th>
+          <th>Валовый доход</th>
+          <th>Расходы</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tr ng-repeat="item in saloni">
+        <td title="{{item.name + ' (' + item.m_org_id + ')'}}" class="td-saloni-first-col">
+          <button class="btn btn-default saloni-btn"
+                  ng-class="{'disabled-btn': !(global.userContext.IS_DILER_C === 1 && item.dilerCAccess === 1)}"
+                  ng-click="btnGoOrgClick(item)"
+                  title="{{ !(global.userContext.IS_DILER_C === 1 && item.dilerCAccess === 1) ? 'Дилер Д должен разрешить Вам доступ к его магазину' : 'Перейти в магазин Дилера Д' }}"
+                  >
+            &gt;
+          </button>
+          <span class="saloni-name">{{item.adres}}</span>
+        </td>
+        <td>{{item.napol}}</td>
+        <td>{{item.novPosetCount}}</td>
+        <td>{{item.zvonkiCount}}</td>
+        <td>{{item.sotrudCount}}</td>
+        <td>{{item.kontCount}}</td>
+        <td>{{item.prodajiCount}}</td>
+        <td>{{item.prodajiPlanCount}}</td>
+        <td>{{item.valovDohod}}</td>
+        <td>{{item.rashod}}</td>
+        <td></td>
+      </tr>
+      <tr class="saloni-itogo">
+        <td>Итого:</td>
+        <td>{{getSum("napol")}}</td>
+        <td>{{getSum("novPosetCount")}}</td>
+        <td>{{getSum("zvonkiCount")}}</td>
+        <td>{{getSum("sotrudCount")}}</td>
+        <td>{{getSum("kontCount")}}</td>
+        <td>{{getSum("prodajiCount")}}</td>
+        <td>{{getSum("prodajiPlanCount")}}</td>
+        <td>{{getSum("valovDohod")}}</td>
+        <td>{{getSum("rashod")}}</td>
+        <td></td>
+      </tr>
+    </table>
+    <!-- /салоны -->
+
+
+
+
+    <!-- Склад - Таблица - Склад дилера C -->
+    <h2>Склад</h2>
+
+    <table class="table table-bordered table-condensed table-striped diler-a-sklad">
+      <thead>
+        <tr>
+          <th>Склад дилера C</th>
+          <th ng-repeat="item in sklad">{{item.M_PRODUCT_NAME}}</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="td-saloni-first-col">Количество на складе</td>
+        @* вот это не правильно, просто пока сделал, чтобы талица правильного размера была *@
+        <td ng-repeat="item in sklad">
+          <input class="input-kolvo-na-sklade" type="number"
+                 ng-model="item.KOLVO" />
+        </td>
+        <td><button class="btn-save" ng-click="skladSave()">Сохранить</button></td>
+        <td></td>
+      </tr>
+      @* вроде не нужно
+      <tr>
+        <td class="td-saloni-first-col">Количество неоплаченного товара</td>
+        @ * вот это не правильно, просто пока сделал, чтобы талица правильного размера была * @
+        <td ng-repeat="item in global.manual.M_PRODUCT"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="td-saloni-first-col">Долг перед компанией</td>
+        @ * вот это не правильно, просто пока сделал, чтобы талица правильного размера была * @
+        <td ng-repeat="item in global.manual.M_PRODUCT"></td>
+        <td></td>
+      </tr>
+      *@
+    </table>
+    <!-- /склад - таблица - склад дилера c -->
+
+
+    <!-- Склад - Таблица - Наименование -->
+    <table class="table table-bordered table-condensed table-striped">
+      <thead>
+        <tr>
+          <th>Наименование</th>
+          <th ng-repeat="item in global.manual.M_PRODUCT">{{item.NAME}}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tr ng-repeat="item in saloni">
+        <td title="{{item.name + ' (' + item.m_org_id + ')'}}" class="td-saloni-first-col">{{item.adres}}</td>
+        <td ng-repeat="item1 in global.manual.M_PRODUCT">
+          {{getSaloniSkladKolvo(item, item1)}}
+        </td>
+        <td></td>
+      </tr>
+    </table>
+    <!-- /склад - таблица - наименование -->
+
+  </div>
+
+
+
+
+
+
+
+</div>
+<!-- /дилер C -->

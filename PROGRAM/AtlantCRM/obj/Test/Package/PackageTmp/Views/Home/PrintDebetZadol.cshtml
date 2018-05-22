@@ -1,0 +1,101 @@
+﻿@{
+  Layout = "/Views/Shared/_Print.cshtml";
+}
+
+<style>
+.debet-zadol-div-table {
+  margin-top: 10px;
+}
+
+.debet-zadol-first-row {
+  margin-top: 20px;
+}
+
+.span-dt-from {
+  margin-left: 120px;
+}
+
+.info1 {
+  width: 245px;
+}
+
+.info2 {
+  width: 265px;
+}
+
+.info3 {
+  width: 130px;
+}
+
+.info4 {
+  width: 200px;
+}
+
+.info5 {
+  width: 140px;
+}
+
+table {
+  word-wrap: break-word;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+tr {
+  border-collapse: collapse;
+  padding: 10px 0;
+}
+
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 21px;
+}
+
+.debet-zadol-table-itog {
+  font-weight: bold;
+}
+
+.debet-zadol-space {
+  border: none;
+}
+</style>
+
+<div style="margin: 15px 0 0 15px">
+
+  <div align="center">
+    <H2 style="color: black">{{REPORT_NAME}}</H2>
+    <span>На дату {{DT_FROM | date:'dd.MM.yyyy'}}</span>
+  </div>
+
+  <div align="center" class="debet-zadol-div-table">
+    <table width="980">
+      <tr>
+        <td align="center">Наименование товара</td>
+        <td align="center">Фамилия покупателя</td>
+        <td align="center">Дата последней проплаты</td>
+        <td align="center">Телефон</td>
+        <td align="center">Дебет</td>
+        <td align="center">Дата следующего платежа</td>
+      </tr>
+
+      <tr ng-repeat-start="item in data">
+        <td align="center" class="info1" ng-style="{'font-weight' : (item.BR === 1 ) ? 'bold' : '' }">{{item.NAME}}</td>
+        <td align="center" class="info2">{{item.FIO}}</td>
+        <td align="center" class="info3">{{item.D_OPL | date:'dd.MM.yyyy'}}</td>
+        <td align="center" class="info4">{{item.PHONE}}</td>
+        <td align="center" class="info5" ng-style="{'font-weight' : (item.BR === 1 ) ? 'bold' : '' }">{{item.SUMMA}}</td>
+        <td align="center" class="info3">{{item.D_NEXT_OPL | date:'dd.MM.yyyy'}}</td>
+      </tr>
+
+      <tr ng-repeat-end ng-show="item.BR === 1" class="debet-zadol-space">
+        <td class="debet-zadol-space"></td>
+        <td class="debet-zadol-space"></td>
+        <td class="debet-zadol-space"></td>
+        <td class="debet-zadol-space"></td>
+        <td class="debet-zadol-space"></td>
+      </tr>
+    </table>
+  </div>
+
+</div>

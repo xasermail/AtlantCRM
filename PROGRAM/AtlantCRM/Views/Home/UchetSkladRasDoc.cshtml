@@ -1,0 +1,101 @@
+﻿<!-- Учёт - Расходные документы-->
+<div id="uchetSkladRasDoc" class="tab-content" ng-controller="uchetSkladRasDocCtrl" 
+     ng-show="global.selectedUchetSubMenuItem === 3 && global.function.havePravoRead(8,28)">
+  
+  <div id="uchetRasDocDivLeft" class="left-block">
+    
+    <div class="rashod-stat-id">
+      <span>Статья расхода</span>
+      <select ng-options="item.ID as item.NAME for item in global.manual.M_RASHOD_STAT"
+              ng-model="o_ras_doc.M_RASHOD_STAT_ID"
+              ng-disabled="global.function.noHavePravoWrite(8,28)"></select>
+    </div>
+
+    <div class="uchet-ras-doc-row">
+      <span>Номер</span>
+      <input class="n-schet" type="text" ng-model="o_ras_doc.N_SCHET" ng-disabled="global.function.noHavePravoWrite(8,28)"/>
+    </div>
+
+    <div class="uchet-ras-doc-row">
+      <span>Дата</span>
+      <input class="d-schet" type="date" ng-model="o_ras_doc.D_SCHET" ng-disabled="global.function.noHavePravoWrite(8,28)"/>
+    </div>
+
+    <div class="uchet-ras-doc-row">
+      <span>Поставщик</span>
+      <textarea class="postav-name" rows="2" type="text" ng-model="o_ras_doc.POSTAV_NAME" ng-disabled="global.function.noHavePravoWrite(8,28)"></textarea>
+    </div>
+
+    <div class="uchet-ras-doc-row">
+      <span>Реквизиты</span>
+      <textarea class="rek" rows="5" type="text" ng-model="o_ras_doc.REK" ng-disabled="global.function.noHavePravoWrite(8,28)"></textarea>
+    </div>
+
+    @*<div class="uchet-ras-doc-row">
+      <span>Цена</span>
+      <input ng-change="reCalcSumma()" class="cost" type="number" ng-model="o_ras_doc.COST" />
+    </div>*@
+
+    <div class="uchet-ras-doc-row">
+      <span>Количество</span>
+      <input @*ng-change="reCalcSumma()"*@ class="kolvo" type="number" ng-model="o_ras_doc.KOLVO" ng-disabled="global.function.noHavePravoWrite(8,28)"/>
+    </div>
+
+    <div class="uchet-ras-doc-row">
+      <span>Сумма</span>
+      <input class="summa" type="number" ng-model="o_ras_doc.SUMMA_RASH" ng-disabled="global.function.noHavePravoWrite(8,28)"/>
+    </div>
+
+  </div>
+
+  <div id="uchetRasDocDivRight" class="right-block">
+
+    <div class="uchet-ras-doc-header">
+      <span class="header-text">Подотчетный период</span>
+    </div>
+
+    <div class="uchet-ras-doc-row">
+      <span>Сотрудник</span>
+      <select class="s-user-id"
+              ng-options="item.ID as item.FIO for item in global.manual.S_USER |filter:{M_ORG_ID: global.userContext.M_ORG_ID}:true" 
+              ng-model="o_ras_doc.S_USER_ID"
+              ng-disabled="global.function.noHavePravoWrite(8,28)">
+      </select>
+    </div>
+
+    <div class="uchet-ras-doc-row">
+      <span>Мотив</span>
+      <textarea class="motiv" rows="5" type="text" ng-model="o_ras_doc.MOTIV" ng-disabled="global.function.noHavePravoWrite(8,28)"></textarea>
+    </div>
+
+    <div class="uchet-ras-doc-row">
+      <span>Сумма</span>
+      <input ng-change="reCalcRashod()" class="summa_vid" type="number" ng-model="o_ras_doc.SUMMA_VID" ng-disabled="global.function.noHavePravoWrite(8,28)"/>
+    </div>
+
+    <div class="uchet-ras-doc-row">
+      <span>Возврат</span>
+      <input ng-change="reCalcRashod()" class="vozvr" type="number" ng-model="o_ras_doc.VOZVR" ng-disabled="global.function.noHavePravoWrite(8,28)"/>
+    </div>
+
+    <div class="uchet-ras-doc-row">
+      <span>Расходовано</span>
+      <input ng-change="reCalcRashodSumma()" class="rashod" type="number" ng-model="o_ras_doc.RASHOD" ng-disabled="global.function.noHavePravoWrite(8,28)"/>
+    </div>
+
+  </div>
+
+  <div>
+    <span>{{errorMessage}}</span>
+  </div>
+
+  <div class="button-block">
+    <button type="button" ng-click="btnZapisClick()" class="btn-zapis" ng-hide="global.function.noHavePravoWrite(8,28)">Новая запись</button>
+    <button type="button" ng-click="btnSaveClick()" class="btn-save" ng-hide="global.function.noHavePravoWrite(8,28)">Сохранить</button>
+  </div>
+  
+  <pagination class="div-pagination" page-nums="pageNums" refresh-fn="refresh" page="page" />
+
+</div>
+<!-- /учёт - расходные документы -->
+

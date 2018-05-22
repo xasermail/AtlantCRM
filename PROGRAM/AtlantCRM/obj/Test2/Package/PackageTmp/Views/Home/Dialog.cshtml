@@ -1,0 +1,157 @@
+﻿<!-- Диалог -->
+<div id="dialog" class="tab-content" ng-controller="dialogCtrl"
+     ng-show="global.selectedSubMenuItem === 2 && global.ankDialogPravoRead === 1">
+
+  <!-- Написи слева -->
+  <div id="dialogStatus">
+    <div id="subDialogStatus" style="height: {{subDialogStatusHeight}}px" class="blueText">
+      <p><span style="font-size: 13px">Статус</span></p>
+    </div>
+    <div id="subDialogSicks" class="blueText">
+      <p><span style="font-size: 13px">Заболевания</span></p>
+    </div>
+    <div id="subDialogComplaint" class="blueText">
+      <p><span style="font-size: 13px">Что беспокоит больше всего?</span></p>
+    </div>
+    <div id="subDialogComment" class="blueText">
+      <p><span style="font-size: 13px">Комментарии</span></p>
+    </div>
+  </div>
+
+  <div id="clientInfo">
+    <div id="dialogPhoto">
+      <div class="photo-frame"><img ng-src="{{imgPhoto}}" /></div>
+    </div>
+
+    <div id="clientData">
+      <span class="header">{{global.ank.NAME}} {{global.ank.SECNAME}} {{global.ank.SURNAME}}</span>
+      <div class="first-line lines">
+        <span class="phone-caption">Мобильный телефон: </span>
+        <span class="phone-number numb">{{phone}}</span>
+        <button class="btn btnEdit" data-index="0" ng-click="editAnk()" ng-disabled="global.ankDialogPravoWrite === 0">Редактировать</button>
+      </div>
+
+      <div class="second-line lines">
+        <span class="phone-caption">День рождения: </span>
+        <span class="birth">{{birth_day}}</span>
+        <span class="age">{{age}}</span>
+      </div>
+
+      <div class="third-line lines">
+        <span class="phone-caption">Адрес: </span>
+        <span class="addr">{{global.ank.STREET}} {{global.ank.HOUSE}}{{global.ank.CORPUS}}-{{global.ank.FLAT}}</span>
+      </div>
+
+      <div class="fourth-line">
+        <span class="phone-caption">Источник: </span>
+        <span class="kto">{{ist_inf}}</span>
+      </div>
+    </div>
+
+    <div id="statusRepeat" ng-repeat="item in status">
+      <div id="statusBlock">
+        <select class="stat" name="m_status_id" ng-model="item.m_status_id" 
+                ng-options="c.ID as c.NAME for c in global.manual.M_STATUS" ng-disabled="global.ankDialogPravoWrite === 0"></select>
+        <select class="prod" name="m_product_id" ng-model="item.m_product_id" 
+                ng-options="c.ID as c.NAME for c in global.manual.M_PRODUCT" ng-disabled="global.ankDialogPravoWrite === 0"></select>
+        <input class="stat_date" name="status_date" ng-model="item.status_date" type="date"
+               date-format="short" ng-disabled="global.ankDialogPravoWrite === 0" s/>
+        <button class="btnCircle" ng-click="statusAdd($index)" ng-show="$index === 0" ng-disabled="global.ankDialogPravoWrite === 0">+</button>
+        <button class="btnCircle" ng-click="statusRemove($index)" ng-hide="$index === 0" ng-disabled="global.ankDialogPravoWrite === 0">-</button>
+      </div>
+    </div>
+
+    <div id="clientStatus">
+      <div ng-repeat="item in complaint">
+        <input id="clientSicks" ng-model="sicks" readonly />
+				<div>
+					<input id="clientComplaint" ng-model="item.comment" value="{{item.comment}}" ng-disabled="global.ankDialogPravoWrite === 0"/>
+				</div>
+      </div>
+    </div>
+
+    <div id="clientCommentDiv">
+      <div id="enterComment">
+        <textarea id="clientComment" ng-model="comment" rows="7" cols="40" value="" 
+                  ng-disabled="global.ankDialogPravoWrite === 0"
+                  placeholder="Введите комментарий и нажмите кнопку '<' для добавления"></textarea>
+      </div>
+      <div id="btns">
+        <div>
+          <button class="btnStar" ng-disabled="global.ankDialogPravoWrite === 0">*</button>
+        </div>
+        <div>
+          <button class="btnLe" ng-click="saveComment()" ng-disabled="global.ankDialogPravoWrite === 0"><</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="dialogData">
+      <div>
+        <div id="container" class="tblCont">
+          <table id="commentTable" width="120">
+            <tr ng-repeat="item in dialog">
+              <td width="23%">{{item.npos}}</td>
+              <td width="77%">{{item.comment}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div id="dateDialog">
+        <div id="subDateDialog" class="text">
+          <p><span style="font-size: 13px">{{subdate}}</span></p>
+        </div>
+        <div id="subBtnSave" class="text">
+          <button class="save" ng-click="save()" ng-disabled="global.ankDialogPravoWrite === 0">Сохранить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+      
+  <div id="dialogVerticalLineRight"></div>
+  <div id="dialogAddSale">
+    <button class="add" ng-disabled="global.ankDialogPravoWrite === 0" ng-click="btnDobPokClick()">Добавить покупку</button>
+    <div id="addInfo">
+      <table id="addInfoTable">
+        <tr>
+          <td>
+            <span class="blueText" ng-show="dialogProductStatusList.length > 0">Статусы</span>
+          </td>
+        </tr>
+        <tr ng-repeat="item in dialogProductStatusList">
+          <td ng-click="dialogProductStatusItemClick(item)" class="td-dialog-product-status-item">
+            <u>{{item.product_name}}</u>
+          </td>
+          <td>{{item.d_last_opl | date:"dd.MM.yyyy"}}</td>
+          <td><span style="background-color: black; color: white">выплачивает</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span ng-show="dialogProductList.length > 0">Товар</span>
+          </td>
+        </tr>
+        <tr ng-repeat="item in dialogProductList">
+          <td ng-click="dialogProductItemClick(item)" class="td-dialog-product-status-item">
+            <u>{{item.product_name}}</u>
+          </td>
+          <td>{{item.d_last_opl | date:"dd.MM.yyyy"}}</td>
+        </tr>
+      </table>
+      <div id="dialogHorizontalLine"></div>
+      <div id="dialogStatistic">
+        <table id="dialogStatisticTable">
+          <tr><td><span class="faded">Первый визит</span></td></tr>
+          <tr><td><span class="half-fat">{{first_visit}}</span></td></tr>
+          <tr><td><span class="faded">Последний визит</span></td></tr>
+          <tr><td><span class="half-fat">{{last_visit}}</span></td></tr>
+          <tr><td><span class="faded">Всего визитов</span></td></tr>
+          <tr><td><span class="half-fat">{{all_visits}}</span></td></tr>
+          <tr><td><span class="faded">Непрерывность</span></td></tr>
+          <tr><td><span class="half-fat">{{nepreryv}}</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Диалог -->

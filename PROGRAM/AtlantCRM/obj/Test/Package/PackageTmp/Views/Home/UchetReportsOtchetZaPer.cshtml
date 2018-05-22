@@ -1,0 +1,80 @@
+﻿<!-- Учёт - Отчёты - Отчёт за период -->
+<div class="tab-content" ng-controller="uchetReportsOtchetZaPerCtrl"
+     ng-show="global.selectedUchetSubMenuItem === 4 && global.selectedUchetReportsSubMenuItem === 4">
+
+  
+  <div class="container-1">
+    <div><span>Выберите год</span>
+      <select ng-model="year" ng-options="item as item for item in years" ng-change="yearChanged()">
+        
+      </select>
+    </div>
+
+    <table class="table table-bordered table-condensed table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Месяц</th>
+          <th>Товаро- оборот</th>
+          <th>Себесто- имость</th>
+          <th>Брутто прибыль</th>
+          <th>Расходы</th>
+          <th>Чистая прибыль</th>
+          <th>Рентабе- льность</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in report">
+          <td><input type="checkbox" ng-model="item.checked" ng-click="checkboxClick()"
+                     ng-false-value="0" ng-true-value="1" /></td>
+          <td>{{item.month_name}}</td>
+          <td>{{item.tovaroob}}</td>
+          <td>{{item.sebest}}</td>
+          <td>{{item.brutto_pr}}</td>
+          <td>{{item.rashod}}</td>
+          <td>{{item.chist_pr}}</td>
+          <td>{{item.rent}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Всего</td>
+          <td>{{agg.tovaroob}}</td>
+          <td>{{agg.sebest}}</td>
+          <td>{{agg.brutto_pr}}</td>
+          <td>{{agg.rashod}}</td>
+          <td>{{agg.chist_pr}}</td>
+          <td>{{agg.rent}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Среднее</td>
+          <td>{{sr.tovaroob}}</td>
+          <td>{{sr.sebest}}</td>
+          <td>{{sr.brutto_pr}}</td>
+          <td>{{sr.rashod}}</td>
+          <td>{{sr.chist_pr}}</td>
+          <td>{{sr.rent}}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+<!-- /учёт - отчёты - отчёт за период -->
+

@@ -1,0 +1,43 @@
+﻿  <!-- Окно редактирования контакта -->
+  <div class="kont-edit" ng-show="kont.show === true">
+    <table class="fio">
+      <tr>
+        <td><span>ФИО</span></td>
+        <td>
+          <div>
+            <div><input autofocus type="text" placeholder="Фамилия" ng-model="kont.SURNAME" /></div>
+            <div><input type="text" placeholder="Имя" ng-model="kont.NAME" /></div>
+            <div><input type="text" placeholder="Отчество" ng-model="kont.SECNAME" /></div>
+          </div>
+        </td>
+        <td><button class="close-button" ng-click="kontEditClose()" tabindex="-1">x</button></td>
+      </tr>
+      <tr>
+        <td><span>Телефон</span></td>
+        <td><input type="text" class="phone-mobile" ng-model="kont.PHONE" /></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span>Комментарий</span></td>
+        <td><textarea placeholder="Комментарий" ng-model="kont.COMMENT" ></textarea></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span>Статус</span></td>
+        <td><select ng-options="item.ID as item.NAME for item in global.manual.M_KONT_STATUS"
+                    ng-model="kont.M_KONT_STATUS_ID"></select></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span>Источник</span></td>
+        <td><select ng-options="item.ID as item.NAME for item in global.manual.M_KONT_IST"
+                    ng-model="kont.M_KONT_IST_ID"></select></td>
+        <td></td>
+      </tr>
+    </table>
+    <div class="error">{{kont.error}}</div>
+    <div class="div-btn-save text-right">
+      <button ng-click="kontEditSave()">Сохранить</button>
+    </div>
+  </div>
+  <!-- /окно редактирования контакта -->

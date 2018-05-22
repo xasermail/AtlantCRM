@@ -1,0 +1,128 @@
+﻿@{
+  ViewBag.Title = "АтласCRM";
+}
+
+<!-- Новый -->
+<div ng-show="global.selectedMenuItem === 'menuItemNew'">
+
+  @Html.Partial("NewAnk")
+  @Html.Partial("Period")
+  @Html.Partial("Dialog")
+  @Html.Partial("Druzya")
+  @Html.Partial("NewZvonok")
+  @Html.Partial("Stat")
+  @Html.Partial("Service")
+</div>
+<!-- /новый -->
+
+@Html.Partial("Reg")
+@Html.Partial("Baza")
+@Html.Partial("Lane")
+
+
+<!-- Отчеты  -->
+<div ng-show="global.selectedMenuItem === 'menuItemReports'">
+    <div id="subMenuReport" ng-click="subMenuReportClickHandler($event)" ng-hide="(global.topMenuViewMode)">
+        <div class="sub-menu-item" data-index="0" ng-class="global.selectedReportSubMenuItem === 0 ? 'sub-menu-item-active' : '' "><span>День</span></div>
+        <div class="sub-menu-item" data-index="1" ng-class="global.selectedReportSubMenuItem === 1 ? 'sub-menu-item-active' : '' "><span>Статистика</span></div>
+        <div class="sub-menu-item" data-index="2" ng-class="global.selectedReportSubMenuItem === 2 ? 'sub-menu-item-active' : '' "><span>Специалисты</span></div>
+        <div class="sub-menu-item" data-index="3" ng-class="global.selectedReportSubMenuItem === 3 ? 'sub-menu-item-active' : '' "><span>Заболевания</span></div>
+        <div class="sub-menu-item" data-index="4" ng-class="global.selectedReportSubMenuItem === 4 ? 'sub-menu-item-active' : '' "><span>Источники</span></div>
+        <div class="sub-menu-item" data-index="5" ng-class="global.selectedReportSubMenuItem === 5 ? 'sub-menu-item-active' : '' "><span>Дни рождения</span></div>
+        <div class="clearfix"></div>
+    </div>
+
+    @Html.Partial("ReportDay")
+    @Html.Partial("ReportStatistic")
+    @Html.Partial("ReportSpecialists")
+    @Html.Partial("ReportZabol")
+    @Html.Partial("ReportIst")
+    @Html.Partial("ReportBirthday")
+</div>
+<!-- /отчеты -->
+
+
+@Html.Partial("Record")
+
+@Html.Partial("Adm")
+@Html.Partial("Manual")
+@Html.Partial("DilerA")
+@Html.Partial("DilerD")
+
+
+
+<!-- Учет -->
+<div ng-show="global.selectedMenuItem === 'menuItemUchet'">
+  @Html.Partial("Uchet")
+  @Html.Partial("UchetSklad")
+  @Html.Partial("UchetSkladPr")
+  @Html.Partial("UchetSkladRas")
+  @Html.Partial("UchetSkladRasDoc")
+  @Html.Partial("UchetReportsSpisPokup")
+  @Html.Partial("UchetReportsDebetZadol")
+  @Html.Partial("UchetReportsOtchetDohod")
+  @Html.Partial("UchetReportsSaleSpecialist")
+
+  <!-- Учет - Отчеты - Отчет за период -->
+  <div id="uchetReportsOtchetZaPer">
+    @Html.Partial("UchetReportsOtchetZaPer")
+    @Html.Partial("UchetReportsOtchetZaPer")
+  </div>
+  <!-- /учет - отчеты - отчет за период -->
+
+</div>
+<!-- /учет -->
+
+
+<!-- Контакты -->
+<div ng-show="global.selectedMenuItem === 'menuItemKont'">
+  <div id="subMenuKont" ng-click="subMenuKontClickHandler($event)" ng-hide="(global.topMenuViewMode)">
+    <div class="sub-menu-item" data-index="0" ng-class="global.selectedKontSubMenuItem === 0 ? 'sub-menu-item-active' : '' "><span>Запись</span></div>
+    <div class="sub-menu-item" data-index="1" ng-class="global.selectedKontSubMenuItem === 1 ? 'sub-menu-item-active' : '' "><span>Непришедшие</span></div>
+    <div class="sub-menu-item" data-index="2" ng-class="global.selectedKontSubMenuItem === 2 ? 'sub-menu-item-active' : '' "><span>Скрытые</span></div>
+    <div class="sub-menu-item" data-index="3" ng-class="global.selectedKontSubMenuItem === 3 ? 'sub-menu-item-active' : '' "><span>Рекомендованные</span></div>
+  </div>
+
+  @Html.Partial("Kont")
+  @Html.Partial("KontNoCame")
+</div>
+<!-- /контакты -->
+
+
+@section scripts {
+  @{string s = "?i=" + DateTime.Now.Ticks;}
+  <script src="~/Scripts/ng-controllers/appCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/newAnkCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/periodCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/dialogCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/newZvonokCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/laneCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/bazaCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/statCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/serviceCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/regCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/recordCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/admCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/manualCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/dilerACtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/dilerDCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/reportDayCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/reportStatisticCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/reportSpecialistsCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/reportZabolCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/reportIstCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/reportBirthdayCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/kontCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/kontListByModeCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/uchetCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/uchetSkladCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/uchetSkladPrCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/uchetSkladRasCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/uchetSkladRasDocCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/druzyaCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/uchetReportsSpisPokupCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/uchetReportsDebetZadolCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/uchetReportsOtchetDohodCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/uchetReportsSaleSpecialistCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/uchetReportsOtchetZaPerCtrl.js@(s)"></script>
+}

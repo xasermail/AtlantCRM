@@ -1,0 +1,45 @@
+﻿<!-- Дилер A - Маркетинговый календарь -->
+<div id="marketingKalend" class="tab-content" 
+     ng-controller="dilerAMarketingKalendCtrl" 
+     ng-show="global.selectedDilerSubMenuItem === 3 && global.selectedMenuItem === 'menuItemDilerA'">
+
+  <div class="container-1">
+    <div>
+      <span>Выберите год</span>
+      <select ng-model="year" ng-options="item as item for item in years" ng-change="yearChanged()"></select>
+    </div>
+
+    <!-- Салоны -->
+    <table class="table table-bordered table-condensed table-striped">
+      <thead>
+        <tr>
+          <th>Салоны</th>
+          <th>Наполняемость</th>
+          <th>Продажи</th>
+          <th>Валовый доход</th>
+          <th>Расходы</th>
+        </tr>
+      </thead>
+      <tr ng-repeat="item in report">
+        <td title="{{item.name + ' (' + item.m_org_id + ')'}}" class="td-saloni-first-col">
+          <span>{{item.adres}}</span>
+        </td>
+        <td>{{item.napol}}</td>
+        <td>{{item.prodajiCount}}</td>
+        <td>{{item.valovDohod}}</td>
+        <td>{{item.rashod}}</td>
+      </tr>
+      <tr class="saloni-itogo">
+        <td class="saloni-itogo-name">Итого:</td>
+        <td>{{getSum("napol")}}</td>
+        <td>{{getSum("prodajiCount")}}</td>
+        <td>{{getSum("valovDohod")}}</td>
+        <td>{{getSum("rashod")}}</td>
+      </tr>
+    </table>
+    <!-- /салоны -->
+
+  </div>
+
+</div>
+<!-- Дилер A - Маркетинговый календарь -->

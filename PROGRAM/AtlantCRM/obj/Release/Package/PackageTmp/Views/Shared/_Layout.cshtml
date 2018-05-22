@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <link rel="shortcut icon" type="image/x-icon" href="/content/img/favicon.ico" />
+	
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@ViewBag.Title</title>
+
+  @Styles.Render("~/Content/css")
+  @Scripts.Render("~/bundles/modernizr")
+  @Scripts.Render("~/Scripts/webcam.js")
+  <link href="~/Content/styles.css" type="text/css" rel="stylesheet">
+  <link href="~/Content/styles2.css" type="text/css" rel="stylesheet">
+  <link href="~/Content/jquery.kladr.min.css" rel="stylesheet" />
+  <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+
+</head>
+<body ng-app="myApp" ng-controller="appCtrl" id="app">
+
+
+  <!-- Окно ожидания до загрузки приложения, оно будет отображаться, пока
+       angularjs не загрузится, больше оно в приложении нигде не используется, а
+       в приложении используется определённое ниже id="waitingForm" -->
+  <div id="waitingFormBeforeLoad" ng-style="{'display': 'none'}">
+    <div class="waiting-form-background"></div>
+    <div class="waiting-form-middle-line">
+      <div class="waiting-form-middle-line-heading">Загрузка..</div>
+      <div class="waiting-form-middle-line-loading-animation"></div>
+    </div>
+  </div>
+  <!-- /окно ожидания до загрузки приложения -->
+
+
+  <!-- Окно отображения ошибки
+       прячу его пока angular не загрузится через style и ng-style,
+       не помещяю его в "Самый внешний контейнер для содержимого" ниже,
+       чтобы если вдруг произошла ошибка при загрузке, то окно ошибки
+       всё равно бы отобразилось -->
+  <div id="alertMessage" ng-show="errorAlertShown" 
+       style="display: none;" 
+       ng-style="{'display': 'block'}">
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" aria-label="Close" ng-click="global.hideErrorAlert()"><span aria-hidden="true">&times;</span></button>
+      <strong>Ошибка!</strong> <span class="error-text">{{errorAlertMsg}}</span>
+      <br />
+      <button type="button" class="btn btn-default" aria-label="Close" ng-click="global.hideErrorAlert()">
+        Закрыть
+      </button>
+    </div>
+  </div>
+  <!-- /окно отображения ошибки -->
+
+
+  <!-- Самый внешний контейнер для содержимого 
+       прячу его пока angular не загрузится через style и ng-style, чтобы
+       не было видно недостроенного интерфейса -->
+  <div style="display: none;" ng-style="{'display': 'block'}">
+
+    <!-- Специальное фоновое прозрачное окно для общего использования -->
+    <div class="common-modal-background" ng-show="global.commonModalBackgroundShown"></div>
+    <!-- /специальное фоновое прозрачное окно для общего использования -->
+
+    <!-- Специальное фоновое прозрачное окно для общего использования, поверх первого -->
+    <div class="common-modal-background-2" ng-show="global.commonModalBackground2Shown"></div>
+    <!-- /специальное фоновое прозрачное окно для общего использования, поверх первого -->
+
+    <!-- Диалоговая форма с кнопками Да и Нет -->
+    <div id="yesNoDialog" ng-show="global.function.showYesNoDialogShown">
+      <div class="background-1"></div>
+      <div class="body-1">
+        <div class="caption-1">{{global.function.showYesNoDialogText}}</div> <br />
+        <div class="buttons">
+          <button class="btn btn-primary" ng-click="global.function.showYesNoDialogResult = true">Да</button>
+          <button class="btn btn-primary" ng-click="global.function.showYesNoDialogShown = false">Нет</button>
+        </div>
+      </div>
+    </div>
+    <!-- /диалоговая форма с кнопками Да и Нет -->
+
+    <!-- Окно ожидания -->
+    <div id="waitingForm" ng-show="waitingFormShown">
+      <div class="waiting-form-background"></div>
+      <div class="waiting-form-middle-line">
+        <div class="waiting-form-middle-line-heading">{{waitingFormMsg}}</div>
+        <div class="waiting-form-middle-line-loading-animation"></div>
+      </div>
+    </div>
+    <!-- /окно ожидания -->
+
+
+    <!-- Зафиксированное верхнее меню -->
+    <div id="fixedTopMenu" ng-hide="global.newAnkPrintPreviewMode">
+      <div id="logo1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BETA</div>
+      <div id="serviceName" ng-show="global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_TEH_OTDEL">
+        <span align="center">{{global.userContext.M_ORG_ID_NAME}}</span>
+      </div>
+      <div id="topMenu" ng-click="topMenuClickHandler($event)" ng-hide="global.newAnkPrintPreviewMode">
+
+        <div id="menuItemNew" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemNew' ? 'menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(1)"
+             ng-click="menuItemNewClick()">
+          <div class="menu-item-button">
+            <span>Новый</span>
+          </div>
+        </div>
+
+        <div id="menuItemReg" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemReg' ? 'menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(3)">
+          <div class="menu-item-button">
+            <span>Регистрация</span>
+          </div>
+        </div>
+
+        <div id="menuItemBaza" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemBaza' ? 'menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(1)">
+          <div class="menu-item-button">
+            <span>База</span>
+          </div>
+        </div>
+
+        <div id="menuItemReports" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemReports' ? 'menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(4,-1)">
+          <div class="menu-item-button">
+            <span>Отчеты</span>
+          </div>
+        </div>
+
+        <div id="menuItemRyadi" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemRyadi' ? 'menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(5)">
+          <div class="menu-item-button">
+            <span>Ряды</span>
+          </div>
+        </div>
+
+        <div id="menuItemZapis" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemZapis' ? 'menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(6)">
+          <div class="menu-item-button">
+            <span>Запись</span>
+          </div>
+        </div>
+
+        <div id="menuItemSopr" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemSopr' ? 'menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(11)">
+          <div class="menu-item-button">
+            <span>Сопровождение</span>
+          </div>
+        </div>
+
+        <div id="menuItemDeistvKL" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemDeistvKL' ? 'menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(12)">
+          <div class="menu-item-button">
+            <span>Действующие клиенты</span>
+          </div>
+        </div>
+
+        <div id="menuItemKont" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemKont' ? 'menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(7)">
+          <div class="menu-item-button">
+            <span>Контакты</span>
+          </div>
+        </div>
+
+        <div id="menuItemUchet" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemUchet' ? 'menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(8)">
+          <div class="menu-item-button">
+            <span>Учёт</span>
+          </div>
+        </div>
+
+        <div id="menuItemApp" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemApp' ? 'menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(9)">
+          <div class="menu-item-button">
+            <span>Приложения</span>
+          </div>
+        </div>
+
+        <div id="menuItemJur" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemJur' ? 'menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(10)">
+          <div class="menu-item-button">
+            <span>Журнал</span>
+          </div>
+        </div>
+
+
+
+
+        <!-- Один из элементов: Администрация, Дилер A, Дилер C, Дилер D, в зависимости от зашедшего пользователя -->
+        <!-- Администрация -->
+        <!-- доступно ещё для Директора организации Дилера D -->
+        <div id="menuItemAdm" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemAdm' ? 'menu-item-active' :'' "
+             ng-show="(global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_ADMINISTRATSIYA)
+                      ||
+                      (global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_D &&
+                       global.userContext.S_USER_ROLE_ID === global.const.S_USER_ROLE_ID_DIREKTOR)
+             ">
+          <div class="menu-item-button">
+            <span ng-hide="global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_D">Администрация</span>
+            <!-- для Дилера D -->
+            <span ng-show="global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_D">Пользователи</span>
+          </div>
+        </div>
+        <!-- /администрация -->
+        <!-- Дилер A -->
+        <div id="menuItemDilerA" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemDilerA' ? 'menu-item-active' :'' "
+             ng-show="global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_A">
+          <div class="menu-item-button">
+            <span>Дилер федеральный</span>
+          </div>
+        </div>
+        <!-- /дилер A -->
+        <!-- Дилер C -->
+        <div id="menuItemDilerC" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemDilerC' ? 'menu-item-active' :'' "
+             ng-show="global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_C &&
+                    global.userContext.S_USER_ROLE_ID === global.const.S_USER_ROLE_ID_DIREKTOR">
+          <div class="menu-item-button">
+            <span>Дилер областной</span>
+          </div>
+        </div>
+        <!-- /дилер C -->
+        <!-- Дилер D -->
+        <div id="menuItemDilerD" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemDilerD' ? 'menu-item-active' :'' "
+             ng-show="global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_D &&
+                    global.userContext.S_USER_ROLE_ID === global.const.S_USER_ROLE_ID_DIREKTOR">
+          <div class="menu-item-button">
+            <span>Дилер</span>
+          </div>
+        </div>
+        <!-- /дилер D -->
+        <!-- /один из элементов: Администрация, Дилер A, Дилер C, Дилер D, в зависимости от зашедшего пользователя -->
+        <!-- Справочники -->
+        @*<div id="menuItemManual" class="menu-item" ng-class="global.selectedMenuItem === 'menuItemManual' ? 'menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(2)">
+      <div class="menu-item-button">
+        <span>Справочники</span>
+      </div>
+    </div>*@
+        <!-- /cправочники -->
+
+
+      </div>
+      <div id="bell" ng-click="global.function.openCurrentUvedoml()">
+        <div class="bellImage">
+          <img height="45" width="45" ng-src="Content/Images/bell_new.png" />
+        </div>
+        <div class="countUvedoml">{{global.countUvedomlCurrentDay}}</div>
+      </div>
+      <!-- Текущее серверное время -->
+      <div id="currentDateTime1">
+        <div class="current-time">{{currentDateTime | date:'HH:mm:ss'}}</div>
+        <div class="current-date">{{currentDateTime | date:'dd.MM.yyyy'}}</div>
+      </div>
+      <!-- /текущее серверное время -->
+
+      <div id="currentLogin" ng-hide="global.newAnkPrintPreviewMode">
+        @Html.Partial("_LoginPartial")
+      </div>
+
+    </div>
+    <!-- /зафиксированное верхнее меню -->
+
+
+    <!-- Зафиксированное подменю для Новый -->
+    <div id="subMenu" ng-click="subMenuClickHandler($event)"
+         ng-hide="(global.newAnkPrintPreviewMode || (global.selectedMenuItem != 'menuItemNew'))">
+      <div class="sub-menu-item" data-index="0" ng-class="global.selectedSubMenuItem === 0 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(1,1)"><span>Анкета</span></div>
+      <div class="sub-menu-item" data-index="1" ng-class="global.selectedSubMenuItem === 1 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(1,2)"><span>Период</span></div>
+      <div class="sub-menu-item" data-index="2" ng-class="global.selectedSubMenuItem === 2 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(1,3)"><span>Общение</span></div>
+      <div class="sub-menu-item" data-index="3" ng-class="global.selectedSubMenuItem === 3 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(1,5)"><span>Вопросы</span></div>
+      <div class="sub-menu-item" data-index="4" ng-class="global.selectedSubMenuItem === 4 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(1,6)"><span>Выписки</span></div>
+      <div class="sub-menu-item" data-index="5" ng-class="global.selectedSubMenuItem === 5 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(1,7)"><span>Друзья</span></div>
+      <div class="sub-menu-item" data-index="6" ng-class="global.selectedSubMenuItem === 6 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(1,8)"><span>Звонки</span></div>
+      <div class="sub-menu-item" data-index="7" ng-class="global.selectedSubMenuItem === 7 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(1,4)"><span>Статистика</span></div>
+      <div class="sub-menu-item" data-index="8" ng-class="global.selectedSubMenuItem === 8 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(1,9)"><span>Сервис</span></div>
+    </div>
+    <!-- /зафиксированное подменю для новый -->
+
+
+    <!-- Зафиксированное подменю для Учёт -->
+    <div id="subMenuUchet" ng-click="subMenuUchetClickHandler($event)"
+         ng-hide="global.selectedMenuItem != 'menuItemUchet'">
+      <div class="sub-menu-item" data-index="0" ng-class="global.selectedUchetSubMenuItem === 0 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(8,25)"><span>Приход на склад</span></div>
+      <div class="sub-menu-item" data-index="1" ng-class="global.selectedUchetSubMenuItem === 1 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(8,26)"><span>Склад</span></div>
+      <div class="sub-menu-item" data-index="2" ng-class="global.selectedUchetSubMenuItem === 2 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(8,27)" ng-click="menuItemUchetSkladRasClick()"><span>Расход со склада</span></div>
+      <div class="sub-menu-item" data-index="3" ng-class="global.selectedUchetSubMenuItem === 3 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(8,28)"><span>Расходные документы</span></div>
+      <div class="sub-menu-item" data-index="4" ng-class="global.selectedUchetSubMenuItem === 4 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(8,-1)"><span>Отчеты</span></div>
+      <div class="sub-menu-item" data-index="5" ng-class="global.selectedUchetSubMenuItem === 5 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(8,34)"><span>Зарплата</span></div>
+      <div class="sub-menu-item" data-index="6" ng-class="global.selectedUchetSubMenuItem === 6 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(8,35)"><span>Инвентаризация</span></div>
+    </div>
+    <!-- /зафиксированное подменю для учёт -->
+
+
+    <!-- Зафиксированное подменю для Учёт - отчеты -->
+    <div id="subMenuUchetReports" ng-click="subMenuUchetReportsClickHandler($event)"
+         ng-hide="global.selectedMenuItem != 'menuItemUchet' || global.selectedUchetSubMenuItem != 4">
+      <div class="sub-menu-item" data-index="0" ng-class="global.selectedUchetReportsSubMenuItem === 0 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(8,29)"><span>Список покупателей</span></div>
+      <div class="sub-menu-item" data-index="1" ng-class="global.selectedUchetReportsSubMenuItem === 1 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(8,30)"><span>Дебиторская задолженность</span></div>
+      <div class="sub-menu-item" data-index="2" ng-class="global.selectedUchetReportsSubMenuItem === 2 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(8,31)"><span>Продано специалистом</span></div>
+      <div class="sub-menu-item" data-index="3" ng-class="global.selectedUchetReportsSubMenuItem === 3 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(8,32)"><span>Отчет о доходах</span></div>
+      <div class="sub-menu-item" data-index="4" ng-class="global.selectedUchetReportsSubMenuItem === 4 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(8,33)"><span>Отчет за период</span></div>
+    </div>
+    <!-- /зафиксированное подменю для учёт - отчеты -->
+
+    <!-- Зафиксированное подменю для Приложения -->
+    <div id="sumMenuApp" ng-click="subMenuAppClickHandler($event)"
+         ng-hide="global.selectedMenuItem != 'menuItemApp'">
+      <div class="sub-menu-item" data-index="0" ng-class="global.selectedAppSubMenuItem === 0 ? 'menu-item-active' :'' "><span>Телефония</span></div>
+    </div>
+    <!-- /зафиксированное подменю для приложения -->
+
+    <!-- Зафиксированное подменю для Настройки -->
+    <div id="subMenuNastr" ng-click="subMenuNastrClickHandler($event)" ng-hide="global.selectedMenuItem != 'menuItemManual'">
+      <div class="sub-menu-item" data-index="0" ng-class="global.selectedNastrSubMenuItem === 0 ? 'menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(2,20)"><span>Справочники</span></div>
+      <div class="sub-menu-item" data-index="1" ng-class="global.selectedNastrSubMenuItem === 1 ? 'menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(2,20)"><span>Настройки</span></div>
+    </div>
+    <!-- /зафиксированное подменю для Настройки -->
+
+    <!-- Зафиксированное подменю для Журнал -->
+    <div ng-show="global.selectedMenuItem === 'menuItemJur'">
+      <div id="subMenuJur" ng-click="subMenuJurClickHandler($event)" ng-hide="global.selectedMenuItem != 'menuItemJur'">
+        <div class="sub-menu-item" data-index="0" ng-class="global.selectedJurSubMenuItem === 0 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(10,37)"><span>Действия</span></div>
+        <div class="sub-menu-item" data-index="1" ng-class="global.selectedJurSubMenuItem === 1 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(10,47)"><span>Уведомления</span></div>
+        <div class="sub-menu-item" data-index="2" ng-class="global.selectedJurSubMenuItem === 2 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(10,48)"><span>Итог</span></div>
+      </div>
+    </div>
+    <!-- /Зафиксированное подменю для Журнал -->
+
+    <!-- Основной контейнер содержимого -->
+    @* сдвигаю его на высоту подменю, если выбрано Новый или Учёт*@
+    <div id="topContainer" ng-hide="global.newAnkPrintPreviewMode"
+         ng-class="{menuItemNewSelected: global.selectedMenuItem === 'menuItemNew',
+                    menuItemUchetSelected: global.selectedMenuItem === 'menuItemUchet',
+                    menuItemUchetReportsSelected: (global.selectedMenuItem === 'menuItemUchet' &&
+                                                   global.selectedUchetSubMenuItem === 4)}">
+
+      <div class="">
+        @RenderBody()
+        @*<hr />*@
+        @*<footer>
+              <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+          </footer>*@
+      </div>
+    </div>
+    <!-- /основной контейнер содержимого -->
+
+  </div>
+  <!-- /самый внешний контейнер для содержимого -->
+
+
+
+
+
+  @Scripts.Render("~/bundles/jquery")
+  @Scripts.Render("~/bundles/bootstrap")
+  <script src="~/Scripts/jquery.maskedinput.min.js"></script>
+  <script src="~/Scripts/jquery.kladr.min.js"></script>
+  <script src="~/Scripts/angular.js"></script>
+  <script src="~/Scripts/angular-locale_ru-ru.js"></script>
+  <script src="~/Scripts/JsBarcode.ean-upc.min.js"></script>
+  <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+  <script src="~/Scripts/multiselect.js"></script>
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+  @RenderSection("scripts",required: false)
+
+  
+</body>
+</html>

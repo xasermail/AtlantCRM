@@ -1,0 +1,24 @@
+﻿<!-- Отчеты - Метрика -->
+<div id="reportMetrika" ng-controller="reportMetrikaCtrl" ng-show="global.selectedReportSubMenuItem === 11 && global.function.havePravoRead(4, 45)">
+  <div id="metrika-data">
+    <table class="table table-bordered table-condensed table-striped">
+      
+      <tr>
+        <th>Салоны</th>
+        <th>Валовый доход</th>
+        <th>Посещаемость</th>
+        <th>Новые</th>
+        <th>В среднем</th>
+      </tr>
+
+      <tr ng-repeat="item in metrika">
+        <td>{{item.NAME}}</td>
+        <td>{{item.VALOV_DOHOD}}</td>
+        <td>{{item.SRED}}</td>
+        <td>{{item.NOVYH}}</td>
+        <td>{{item.VSEGO}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<!-- /отчеты - Метрика -->

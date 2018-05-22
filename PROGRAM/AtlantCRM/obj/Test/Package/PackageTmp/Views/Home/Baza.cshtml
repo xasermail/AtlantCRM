@@ -1,0 +1,431 @@
+﻿<!-- База -->
+<div id="baza" class="tab-content" ng-controller="bazaCtrl"
+     ng-show="global.selectedMenuItem === 'menuItemBaza'">
+
+  <div class="filter-outer-block">
+    <div class="filter-actions">
+      <button type="button" class="btn btn-default btn-refresh" aria-label="Left Align" ng-click="refreshGrid()">
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+      </button>
+      <div class="vsego"><span>Всего: <span class="badge background-1 baza-all-count">{{vsego}}</span></span></div>
+    </div>
+
+    <div class="filter">
+
+      <!-- Период -->
+      <div class="filter-select filter-period">
+        <span class="arrow-down"></span>
+        <div class="filter-period-top" ng-click="periodDropDownClick()"></div>
+        <div ng-show="period.applied === true">
+          <button class="btn btn-default btn-close" ng-click="periodCloseClick()">x</button>
+        </div>
+        Период
+        <div class="filter-period-window" ng-show="period.shown === true">
+          <div class="date-s-po"><input type="date" ng-model="period.s" /> - <input type="date" ng-model="period.po" /></div>
+          <div class="period-today"><button type="button" ng-click="periodTodayClick()">За сегодня</button></div>
+          <button type="button" class="btn-ok" ng-click="periodOkClick()">Применить</button>
+        </div>
+      </div>
+      <!-- /период -->
+
+
+      <!-- Посещения -->
+      <div class="filter-select filter-posescheniya">
+        <span class="arrow-down"></span>
+        <div class="filter-pos-top" ng-click="posDropDownClick()"></div>
+        <div ng-show="pos.applied === true">
+          <button class="btn btn-default btn-close" ng-click="posCloseClick()">x</button>
+        </div>
+        Посещения
+        <div class="filter-pos-window" ng-show="pos.shown === true">
+          <select ng-model="pos.hodit" ng-options="item.ID as item.NAME for item in pos.hoditNeHodit"></select>
+          @* отображается для вариантов "Ходит" и "Не ходит" *@
+          <div class="filter-pos-dn-div" ng-show="pos.hodit === 1 || pos.hodit == 2">
+            <input type="number" class="filter-pos-dn" ng-model="pos.dn" />
+            <span>дней</span>
+            <div class="dn-error" ng-show="pos.dnError === true">должно быть > 0</div>
+          </div>
+          @* отображается для варианта "На дату" *@
+          <div class="filter-pos-na-datu-div" ng-show="pos.hodit === 3">
+            <input type="date" ng-model="pos.naDatu" title="У кого нет посещения, позже указанной даты. Например, если выбрано 25ое число, то человек, который приходил последний раз 23го, 24го или 25го числа отобразится в результатах, а у кого было посещение 26го - нет"/>
+            <div class="na-datu-error" ng-show="pos.naDatuError === true">укажите дату</div>
+          </div>
+          <button type="button" class="btn-ok" ng-click="posOkClick()">Применить</button>
+        </div>
+      </div>
+      <!-- /посещения -->
+
+      <!-- Регистрация -->
+      <div class="filter-select filter-reg">
+        <span class="arrow-down"></span>
+        <div class="filter-reg-top" ng-click="regDropDownClick()"></div>
+        <div ng-show="reg.applied === true">
+          <button class="btn btn-default btn-close" ng-click="regCloseClick()">x</button>
+        </div>
+        Регистрация
+        <div class="filter-reg-window" ng-show="reg.shown === true">
+          <div class="filter-reg-dn-div">
+            <input class="filter-reg-s" type="number" ng-model="reg.s" /> - <input class="filter-reg-po" type="number" ng-model="reg.po" />
+          </div>
+          <div class="dn-error" ng-show="reg.regError === true">должно быть > 0</div>
+          <button type="button" class="btn-ok" ng-click="regOkClick()">Применить</button>
+        </div>
+      </div>
+      <!-- /Регистрация -->
+      <!-- Сеансы -->
+      <div class="filter-select filter-seans">
+        <span class="arrow-down"></span>
+        <div class="filter-seans-top" ng-click="seansDropDownClick()"></div>
+        <div ng-show="seans.applied === true">
+          <button class="btn btn-default btn-close" ng-click="seansCloseClick()">x</button>
+        </div>
+        Время
+        <div class="filter-seans-window" ng-show="seans.shown === true">
+          <div>
+            <select ng-model="seans.id" ng-options="item.ID as item.NAME for item in global.manual.M_SEANS_TIME" size="20" class="seans-listbox"></select>
+          </div>
+          <div>
+            <button type="button" class="btn-ok" ng-click="seansOkClick()" ng-disabled="seans.id == null">Применить</button>
+          </div>
+        </div>
+      </div>
+      <!-- /Сеансы -->
+
+      <!-- Заболевания -->
+      <div class="filter-select filter-zabol">
+        <span class="arrow-down"></span>
+        <div class="filter-zabol-top" ng-click="zabolDropDownClick()"></div>
+        <div ng-show="zabol.applied === true">
+          <button class="btn btn-default btn-close" ng-click="zabolCloseClick()">x</button>
+        </div>
+        Заболевания
+        <div class="filter-zabol-window" ng-show="zabol.shown === true">
+          <div><input ng-model="zabol.searchStr" placeholder="Поиск заболевания" class="search-str" /></div>
+          <div>
+            <select ng-model="zabol.id" ng-options="item.ID as item.NAME for item in global.manual.M_ZABOL | filter:{NAME: zabol.searchStr, M_ZABOL_GROUP_ID: kateg.id}"
+                    size="20" class="zabol-listbox"></select>
+          </div>
+          <div><button type="button" class="btn-ok" ng-click="zabolOkClick()" ng-disabled="zabol.id == null">Применить</button></div>
+        </div>
+      </div>
+      <!-- /заболевания -->
+
+      <!-- Группы заболеваний -->
+      <div class="filter-select filter-kateg">
+        <span class="arrow-down"></span>
+        <div class="filter-kateg-top" ng-click="kategDropDownClick()"></div>
+        <div ng-show="kateg.applied === true">
+          <button class="btn btn-default btn-close" ng-click="kategCloseClick()">x</button>
+        </div>
+        Категории
+        <div class="filter-kateg-window" ng-show="kateg.shown === true">
+          <div>
+            <select ng-model="kateg.id" ng-options="item.ID as item.NAME for item in global.manual.M_ZABOL_GROUP" size="20" class="kateg-listbox"></select>
+          </div>
+          <div>
+            <button type="button" class="btn-ok" ng-click="kategOkClick()" ng-disabled="kateg.id == null">Применить</button>
+          </div>
+        </div>
+      </div>
+      <!-- /Группы заболеваний -->
+
+      <!-- Продажи -->
+      <div class="filter-select filter-prod">
+        <span class="arrow-down"></span>
+        <div class="filter-prod-top" ng-click="prodDropDownClick()"></div>
+        <div ng-show="prod.applied === true">
+          <button class="btn btn-default btn-close" ng-click="prodCloseClick()">x</button>
+        </div>
+        Продажи
+        <div class="filter-prod-window" ng-show="prod.shown === true">
+          <div class="net-tovara" ng-class="{'active': prod.netTovara === 1}" ng-click="prodFilterNetTovaraClick()">Нет товара</div>
+          <div>
+            <select class="prod-listbox" ng-model="prod.productIds" multiple="multiple" size="20"
+                    ng-options="item.ID as item.NAME for item in global.manual.M_PRODUCT">
+            </select>
+          </div>
+          <div>
+            <button type="button" class="btn-ok" ng-click="prodOkClick()" ng-disabled="prod.productIds == ''">Применить</button>
+          </div>
+        </div>
+      </div>
+      <!-- /Продажи -->
+      <!-- Улучшения -->
+      <div class="filter-select filter-uluch">
+        <span class="arrow-down"></span>
+        <div class="filter-uluch-top" ng-click="uluchDropDownClick()"></div>
+        <div ng-show="uluch.applied === true">
+          <button class="btn btn-default btn-close" ng-click="uluchCloseClick()">x</button>
+        </div>
+        Улучшения
+        <div class="filter-uluch-window" ng-show="uluch.shown === true">
+          <div><input ng-model="uluch.searchStr" placeholder="Поиск заболевания" class="search-str" /></div>
+          <div>
+            <select ng-model="uluch.id" ng-options="item.ID as item.NAME for item in global.manual.M_ZABOL | filter:{NAME: uluch.searchStr}"
+                    size="20" class="uluch-listbox"></select>
+          </div>
+          <div><button type="button" class="btn-ok" ng-click="uluchOkClick()" ng-disabled="uluch.id == null">Применить</button></div>
+        </div>
+      </div>
+      <!-- /Улучшения -->
+
+      <!-- Дата звонка -->
+      <div class="d-zv"><input type="date" ng-model="dZv" ng-change="dZvChanged()" title="Кому не звонили в выбранную дату или позже. Например, если выбрано 25ое число и человеку звонили 25го или 26го числа, то он не отобразится в результатах, а если последний раз звонили 24го числа - то отобразится" /></div>
+      <!-- /дата звонка -->
+      <div class="aktivist"><input type="checkbox" /> <span>Активист</span></div>
+      <div class="pokazat-isklyuchennih"><input type="checkbox" /> <span>Показать исключ-х</span></div>
+      <input class="poisk-po" type="text" placeholder="Поиск по имени, тел., адресу, перс. коду" ng-model="fio" ng-keypress="fioKeyPress($event)" />
+      <button type="button" class="baza-send-sms" ng-click="send()"
+              ng-hide="global.function.noHavePravoWrite(1,46)">Отправить СМС</button>
+    </div>
+
+    <div class="filter-clear-panel">
+      <button class="baza-clear-filter" type="button" ng-click="clearFilter()">Сброс фильтров</button>
+    </div>
+  </div>
+
+
+  <!-- Результаты и статусы -->
+  <div class="fio-table-and-statuses">
+    <!-- Результаты -->
+    <div class="fio-table">
+      <table class="table table-bordered table-hover table-striped">
+        <thead>
+          <tr>
+            <th>Код</th>
+            <th>ФИО</th>
+            <th>Телефон</th>
+            <th>Кол-во посещений</th>
+            <th>Последнее посещение</th>
+            <th>Последняя продажа</th>
+            <th>Специалист</th>
+            <th>Посл. звонок</th>
+            <th class="th-d-zv">
+              @* сортировка по дате звонка *@
+              <button class="btn-d-zv-order-by" ng-click="bntDZvOrderByClick()" title="Сортировка по дате звонка">
+                <span class="glyphicon glyphicon-sort" aria-hidden="true" ng-show="dZvOrderBy === 0"></span>
+                <span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true" ng-show="dZvOrderBy === 1"></span>
+                <span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true" ng-show="dZvOrderBy === 2"></span>
+              </button>
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in bazaList" ng-class="{'success' : item.is_registered_today === 1}">
+            <td>{{item.kod}}</td>
+            <td>
+              <a href="#" ng-click="global.openAnk(item.id)" title="Нажмите на ФИО для открытия анкеты">{{item.fio}}</a>
+            </td>
+            <td class="process-a-call-td">
+              <a href="#" ng-click="global.function.phoneClick(item.phone, item)" title="Нажмите на номер телефона для совершения вызова">{{item.phone}}</a>
+              <div class="process-a-call" ng-show="item.showProcessACall"><div>Совершается вызов</div></div>
+            </td>
+            <td>{{item.visit_count}}</td>
+            <td>{{item.last_visit | date:'dd.MM.yyyy'}}</td>
+            <td>{{item.last_sale | date:'dd.MM.yyyy'}}</td>
+            <td>{{item.reg_fio}}</td>
+            <td title="{{(item.fio_last_zv || '') + ' ' + (item.comment_last_zv || '')}}" class="td-last-zv">
+              <an class="an1">{{item.d_start_last_zv | date:'dd.MM.yyyy'}}</an>
+              <an class="an2">{{item.comment_last_zv.length > 20 ? (item.comment_last_zv.substr(0, 20) + '..') : item.comment_last_zv}}</an>
+            </td>
+            <td>
+              <button class="btn btn-default btn-sm" title="Перейти в Звонки"
+                      ng-click="openZvonokRej(item.id)">
+                <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+              </button>
+            </td>
+            <td>
+              @* Денис просил скрыть и выводить переход в Общение, пока не удаляю, может пригодится 
+              <button class="btn btn-default btn-sm" title="Печать анкеты"
+                      ng-click="global.function.printAnk(item.id)">
+                <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+              </button>
+              *@
+              <button class="btn btn-default btn-sm" title="Перейти в Общение"
+                      ng-click="openDialog(item.id)">
+                <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="div-pagination">
+        <nav aria-label="Page navigation">
+
+          <ul class="pagination">
+            <li ng-click="pageNext()">
+              <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li ng-click="pagePrev10()">
+              <a href="#" aria-label="Previous 10 pages">
+                <span aria-hidden="true">&lsaquo;</span>
+              </a>
+            </li>
+            <li ng-repeat="item in pageNums"
+                ng-class="{active: item === page}">
+              <a href="#" ng-click="pageNumClickHandler(item)">{{item}}</a>
+            </li>
+            <li ng-click="pageNext10()">
+              <a href="#" aria-label="Next 10 pages">
+                <span aria-hidden="true">&rsaquo;</span>
+              </a>
+            </li>
+            <li ng-click="pagePrev()">
+              <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
+    </div>
+    <!-- /результаты -->
+
+    <!-- Статусы -->
+    <div class="statusesClient">
+      <span>Статус</span>
+      <table>
+        <tr ng-repeat="item in statuses">
+          <td>
+            <span style="color: #333333" ng-click="setDopFilter(item, 'status')">{{item.M_STATUS_NAME}} {{item.COUNT_ANK}}  </span>
+            <span style="color: #333333" ng-click="clearDopFilter('status')" ng-show="dopFilter.status_id === item.M_STATUS_ID">X</span>
+          </td>
+        </tr>
+      </table>
+      <span>Товары</span>
+      <table>
+        <tr ng-repeat="item in tovarStatuses">
+          <td>
+            <span style="color: #333333" ng-click="setDopFilter(item, 'tovar')">{{item.TOVAR_NAME}} {{item.COUNT}}  </span>
+            <span style="color: #333333" ng-click="clearDopFilter('tovar')" ng-show="dopFilter.tovar_id === item.TOVAR_ID">X</span>
+          </td>
+        </tr>
+      </table>
+      <span>Календарь продаж</span>
+      <div class="getSalesCalendarConrol">
+        <table>
+          <tr>
+            <td>
+              <span>c</span>
+            </td>
+            <td>
+              <input type="date" ng-model="fromDateSalesCalendar" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>по</span>
+            </td>
+            <td>
+              <input type="date" ng-model="toDateSalesCalendar" />
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <a href="#" ng-click="btnGetSalesCalendar()">Показать</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <span>День рождения</span>
+      <table>
+        <tr ng-repeat="item in statusBirth">
+          <td>
+            <span style="color: #333333" ng-click="setDopFilter(item, 'birth')">{{item.NAME}} {{item.COUNT}}  </span>
+            <span style="color: #333333" ng-click="clearDopFilter('birth')" ng-show="dopFilter.birth_id === item.ID">X</span>
+          </td>
+        </tr>
+      </table>
+      <span>Улучшения</span>
+      <table>
+        <tr ng-repeat="item in statusUluch">
+          <td>
+            <span style="color: #333333" ng-click="setDopFilter(item, 'uluch')">{{item.DAY_NAME}} {{item.COUNT}}  </span>
+            <span style="color: #333333" ng-click="clearDopFilter('uluch')" ng-show="dopFilter.uluch_day_id === item.DAY_ID">X</span>
+          </td>
+        </tr>
+      </table>
+      <span>Пол</span>
+      <table>
+        <tr ng-repeat="item in statusSex">
+          <td>
+            <span style="color: #333333" ng-click="setDopFilter(item, 'sex')">{{item.SEX_NAME}} {{item.COUNT}}  </span>
+            <span style="color: #333333" ng-click="clearDopFilter('sex')" ng-show="dopFilter.sex_id === item.SEX_ID">X</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!-- /статусы -->
+
+  </div>
+  <!-- /результаты и статусы -->
+
+
+  <div class="sms-message-form" ng-show="smsMessageForm === 1">
+    <div align="center">
+      <textarea class="message" rows="8" cols="50" ng-model="message"></textarea>
+      <button class="send-sms-button" ng-click="closeSmsForm()">Отмена</button>
+      <button class="send-sms-button" ng-click="sendSmsForm()">Отправить</button>
+    </div>
+  </div>
+
+  <!-- /календарь и статусы -->
+  <div class="salesCalendarPanel" ng-show="showSalesCalendar === true">
+    <div align="center" class="calendar-prodaj-header">
+      <input type="date" ng-model="fromDateSalesCalendar" />
+      <span class="calendar-prodaj-defis">-</span>
+      <input type="date" ng-model="toDateSalesCalendar" />
+      <button class="calendar-prodaj-refresh" ng-click="btnGetSalesCalendar()">Показать</button>
+    </div>
+    
+    <div class="calendar-prodaj-main-div" ng-show="showSpisProd === false">
+      <div id="cellMainDiv"
+           ng-repeat="item in calendar | filter:{DAY_HEADER: 1}:true"
+           class="calendar-prodaj-div"
+           style="height: {{calendarDivHeight}}px">
+        <div class="calendar-prodaj-data">
+          
+          <div>
+            <span class="calendar-prodaj-name">{{item.DAY_NAME}}</span>
+          </div>
+
+          <div class="calendar-prodaj-prod"
+               ng-repeat="prod in calendarData | filter:{DAY_RN: item.DAY_RN}:true"
+               style="width: {{recalcDivWidth()}}px; margin-left: 1%">
+            <span class="calendar-prodaj-link" ng-click="openSpisProd(prod)">{{prod.KOLVO}} {{prod.M_PRODUCT_ID_NAME}}</span>
+            <br/>
+            <span class="calendar-prodaj-summa">{{prod.SUMMA}}</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="calendar-prodaj-main-div" ng-show="showSpisProd === true">
+      <table class="calendar-prodaj-spis">
+        <tr>
+          <td class="calendar-prodaj-spis" align="center" width="300">ФИО</td>
+          <td class="calendar-prodaj-spis" align="center" width="120" style="text-decoration: none">Сумма</td>
+        </tr>
+        <tr class="calendar-prodaj-spis" ng-repeat="spis in calendar | filter:{DAY_RN: spisDayRn, M_PRODUCT_ID: spisMProductId}:true">
+          <td align="center" class="calendar-prodaj-spis"
+              ng-click="openDialogRej(spis.O_ANK_ID)">{{spis.FIO}}</td>
+          <td align="center" class="calendar-prodaj-spis" style="text-decoration: none">{{spis.PRICE}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div>
+      <span class="calendar-prodaj-itogo">Итого: {{summaItogo}}</span>
+      <button class="closePanel" ng-show="showSpisProd === false" ng-click="closeSalesCalendar()">Закрыть</button>
+      <button class="closePanel" ng-show="showSpisProd === true" ng-click="closeSpisProd()">Вернуться</button>
+    </div>
+  </div>
+  <!-- /календарь продаж -->
+</div>
+<!-- /база -->

@@ -1,0 +1,183 @@
+﻿<!-- Статистика -->
+<div id="stat" class="tab-content" ng-controller="statCtrl" ng-show="global.selectedSubMenuItem === 7 && global.function.havePravoRead(1,4)">
+
+  <div id="statSeansInfo">
+   
+    <div class="stat-seans-info">
+      <div>
+        <span class="stat-blue-text">Статистика посещений</span>
+      </div>
+
+      <div style="border-right: 1px solid #a1a1a1">
+        <div class="stat-line">
+          <div>
+            <span style="height: 18px">По сеансам:</span>
+          </div>
+          <table style="margin-top: 4px">
+            <tr>
+              <th style="text-align: left">Сеанс</th>
+              <th style="text-align: center; width: 148px">Количество</th>
+              <th style="text-align: center">Доля</th>
+            </tr>
+            <tr ng-repeat="item in seans">
+              <td>{{item.time}}</td>
+              <td style="text-align: center; width: 148px">{{item.visits}}</td>
+              <td style="text-align: center">{{item.part}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <div class="stat-reg-info">
+      <div style="border-right: 1px solid #a1a1a1; margin-top: 40px">
+        <div class="stat-line">
+          <div>
+            <span>Регистрация:</span>
+          </div>
+          <table style="margin-top: 4px">
+            <tr>
+              <th style="text-align: left">ФИО</th>
+              <th style="text-align: center; width: 148px">Сеансов</th>
+              <th style="text-align: center">Доля</th>
+            </tr>
+            <tr ng-repeat="item in reg">
+              <td>{{item.time}}</td>
+              <td style="text-align: center; width: 148px">{{item.visits}}</td>
+              <td style="text-align: center">{{item.part}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-lane-info">
+      <div style="border-right: 1px solid #a1a1a1; margin-top: 40px">
+        <div class="stat-line">
+          <div>
+            <span>Ряды:</span>
+          </div>
+          <table style="margin-top: 4px">
+            <tr>
+              <th style="text-align: left">ФИО</th>
+              <th style="text-align: center; width: 148px">Сеансов</th>
+              <th style="text-align: center">Доля</th>
+            </tr>
+            <tr ng-repeat="item in lane">
+              <td>{{item.time}}</td>
+              <td style="text-align: center; width: 148px">{{item.visits}}</td>
+              <td style="text-align: center">{{item.part}}</td>
+            </tr>
+            <tr ng-repeat="item in last_lane">
+              <td><b>{{item.time}}</b></td>
+              <td style="text-align: center; width: 148px">{{item.visits}}</td>
+              <td style="text-align: center">{{item.part}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div id="statRegInfo">
+      <div>
+        <span class="stat-blue-text">Информация о регистрации</span>
+      </div>
+
+      <table>
+        <tr class="stat-reg-line">
+          <td>Дата регистрации</td>
+          <td style="padding-left: 15px">{{date_reg}}</td>
+        </tr>
+        <tr class="stat-reg-line">
+          <td>Зарегистрирован</td>
+          <td style="padding-left: 15px">{{d_reg}}</td>
+        </tr>
+        <tr class="stat-reg-line">
+          <td>Источник</td>
+          <td style="padding-left: 15px">{{ist_inf}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="statVisitInfo">
+      <div>
+        <span class="stat-blue-text">Посещения</span>
+      </div>
+
+      <table>
+        <tr class="stat-reg-line">
+          <td>Количество посещений</td>
+          <td class="stat-visit-table-td">{{all_visits}}</td>
+        </tr>
+        <tr class="stat-reg-line">
+          <td>Место</td>
+          <td class="stat-visit-table-td">{{place}}</td>
+        </tr>
+        <tr class="stat-reg-line">
+          <td>Последнее посещение</td>
+          <td class="stat-visit-table-td">{{last_visit}}</td>
+        </tr>
+        <tr class="stat-reg-line">
+          <td>Непрерывность</td>
+          <td class="stat-visit-table-td">{{nepreryv}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+
+
+    <!-- Посещения и приостановки абонемента -->
+
+    <div class="pos-priost">
+      <div class="pos">
+        <div>
+          <span class="stat-blue-text">Посещения по абонементу</span>
+        </div>
+
+        <table class="table table-bordered table-condensed table-hover table-striped">
+          <thead>
+            <tr>
+              <th>Дата</th>
+              <th>Количество</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="pos in posList">
+              <td>{{pos.d_pos | date:'dd.MM.yyyy'}}</td>
+              <td>{{pos.str_kolvo}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="priost">
+        <div>
+          <span class="stat-blue-text">Приостановки абонемента</span>
+        </div>
+
+        <table class="table table-bordered table-condensed table-hover table-striped">
+          <thead>
+            <tr>
+              <th>Приостановка с</th>
+              <th>Приостановка по</th>
+              <th>Количество дней</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="priost in priostList">
+              <td>{{priost.d_priost_s | date:'dd.MM.yyyy'}}</td>
+              <td>{{priost.d_priost_po | date:'dd.MM.yyyy'}}</td>
+              <td>{{priost.kolvo_dn}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- /посещения и приостановки абонемента -->
+
+
+</div>

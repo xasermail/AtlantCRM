@@ -1,0 +1,71 @@
+﻿<div id="service" class="tab-content" ng-controller="serviceCtrl" ng-show="global.selectedSubMenuItem === 8 && global.function.havePravoRead(1,9)">
+  
+  <div ng-repeat="item in o_service">
+    <div id="serviceOption">
+      <div class="service-option">
+        <span class="service-blue-text">Статус</span>
+    
+        <select class="service-action-id" name="m_service_type_id" ng-model="item.m_service_type_id"
+                ng-options="c.ID as c.NAME for c in global.manual.M_SERVICE_TYPE"
+                ng-disabled="global.function.noHavePravoWrite(1,9)"></select>
+
+        <select class="service-product-id" name="m_product_id" ng-model="item.m_product_id"
+                ng-options="c.ID as c.NAME for c in global.manual.M_PRODUCT"
+                ng-disabled="global.function.noHavePravoWrite(1,9)"></select>
+        <span style="margin-left: 10px">Серийный №</span>
+        <input class="service-serial-number" ng-model="item.serial_number" ng-disabled="global.function.noHavePravoWrite(1,9)"/>
+      </div>
+    </div>
+
+    <div id="service-photo-document">
+      <div class="service-file">
+        <span style="margin-left: 21px">Фото товара</span>
+        <div class="service-photo">
+          <div class="photo-frame">
+            <img class="image" style="{{PhotoProductSize}}" ng-src="{{item.product_photo}}" />
+          </div>
+          <input class="service-photo-file" type="file" 
+                 onchange="angular.element(this).scope().setFile(this, 'product')"
+                 accept="image/*"
+                 ng-disabled="global.function.noHavePravoWrite(1,9)" />
+        </div>
+      </div>
+    
+      <div class="service-file" style="margin-left: 115px">
+        <div>
+          <span style="margin-left: -14px">Гарантийный документ</span>
+        </div>
+        <div class="service-photo">
+          <div class="photo-frame">
+            <img class="image" style="{{PhotoProductGuaranteeSize}}" ng-src="{{item.guarantee_photo}}" />
+          </div>
+          <input class="service-photo-file" type="file"
+                 onchange="angular.element(this).scope().setFile(this, 'guarantee')"
+                 accept="image/*"
+                 ng-disabled="global.function.noHavePravoWrite(1,9)" />
+        </div>
+      </div>
+    
+      <div class="service-file" style="margin-left: 102px">
+        <span style="margin-left: 15px">Товарный чек</span>
+        <div class="service-photo">
+          <div class="photo-frame">
+            <img class="image" style="{{PhotoProductCheckSize}}" ng-src="{{item.product_check}}" />
+          </div>
+          <input class="service-photo-file" type="file"
+                 onchange="angular.element(this).scope().setFile(this, 'check')"
+                 accept="image/*"
+                 ng-disabled="global.function.noHavePravoWrite(1,9)"/>
+        </div>
+      </div>
+    </div>
+
+    <div id="serviceComment" style="margin-top: 35px">
+      <textarea class="service-comment" ng-model="item.comment" ng-disabled="global.function.noHavePravoWrite(1,9)"></textarea>
+    </div>
+
+    <div style="margin-top: 10px; padding-bottom: 10px">
+      <button class="service-save" ng-click="saveService()" ng-disabled="global.function.noHavePravoWrite(1,9)">Добавить информацию</button>
+    </div>
+  </div>
+</div>

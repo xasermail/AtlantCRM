@@ -1,0 +1,160 @@
+﻿<!-- Контакты -->
+<div  id="kont" 
+      class="tab-content" 
+      ng-controller="kontListByModeCtrl" 
+      ng-show="global.selectedKontSubMenuItem === 1 
+                || global.selectedKontSubMenuItem === 2
+                || global.selectedKontSubMenuItem === 3">
+
+     <text class="vsego-nepr">Всего: {{allCount}}</text>
+
+    <table class="table table-bordered table-hover table-striped">
+        <tr>
+            <th>ФИО</th>
+            <th>Телефон</th>
+            <th>Сеанс</th>
+            <th>Дата звонка</th>
+            <th ng-hide="currentMode == '3'">Комментарий</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="item in dataForTableNotCame">
+            <td>
+              <div>
+                <a href="#" ng-click="tdChangeKontClickHandler($event, item)">{{item.SURNAME}} {{item.NAME}} {{item.SECNAME}}</a>
+              </div>
+                <div class="record-td-div record-button-div" 
+                      ng-hide="currentMode == '2'
+                                || currentMode == '3'">
+                    <button kont-seans-id="{{item.KONT_SEANS_ID}}"
+                            time-id="{{item.M_SEANS_TIME_ID}}"
+                            commentForChange="{{item.COMMENT}}"
+                            ng-click="btnChangeSeansClick($event)"
+                            class="record-new-date">
+                    </button>
+                </div>
+            </td>
+            <td>{{item.PHONE}}</td>
+            <td>{{item.SEANS}}</td>
+            <td>{{item.D_ZV | date:'dd.MM.yyyy'}}</td>
+            <td ng-hide="currentMode == '3'">{{item.COMMENT}}</td>
+            <td>
+                <div>
+                    <button type="button" class="btn btn-default" aria-label="Left Align" title="Удалить"
+                            ng-click="btnRemoveKontClickHandler(item)" 
+                            ng-hide="currentMode == '2'
+                                    || currentMode == '3'">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                  <span class="glyphicon glyphicon-undo"></span>
+                    <button type="button" class="btn btn-default" aria-label="Left Align" title="Вернуть"
+                            ng-click="btnUndoKontClickHandler(item)" 
+                            ng-hide="currentMode == '1' 
+                                    || currentMode == '3'
+                                    || item.SKR == 2">
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+
+                    </button>
+                </div>
+               
+            </td>
+        </tr>
+    </table>
+
+    <div class="div-pagination">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous" ng-click="prevPageClickHandler()">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li ng-repeat="item in pageNums" ng-class="{ 'active': item === page }">
+                  <a href="#" ng-click="pageNumClickHandler(item)">{{item}}</a>
+                </li>
+                <li>
+                    <a href="#" aria-label="Next" ng-click="nextPageClickHandler()">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div class="zapisat-na-seans"
+         style="left: {{zapisatNaSeansLeft}}px; top: {{zapisatNaSeansTop}}px; height: {{zapisatNaSeansHeight}}px" ng-show="changeSeans === 1">
+        <div class="rec-on-seans">
+            <span class="change-seans-label">Дата</span>
+            <input class="stat_date rec-date change-seans-value" ng-model="changeSeansDate" type="date"
+                   date-format="short" />
+        </div>
+        <div style="height: {{notValidDateHeight}}px">
+            <span class="rec-on-seans" style="color: red">{{notValidDate}}</span>
+        </div>
+        <div class="rec-on-seans">
+            <span class="change-seans-label">Сеанс</span>
+            <select class="rec-seans-id change-seans-value" ng-model="change_m_seans_time_id" ng-options="c.ID as c.NAME for c in global.manual.M_SEANS_TIME"></select>
+        </div>
+
+        <div class="rec-comment">
+            <span class="change-seans-label">Комментарий</span>
+            <textarea class="change-seans-value" ng-model="commentForSave"></textarea>
+        </div>
+        <div style="height: {{errorMessageChangeSeansHeight}}px">
+            <span class="errorMessage">{{errorSaveChangeSeansDate}}</span>
+        </div>
+        <div class="rec-change-buttons">
+            <button class="btnCancelChange" ng-click="btnCancelChangeSeans()">Отменить</button>
+            <button class="btnSaveChange" ng-click="btnSaveChangeSeans()" style="margin-left: 30px">Сохранить</button>
+        </div>
+    </div>
+
+  @*Окошко изменения контакта*@
+  <div class="new-ank-seans" style="left: {{newAnkNaSeansLeft}}px; top: {{newAnkNaSeansTop}}px; height: {{newAnkHeight}}px" ng-show="newAnkNaSeans === 1">
+    <div>
+      <div class="new-ank-body">
+        <div class="new-ank-fio">
+          <div class="new-ank-label">
+            <span>ФИО</span>
+          </div>
+          <div class="new-ank-value">
+            <input class="rec-seans-text" ng-model="newKontSurname" placeholder="Фамилия" />
+            <input class="rec-seans-text rec-seans-data" ng-model="newKontName" placeholder="Имя" />
+            <input class="rec-seans-text rec-seans-data" ng-model="newKontSecname" placeholder="Отчество" />
+          </div>
+        </div>
+        <div class="new-ank-phone">
+          <div class="new-ank-label">
+            <span>Телефон</span>
+          </div>
+          <div class="new-ank-value">
+            <input id="kontPhoneMobile" class="rec-seans-text" ng-model="newKontPhone_mobile" />
+          </div>
+        </div>
+        <div class="new-ank-comment" ng-hide="currentMode == '3'">
+          <div class="new-ank-label">
+            <span>Комментарий</span>
+          </div>
+          <div class="new-ank-value">
+            <textarea class="rec-seans-text" ng-model="commentForSave"></textarea>
+          </div>
+        </div>
+
+      </div>
+      <div class="new-ank-close"><button class="btnRec" ng-click="btnCloseNewKont()">X</button></div>
+    </div>
+    <div class="new-ank-save-panel">
+      <span class="errorMessage">{{errorSaveNewKont}}</span>
+      <button class="btnRec"
+              ng-click="btnCreateNewKont()"
+              ng-disabled="btnCreateNewKontDisabled"
+              style="margin-left: 13px;
+                                float: right;">
+        Сохранить
+      </button>
+    </div>
+  </div>
+
+</div>
+<!-- /контакты -->
+

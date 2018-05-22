@@ -1,0 +1,97 @@
+﻿@{
+  Layout = "/Views/Shared/_Print.cshtml";
+}
+
+<style>
+.spis-pokup-div-table {
+  margin-top: 10px;
+}
+
+.spis-pokup-first-row {
+  margin-top: 20px;
+}
+
+.span-dt-from {
+  margin-left: 116px;
+}
+
+table {
+  word-wrap: break-word;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 21px;
+}
+
+.vip {
+  width: 35px;
+}
+
+.info1 {
+  width: 240px;
+}
+
+.info2 {
+  width: 80px;
+}
+
+.info3 {
+  width: 150px;
+}
+
+.info4 {
+  width: 200px;
+}
+
+.info5 {
+  width: 120px;
+}
+
+.info6 {
+  width: 120px;
+}
+
+</style>
+
+<div style="margin: 15px 0 0 15px">
+
+  <div align="center">
+    <H2 style="color: black">Список покупателей</H2>
+    <span>Дата с {{dt_from == null ? "<не задано>" : (dt_from | date:'dd.MM.yyyy')}} по {{dt_to == null ? "<не задано>" : (dt_to | date:'dd.MM.yyyy')  }} Осталось от {{ostalos_dn_abon_ot == null ? "<не задано>" : ostalos_dn_abon_ot}} до {{ostalos_dn_abon_do == null ? "<не задано>" : ostalos_dn_abon_do}} Форма оплаты: {{m_method_opl_id_name == null ? "<не задано>" : m_method_opl_id_name}}</span>
+  </div>
+
+  <div align="center" class="spis-pokup-div-table">
+    <table width="980">
+      <tr>
+        <td align="center">VIP</td>
+        <td align="center">ФИО</td>
+        <td align="center">Дата выдачи</td>
+        <td align="center">Телефон</td>
+        <td align="center">Наименование товара</td>
+        <td align="center">Выдано</td>
+        <td align="center">Сумма</td>
+        <td align="center" title="Осталось дней абонемента">Осталось</td>
+      </tr>
+      <tr ng-repeat="item in data">
+        <td align="center" class="vip">{{item.VIP === 1 ? "VIP" : ""}}</td>
+        <td align="center" class="info1">{{item.FIO}}</td>
+        <td align="center" class="info2">{{item.D_VID | date:'dd.MM.yyyy'}}</td>
+        <td align="center" class="info3">{{item.PHONE}}</td>
+        <td align="center" class="info4">{{item.NAME}}</td>
+        <td align="center" class="info5">{{item.VID}}</td>
+        <td align="center" class="info6">{{item.SUMMA}}</td>
+        <td align="center" class="ostalos-dn-abon">{{item.OSTALOS_DN_ABON > 0 ? item.OSTALOS_DN_ABON : ""}}</td>
+      </tr>
+    </table>
+  </div>
+
+</div>

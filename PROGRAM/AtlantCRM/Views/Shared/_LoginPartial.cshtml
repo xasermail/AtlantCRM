@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated) {
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" })) {
+      @Html.AntiForgeryToken()
+      <div class="img-circle div-user-img" ng-click="global.function.showMenu()">
+        <img class="user-img" ng-src="/Home/GetUserPhoto/{{global.userContext.ID}}" />
+      </div>
+      <span class="user-name" ng-click="global.function.showMenu()">{{global.userContext.NAME}}</span>
+      <div class="setting-window" ng-show="global.setting.show === 1">
+        <div><button type="button" class="btn btn-sm btn-default btn-close"
+                     ng-click="global.setting.show = 0">x</button></div>
+
+        <img class="user-login-img" ng-src="/Home/GetUserPhoto/{{global.userContext.ID}}" />
+
+        <div class="div-1"><span>{{global.userContext.SURNAME}} {{global.userContext.NAME}}</span></div>
+        <div class="div-2"><span>{{global.userContext.S_USER_ROLE_ID_NAME}}</span></div>
+        <div class="clearfix"></div>
+        @* скрыть администрации, если пользователь не администратор *@
+        <div class="buttons-1">
+          <div ng-click="global.currentUserChangeMOrgId(global.const.M_ORG_ID_ADMINISTRATSIYA)"
+               ng-show="global.userContext.IS_ADM === 1" class="div-adm">
+            <span class="form-item btn btn-default">Администрация</span>
+          </div>
+          <div ng-click="global.currentUserChangeMOrgId(global.userContext.M_ORG_ID_DILER_A)"
+               ng-show="global.userContext.IS_DILER_A === 1" class="div-adm">
+            <span class="form-item btn btn-default">Дилер федеральный</span>
+          </div>
+          <div ng-click="global.currentUserChangeMOrgId(global.userContext.M_ORG_ID_DILER_C)"
+               ng-show="global.userContext.IS_DILER_C === 1" class="div-adm">
+            <span class="form-item btn btn-default">Дилер областной</span>
+          </div>
+          <div ng-click="global.function.goToManuals()" ng-hide="global.function.noHavePravoRead(2,20)" class="div-manuals">
+            <span class="form-item btn btn-default">Настройки</span>
+          </div>
+          <div ng-click="global.function.logOut()" class="div-exit">
+            <span class="form-item btn btn-primary">Выход</span>
+          </div>
+        </div>
+      </div>
+    }
+} else {
+  <div>@Html.ActionLink("Войти", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</div>
+}

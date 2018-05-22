@@ -1,0 +1,102 @@
+﻿@{
+  Layout = "/Views/Shared/_Print.cshtml";
+}
+
+<style>
+.ne-prodlil-div-table {
+  margin-top: 10px;
+}
+
+.ne-prodlil-first-row {
+  margin-top: 20px;
+}
+
+.span-dt-from {
+  margin-left: 120px;
+}
+
+.info1 {
+  width: 40px;
+}
+
+.info2 {
+  width: 500px;
+}
+
+.info3 {
+  width: 130px;
+}
+
+.info4 {
+  width: 250px;
+}
+
+.info5 {
+  width: 200px;
+}
+
+.info6 {
+  width: 100px;
+}
+
+.info7 {
+  width: 100px;
+}
+
+table {
+  word-wrap: break-word;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+tr {
+  border-collapse: collapse;
+  padding: 10px 0;
+}
+
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 21px;
+}
+
+</style>
+
+<div style="margin: 15px 0 0 15px">
+
+  <div align="center">
+    <H2 style="color: black">{{REPORT_NAME}}</H2>
+    <span>На дату {{DT_FROM | date:'dd.MM.yyyy'}}</span>
+  </div>
+
+  <div align="center" class="ne-prodlil-div-table">
+    <table>
+      <tr>
+        <td align="center">&nbsp;VIP&nbsp;</td>
+        <td align="center">ФИО</td>
+        <td align="center">Дата выдачи</td>
+        <td align="center">Дата действия</td>
+        <td align="center">Телефон</td>
+        <td align="center">Наименование товара</td>
+        <td align="center">Выдано</td>
+        <td align="center">Сумма</td>
+        <td align="center">Осталось</td>
+        <td align="center">Посещения</td>
+      </tr>
+
+      <tr ng-repeat="item in data">
+        <td align="center" class="info1">{{item.VIP === 1 ? "VIP": ""}}</td>
+        <td align="center" class="info2">{{item.FIO}}</td>
+        <td align="center" class="info3">{{item.D_VID | date:'dd.MM.yyyy'}}</td>
+        <td align="center" class="info3">{{item.D_DEISTV | date:'dd.MM.yyyy'}}</td>
+        <td align="center" class="info4">{{item.PHONE}}</td>
+        <td align="center" class="info5">{{item.NAME}}</td>
+        <td align="center" class="info6">{{item.VID}}</td>
+        <td align="center" class="info6">{{item.SUMMA}}</td>
+        <td align="center" class="info7">{{item.OSTALOS_DN_ABON > 0 ? item.OSTALOS_DN_ABON : ""}}</td>
+        <td align="center" class="info7">{{item.SEANS_CNT}}</td>
+      </tr>
+    </table>
+  </div>
+
+</div>

@@ -1,0 +1,1239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ATLANTCRMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="OldPasswordHash" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="M_DEISTV">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_IST_INF">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="100" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_KONT_IST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_KONT_STATUS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_MANUAL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME_ENG" Type="varchar" MaxLength="500" />
+    <Property Name="NAME_RU" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="M_METOD_OPL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_NAME_AND_SEX">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="100" />
+    <Property Name="SEX" Type="int" />
+  </EntityType>
+  <EntityType Name="M_ORG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="PARENT_ID" Type="int" Nullable="false" />
+    <Property Name="ADRES" Type="varchar" MaxLength="500" />
+    <Property Name="PHONE" Type="varchar" MaxLength="500" />
+    <Property Name="KOD_PODTV" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_TYPE_ID" Type="int" />
+    <Property Name="TZ" Type="int" />
+    <Property Name="M_ORG_ID_TEH_OTDEL" Type="int" />
+    <Property Name="DEISTV" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="M_ORG_TYPE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="M_PRAVO_GR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="M_PRAVO_REJ">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_PRAVO_GR_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_PRICH_ISKL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_PRODUCT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="M_RASHOD_STAT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_RYAD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="M_SEANS_PLACE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="100" />
+    <Property Name="M_PRODUCT_ID" Type="int" />
+    <Property Name="M_RYAD_ID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_SEANS_TIME">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="100" />
+    <Property Name="MIN_TIME" Type="varchar" MaxLength="50" />
+    <Property Name="MAX_TIME" Type="varchar" MaxLength="50" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="MIN_TIME_MINUTES" Type="int" StoreGeneratedPattern="Computed" />
+    <Property Name="MAX_TIME_MINUTES" Type="int" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="M_SECNAME">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SECNAME" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="M_SERVICE_TYPE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_SEX">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="M_SHABLON">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SHABLON_NAME" Type="varchar" MaxLength="500" />
+    <Property Name="SHABLON_TEXT" Type="varchar" MaxLength="5000" />
+    <Property Name="D_CREATE" Type="smalldatetime" />
+    <Property Name="OPERATOR" Type="varchar" MaxLength="100" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_SMS_SEND_ERROR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="M_SOPR_DOP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_SOPR_FORM_OPL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_SOPR_PRODUCT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_SOPR_STATUS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_STATUS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_SURNAME">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SURNAME" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="M_VID_SOB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_VOPROS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_VOPROS_TAB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_WORK_DAY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DAY_ID" Type="int" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_YES_NO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="M_ZABOL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ZABOL_GROUP_ID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="M_ZABOL_GROUP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="O_ANK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="SURNAME" Type="varchar" MaxLength="500" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="SECNAME" Type="varchar" MaxLength="500" />
+    <Property Name="SEX" Type="smallint" />
+    <Property Name="BIRTHDAY" Type="smalldatetime" />
+    <Property Name="PHONE_MOBILE" Type="varchar" MaxLength="50" />
+    <Property Name="PHONE_HOME" Type="varchar" MaxLength="50" />
+    <Property Name="REGION" Type="varchar" MaxLength="500" />
+    <Property Name="CITY" Type="varchar" MaxLength="500" />
+    <Property Name="STREET" Type="varchar" MaxLength="500" />
+    <Property Name="HOUSE" Type="varchar" MaxLength="50" />
+    <Property Name="FLAT" Type="varchar" MaxLength="50" />
+    <Property Name="CORPUS" Type="varchar" MaxLength="50" />
+    <Property Name="DISTRICT" Type="varchar" MaxLength="500" />
+    <Property Name="POST_INDEX" Type="varchar" MaxLength="50" />
+    <Property Name="IST_INFO" Type="smallint" />
+    <Property Name="FIO_INFO_ID" Type="int" />
+    <Property Name="USER_REG" Type="int" />
+    <Property Name="DATE_REG" Type="smalldatetime" />
+    <Property Name="PHOTO" Type="varbinary(max)" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="BONUS" Type="int" Nullable="false" />
+    <Property Name="AKTIVIST" Type="int" Nullable="false" />
+    <Property Name="GPS_LG" Type="decimal" Precision="12" Scale="8" />
+    <Property Name="GPS_LT" Type="decimal" Precision="12" Scale="8" />
+    <Property Name="VIP" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="O_ANK_ZABOL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="O_ANK_ID" Type="int" />
+    <Property Name="M_ZABOL_ID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="O_COMPLAINT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="O_ANK_ID" Type="int" />
+    <Property Name="COMMENT" Type="varchar" MaxLength="4000" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="O_DEISTV">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_FIN" Type="smalldatetime" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_DEISTV_ID" Type="int" />
+    <Property Name="MESS" Type="varchar" MaxLength="4000" />
+    <Property Name="O_ANK_ID" Type="int" />
+    <Property Name="O_SKLAD_PR_ID" Type="int" />
+    <Property Name="O_SKLAD_RAS_ID" Type="int" />
+    <Property Name="O_RAS_DOK_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="O_DIALOG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="O_ANK_ID" Type="int" />
+    <Property Name="COMMENT" Type="varchar" MaxLength="4000" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="NPOS" Type="varchar" MaxLength="100" />
+    <Property Name="DIALOG_DATE" Type="smalldatetime" />
+    <Property Name="O_SEANS_ID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="O_DILER_A_PRICE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="M_PRODUCT_ID_TOVAR" Type="int" />
+    <Property Name="D" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ROZN" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="M_PRODUCT_ID_PODAROK" Type="int" />
+    <Property Name="C" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="O_DILER_A_SKLAD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="M_PRODUCT_ID" Type="int" />
+    <Property Name="KOLVO" Type="int" />
+  </EntityType>
+  <EntityType Name="O_DILER_C_SKLAD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="M_PRODUCT_ID" Type="int" />
+    <Property Name="KOLVO" Type="int" />
+  </EntityType>
+  <EntityType Name="O_INVENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="KOLVO" Type="int" />
+    <Property Name="COST" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="INV_NUM" Type="varchar" MaxLength="500" />
+    <Property Name="IS_SPISAN" Type="int" />
+    <Property Name="COMMENT" Type="varchar" MaxLength="4000" />
+    <Property Name="PHOTO" Type="varbinary(max)" />
+    <Property Name="CHECK_PHOTO" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="O_KALEN_PROD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="GOD" Type="int" />
+    <Property Name="MES" Type="int" />
+    <Property Name="NAME_AK" Type="varchar" MaxLength="500" />
+    <Property Name="M_PRODUCT_ID_TOVAR" Type="int" />
+    <Property Name="M_PRODUCT_ID_PODAROK" Type="int" />
+    <Property Name="COST" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="D_NAPOLN_S" Type="smalldatetime" />
+    <Property Name="D_NAPOLN_PO" Type="smalldatetime" />
+    <Property Name="D_VLYUB_S" Type="smalldatetime" />
+    <Property Name="D_VLYUB_PO" Type="smalldatetime" />
+    <Property Name="D_PROD_S" Type="smalldatetime" />
+    <Property Name="D_PROD_PO" Type="smalldatetime" />
+    <Property Name="D_PERIOD_S" Type="smalldatetime" StoreGeneratedPattern="Computed" />
+    <Property Name="D_PERIOD_PO" Type="smalldatetime" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="O_KONT_ANK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SURNAME" Type="varchar" MaxLength="500" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="SECNAME" Type="varchar" MaxLength="500" />
+    <Property Name="PHONE" Type="varchar" MaxLength="50" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="SKR" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="O_ANK_ID" Type="int" />
+    <Property Name="M_KONT_STATUS_ID" Type="int" Nullable="false" />
+    <Property Name="M_KONT_IST_ID" Type="int" Nullable="false" />
+    <Property Name="SKR_IZ_RECORD" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="O_KONT_SEANS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="O_KONT_ANK_ID" Type="int" />
+    <Property Name="COMMENT" Type="varchar(max)" />
+    <Property Name="D_ZV" Type="smalldatetime" />
+    <Property Name="SEANS_DATE" Type="smalldatetime" />
+    <Property Name="M_SEANS_TIME_ID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+  </EntityType>
+  <EntityType Name="O_KONT_SEANS_COMMENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="O_KONT_SEANS_ID" Type="int" />
+    <Property Name="COMMENT" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="O_KONT_STAT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="TIP_IZM" Type="int" />
+    <Property Name="M_KONT_STATUS_ID" Type="int" />
+    <Property Name="M_KONT_IST_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="O_NASTR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="SMS_LOGIN" Type="varchar" MaxLength="500" />
+    <Property Name="SMS_PASSWORD" Type="varchar" MaxLength="500" />
+    <Property Name="SMS_SENDER" Type="varchar" MaxLength="500" />
+    <Property Name="PHONE_MOBILE" Type="varchar" MaxLength="50" />
+    <Property Name="SIP_KEY" Type="varchar" MaxLength="500" />
+    <Property Name="SIP_SECRET" Type="varchar" MaxLength="500" />
+    <Property Name="DILER_C_ACCESS" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="O_OPOV">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="M_ORG_ID_SOURCE" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="O_ANK_ID" Type="int" />
+    <Property Name="O_ANK_ID_SOURCE" Type="int" />
+    <Property Name="O_SKLAD_RAS_ID" Type="int" />
+    <Property Name="O_SKLAD_RAS_PRODUCT_ID" Type="int" />
+    <Property Name="TIP" Type="int" Nullable="false" />
+    <Property Name="M_ORG_ID_A" Type="int" />
+  </EntityType>
+  <EntityType Name="O_PRAVO_GR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="S_USER_ID" Type="int" />
+    <Property Name="M_PRAVO_GR_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="O_PRAVO_REJ">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="S_USER_ID" Type="int" />
+    <Property Name="M_PRAVO_REJ_ID" Type="int" />
+    <Property Name="READ1" Type="int" />
+    <Property Name="WRITE1" Type="int" />
+  </EntityType>
+  <EntityType Name="O_RAS_DOK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="M_RASHOD_STAT_ID" Type="int" />
+    <Property Name="D_SCHET" Type="smalldatetime" />
+    <Property Name="N_SCHET" Type="varchar" MaxLength="500" />
+    <Property Name="POSTAV_NAME" Type="varchar" MaxLength="500" />
+    <Property Name="REK" Type="varchar" MaxLength="4000" />
+    <Property Name="COST" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="KOLVO" Type="int" />
+    <Property Name="SUMMA_RASH" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="S_USER_ID" Type="int" />
+    <Property Name="MOTIV" Type="varchar" MaxLength="4000" />
+    <Property Name="SUMMA_VID" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VOZVR" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RASHOD" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="O_REK_ANK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SURNAME" Type="varchar" MaxLength="500" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="SECNAME" Type="varchar" MaxLength="500" />
+    <Property Name="PHONE" Type="varchar" MaxLength="50" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="O_ANK_ID" Type="int" />
+    <Property Name="SKR" Type="int" Nullable="false" />
+    <Property Name="O_ANK_ID_REK" Type="int" />
+  </EntityType>
+  <EntityType Name="O_REPORT_BIRTHDAY_CALL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="O_ANK_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="O_SEANS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="O_ANK_ID" Type="int" />
+    <Property Name="M_SEANS_TIME_ID" Type="int" />
+    <Property Name="M_SEANS_PLACE_ID" Type="int" />
+    <Property Name="SEANS_DATE" Type="smalldatetime" />
+    <Property Name="SEANS_STATE" Type="int" Nullable="false" />
+    <Property Name="M_RYAD_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="LANE" Type="int" />
+    <Property Name="USERID_REG" Type="int" />
+    <Property Name="D_REG" Type="smalldatetime" />
+    <Property Name="BEZ_REG" Type="int" Nullable="false" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="ANK" Type="int" Nullable="false" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="IS_FIRST_KONT_SEANS" Type="int" Nullable="false" />
+    <Property Name="FROM_ZVONOK" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="O_SEANS_COMMENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SEANS_DATE" Type="smalldatetime" />
+    <Property Name="COMMENT" Type="varchar" MaxLength="4000" />
+    <Property Name="USERID" Type="int" />
+  </EntityType>
+  <EntityType Name="O_SERVICE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="O_ANK_ID" Type="int" />
+    <Property Name="M_SERVICE_TYPE_ID" Type="int" />
+    <Property Name="M_PRODUCT_ID" Type="int" />
+    <Property Name="SERIAL_NUMBER" Type="varchar" MaxLength="100" />
+    <Property Name="PRODUCT_PHOTO" Type="varbinary(max)" />
+    <Property Name="GUARANTEE_PHOTO" Type="varbinary(max)" />
+    <Property Name="PRODUCT_CHECK" Type="varbinary(max)" />
+    <Property Name="COMMENT" Type="varchar" MaxLength="4000" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="M_SERVICE_TYPE_ID_TEH_OTDEL" Type="int" />
+    <Property Name="DATE_TEH_OTDEL" Type="smalldatetime" />
+    <Property Name="S_USER_ID_TEH_OTDEL" Type="int" />
+    <Property Name="COMMENT_TEH_OTDEL" Type="varchar" MaxLength="4000" />
+    <Property Name="M_ORG_ID_TEH_OTDEL" Type="int" />
+  </EntityType>
+  <EntityType Name="O_SKLAD_PR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="D_SCHET" Type="smalldatetime" />
+    <Property Name="N_SCHET" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="O_SKLAD_PR_PRODUCT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="O_SKLAD_PR_ID" Type="int" />
+    <Property Name="M_PRODUCT_ID" Type="int" />
+    <Property Name="KOLVO" Type="int" />
+    <Property Name="COST" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="O_SKLAD_RAS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="D_SCHET" Type="smalldatetime" />
+    <Property Name="N_SCHET" Type="varchar" MaxLength="500" />
+    <Property Name="SURNAME" Type="varchar" MaxLength="500" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="SECNAME" Type="varchar" MaxLength="500" />
+    <Property Name="STREET" Type="varchar" MaxLength="500" />
+    <Property Name="POST_INDEX" Type="varchar" MaxLength="50" />
+    <Property Name="PHONE_MOBILE" Type="varchar" MaxLength="50" />
+    <Property Name="O_ANK_ID" Type="int" />
+    <Property Name="S_USER_ID" Type="int" />
+    <Property Name="SEMYA_VSEGO" Type="int" />
+    <Property Name="HODIT" Type="int" />
+  </EntityType>
+  <EntityType Name="O_SKLAD_RAS_PRODUCT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="O_SKLAD_RAS_ID" Type="int" />
+    <Property Name="M_PRODUCT_ID" Type="int" />
+    <Property Name="KOLVO" Type="int" />
+    <Property Name="TSENA" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SKIDKA" Type="decimal" Precision="5" Scale="3" />
+    <Property Name="COST" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IS_AKTSIYA" Type="int" Nullable="false" />
+    <Property Name="IS_VID" Type="int" Nullable="false" />
+    <Property Name="D_VID" Type="smalldatetime" />
+    <Property Name="OPL_VSEGO" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OPL_OST" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="D_DEISTV" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="O_SKLAD_RAS_PRODUCT_OPL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="O_SKLAD_RAS_PRODUCT_ID" Type="int" />
+    <Property Name="OPL" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="D_OPL" Type="smalldatetime" />
+    <Property Name="M_METOD_OPL_ID" Type="int" />
+    <Property Name="SERIAL" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="O_SMS_SEND">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="O_ANK_ID" Type="int" />
+    <Property Name="SOOB" Type="varchar" MaxLength="4000" />
+    <Property Name="SEND_DATE" Type="smalldatetime" />
+    <Property Name="SEND_LOGIN" Type="varchar" MaxLength="500" />
+    <Property Name="SEND_STATE" Type="int" />
+    <Property Name="SEND_NUM" Type="int" />
+  </EntityType>
+  <EntityType Name="O_SOPR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_SOPR_PRODUCT_ID" Type="int" />
+    <Property Name="M_SOPR_FORM_OPL_ID" Type="int" />
+    <Property Name="M_SOPR_STATUS_ID" Type="int" />
+    <Property Name="M_SOPR_DOP_ID" Type="int" />
+    <Property Name="O_ANK_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="O_SOPR_COMMENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="O_SOPR_ID" Type="int" />
+    <Property Name="COMMENT" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="O_STATUS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="O_ANK_ID" Type="int" />
+    <Property Name="M_STATUS_ID" Type="int" />
+    <Property Name="M_PRODUCT_ID" Type="int" />
+    <Property Name="STATUS_DATE" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="O_UVEDOML">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIO" Type="varchar(max)" />
+    <Property Name="PHONE" Type="varchar" MaxLength="100" />
+    <Property Name="O_ANK_ID" Type="int" />
+    <Property Name="M_VID_SOB_ID" Type="int" />
+    <Property Name="D_SOB" Type="smalldatetime" />
+    <Property Name="COMMENT" Type="varchar(max)" />
+    <Property Name="ISP" Type="int" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="O_SEANS_ID" Type="int" />
+    <Property Name="O_KONT_ANK_ID" Type="int" />
+    <Property Name="O_SKLAD_RAS_ID" Type="int" />
+    <Property Name="GR" Type="int" Nullable="false" />
+    <Property Name="O_SKLAD_RAS_NOMER" Type="int" />
+  </EntityType>
+  <EntityType Name="O_UVEDOML_GR_COMMENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="O_UVEDOML_GR" Type="int" />
+    <Property Name="O_UVEDOML_ID" Type="int" />
+    <Property Name="COMMENT" Type="varchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="O_VIPIS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="O_ANK_ID" Type="int" />
+    <Property Name="M_ZABOL_GROUP_ID" Type="int" />
+    <Property Name="ZABOL_TEXT" Type="varchar" MaxLength="4000" />
+    <Property Name="ULUCH_TEXT" Type="varchar" MaxLength="4000" />
+    <Property Name="D_ULUCH" Type="smalldatetime" />
+    <Property Name="LINK" Type="varchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="O_VIPIS_FILE_ULUCH">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="O_VIPIS_ID" Type="int" />
+    <Property Name="FNAME" Type="varchar" MaxLength="4000" />
+    <Property Name="F" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="O_VIPIS_FILE_ZABOL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="O_VIPIS_ID" Type="int" />
+    <Property Name="FNAME" Type="varchar" MaxLength="4000" />
+    <Property Name="F" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="O_VIPIS_ULUCH">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="O_VIPIS_ID" Type="int" />
+    <Property Name="M_ZABOL_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="O_VOPROS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="M_VOPROS_ID" Type="int" />
+    <Property Name="M_VOPROS_TAB_ID" Type="int" />
+    <Property Name="O_ANK_ID" Type="int" />
+    <Property Name="M_YES_NO_ID" Type="int" />
+    <Property Name="COMMENT" Type="varchar(max)" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+  </EntityType>
+  <EntityType Name="O_ZADACHA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID_ZADACHA" Type="int" />
+    <Property Name="D_BEG" Type="smalldatetime" />
+    <Property Name="D_END" Type="smalldatetime" />
+    <Property Name="TEMA" Type="varchar" MaxLength="500" />
+    <Property Name="ZADACHA" Type="varchar" MaxLength="4000" />
+    <Property Name="D_VIP" Type="smalldatetime" />
+    <Property Name="USERID_VIP" Type="int" />
+  </EntityType>
+  <EntityType Name="O_ZARPL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="D_PERIOD_S" Type="smalldatetime" />
+    <Property Name="D_PERIOD_PO" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="O_ZARPL_FIO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="S_USER_ID" Type="int" />
+    <Property Name="O_ZARPL_ID" Type="int" />
+    <Property Name="DNI" Type="int" />
+    <Property Name="CHAS" Type="int" />
+    <Property Name="S_CH" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SUMMA" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VALOV_DOHOD" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PROTS" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="BONUS" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SHTRAF" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ZARPL" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="O_ZVONOK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="O_ANK_ID" Type="int" Nullable="false" />
+    <Property Name="D_END_ISKL" Type="smalldatetime" />
+    <Property Name="M_ISKL_ID" Type="int" />
+    <Property Name="OPERATOR" Type="varchar" MaxLength="100" />
+    <Property Name="D_MODIF" Type="smalldatetime" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="COMMENT" Type="varchar" MaxLength="4000" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="D_START_USER_ID" Type="int" />
+    <Property Name="D_MODIF_USER_ID" Type="int" />
+    <Property Name="D_END_ISKL_USER_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="S_USER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="S_USER_ROLE_ID" Type="int" Nullable="false" />
+    <Property Name="SURNAME" Type="varchar" MaxLength="500" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="SECNAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+    <Property Name="AspNetUsersId" Type="nvarchar" MaxLength="128" />
+    <Property Name="PHOTO" Type="varbinary(max)" />
+    <Property Name="D_START" Type="smalldatetime" />
+    <Property Name="BIRTHDAY" Type="smalldatetime" />
+    <Property Name="HIRE_DATE" Type="smalldatetime" />
+    <Property Name="IS_ADM" Type="int" Nullable="false" />
+    <Property Name="SIP_LOGIN" Type="varchar" MaxLength="500" />
+    <Property Name="SIP_PASSWORD" Type="varchar" MaxLength="500" />
+    <Property Name="PHONE_MOBILE" Type="varchar" MaxLength="50" />
+    <Property Name="IS_DILER_A" Type="int" Nullable="false" />
+    <Property Name="IS_DILER_C" Type="int" Nullable="false" />
+    <Property Name="M_ORG_ID_DILER_A" Type="int" />
+    <Property Name="M_ORG_ID_DILER_C" Type="int" />
+    <Property Name="DISMISS_DATE" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="S_USER_ROLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="M_ORG_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="S_USER_SIGN_LOG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="S_USER_ID" Type="int" Nullable="false" />
+    <Property Name="D_SIGN" Type="smalldatetime" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ATLANTCRMModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_DEISTV" EntityType="Self.M_DEISTV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_IST_INF" EntityType="Self.M_IST_INF" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_KONT_IST" EntityType="Self.M_KONT_IST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_KONT_STATUS" EntityType="Self.M_KONT_STATUS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_MANUAL" EntityType="Self.M_MANUAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_METOD_OPL" EntityType="Self.M_METOD_OPL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_NAME_AND_SEX" EntityType="Self.M_NAME_AND_SEX" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_ORG" EntityType="Self.M_ORG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_ORG_TYPE" EntityType="Self.M_ORG_TYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_PRAVO_GR" EntityType="Self.M_PRAVO_GR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_PRAVO_REJ" EntityType="Self.M_PRAVO_REJ" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_PRICH_ISKL" EntityType="Self.M_PRICH_ISKL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_PRODUCT" EntityType="Self.M_PRODUCT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_RASHOD_STAT" EntityType="Self.M_RASHOD_STAT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_RYAD" EntityType="Self.M_RYAD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_SEANS_PLACE" EntityType="Self.M_SEANS_PLACE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_SEANS_TIME" EntityType="Self.M_SEANS_TIME" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_SECNAME" EntityType="Self.M_SECNAME" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_SERVICE_TYPE" EntityType="Self.M_SERVICE_TYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_SEX" EntityType="Self.M_SEX" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_SHABLON" EntityType="Self.M_SHABLON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_SMS_SEND_ERROR" EntityType="Self.M_SMS_SEND_ERROR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_SOPR_DOP" EntityType="Self.M_SOPR_DOP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_SOPR_FORM_OPL" EntityType="Self.M_SOPR_FORM_OPL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_SOPR_PRODUCT" EntityType="Self.M_SOPR_PRODUCT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_SOPR_STATUS" EntityType="Self.M_SOPR_STATUS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_STATUS" EntityType="Self.M_STATUS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_SURNAME" EntityType="Self.M_SURNAME" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_VID_SOB" EntityType="Self.M_VID_SOB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_VOPROS" EntityType="Self.M_VOPROS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_VOPROS_TAB" EntityType="Self.M_VOPROS_TAB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_WORK_DAY" EntityType="Self.M_WORK_DAY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_YES_NO" EntityType="Self.M_YES_NO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_ZABOL" EntityType="Self.M_ZABOL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="M_ZABOL_GROUP" EntityType="Self.M_ZABOL_GROUP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_ANK" EntityType="Self.O_ANK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_ANK_ZABOL" EntityType="Self.O_ANK_ZABOL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_COMPLAINT" EntityType="Self.O_COMPLAINT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_DEISTV" EntityType="Self.O_DEISTV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_DIALOG" EntityType="Self.O_DIALOG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_DILER_A_PRICE" EntityType="Self.O_DILER_A_PRICE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_DILER_A_SKLAD" EntityType="Self.O_DILER_A_SKLAD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_DILER_C_SKLAD" EntityType="Self.O_DILER_C_SKLAD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_INVENT" EntityType="Self.O_INVENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_KALEN_PROD" EntityType="Self.O_KALEN_PROD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_KONT_ANK" EntityType="Self.O_KONT_ANK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_KONT_SEANS" EntityType="Self.O_KONT_SEANS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_KONT_SEANS_COMMENT" EntityType="Self.O_KONT_SEANS_COMMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_KONT_STAT" EntityType="Self.O_KONT_STAT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_NASTR" EntityType="Self.O_NASTR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_OPOV" EntityType="Self.O_OPOV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_PRAVO_GR" EntityType="Self.O_PRAVO_GR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_PRAVO_REJ" EntityType="Self.O_PRAVO_REJ" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_RAS_DOK" EntityType="Self.O_RAS_DOK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_REK_ANK" EntityType="Self.O_REK_ANK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_REPORT_BIRTHDAY_CALL" EntityType="Self.O_REPORT_BIRTHDAY_CALL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_SEANS" EntityType="Self.O_SEANS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_SEANS_COMMENT" EntityType="Self.O_SEANS_COMMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_SERVICE" EntityType="Self.O_SERVICE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_SKLAD_PR" EntityType="Self.O_SKLAD_PR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_SKLAD_PR_PRODUCT" EntityType="Self.O_SKLAD_PR_PRODUCT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_SKLAD_RAS" EntityType="Self.O_SKLAD_RAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_SKLAD_RAS_PRODUCT" EntityType="Self.O_SKLAD_RAS_PRODUCT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_SKLAD_RAS_PRODUCT_OPL" EntityType="Self.O_SKLAD_RAS_PRODUCT_OPL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_SMS_SEND" EntityType="Self.O_SMS_SEND" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_SOPR" EntityType="Self.O_SOPR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_SOPR_COMMENT" EntityType="Self.O_SOPR_COMMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_STATUS" EntityType="Self.O_STATUS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_UVEDOML" EntityType="Self.O_UVEDOML" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_UVEDOML_GR_COMMENT" EntityType="Self.O_UVEDOML_GR_COMMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_VIPIS" EntityType="Self.O_VIPIS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_VIPIS_FILE_ULUCH" EntityType="Self.O_VIPIS_FILE_ULUCH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_VIPIS_FILE_ZABOL" EntityType="Self.O_VIPIS_FILE_ZABOL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_VIPIS_ULUCH" EntityType="Self.O_VIPIS_ULUCH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_VOPROS" EntityType="Self.O_VOPROS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_ZADACHA" EntityType="Self.O_ZADACHA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_ZARPL" EntityType="Self.O_ZARPL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_ZARPL_FIO" EntityType="Self.O_ZARPL_FIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="O_ZVONOK" EntityType="Self.O_ZVONOK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="S_USER" EntityType="Self.S_USER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="S_USER_ROLE" EntityType="Self.S_USER_ROLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="S_USER_SIGN_LOG" EntityType="Self.S_USER_SIGN_LOG" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

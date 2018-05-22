@@ -1,0 +1,88 @@
+﻿<!-- Дилер D-->
+<div id="dilerD" class="tab-content" ng-controller="dilerDCtrl"
+     ng-show="(global.selectedMenuItem === 'menuItemDilerD')">
+
+     <div class="diler-d-header">
+       <h2>Успех предсказуем - его можно запланировать!</h2>
+     </div>
+
+     <div>
+       <span>Год: </span>
+       <input type="number" ng-model="year" ng-change="yearChangeHandler()" />
+
+       <span>Месяц: </span>
+       <select ng-options="item.id as item.name for item in months" ng-model="month" ng-change="monthChangeHandler()">
+       </select>
+     </div>
+
+     <h3>Показатели деятельности салона</h3>
+
+    <div class="block-1">
+
+      <!-- Показатели деятельности -->
+      <div class="pokaz-deyat">
+        <table class="table table-bordered table-condensed table-striped">
+          <thead>
+            <tr>
+              <th rowspan="2">Точка безубыт.</th>
+              <th rowspan="2">Валовый доход</th>
+              <th colspan="2">Количество продаж</th>
+              <th colspan="6">Количество посетителей среднее по неделям</th>
+            </tr>
+            <tr>
+              <th>Фактически</th>
+              <th>Запланировано</th>
+              @*<th>План</th>*@
+              <th>1н/ср.%</th>
+              <th>2н/ср.%</th>
+              <th>3н/ср.%</th>
+              <th>4н/ср.%</th>
+              <th>5н/ср.%</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr @*ng-repeat="item in deyat"*@>
+              <td>{{deyat.tochkaBez}}</td>
+              <td>{{deyat.valDoh}}</td>
+              <td>{{deyat.kolPrFakt}}</td>
+              <td>{{deyat.kolPrAk}}</td>
+              @*<td>{{deyat.kolPosPlan}}</td>*@
+              <td>{{deyat.kolPos1n}}</td>
+              <td>{{deyat.kolPos2n}}</td>
+              <td>{{deyat.kolPos3n}}</td>
+              <td>{{deyat.kolPos4n}}</td>
+              <td>{{deyat.kolPos5n}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- /показатели деятельности -->
+    </div>
+
+  <div class="block-2">
+    <h3>Работа салона</h3>
+
+    <!-- Работа салона -->
+    <div class="rabota-salona">
+      <table class="table table-bordered table-condensed table-striped">
+        <tr ng-repeat="row in rabota">
+          <td ng-repeat="(key, value) in row">
+            {{value}}
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!-- /работа салона -->
+
+    <!-- Расходы -->
+    <div class="rashodi">
+
+    </div>
+    <!-- Расходы -->
+
+  </div>
+
+
+
+  </div>
+<!-- /дилер D-->

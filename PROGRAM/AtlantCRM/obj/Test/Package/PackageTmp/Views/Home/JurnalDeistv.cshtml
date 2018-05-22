@@ -1,0 +1,62 @@
+﻿<!-- Журнал - действие -->
+<div id="jurnalDeistv" class="tab-content" ng-controller="jurDeistvCtrl" ng-show="global.selectedJurSubMenuItem === 0 && global.function.havePravoRead(10,37)">
+	
+  <div class="jur-deistv-usl-block">
+    <select class="s-user-id"
+            ng-options="item.ID as item.FIO for item in s_user"
+            ng-model="deistv.S_USER_ID"
+            ng-disabled="global.function.noHavePravoWrite(10,37)">
+    </select>
+
+    <select class="m-destv-id"
+            ng-options="item.ID as item.NAME for item in m_deistv"
+            ng-model="deistv.M_DEISTV_ID"
+            ng-disabled="global.function.noHavePravoWrite(10,37)">
+    </select>
+
+    <input type="date" ng-model="deistv.DATE_FROM"/>
+
+    <input type="date" ng-model="deistv.DATE_TO" />
+
+    <span>Подстрока</span>
+
+    <input ng-model="deistv.SUBSTR" />
+
+    <button ng-click="refreshData()">Применить</button>
+
+  </div>
+
+  <div class="jur-deistv-data-block">
+    
+    <table>
+      
+      <tr ng-repeat="item in data">
+        <td>{{item.D_START | date:'dd.MM.yyyy HH:mm'}}</td>
+        <td>
+          {{item.MESS}}
+          <a href="#" ng-click="global.openUchetSkladRasDoc(item.O_RAS_DOK_ID)"
+                      ng-hide="item.O_RAS_DOK_ID === null || item.M_DEISTV_ID !== 7" title="Открыть расходный документ" class="ng-binding">Просмотр</a>
+
+          <a href="#" ng-click="global.openAnk(item.O_ANK_ID)"
+                      ng-hide="item.O_ANK_ID === null || (item.M_DEISTV_ID !== 1 && item.M_DEISTV_ID !== 9)" title="Открыть анкету" class="ng-binding">Перейти в Анкету</a>
+
+          <a href="#" ng-click="openDialogRej(item.O_ANK_ID)"
+                      ng-hide="item.O_ANK_ID === null || item.M_DEISTV_ID !== 2" title="Открыть общение" class="ng-binding">Перейти в Общение</a>
+
+          <a href="#" ng-click="openZvonokRej(item.O_ANK_ID)"
+                      ng-hide="item.O_ANK_ID === null || item.M_DEISTV_ID !== 3" title="Открыть звонки" class="ng-binding">Перейти в Звонки</a>
+
+          <a href="#" ng-click="global.openUchetSkladRasProduct(item.O_SKLAD_RAS_ID)"
+                      ng-hide="item.O_SKLAD_RAS_ID === null || item.M_DEISTV_ID !== 6" title="Открыть расход со склада" class="ng-binding">Перейти в Учет</a>
+
+          <a href="#" ng-click="global.openUchetSkladRasProduct(item.O_SKLAD_RAS_ID)"
+                      ng-hide="item.O_SKLAD_RAS_ID === null || item.M_DEISTV_ID !== 8" title="Открыть расход со склада" class="ng-binding">Просмотр</a>
+        </td>
+      </tr>
+
+    </table>
+
+  </div>
+
+</div>
+<!-- Журнал - действие -->

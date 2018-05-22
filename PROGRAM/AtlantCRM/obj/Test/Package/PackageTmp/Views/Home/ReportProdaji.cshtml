@@ -1,0 +1,50 @@
+﻿<!-- Отчеты - Продажи -->
+<div id="reportProdaji" class="reportForm" ng-controller="reportProdajiCtrl" ng-show="global.selectedReportSubMenuItem === 7 && global.function.havePravoRead(4, 16)">
+
+  <div class="pr-common">
+    <center>
+      <div class="pr-dt">
+        <span> Дата</span>
+        <input type="date" size="3" class="pr-date" ng-model="date0">
+        <span>—</span>
+        <input type="date" size="3" class="pr-date" ng-model="date1">
+        <button class="pr-btn" ng-click="prim()">Применить</button>
+      </div>
+      <hr>
+    </center>
+   
+    <div class="pr-table">
+      <div><h3><b>Портрет среднего покупателя</b></h3></div>
+
+      <table>
+        <tr>
+          <td align="left">Пол</td>
+          <td>{{portret.pol}}</td>
+        </tr>
+        <tr>
+          <td  align="left">Возраст</td>
+          <td>{{portret.vozrast}}</td>
+        </tr>
+        <tr>
+          <td  align="left">Количество посещений</td>
+          <td>{{portret.kolpos}}</td>
+        </tr>
+        <tr>
+          <td  align="left">Как долго посещает салон</td>
+          <td>{{portret.kakdolgo}}</td>
+        </tr>
+        <tr>
+          <td  align="left">Количество покупок</td>
+          <td>{{portret.kolpok}}</td>
+        </tr>
+        <tr>
+          <td  align="left">Купил на сумму</td>
+          <td>{{portret.kupilnasummu}}</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+</div>
+<!-- /отчеты - Продажи -->

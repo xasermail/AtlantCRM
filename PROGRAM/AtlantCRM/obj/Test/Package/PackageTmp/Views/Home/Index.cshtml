@@ -1,0 +1,381 @@
+﻿@{
+  ViewBag.Title = "АтласCRM";
+}
+
+<!-- Новый -->
+<div ng-show="global.selectedMenuItem === 'menuItemNew'">
+
+  @Html.Partial("NewAnk")
+  @Html.Partial("Period")
+  @Html.Partial("Dialog")
+  @Html.Partial("Voprosy")
+  @Html.Partial("Vipis")
+  @Html.Partial("Druzya")
+  @Html.Partial("NewZvonok")
+  @Html.Partial("Stat")
+  @Html.Partial("Service")
+</div>
+<!-- /новый -->
+
+@* Загрузка режима Регистрация, в зависимости от настроек внешний вид бывает со списком мест
+   или со списком ФИО, читаю настройки, загружаю нужный
+*@
+@if(ViewBag.VNESH_VID_REG == AtlantCRM.Controllers.HomeController.VNESH_VID_REG_SO_SPISKOM_MEST) {
+  @Html.Partial("Reg")
+} else if(ViewBag.VNESH_VID_REG == AtlantCRM.Controllers.HomeController.VNESH_VID_REG_SO_SPISKOM_FIO) {
+  @Html.Partial("Reg2")
+} else {
+  <div>ОШИБКА, НЕ УДАЛОСЬ ОПРЕДЕЛИТЬ ЗНАЧЕНИЕ ПАРАМЕТРА VNESH_VID_REG</div>
+}
+
+@Html.Partial("Baza")
+@Html.Partial("Lane")
+
+
+<!-- Отчеты  -->
+<div ng-show="global.selectedMenuItem === 'menuItemReports'">
+  <div id="subMenuReport" ng-click="subMenuReportClickHandler($event)" ng-hide="(global.topMenuViewMode)">
+    <div class="sub-menu-item" data-index="0" ng-class="global.selectedReportSubMenuItem === 0 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(4, 44)"><span>День</span></div>
+    <div class="sub-menu-item" data-index="1" ng-class="global.selectedReportSubMenuItem === 1 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(4, 10)"><span>Статистика</span></div>
+    <div class="sub-menu-item" data-index="2" ng-class="global.selectedReportSubMenuItem === 2 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(4, 11)"><span>Специалисты</span></div>
+    <div class="sub-menu-item" data-index="3" ng-class="global.selectedReportSubMenuItem === 3 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(4, 12)"><span>Заболевания</span></div>
+    <div class="sub-menu-item" data-index="4" ng-class="global.selectedReportSubMenuItem === 4 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(4, 13)"><span>Источники</span></div>
+    <div class="sub-menu-item" data-index="5" ng-class="global.selectedReportSubMenuItem === 5 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(4, 14)"><span>Дни рождения</span></div>
+    <div class="sub-menu-item" data-index="6" ng-class="global.selectedReportSubMenuItem === 6 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(4, 15)"><span>Карта</span></div>
+    <div class="sub-menu-item" data-index="7" ng-class="global.selectedReportSubMenuItem === 7 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(4, 16)"><span>Продажи</span></div>
+    <div class="sub-menu-item" data-index="8" ng-class="global.selectedReportSubMenuItem === 8 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(4, 17)"><span>Опрос</span></div>
+    <div class="sub-menu-item" data-index="12" ng-class="global.selectedReportSubMenuItem === 12 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(4, 53)"><span>Уведомление</span></div>
+    <div class="sub-menu-item" data-index="9" ng-class="global.selectedReportSubMenuItem === 9 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(4, 18)"><span>Сервис</span></div>
+    <div class="sub-menu-item" data-index="10" ng-class="global.selectedReportSubMenuItem === 10 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(4, 19)"><span>Маркетинг</span></div>
+    <div class="sub-menu-item" data-index="11" ng-class="global.selectedReportSubMenuItem === 11 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(4, 45)"><span>Метрика</span></div>
+    <div class="clearfix"></div>
+  </div>
+
+  @Html.Partial("ReportDay")
+  @Html.Partial("ReportStatistic")
+  @Html.Partial("ReportSpecialists")
+  @Html.Partial("ReportZabol")
+  @Html.Partial("ReportIst")
+  @Html.Partial("ReportBirthday")
+  @Html.Partial("ReportKarta")
+  @Html.Partial("ReportProdaji")
+  @Html.Partial("ReportOpros")
+  @Html.Partial("reportUvedoml")
+  @Html.Partial("ReportService")
+
+  <!-- Отчеты - Маркетинг -->
+  <div id="reportMarketing">
+    @Html.Partial("ReportMarketing")
+    @Html.Partial("ReportMarketing")
+  </div>
+  <!-- /отчеты - маркетинг -->
+
+  @Html.Partial("ReportMetrika")
+</div>
+<!-- /отчеты -->
+
+
+@Html.Partial("Record")
+
+@Html.Partial("Adm")
+@Html.Partial("Manual")
+@Html.Partial("Nastr")
+
+<!-- Скрипты -->
+<div ng-show="global.selectedMenuItem === 'menuItemScripts'">
+  <div id="subMenuScripts" ng-click="subMenuScriptsClickHandler($event)" ng-hide="(global.topMenuViewMode)">
+    @*<div class="sub-menu-item" data-index="0" ng-class="global.selectedScriptsSubMenuItem === 0 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(13, 59)"><span>Аналитика скрипта</span></div>*@
+    <div class="sub-menu-item" data-index="0" ng-class="global.selectedScriptsSubMenuItem === 0 ? 'sub-menu-item-active' : '' " ><span>Аналитика скрипта</span></div>
+    <div class="clearfix"></div>
+  </div>
+
+  @Html.Partial("ScriptAnalysis");
+</div>
+<!-- /скрипты -->
+
+
+<!-- Учет -->
+<div ng-show="global.selectedMenuItem === 'menuItemUchet'">
+  @Html.Partial("Uchet")
+  @Html.Partial("UchetSklad")
+  @Html.Partial("UchetSkladPr")
+  @Html.Partial("UchetSkladRas")
+  @Html.Partial("UchetSkladRasDoc")
+  @Html.Partial("UchetReportsSpisPokup")
+  @Html.Partial("UchetReportsDebetZadol")
+  @Html.Partial("UchetReportsOtchetDohod")
+  @Html.Partial("UchetReportsFilterTovarov")
+  @Html.Partial("UchetReportsNeProdlil")
+  @Html.Partial("UchetReportsGost")
+  @Html.Partial("UchetReportsNeHodyat")
+
+  <!-- Учет - Отчеты - Отчет за период -->
+  <div id="uchetReportsOtchetZaPer">
+    @Html.Partial("UchetReportsOtchetZaPer")
+    @Html.Partial("UchetReportsOtchetZaPer")
+  </div>
+  <!-- /учет - отчеты - отчет за период -->
+  @Html.Partial("UchetZarpl")
+  @Html.Partial("UchetInvent")
+
+</div>
+<!-- /учет -->
+
+<!-- техотдел-->
+@Html.Partial("TehOtdel")
+<!-- /техотдел-->
+
+<!-- Приложения -->
+<div ng-show="global.selectedMenuItem === 'menuItemApp'">
+  <div id="subMenuApp" ng-click="subMenuAppClickHandler($event)" ng-hide="(global.topMenuViewMode)">
+    <div class="sub-menu-item" data-index="0" ng-class="global.selectedAppSubMenuItem === 0 ? 'menu-item-active' :'' "><span>Телефония</span></div>
+  </div>
+  @* пока комментирую, не удалось заказчику показать
+  @Html.Partial("Telephony")
+  *@
+</div>
+<!-- /приложения -->
+
+<!-- Настройки - Подменю -->
+<div ng-show="global.selectedMenuItem === 'menuItemManual'">
+  <div id="subMenuNastr" ng-click="subMenuNastrClickHandler($event)" ng-hide="global.selectedMenuItem != 'menuItemManual'">
+    <div class="sub-menu-item" data-index="0" ng-class="global.selectedNastrSubMenuItem === 0 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(2,20)"><span>Справочники</span></div>
+    <div class="sub-menu-item" data-index="1" ng-class="global.selectedNastrSubMenuItem === 1 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(2,20)"><span>Настройки</span></div>
+  </div>
+</div>
+<!-- /настройки - Подменю -->
+
+<!-- Контакты -->
+<div ng-show="global.selectedMenuItem === 'menuItemKont'" class="kont-container">
+  <div id="subMenuKont" ng-click="subMenuKontClickHandler($event)" ng-hide="(global.topMenuViewMode)">
+    <div class="sub-menu-item" data-index="0" ng-class="global.selectedKontSubMenuItem === 0 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(7,24)"><span>Запись</span></div>
+    <div class="sub-menu-item" data-index="1" ng-class="global.selectedKontSubMenuItem === 1 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(7,41)"><span>Не пришедшие</span></div>
+    <div class="sub-menu-item" data-index="2" ng-class="global.selectedKontSubMenuItem === 2 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(7,42)"><span>Скрытые</span></div>
+    <div class="sub-menu-item" data-index="3" ng-class="global.selectedKontSubMenuItem === 3 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(7,43)"><span>Рекомендованные</span></div>
+    <div class="sub-menu-item" data-index="4" ng-class="global.selectedKontSubMenuItem === 4 ? 'sub-menu-item-active' : '' " ng-hide="global.function.noHavePravoRead(7,54)"><span>Статистика</span></div>
+  </div>
+
+  @* Поиск по контактам *@
+  @* логика внутри kontCtrl.js *@
+  @* показывается только для Запись, Не пришедшие и Рекомендованные *@
+  <div class="input-group input-group-sm kont-search" ng-show="global.selectedKontSubMenuItem === 0 || global.selectedKontSubMenuItem === 1 || global.selectedKontSubMenuItem === 3">
+    <span class="input-group-addon" id="sizing-addon2">
+      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    </span>
+    <div class="ng-autocomplete">
+      <div class="ui-widget">
+        <input type="text" class="form-control phone" placeholder="Телефон" aria-describedby="sizing-addon2">
+      </div>
+    </div>
+    <div>
+      @* обработка click внутри kontCtrl.js, функция bntKontSearchClearClick, т.к. отсюда контроллер не виден *@
+      <button type="button" class="btn btn-default clear" aria-label="Left Align">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  @Html.Partial("Kont")
+
+  @* тут и Не пришедшие и Скрытые и Рекомендованные *@
+  @Html.Partial("KontNoCame")
+
+  @Html.Partial("KontStatReport");
+
+
+</div>
+<!-- /контакты -->
+
+<!-- /Журнал -->
+<div ng-show="global.selectedMenuItem === 'menuItemJur'">
+
+  <!-- Журнал - подменю -->
+  <div id="subMenuNastr" ng-click="subMenuJurClickHandler($event)">
+    <div class="sub-menu-item" data-index="0" ng-class="global.selectedJurSubMenuItem === 0 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(10,37)"><span>Действия</span></div>
+    <div class="sub-menu-item" data-index="1" ng-class="global.selectedJurSubMenuItem === 1 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(10,47)"><span>Уведомления</span></div>
+    <div class="sub-menu-item" data-index="2" ng-class="global.selectedJurSubMenuItem === 2 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(10,48)"><span>Итог</span></div>
+  </div>
+  <!-- /журнал - подменю -->
+
+  @Html.Partial("JurnalDeistv")
+  @Html.Partial("JurnalUvedoml")
+  @Html.Partial("JurnalItog")
+</div>
+<!-- /журнал -->
+
+
+<!-- Дилер (любой) - подменю-->
+<div id="dilerSubMenuAll"
+     ng-show="global.selectedMenuItem === 'menuItemDilerA' ||
+              global.selectedMenuItem === 'menuItemDilerC' ||
+              global.selectedMenuItem === 'menuItemDilerD' ||
+              global.selectedMenuItem === 'menuItemAdm'">
+  <div id="subMenuDilerBefore" ng-class="{'diler-no-submenu':global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_D}"></div>
+  <div id="subMenuDiler" ng-click="subMenuDilerClickHandler($event)" ng-hide="(global.topMenuViewMode)"
+       ng-class="{'diler-no-submenu':global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_D}">
+
+    <div class="sub-menu-item" data-index="0" ng-class="global.selectedDilerSubMenuItem === 0 ? 'sub-menu-item-active' : '' " ng-hide="global.selectedMenuItem === 'menuItemDilerD'"><span>Главная</span></div>
+    
+    <div class="sub-menu-item" data-index="1" ng-class="global.selectedDilerSubMenuItem === 1 ? 'sub-menu-item-active' : '' " 
+         ng-show="global.selectedMenuItem === 'menuItemDilerA' || global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_ADMINISTRATSIYA">
+      <span>Оповещения</span>
+    </div>
+
+    <div class="sub-menu-item" data-index="2" ng-class="global.selectedDilerSubMenuItem === 2 ? 'sub-menu-item-active' : '' " 
+         ng-hide="global.selectedMenuItem === 'menuItemDilerD' || global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_ADMINISTRATSIYA">
+      <span>Задачи</span>
+    </div>
+
+    <div class="sub-menu-item" data-index="3" ng-class="global.selectedDilerSubMenuItem === 3 ? 'sub-menu-item-active' : '' " ng-show="global.selectedMenuItem === 'menuItemDilerA'"><span>Маркетинговый календарь</span></div>
+    <div class="sub-menu-item" data-index="4" ng-class="global.selectedDilerSubMenuItem === 4 ? 'sub-menu-item-active' : '' " 
+         ng-hide="global.selectedMenuItem === 'menuItemDilerD' || global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_ADMINISTRATSIYA">
+      <span>Карта</span>
+    </div>
+
+  </div>
+  @Html.Partial("DilerA")
+  @Html.Partial("DilerC")
+  @Html.Partial("Zadachi")
+  @Html.Partial("Opov")
+  @Html.Partial("DilerACKarta")
+
+  <div id="DilerAMarketingKalend"
+       ng-show="global.selectedMenuItem === 'menuItemDilerA' && global.selectedDilerSubMenuItem === 3">
+    @Html.Partial("DilerAMarketingKalend")
+    @Html.Partial("DilerAMarketingKalend")
+  </div>
+</div>
+<!-- /дилер (любой) - подменю -->
+
+<!-- Сопровождение - подменю -->
+<div ng-show="global.selectedMenuItem === 'menuItemSopr'">
+  <div id="subMenuJur" ng-click="subMenuSoprClickHandler($event)" ng-hide="global.selectedMenuItem != 'menuItemSopr'">
+    <div class="sub-menu-item" data-index="0" ng-class="global.selectedSoprSubMenuItem === 0 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(11,55)"><span>Все</span></div>
+    <div class="sub-menu-item" data-index="1" ng-class="global.selectedSoprSubMenuItem === 1 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(11,55)"><span>Купил</span></div>
+    <div class="sub-menu-item" data-index="3" ng-class="global.selectedSoprSubMenuItem === 3 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(11,55)"><span>Отказ</span></div>
+    <div class="sub-menu-item" data-index="6" ng-class="global.selectedSoprSubMenuItem === 6 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(11,55)"><span>Цена</span></div>
+    <div class="sub-menu-item" data-index="7" ng-class="global.selectedSoprSubMenuItem === 7 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(11,55)"><span>Сезон</span></div>
+    <div class="sub-menu-item" data-index="8" ng-class="global.selectedSoprSubMenuItem === 8 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(11,55)"><span>Банк</span></div>
+  </div>
+  
+  @Html.Partial("Sopr")
+</div>
+<!-- /Сопровождение - подменю -->
+
+<!-- Продление - подменю -->
+<div ng-show="global.selectedMenuItem === 'menuItemProdl'">
+  <div id="subMenuProdl" ng-click="subMenuProdlClickHandler($event)" ng-hide="global.selectedMenuItem != 'menuItemProdl'">
+    <div class="sub-menu-item" data-index="0" ng-class="global.selectedProdlSubMenuItem === 0 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(12,56)"><span>Все</span></div>
+    <div class="sub-menu-item" data-index="1" ng-class="global.selectedProdlSubMenuItem === 1 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(12,56)"><span>Купил</span></div>
+    <div class="sub-menu-item" data-index="3" ng-class="global.selectedProdlSubMenuItem === 3 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(12,56)"><span>Отказ</span></div>
+    <div class="sub-menu-item" data-index="6" ng-class="global.selectedProdlSubMenuItem === 6 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(12,56)"><span>Цена</span></div>
+    <div class="sub-menu-item" data-index="7" ng-class="global.selectedProdlSubMenuItem === 7 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(12,56)"><span>Сезон</span></div>
+    <div class="sub-menu-item" data-index="8" ng-class="global.selectedProdlSubMenuItem === 8 ? 'sub-menu-item-active' :'' " ng-hide="global.function.noHavePravoRead(12,56)"><span>Банк</span></div>
+  </div>
+
+  @Html.Partial("Prodl")
+</div>
+<!-- /Продление - подменю -->
+
+<!-- /Зафиксированное подменю для Дилер Д -->
+<div ng-show="global.selectedMenuItem === 'menuItemDilerD'">
+  <div id="subMenuDilerD" ng-click="subMenuDilerDClickHandler($event)" ng-hide="global.selectedMenuItem != 'menuItemDilerD'">
+    <div class="sub-menu-item" data-index="0" ng-class="global.selectedDilerDSubMenuItem === 0 ? 'sub-menu-item-active' :'' "><span>Информация</span></div>
+    <div class="sub-menu-item" data-index="1" ng-class="global.selectedDilerDSubMenuItem === 1 ? 'sub-menu-item-active' :'' "><span>Мотивация</span></div>
+    <div class="sub-menu-item" data-index="2" ng-class="global.selectedDilerDSubMenuItem === 2 ? 'sub-menu-item-active' :'' "><span>Рассылка</span></div>
+  </div>
+
+  @Html.Partial("DilerD")
+  @Html.Partial("DilerDMotiv")
+  @Html.Partial("DilerDSmsAutoSend")
+</div>
+<!-- /Зафиксированное подменю для Дилер Д -->
+
+
+  @section scripts {
+    @{string s = "?i=" + DateTime.Now.Ticks;}
+    <script src="~/Scripts/myApp.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/appCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/newAnkCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/periodCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/dialogCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/newZvonokCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/laneCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/bazaCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/statCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/serviceCtrl.js@(s)"></script>
+
+    @* Загрузка режима Регистрация, в зависимости от настроек внешний вид бывает со списком мест
+       или со списком ФИО, читаю настройки, загружаю нужный
+    *@
+    @if(ViewBag.VNESH_VID_REG == AtlantCRM.Controllers.HomeController.VNESH_VID_REG_SO_SPISKOM_MEST) {
+      <script src="~/Scripts/ng-controllers/regCtrl.js@(s)"></script>
+    } else if(ViewBag.VNESH_VID_REG == AtlantCRM.Controllers.HomeController.VNESH_VID_REG_SO_SPISKOM_FIO) {
+      <script src="~/Scripts/ng-controllers/reg2Ctrl.js@(s)"></script>
+    } else {
+      <script type="text/javascript">alert("ОШИБКА, НЕ УДАЛОСЬ ОПРЕДЕЛИТЬ ЗНАЧЕНИЕ ПАРАМЕТРА VNESH_VID_REG");</script>
+    }
+
+
+    <script src="~/Scripts/ng-controllers/recordCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/admCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/manualCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/nastrCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/dilerACtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/dilerCCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/dilerDCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/reportDayCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/reportStatisticCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/reportSpecialistsCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/reportZabolCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/reportIstCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/reportBirthdayCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/reportKartaCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/reportProdajiCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/reportOprosCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/reportUvedomlCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/reportMarketingCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/reportMetrikaCtrl.js@(s)"></script>
+
+    <script src="~/Scripts/ng-controllers/kontCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/kontListByModeCtrl.js@(s)"></script>
+
+    <script src="~/Scripts/ng-controllers/uchetCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/uchetSkladCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/uchetSkladPrCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/uchetSkladRasCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/uchetSkladRasDocCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/druzyaCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/uchetReportsSpisPokupCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/uchetReportsDebetZadolCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/uchetReportsOtchetDohodCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/uchetReportsFilterTovarovCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/uchetReportsOtchetZaPerCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/uchetReportsNeProdlilCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/uchetZarplCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/uchetInventCtrl.js@(s)"></script>
+
+    <script src="~/Scripts/ng-controllers/jurDeistvCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/jurUvedomlCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/jurItogCtrl.js@(s)"></script>
+
+    <script src="~/Scripts/ng-controllers/voprosCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/vipisCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/tehOtdelCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/reportServiceCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/zadachiCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/opovCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/dilerAMarketingKalendCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/dilerACKartaCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/kontStatReportCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/soprCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/prodlCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/uchetReportsGostCtrl.js@(s)"></script>
+
+    <script src="~/Scripts/ng-controllers/dilerDMotivCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/dilerDSmsAutoSendCtrl.js@(s)"></script>
+
+    <script src="~/Scripts/ng-controllers/scriptAnalysisCtrl.js@(s)"></script>
+    <script src="~/Scripts/ng-controllers/uchetReportsNeHodyatCtrl.js@(s)"></script>
+
+  }

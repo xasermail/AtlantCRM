@@ -1,0 +1,186 @@
+﻿
+<!-- Отчеты - День -->
+<div id="reportDay" class="reportForm" ng-controller="reportDayCtrl"
+     ng-show="(global.selectedReportSubMenuItem === 0)">
+    <br/>
+    <div ng-hide="previewInfoShow">
+        <div>
+            <label>
+                Дата:
+                <input type="date" ng-model="dayOfFormation" ng-change="dayOfFormationChangeHandler()"
+                       date-format="short"
+                        />
+            </label>
+        </div>
+        
+        <div>
+        <div class="difYestarday">
+          <table class="tableBorderAndColorNotVisible">
+            <tr><td></td></tr>
+            <tr ng-repeat="item in report">
+              <td>
+                <div ng-show="item.DifferentForTommorrow != 0">
+                  {{item.DifferentForTommorrow}}
+                  <div class="arrowContainer">
+                      <svg  ng-show="increaseCount(item.DifferentForTommorrow)">
+                        <polygon points="0,10 20,10 10,0" fill="#6dc732" />
+                      </svg>
+                      <svg ng-show="decreaseCount(item.DifferentForTommorrow)">
+                        <polygon points="0,0 20,0 10,10" fill="#eb000c" />
+                      </svg>
+                  </div>
+                </div>
+            </td>
+            </tr>
+            <tr><td></td></tr>
+          </table>
+
+        </div>
+          <div class="divTable">
+            <table>
+              <thead>
+                <tr>
+                  <th class="diferentHeader">Завтра</th>
+                  <th class="timeHeader">Сеанс</th>
+                  <th class="newHeader">(Новых)</th>
+                  <th class="firstHeader">Первый ряд</th>
+                  <th class="secondHeader">Второй ряд</th>
+                  <th class="oldHeader">Родненькие</th>
+                  <th class="summHeader">Сумма</th>
+                  <th class="natolnHeader">Наполн.</th>
+                </tr>
+              </thead>
+              <tr ng-repeat="item in report" >
+                <td ng-class="{'goodRow' : goodRow(item.Napol), 'badRow' : badRow(item.Napol), 'avgRow' : avgRow(item.Napol)}">{{item.RecordForTommorrow}}</td>
+                <td ng-class="{'goodRow' : goodRow(item.Napol), 'badRow' : badRow(item.Napol), 'avgRow' : avgRow(item.Napol)}">{{item.Name}}</td>
+                <td ng-class="{'goodRow' : goodRow(item.Napol), 'badRow' : badRow(item.Napol), 'avgRow' : avgRow(item.Napol)}">{{item.CountNew}}</td>
+                <td ng-class="{'goodRow' : goodRow(item.Napol), 'badRow' : badRow(item.Napol), 'avgRow' : avgRow(item.Napol)}">{{item.FirstRyad}}</td>
+                <td ng-class="{'goodRow' : goodRow(item.Napol), 'badRow' : badRow(item.Napol), 'avgRow' : avgRow(item.Napol)}">{{item.SecondRyad}}</td>
+                <td ng-class="{'goodRow' : goodRow(item.Napol), 'badRow' : badRow(item.Napol), 'avgRow' : avgRow(item.Napol)}">{{item.CountOld}}</td>
+                <td ng-class="{'goodRow' : goodRow(item.Napol), 'badRow' : badRow(item.Napol), 'avgRow' : avgRow(item.Napol)}">{{item.CountAll}}</td>
+                <td ng-class="{'goodRow' : goodRow(item.Napol), 'badRow' : badRow(item.Napol), 'avgRow' : avgRow(item.Napol)}">{{roundPercent(item.Napol)}}</td>
+               </tr>
+              <tfoot>
+                <tr>
+                  <td>{{getSumDiferent()}}</td>
+                  <td>Всего:</td>
+                  <td>{{getSumNew()}}</td>
+                  <td>{{getSumFirstRyad()}}</td>
+                  <td>{{getSumSecondRyad()}}</td>
+                  <td>{{getSumOld()}}</td>
+                  <td>{{getSumAll()}}</td>
+                  <td>{{getAvgNapoln()}}</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <div class="divTommorow">
+            <table class="tableBorderAndColorNotVisible">
+              <tr><td></td></tr>
+              <tr ng-repeat="item in report">
+                <td>
+                  <div ng-show="item.DifferentForYesterday != 0">
+                    <div class="arrowContainer">
+                      <svg class="arrow-item arrow-item-top" ng-show="increaseCount(item.DifferentForYesterday)">
+                        <polygon points="0,10 20,10 10,0" fill="#6dc732" />
+                      </svg>
+                      <svg class="arrow-item arrow-item-bottom" ng-show="decreaseCount(item.DifferentForYesterday)">
+                        <polygon points="0,0 20,0 10,10" fill="#eb000c" />
+                      </svg>
+                    </div>
+                    {{item.DifferentForYesterday}}
+                  </div>
+                </td>
+              </tr>
+              <tr><td></td></tr>
+            </table>
+
+          </div>
+         
+        </div>
+
+        <div class="statsPanel">
+            <span ng-click="showRecord()">Записалось {{statCount.Record}}</span>
+            <span ng-click="showCame()">Пришло {{statCount.Came}}</span>
+            <span ng-click="showNoCame()">Не пришло {{statCount.NotCame}}</span>
+            <span ng-click="showNew()">Новенькие {{statCount.New}}</span>
+            <span ng-click="showNotRecord()">Ушли и не записались {{statCount.NotRecord}}</span>
+            <span ng-click="showNotReg()">Не зарегистрировано {{statCount.NotReg}}</span>
+        </div>
+    </div>
+
+    <div ng-show="previewInfoShow">
+        <div class="listAnkInfo"  ng-show="firstType">
+            <div id="print-content-one">
+                <table>
+                    <tr>
+                        <th>ФИО</th>
+                        <th>Телефон</th>
+                    </tr>
+                    <tr ng-repeat="item in firstTypeInfo" >
+                        <td>{{item.FIO}}</td>
+                        <td>{{item.Phone}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="buttonsInfo">
+                <button ng-click="infoPrint('print-content-one')">Печать</button>
+                <button ng-click="goBack()">Вернуться</button>
+            </div>
+        </div>
+
+        <div class="listAnkInfo" ng-show="secondType">
+            <div id="print-content-second">
+                <table>
+                    <tr>
+                        <th>ФИО</th>
+                        <th>Телефон</th>
+                        <th>Время регистрации</th>
+                        <th>Время на рядах</th>
+                        <th>Кто общался на 1 ряду</th>
+                        <th>Кто общался на 2 ряду</th>
+                    </tr>
+                    <tr ng-repeat="item in secondTypeInfo">
+                        <td>{{item.FIO}}</td>
+                        <td>{{item.Phone}}</td>
+                        <td>{{item.TimeReg}}</td>
+                        <td>{{item.TimeInRyad}}</td>
+                        <td>{{item.WhoSpokeInFirstRyad}}</td>
+                        <td>{{item.WhoSpokeInSecondRyad}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="buttonsInfo">
+                <button ng-click="infoPrint('print-content-second')">Печать</button>
+                <button ng-click="goBack()">Вернуться</button>
+            </div>
+        </div>
+
+        <div class="listAnkInfo" ng-show="threeType">
+            <div id="print-content-three">
+                <table >
+                    <tr>
+                        <th>ФИО</th>
+                        <th>Телефон</th>
+                        <th>Регистрация</th>
+                        <th>1 ряд</th>
+                        <th>2 ряд</th>
+                    </tr>
+                    <tr ng-repeat="item in threeTypeInfo">
+                        <td>{{item.FIO}}</td>
+                        <td>{{item.Phone}}</td>
+                        <td>{{item.Reg}}</td>
+                        <td>{{item.FirstRyad}}</td>
+                        <td>{{item.SecondRyad}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="buttonsInfo">
+                <button ng-click="infoPrint('print-content-three')">Печать</button>
+                <button ng-click="goBack()">Вернуться</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /отчеты - День -->

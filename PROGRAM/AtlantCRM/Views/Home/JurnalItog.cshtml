@@ -1,0 +1,30 @@
+﻿<!-- Журнал - Итоги -->
+<div id="reportItog" class="reportForm" ng-controller="jurItogCtrl" ng-show="global.selectedJurSubMenuItem === 2 && global.function.havePravoRead(10,48)">
+  
+  <div>
+    <span>Дата</span>
+    <input type="date" ng-model="fromDate" />
+    <span> - </span>
+    <input type="date" ng-model="toDate" />
+    <button ng-click="btnRefresReportClick()">Применить</button>
+  </div>
+
+  <table>
+    <tr>
+      <td>Посещения</td>
+      <td ng-repeat="item in report" class="cellData" ng-class="{lastItem: item.VAL === 21}">
+      <span ng-show="item.VAL > 20">Более 20</span><span ng-hide="item.VAL > 20">{{item.VAL}}</span></td>
+    </tr>
+    <tr>
+      <td>Посетителей</td>
+      <td ng-repeat="item in report" class="cellData" ng-class="{lastItem: item.VAL === 21}">{{item.COUNT_SEANS}}</td>
+    </tr>
+    <tr>
+      <td>Купили</td>
+      <td ng-repeat="item in report" class="cellData" ng-class="{lastItem: item.VAL === 21}">{{item.COUNT_BUY}}</td>
+    </tr>
+  </table>
+
+</div>
+<!-- /журнал - Итоги -->
+

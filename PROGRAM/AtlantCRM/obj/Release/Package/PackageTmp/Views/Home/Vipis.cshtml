@@ -1,0 +1,95 @@
+﻿<!-- Новый - Выписки -->
+<div id="vipis" class="tab-content" ng-controller="vipisCtrl"
+     ng-show="global.selectedSubMenuItem === 4 && global.function.havePravoRead(1,6)">
+
+   <!-- Для работы в режиме обязательно нужно выбрать анкету сначала -->
+  <h2 ng-show="global.ank.ID == null">Для работы в режиме необходимо выбрать анкету</h2>
+
+  <!-- Если анкета не выбрана, то не показываю режим -->
+  <div ng-show="global.ank.ID != null">
+    <span class="inf">Информация</span>
+    <div class="vertical-line3"></div>
+    <div class="status">
+      <span class="status-label">Статус</span>
+      <select class="status-select form-control"
+              ng-options="item.ID as item.NAME for item in global.manual.M_ZABOL_GROUP"
+              ng-model="M_ZABOL_GROUP_ID"></select>
+    </div>
+    <div class="zabol-foto-video-outer file-button-outer">
+      @* обрабатывется с помощью пользовательской directive fileModel, искать в vipisCtrl.js *@
+      <input class="zabol-foto-video" type="file" model-name="zabolFotoVideo"
+             file-model="zabolFotoVideo" />
+      <button type="button" class="btn btn-default btn-zabol-foto-video">
+        <span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Фото/Видео
+      </button>
+    </div>
+    <div class="zabol-dob-file-outer file-button-outer">
+      <input class="zabol-dob-file" type="file" model-name="zabolDobFile"
+             file-model="zabolDobFile" />
+      <button type="button" class="btn btn-default btn-zabol-dob-file">
+        <span class="glyphicon glyphicon glyphicon-file" aria-hidden="true"></span> Добавить файл
+      </button>
+    </div>
+    <textarea class="zabol-area" ng-model="ZABOL_TEXT"></textarea>
+    <button type="button" class="btn btn-default btn-zabol-skach-file" ng-click="btnZabolFilesClick()">
+      <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Скачать файлы
+    </button>
+    <div class="zabol-files-download" ng-show="zabolFilesShow">
+      <p class="zabol-files-download-close" ng-click="btnZabolFilesCloseClick()">x</p>
+      <p ng-repeat="item in zabolFiles">
+        <a target="_blank" 
+           href="/Home/GetVipisZabolFile?O_VIPIS_FILE_ZABOL_ID={{item.O_VIPIS_FILE_ZABOL_ID}}">{{item.FNAME}}</a>
+      </p>
+    </div>
+    <button type="button" class="btn btn-default btn-dob-info" ng-click="dobInf()">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить информацию
+    </button>
+    <div class="horizontal-line2"></div>
+    <div class="uluch-foto-video-outer file-button-outer">
+      <input class="uluch-foto-video" type="file" model-name="uluchFotoVideo"
+             file-model="uluchFotoVideo" />
+      <button type="button" class="btn btn-default btn-uluch-foto-video">
+        <span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Фото/Видео
+      </button>
+    </div>
+    <div class="uluch-dob-file-outer file-button-outer">
+      <input class="uluch-dob-file" type="file" model-name="uluchDobFile"
+             file-model="uluchDobFile" />
+      <button type="button" class="btn btn-default btn-uluch-dob-file">
+        <span class="glyphicon glyphicon glyphicon-file" aria-hidden="true"></span> Добавить файл
+      </button>
+    </div>
+    <multiselect class="input-xlarge multiselect-specialist uluch-select dropup"
+                 multiple="true"
+                 ng-model="selectedUluch"
+                 options="c.ID as c.NAME for c in global.manual.M_ZABOL"
+                 change="selected()"></multiselect>
+    <textarea class="uluch-area" ng-model="ULUCH_TEXT"></textarea>
+    <button type="button" class="btn btn-default btn-uluch-skach-file" ng-click="btnUluchFilesClick()">
+      <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Скачать файлы
+    </button>
+    <div class="uluch-files-download" ng-show="uluchFilesShow">
+      <p class="uluch-files-download-close" ng-click="btnUluchFilesCloseClick()">x</p>
+      <p ng-repeat="item in uluchFiles">
+        <a target="_blank"
+           href="/Home/GetVipisUluchFile?O_VIPIS_FILE_ULUCH_ID={{item.O_VIPIS_FILE_ULUCH_ID}}">{{item.FNAME}}</a>
+      </p>
+    </div>
+    <input class="d-uluch form-control" type="date" ng-model="D_ULUCH" />
+
+    <div class="vipis-video">
+      <span class="status-label">Ссылка на видео</span>
+
+      <input class="form-control link-video" ng-model="LINK" ng-change="setVideo(LINK)" />
+
+      <iframe class="frame-video" ng-hide="YOUTUBE_URL === ''"
+        src="{{YOUTUBE_URL}}"
+        allowfullscreen = "allowfullscreen">
+      </iframe>
+    </div>
+  </div>
+
+
+</div>
+<!-- /новый - выписки -->
+

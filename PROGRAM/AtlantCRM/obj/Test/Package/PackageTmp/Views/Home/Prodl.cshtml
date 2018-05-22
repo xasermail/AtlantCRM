@@ -1,0 +1,193 @@
+﻿<div id="prodl" class="tab-content" ng-controller="prodlCtrl" ng-show="global.selectedMenuItem === 'menuItemProdl' && global.function.havePravoRead(12,56)">
+
+  <div class="prodl-modal-div" ng-show="(commentShow)">
+    <div class="prodl-comment-div">
+      <p>Задача</p>
+      <input ng-model="ZADACHA" class="prodl-zadacha" type="text"
+             ng-disabled="(global.function.noHavePravoWrite(12,56)) || ((prodl_srochno_item.OST === 0) && (prodl_srochno_item.M_SOPR_STATUS_ID === 0))" />
+      <span style="margin-left: 10px">Срочно</span>
+      <input ng-model="prodl_srochno_item.IS_SROCHNO" type="checkbox" ng-false-value="0" ng-true-value="1"
+             ng-disabled="global.function.noHavePravoWrite(12,56)"
+             ng-click="setIsSrochno()"
+             style="margin-left: 5px; margin-top: 0px; position: relative; top: 5px; width: 16px"/>
+
+      <p>Комментарий</p>
+
+      <textarea ng-model="COMMENT" 
+                class="prodl-comment-text" rows="5" 
+                placeholder="Введите комментарий и нажмите кнопку '<' для добавления"
+                ng-disabled="global.function.noHavePravoWrite(12,56)"></textarea>
+      <button ng-click="addComment()" class="prodl-comment-add"
+              ng-disabled="global.function.noHavePravoWrite(12,56)"><</button>
+    </div>
+
+    <div class="prodl-comment-table-header-div">
+      <table>
+        <tr>
+          <th>№</th>
+          <th>Дата работы</th>
+          <th>Комментарий</th>
+          <th>Задача</th>
+        </tr>
+      </table>
+    </div>
+
+    <div class="prodl-comment-table-div">
+      <div>
+        <table>
+          <tr ng-repeat="item in comment" style="background-color: white">
+            <td style="width: 38px">{{item.RN}}</td>
+            <td style="width: 150px">{{item.D_START | date:'dd.MM.yyyy'}} {{item.USERNAME}}</td>
+            <td style="width: 311px">{{item.COMMENT}}</td>
+            <td style="width: 250px">{{item.ZADACHA}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="prodl-comment-div-button">
+      <button ng-click="saveComment()">Сохранить</button>
+      <button ng-click="hideComment()">Отменить</button>
+    </div>
+  </div>
+
+  <div id="prodlMainDiv" class="prodl-main-div">
+
+    <span>Дата действия с</span>
+
+    <input class="prodl-date ng-pristine ng-valid ng-empty ng-touched" type="date" ng-model="dtfrom">
+
+    <span>по</span>
+
+    <input class="prodl-date ng-pristine ng-valid ng-empty ng-touched" type="date" ng-model="dtto">
+
+    <span>Ответственный</span>
+
+    <select ng-options="item.ID as item.UserName for item in global.manual.S_USER |filter:{M_ORG_ID: global.userContext.M_ORG_ID}:true"
+            ng-model="user"
+            ng-disabled="global.function.noHavePravoWrite(11,55)"
+            class="prodl-user">
+      <option value="">Не выбрано</option>
+    </select>
+
+    <input class="prodl-poisk ng-pristine ng-valid ng-empty ng-touched" type="text" placeholder="Поиск по ФИО, телефону" ng-model="text" ng-keypress="textKeyPress($event)">
+
+    <button class="prodl-clear-filter" ng-click="refreshData()">применить</button>
+
+    <button class="prodl-clear-filter" ng-click="textClear()">сброс фильтра</button>
+
+    <table>
+      <thead>
+      <tr style="border: 1px solid black">
+        <td class="prodl-grey-th" style="width: {{TD1}}px">№</td>
+        <td class="prodl-grey-th" style="width: {{TD2}}px">Дата действия</td>
+        <td class="prodl-grey-th" style="width: {{TD7}}px">VIP</td>
+        <td class="prodl-grey-th" style="width: {{TD3}}px">ФИО</td>
+        <td class="prodl-grey-th" style="width: {{TD4}}px">Телефон</td>
+        <td class="prodl-grey-th" style="width: {{TD5}}px">Осталось</td>
+        <td class="prodl-grey-th" style="width: {{TD6}}px">Товар</td>
+        <td class="prodl-grey-th" style="width: {{TD8}}px">Форма оплаты</td>
+        <td class="prodl-grey-th" style="width: {{TD9}}px">Статус</td>
+        <td class="prodl-grey-th" style="width: {{TD10}}px">Кол-во визитов</td>
+        <td class="prodl-green-th" style="width: {{TD11}}px" ng-show="global.selectedProdlSubMenuItem !== 1">Дата работы</td>
+        <td class="prodl-grey-th" style="width: {{TD12}}px" ng-show="global.selectedProdlSubMenuItem === 1">Последний визит</td>
+        <td class="prodl-green-th" style="width: {{TD13}}px">Комментарии</td>
+        <td class="prodl-green-th" style="width: {{TD14}}px">Задача</td>
+      </tr>
+      </thead>
+    </table>
+
+    <table>
+      <tbody>
+
+        <tr ng-repeat="item in prodl" ng-class="$odd ? 'odd' : 'even'"
+            ng-style="{ 'background-color' : ((item.OST === 0) && (item.M_SOPR_STATUS_ID === 0)) ? '#FA8072' : '' }">
+          <td style="width: {{TD1}}px">{{item.RN}}</td>
+          <td style="width: {{TD2}}px">
+            {{item.D_VID | date:'dd.MM.yy'}}
+            {{item.D_DEISTV | date:'dd.MM.yy'}}
+          </td>
+
+          <td class="vip" style="width: {{TD7}}px">{{item.VIP === 1 ? "VIP": ""}}</td>
+          
+          <td style="width: {{TD3}}px; padding: 0px">
+            <div ng-class="item.IS_SROCHNO === 1 ? SROCHNO_STYLE : NORMAL_STYLE">
+              <a href="#" ng-click="global.openAnk(item.O_ANK_ID)" title="Нажмите на ФИО для открытия анкеты">{{item.FIO}}</a>
+            </div>
+          </td>
+
+          <td style="width: {{TD4}}px" class="process-a-call-td">
+            <a href="#"
+                ng-click="global.function.phoneClick(item.PHONE, item)" title="Нажмите на номер телефона для совершения вызова"
+                ng-hide="((item.showProcessACall) && (item.PHONE === item.call))">{{item.PHONE_NUM}}</a>
+            <div class="process-a-call" ng-show="item.showProcessACall"><div>Вызов</div></div>
+          </td>
+
+          <td style="width: {{TD5}}px">{{item.OST}}</td>
+          <td style="width: {{TD6}}px">{{item.M_PRODUCT_NAME}}</td>
+          <td style="width: {{TD8}}px">{{item.M_FORM_OPL}}</td>
+
+          <td style="width: {{TD9}}px"
+              ng-class="{color1: item.M_SOPR_STATUS_ID === 9, 
+                         color2: item.M_SOPR_STATUS_ID === 6||item.M_SOPR_STATUS_ID === 7||item.M_SOPR_STATUS_ID === 8,
+                         color3: item.M_SOPR_STATUS_ID === 4,
+					               color4: item.M_SOPR_STATUS_ID === 5, color5: item.M_SOPR_STATUS_ID === 1,
+                         color6: item.M_SOPR_STATUS_ID === 2,
+					               color7: item.M_SOPR_STATUS_ID === 3}">
+
+            <select ng-model="item.M_SOPR_STATUS_ID"
+                    ng-class="{color1: item.M_SOPR_STATUS_ID === 9, 
+                               color2: item.M_SOPR_STATUS_ID === 6||item.M_SOPR_STATUS_ID === 7||item.M_SOPR_STATUS_ID === 8,
+                               color3: item.M_SOPR_STATUS_ID === 4,
+					                     color4: item.M_SOPR_STATUS_ID === 5, color5: item.M_SOPR_STATUS_ID === 1,
+                               color6: item.M_SOPR_STATUS_ID === 2,
+					                     color7: item.M_SOPR_STATUS_ID === 3}"
+                    ng-style="{'color': (item.M_SOPR_STATUS_ID === global.const.SOPR_M_STATUS_ID_OTKAZ) ? '#ffffff' : '#000000'}"
+                    ng-options="item.ID as item.NAME for item in global.manual.M_SOPR_STATUS"
+                    ng-disabled="(global.function.noHavePravoWrite(12,56)) || ((item.OST === 0) && (global.userContext.S_USER_ROLE_ID !== global.const.S_USER_ROLE_ID_DIREKTOR))"
+                    ng-change="saveProdl(item)"></select>
+          </td>
+
+          <td style="width: {{TD10}}px">{{item.VISITS}}</td>
+          <td style="width: {{TD11}}px" ng-show="global.selectedProdlSubMenuItem !== 1" ng-click="showComment(item)">{{item.DATE_WORK | date:'dd.MM.yy'}}</td>
+          <td style="width: {{TD12}}px" ng-show="global.selectedProdlSubMenuItem === 1">{{item.LAST_VISIT | date:'dd.MM.yy'}}</td>
+          <td style="width: {{TD13}}px" ng-click="showComment(item)">{{item.COMMENT}}</td>
+          <td style="width: {{TD14}}px" ng-click="showComment(item)">{{item.ZADACHA}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+  <div class="div-pagination">
+    <nav aria-label="Page navigation">
+
+      <ul class="pagination">
+        <li ng-click="pageNext()">
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li ng-click="pagePrev10()">
+          <a href="#" aria-label="Previous 10 pages">
+            <span aria-hidden="true">&lsaquo;</span>
+          </a>
+        </li>
+        <li ng-repeat="item in pageNums"
+            ng-class="{active: item === page}">
+          <a href="#" ng-click="pageNumClickHandler(item)">{{item}}</a>
+        </li>
+        <li ng-click="pageNext10()">
+          <a href="#" aria-label="Next 10 pages">
+            <span aria-hidden="true">&rsaquo;</span>
+          </a>
+        </li>
+        <li ng-click="pagePrev()">
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+﻿<!-- Отчёты - Маркетинг -->
+<div class="tab-content" ng-controller="reportMarketingCtrl" ng-show="global.selectedReportSubMenuItem === 10 && global.function.havePravoRead(4,19)">
+
+  
+  <div class="container-1">
+    <div><span>Выберите год</span>
+      <select ng-model="year" ng-options="item as item for item in years" ng-change="yearChanged()">
+        
+      </select>
+    </div>
+
+    <table class="table table-bordered table-condensed table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Месяц</th>
+          <th>Новый</th>
+          <th>Сеансы</th>
+          <th>Дни</th>
+          <th>Родненькие</th>
+          <th>Всего</th>
+          <th>Наполненность</th>
+          <th>Продажи</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in report" ng-show="item.visible === 1" ng-class="item.tip">
+          <td><button ng-click="btnYearExpandClick(item)">{{item.buttonCaption || "+"}}</button></td>
+          <td class="name-column">{{item.name}}</td>
+          <td>{{item.noviy}}</td>
+          <td>{{item.seansi}}</td>
+          <td>{{item.dni}}</td>
+          <td>{{item.rodn}}</td>
+          <td>{{item.vsego}}</td>
+          <td>{{item.napoln}}</td>
+          <td>{{item.prodaji}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+<!-- /отчёты - маркетинг -->

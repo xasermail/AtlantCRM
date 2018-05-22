@@ -1,0 +1,294 @@
+﻿<!-- Контакты - Не пришедшие -->
+<div id="kont"
+     class="tab-content kont-no-came-container" 
+     ng-controller="kontListByModeCtrl" 
+     ng-show="global.selectedKontSubMenuItem === 1 || global.selectedKontSubMenuItem === 2 || global.selectedKontSubMenuItem === 3">
+
+    @* Окно редактирования контакта *@
+    @* Для создания новой записи в Не пришедших *@
+    @Html.Partial("_KontEdit")
+
+     <!-- Фильтр по Не пришедшим -->
+     <div class="vsego-nepr" ng-show="global.selectedKontSubMenuItem === 1">
+       <div class="all-count">Всего: {{allCount}}</div>
+
+       <!-- Добавить нового -->
+       @* только для Не пришедших *@
+       <div class="btn-dob" ng-show="global.selectedKontSubMenuItem === 1" ng-click="btnDobClick($event)">
+         <button class="btn btn-success">Добавить нового</button>
+       </div>
+       <!-- /добавить нового -->
+
+       <div class="m-kont-status-id-label">Статус:</div>
+       <div class="m-kont-status-id-value">
+         <select ng-options="item.ID as item.NAME for item in global.manual.M_KONT_STATUS"
+                 ng-model="nePrFilter.M_KONT_STATUS_ID"></select>
+       </div>
+       <div class="m-kont-ist-id-label">Источник:</div>
+       <div class="m-kont-ist-id-value">
+         <select ng-options="item.ID as item.NAME for item in global.manual.M_KONT_IST"
+                 ng-model="nePrFilter.M_KONT_IST_ID"></select>
+       </div>
+       <div class="btn-search"><button type="button" class="btn btn-primary" ng-click="btnNePrFilterSearchClick()">Поиск</button></div>
+       <div class="btn-clear"><button type="button" class="btn-link" ng-click="btnNePrFilterClearClick(true)">Сброс фильров</button></div>
+     </div>
+     <!-- /фильтр по не пришедшим -->
+
+    <table class="table table-bordered table-hover table-striped kontTable">
+        <tr>
+            <th>ФИО</th>
+            <th class="phone">Телефон</th>
+            @* Статус контакта, только для Не пришедших *@
+            <th ng-show="global.selectedKontSubMenuItem === 1">Статус</th>
+            @* Источник контакта, только для Не пришедших *@
+            <th ng-show="global.selectedKontSubMenuItem === 1">Источник</th>
+            <th class="seans">Время</th>
+            <th class="d-zv">Дата звонка
+              <button class="btn-ne-pr-d-zv-order-by" ng-click="bntNePrOrderByD_ZVClick()" title="Сортировка по дате звонка">
+                <span class="glyphicon glyphicon-sort" aria-hidden="true" ng-show="nePrOrderByD_ZV === 0"></span>
+                <span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true" ng-show="nePrOrderByD_ZV === 1"></span>
+                <span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true" ng-show="nePrOrderByD_ZV === 2"></span>
+              </button>
+            </th>
+            <th ng-hide="currentMode == '3'">Комментарий</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="item in dataForTableNotCame">
+            <td>
+
+              <!-- Моргающая рамка вокруг Контакта со статусом "Срочно" -->
+              <div class="div-border-top" ng-class="{'blink-background-red': item.M_KONT_STATUS_ID === global.const.M_KONT_STATUS_ID_SROCHNO}"></div>
+              <div class="div-border-right" ng-class="{'blink-background-red': item.M_KONT_STATUS_ID === global.const.M_KONT_STATUS_ID_SROCHNO}"></div>
+              <div class="div-border-bottom" ng-class="{'blink-background-red': item.M_KONT_STATUS_ID === global.const.M_KONT_STATUS_ID_SROCHNO}"></div>
+              <div class="div-border-left" ng-class="{'blink-background-red': item.M_KONT_STATUS_ID === global.const.M_KONT_STATUS_ID_SROCHNO}"></div>
+              <!-- /моргающая рамка вокруг Контакта со статусом "Срочно" -->
+
+              <div class="textField">
+                @* красным шрифтом выделяю найденную запись после поиска по Не пришедшим и Рекомендованным *@
+                <a href="#" ng-click="tdChangeKontClickHandler($event, item)"
+                   ng-style="(item.KONT_ID === global.searchO_REK_ANK_ID || item.KONT_ID === global.searchO_KONT_ANK_ID) ? {'color': 'red'} : {}">{{item.SURNAME}} {{item.NAME}} {{item.SECNAME}}</a>
+              </div>
+              <div class="buttonField">
+                <div class="record-td-div record-button-div"
+                     ng-hide="currentMode == '2'
+                           || currentMode == '3'">
+                  <button kont-seans-id="{{item.KONT_SEANS_ID}}"
+                          time-id="{{item.M_SEANS_TIME_ID}}"
+                          commentForChange="{{item.COMMENT}}"
+                          ng-click="btnChangeSeansClick(item)"
+                          ng-disabled="(global.selectedKontSubMenuItem === 1 && global.function.noHavePravoWrite(7,41)) ||
+                                         (global.selectedKontSubMenuItem === 2 && global.function.noHavePravoWrite(7,42)) ||
+                                         (global.selectedKontSubMenuItem === 3 && global.function.noHavePravoWrite(7,43))"
+                          class="record-new-date"></button>
+                </div>
+              </div>
+            </td>
+            <td class="process-a-call-td">
+              <a href="#" style="color: #333333; font-weight:normal" 
+                 ng-click="global.function.phoneClick(item.PHONE, item)"
+                 ng-hide="item.showProcessACall"
+                 title="Нажмите на номер телефона для совершения вызова">{{item.PHONE}}</a>
+              <div class="process-a-call" ng-show="item.showProcessACall"><div>Совершается вызов</div></div>
+            </td>
+
+            @* Статус контакта, только для Не пришедших *@
+            <td ng-show="global.selectedKontSubMenuItem === 1"
+                ng-class="getMKontStatusIdClass(item)">{{item.M_KONT_STATUS_ID_NAME}}</td>
+
+            @* Источник контакта, только для Не пришедших *@
+            <td ng-show="global.selectedKontSubMenuItem === 1">{{item.M_KONT_IST_ID_NAME}}</td>
+
+            <td>{{item.SEANS.split('-')[0]}}</td>
+            <td>{{item.D_ZV | date:'dd.MM.yyyy'}}</td>
+
+            @* комментарий *@
+            @* прячем для режима Рекомендованные *@
+            <td ng-hide="currentMode == '3'" ng-click="commentClick($event, item)"
+                ng-class="{'td-hover': global.selectedKontSubMenuItem === 1}">{{item.COMMENT}}</td>
+
+
+            <td>
+                <div>
+                    <button type="button" class="btn btn-sm" aria-label="Left Align" title="Удалить"
+                            ng-click="btnRemoveKontClickHandler(item, getDataNotCame)" 
+                            ng-hide="currentMode == '2' || currentMode == '3'"
+                            ng-disabled="(global.selectedKontSubMenuItem === 1 && global.function.noHavePravoWrite(7,41)) ||
+                                         (global.selectedKontSubMenuItem === 2 && global.function.noHavePravoWrite(7,42)) ||
+                                         (global.selectedKontSubMenuItem === 3 && global.function.noHavePravoWrite(7,43))">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                  <span class="glyphicon glyphicon-undo"></span>
+                    <button type="button" class="btn btn-default" aria-label="Left Align" title="Вернуть"
+                            ng-click="btnUndoKontClickHandler(item)" 
+                            ng-hide="currentMode == '1' || currentMode == '3' || item.SKR == 2"
+                            ng-disabled="(global.selectedKontSubMenuItem === 1 && global.function.noHavePravoWrite(7,41)) ||
+                                         (global.selectedKontSubMenuItem === 2 && global.function.noHavePravoWrite(7,42)) ||
+                                         (global.selectedKontSubMenuItem === 3 && global.function.noHavePravoWrite(7,43))">
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+
+                    </button>
+                </div>
+               
+            </td>
+        </tr>
+    </table>
+
+    <div class="div-pagination">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous" ng-click="prevPageClickHandler()">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li ng-click="pagePrev10()">
+                  <a href="#" aria-label="Next 10 pages">
+                    <span aria-hidden="true">&lsaquo;</span>
+                  </a>
+                </li>
+                <li ng-repeat="item in pageNums" ng-class="{ 'active': item === page }">
+                  <a href="#" ng-click="pageNumClickHandler(item)">{{item}}</a>
+                </li>
+                <li ng-click="pageNext10()">
+                  <a href="#" aria-label="Previous 10 pages">
+                    <span aria-hidden="true">&rsaquo;</span>
+                  </a>
+                </li>
+                <li>
+                    <a href="#" aria-label="Next" ng-click="nextPageClickHandler()">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    @* отображается только для Не пришедших *@
+    <div class="zapisat-na-seans-ne-pr" ng-show="changeSeans === 1">
+
+        <div class="rec-on-seans">
+            <span class="change-seans-label">Дата</span>
+            <input class="stat_date rec-date change-seans-value" ng-model="changeSeansDate" type="date"
+                   date-format="short" />
+        </div>
+        <div>
+          <span class="rec-on-seans" style="color: red">{{notValidDate}}</span>
+        </div>
+        <div class="rec-on-seans">
+            <span class="change-seans-label">Время</span>
+            <select class="rec-seans-id change-seans-value" ng-model="change_m_seans_time_id" ng-options="c.ID as c.NAME for c in global.manual.M_SEANS_TIME"></select>
+        </div>
+
+        <div class="rec-comment">
+            <span class="change-seans-label">Комментарий</span>
+            <textarea class="change-seans-value" ng-model="commentForSave"></textarea>
+        </div>
+        <div style="height: {{errorMessageChangeSeansHeight}}px">
+            <span class="errorMessage">{{errorSaveChangeSeansDate}}</span>
+        </div>
+        <!-- История комментариев -->
+        <div class="comment-list">
+          <table>
+            <tr ng-repeat="comment in newKontO_KONT_SEANS_COMMENTList">
+              <td>{{comment.D_START | date:'dd.MM.yyyy HH:mm'}}<br />{{comment.COMMENT}}</td>
+            </tr>
+          </table>
+        </div>
+        <!-- история комментариев -->
+        <div class="rec-change-buttons">
+            <button class="btnCancelChange" ng-click="btnCancelChangeSeans()">Отменить</button>
+            <button class="btnSaveChange" ng-click="btnSaveChangeSeans()">Сохранить</button>
+        </div>
+    </div>
+
+
+
+  @*Окошко изменения контакта*@
+  <div class="new-ank-seans" ng-show="newAnkNaSeans === 1">
+    <div>
+      <div class="new-ank-body">
+        <div class="new-ank-fio">
+          <div class="new-ank-label">
+            <span>ФИО</span>
+          </div>
+          <div class="new-ank-value">
+            <input class="rec-seans-text" ng-model="newKontSurname" placeholder="Фамилия" id="fieldSurname_listByMode"/>
+            <input class="rec-seans-text rec-seans-data" ng-model="newKontName" placeholder="Имя" />
+            <input class="rec-seans-text rec-seans-data" ng-model="newKontSecname" placeholder="Отчество" />
+          </div>
+        </div>
+        <div class="new-ank-phone">
+          <div class="new-ank-label">
+            <span>Телефон</span>
+          </div>
+          <div class="new-ank-value">
+            <input id="kontNotCamePhoneMobile" class="rec-seans-text" ng-model="newKontPhone_mobile" />
+          </div>
+        </div>
+
+        <!-- Статус Контакта -->
+        @* показываю только для Не пришедших *@
+        <div class="kont-select" ng-show="global.selectedKontSubMenuItem === 1">
+          <div class="select-label">
+            <span>Статус</span>
+          </div>
+          <div class="select-value">
+            <select ng-options="item.ID as item.NAME for item in global.manual.M_KONT_STATUS"
+                    ng-model="newKontMKontStatusId"></select>
+          </div>
+        </div>
+        <!-- /статус Контакта -->
+
+        <!-- Источник Контакта -->
+        @* показываю только для Не пришедших и Скрытых *@
+        <div class="kont-select" ng-show="global.selectedKontSubMenuItem === 1 || global.selectedKontSubMenuItem === 2">
+          <div class="select-label">
+            <span>Источник</span>
+          </div>
+          <div class="select-value">
+            <select ng-options="item.ID as item.NAME for item in global.manual.M_KONT_IST"
+                    ng-model="newKontMKontIstId"></select>
+          </div>
+        </div>
+        <!-- /источник Контакта -->
+
+        <!-- Комментарий -->
+        <div class="new-ank-comment" ng-hide="currentMode == '3'">
+          <div class="new-ank-label">
+            <span>Комментарий</span>
+          </div>
+          <div class="new-ank-value">
+            <textarea class="rec-seans-text" ng-model="commentForSave"></textarea>
+          </div>
+          <!-- История комментариев -->
+          <div class="comment-list">
+            <table>
+              <tr ng-repeat="comment in newKontO_KONT_SEANS_COMMENTList">
+                <td>{{comment.D_START | date:'dd.MM.yyyy HH:mm'}}<br />{{comment.COMMENT}}</td>
+              </tr>
+            </table>
+          </div>
+          <!-- история комментариев -->
+        </div>
+        <!-- /комментарий -->
+
+
+        <div class="clearfix"></div>
+
+      </div>
+      <div class="new-ank-close"><button class="btnRec" ng-click="btnCloseNewKont()">X</button></div>
+    </div>
+    <div class="new-ank-save-panel">
+      <div class="errorMessage">{{errorSaveNewKont}}</div>
+      <button class="btnRec"
+              ng-click="btnCreateNewKont()"
+              ng-disabled="btnCreateNewKontDisabled">
+        Сохранить
+      </button>
+    </div>
+  </div>
+
+</div>
+<!-- /контакты - не пришедшие -->
+

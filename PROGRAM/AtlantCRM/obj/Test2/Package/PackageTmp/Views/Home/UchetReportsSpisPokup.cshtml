@@ -1,0 +1,46 @@
+﻿<!-- Учёт - Отчёты - Список покупателей -->
+<div id="uchetReportsSpisPokup" class="tab-content" ng-controller="uchetReportsSpisPokupCtrl"
+     ng-show="global.selectedUchetSubMenuItem === 4 && global.selectedUchetReportsSubMenuItem === 0"
+     ng-style="{ 'background-color' : (previewPrint === 1) ? 'white' : '' }">
+
+  <div class="spis-pokup-div" ng-hide="previewPrint === 1">
+    
+    <div>
+      <span class="spis-pokup-first-row span-dt-from">Дата с</span>
+      <input class="spis-pokup-first-row date-dt-from" type="date" ng-model="DT_FROM"/>
+
+      <span class="spis-pokup-first-row span-dt-to">Дата по</span>
+      <input class="spis-pokup-first-row date-dt-to" type="date" ng-model="DT_TO"/>
+
+      <button class="spis-pokup-first-row spis-pokup-button-apply" ng-click="refreshSpisPokup()">Применить</button>
+      <button class="spis-pokup-first-row spis-pokup-button-print" ng-click="print()">Печать</button>
+    </div>
+
+    <div class="spis-pokup-div-table">
+      <table>
+        <tr>
+          <td align="center">ФИО</td>
+          <td align="center">Дата выдачи</td>
+          <td align="center">Телефон</td>
+          <td align="center">Наименование товара</td>
+          <td align="center">Выдано</td>
+          <td align="center">Сумма</td>
+        </tr>
+        <tr ng-repeat="item in data" ng-style="{ 'background-color' : ($index + 1 === 1 || (($index + 1) % 2) > 0 ) ? 'white' : '' }">
+          <td align="center" class="info1">
+            <span ng-click="openAnkRej(item.O_ANK_ID)" ng-class="(item.O_ANK_ID === null) ? '' : 'hover-cursor-underline'">{{item.FIO}}</span>
+          </td>
+          <td align="center" class="info2">{{item.D_VID | date:'dd.MM.yyyy'}}</td>
+          <td align="center" class="info3">{{item.PHONE}}</td>
+          <td align="center" class="info4">{{item.NAME}}</td>
+          <td align="center" class="info5">{{item.VID}}</td>
+          <td align="center" class="info6">{{item.SUMMA}}</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+</div>
+<!-- /учёт - отчёты - список покупателей -->
+

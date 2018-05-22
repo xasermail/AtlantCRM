@@ -1,0 +1,53 @@
+﻿<!-- Учёт - Отчёты - Продано специалистом -->
+@*<script src="~/Scripts/multiselect.js"></script>*@
+
+<div id="uchetReportsSaleSpecialist" class="tab-content" ng-controller="uchetReportsSaleSpecialistCtrl"
+     ng-show="global.selectedUchetSubMenuItem === 4 && global.selectedUchetReportsSubMenuItem === 102">
+      @*долно быть ng-show="global.selectedUchetSubMenuItem === 4 && global.selectedUchetReportsSubMenuItem === 2">*@
+     <div>
+
+       <multiselect class="input-xlarge" multiple="true"
+                    ng-model="selectedCar"
+                    options="c.name for c in cars"
+                    change="selected()"></multiselect>
+
+       @*<input type="text" value="{{selectedSpecialists}}"/>
+       <select ng-model="currentMode" ng-options="item for item in modes"></select>
+
+       <select ng-model="currentMode" ng-options="item for item in modes"></select>*@
+       
+       <span>Дата с: </span>
+       <input type="date" ng-model="fromDate" />
+       <span> Дата по: </span>
+       <input type="date" ng-model="toDate" />
+
+       
+       <button ng-click="btnRefreshReportClick($event)">Применить</button>
+     </div>
+
+     <div>
+     <table>
+      <tr>
+        <th>Дата</th>
+        <th>Товар</th>
+        <th>ФИО</th>
+        <th>Цена</th>
+        <th>Телефон</th>
+        <th>Продавец</th>
+      </tr>
+      <tr ng-repeat="item in report">
+        <td>{{item.DATE}}</td>
+        <td>{{item.PRODUCT}}</td>
+        <td>{{item.FIO}}</td>
+        <td>{{item.PRICE}}</td>
+        <td>{{item.PHONE}}</td>
+        <td>{{item.SPECIALIST}}</td>
+      </tr>
+     </table>
+     </div>
+</div>
+
+
+
+<!-- /учёт - Отчёты - Продано специалистом -->
+

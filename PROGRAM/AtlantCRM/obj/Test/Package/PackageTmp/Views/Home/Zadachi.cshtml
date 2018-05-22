@@ -1,0 +1,110 @@
+﻿<!-- Задачи -->
+<div id="zadachi" class="tab-content" ng-controller="zadachiCtrl"
+     ng-show="(global.selectedMenuItem === 'menuItemDilerA' ||
+               global.selectedMenuItem === 'menuItemDilerC' ||
+               global.selectedMenuItem === 'menuItemDilerD') && 
+              global.selectedDilerSubMenuItem === 2 "> @* && global.function.havePravoRead(10,47) *@
+
+  <!-- Заголовки вкладок -->
+  <div class="vkladki">
+
+    @* эта вкладка только для Дилера A *@
+    <div class="vkladka" ng-class="{active: selectedVkladka === 'novie'}"
+         ng-show="global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_A"
+         ng-click="selectVkladka('novie')">Новые</div>
+    <div class="vkladka" ng-class="{active: selectedVkladka === 'vPr'}" ng-click="selectVkladka('vPr')">В процессе</div>
+    <div class="vkladka" ng-class="{active: selectedVkladka === 'vip'}" ng-click="selectVkladka('vip')">Выполнено</div>
+    <div class="vkladka" ng-class="{active: selectedVkladka === 'neVip'}" ng-click="selectVkladka('neVip')">Не выполнено</div>
+  </div>
+  <!-- /заголовки вкладок -->
+
+  <!-- Содержимое вкладок -->
+  <div class="content">
+
+    <!-- Новые -->
+    <div class="novie" ng-show="selectedVkladka === 'novie'">
+
+      <div>
+
+        <table class="table table-bordered table-hover table-striped saloni">
+          <thead>
+            <tr>
+              <th>Салоны</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in m_org">
+              <td ng-class="{active: item.ID === selectedOrgId}">{{item.ADRES}}</td>
+              <td><button ng-click="selectOrg(item)">&gt;</button></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        <!-- Новая задача -->
+        <div class="new-task">
+          <div><span>Срок</span><input type="date" ng-model="new.d_beg" /><span> - </span><input type="date" ng-model="new.d_end" /></div>
+          <div><span>Тема</span><input type="text" ng-model="new.tema" /></div>
+          <div><span>Задача</span><textarea type="text" ng-model="new.zadacha"></textarea></div>
+          <div><button ng-click="save()" ng-disabled="selectedOrgId == null">Сохранить</button></div>
+        </div>
+        <!-- /новая задача -->
+
+        <div class="clearfix"></div>
+
+      </div>
+
+    </div>
+    <!-- /новые -->
+
+    <!-- В процессе, Выполнено,  Не выполнено -->
+    <div class="novie" ng-repeat="v in CONST_VKLADKI" ng-show="selectedVkladka === v">
+      <table class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr>
+            @* салон видно только Дилеру A, потому что он за много салонов получает информацию, остальные только за свой *@
+            <th ng-show="global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_A">Салон</th>
+            <th>С</th>
+            <th>По</th>
+            <th>Тема</th>
+            <th>Задача</th>
+            <th>Дата выполнения</th>
+            <th>Кто выполнил</th>
+            @* кнопка Выполнить доступна только салонам Дилер C и Дилер D *@
+            <th ng-show="v === 'vPr' && (global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_C || global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_D)">Выполнить</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in zadachi[v]">
+            <td ng-show="global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_A">
+              <select ng-options="item.ID as item.NAME for item in global.manual.M_ORG"
+                  ng-model="item.M_ORG_ID_ZADACHA" disabled="disabled"></select>
+            </td>
+            <td>{{item.D_BEG | date:'dd.MM.yyyy'}}</td>
+            <td>{{item.D_END | date:'dd.MM.yyyy'}}</td>
+            <td>{{item.TEMA}}</td>
+            <td>{{item.ZADACHA}}</td>
+            <td>{{item.D_VIP | date:'dd.MM.yyyy'}}</td>
+            <td>
+              <select ng-options="item.ID as item.UserName for item in global.manual.S_USER"
+                ng-model="item.USERID_VIP" disabled="disabled"></select>
+            </td>
+            @* кнопка Выполнить доступна только салонам Дилер C и Дилер D *@
+            <td ng-show="v === 'vPr' && (global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_C || global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_D)"><button ng-click="vip(item)">Выполнить</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- /в процессе, выполнено,  не выполнено -->
+
+
+
+  </div>
+  <!-- /содержимое вкладок -->
+
+
+</div>
+<!-- /задачи -->

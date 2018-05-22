@@ -1,0 +1,106 @@
+﻿<!-- Настройки - окно ввода -->
+<div id="nastr" class="tab-content" ng-controller="nastrCtrl" ng-show="global.selectedMenuItem === 'menuItemManual' && 
+                                                                       global.selectedNastrSubMenuItem === 1 &&
+                                                                       global.function.havePravoRead(2,20)">
+
+  <div id="nastr-enter-div">
+    <table>
+      <tr>
+
+        <td>
+          <div>
+            <span>Логин для СМС</span>
+            <br />
+            <input type="text" placeholder="Логин" ng-model="nastr.SMS_LOGIN" />
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <span>Пароль для СМС</span>
+            <br />
+            <input type="text" placeholder="Пароль" ng-model="nastr.SMS_PASSWORD" />
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <span>Отправитель СМС</span>
+            <br />
+            <input type="text" placeholder="Наименование" ng-model="nastr.SMS_SENDER" />
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <span>Кол-во штрих-кодов</span>
+            <br />
+            <input type="number" placeholder="Количество" ng-model="KOLVO" />
+            <button ng-click="formFile()">Сформировать файл</button>
+          </div>
+        </td>
+
+      </tr>
+      <tr>
+
+        <td>
+          <div>
+            <span>Телефон ответственного</span>
+            <br />
+            <input id="nastrPhoneMobile" type="text" ng-model="nastr.PHONE_MOBILE" />
+          </div>
+        </td>
+
+      </tr>
+      <tr>
+
+        <td>
+          <div>
+            <span>Ключ API для звонков</span>
+            <br />
+            <input type="text" placeholder="Ключ API" ng-model="nastr.SIP_KEY" />
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <span>Секретный ключ API</span>
+            <br />
+            <input type="text" placeholder="Секретный ключ" ng-model="nastr.SIP_SECRET" />
+          </div>
+        </td>
+
+      </tr>
+    </table>
+
+    <div class="checkbox"
+         ng-show="global.userContext.M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_D &&
+                  global.userContext.IS_ADM === 0 &&
+                  global.userContext.IS_DILER_A === 0 &&
+                  global.userContext.IS_DILER_C === 0 &&
+                  global.userContext.PARENT_M_ORG_TYPE_ID === global.const.M_ORG_TYPE_ID_DILER_C">
+      <input style="margin-left: 10px" type="checkbox" ng-model="nastr.DILER_C_ACCESS" ng-true-value="1" ng-false-value="0" /> Разрешить "{{global.userContext.PARENT_M_ORG_ID_NAME}}" (дилер C) просматривать данные моей организации
+    </div>
+
+  </div>
+
+  <div id="nastr-save-div">
+    <button ng-click="save()">Сохранить</button>
+  </div>
+
+  <div class="barcodePanel" ng-show="showBarcodeDiv === true">
+    <div class="barcode-main-div">
+      <div class="barcode-button-div">
+        <button class="barcode-save" ng-click="saveFile()">Выгрузить</button>
+        <button ng-click="hideBarcodeDiv()">Закрыть</button>
+      </div>
+
+      <div ng-repeat="item in barcode"
+           class="barcode-div">
+        <img id="{{item.id}}" class="barcode-img" />
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /Настройки - окно ввода -->

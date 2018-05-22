@@ -1,0 +1,34 @@
+﻿@{
+  Layout = "~/Views/Shared/_Dev.cshtml";
+}
+
+  @*<!-- Учет - Отчеты - Отчет за период -->
+  <div id="uchetReportsOtchetZaPer">
+    @Html.Partial("UchetReportsOtchetZaPer")
+    @Html.Partial("UchetReportsOtchetZaPer")
+  </div>
+  <!-- /учет - отчеты - отчет за период -->*@
+
+
+@Html.Partial("DilerD")
+   
+@section scripts {
+  @{string s = "?i=" + DateTime.Now.Ticks;}
+  <script src="~/Scripts/ng-controllers/appCtrl.js@(s)"></script>
+  @*<script src="~/Scripts/ng-controllers/druzyaCtrl.js@(s)"></script>
+  <script src="~/Scripts/ng-controllers/uchetReportsOtchetZaPerCtrl.js@(s)"></script>*@
+<script src="~/Scripts/ng-controllers/dilerDCtrl.js@(s)"></script>
+
+
+  <script>
+    window.setTimeout(() => {
+
+      $(app).scope().global.selectedMenuItem = 'menuItemDilerD';
+
+
+      $(app).scope().$apply();
+    }, 100);
+
+  </script>
+
+}

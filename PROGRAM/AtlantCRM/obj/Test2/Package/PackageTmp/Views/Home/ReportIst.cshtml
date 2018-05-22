@@ -1,0 +1,22 @@
+﻿<div id="reportIst" class="reportForm" ng-controller="reportIstCtrl" ng-show="global.selectedReportSubMenuItem === 4">
+  <div>
+    <span>Дата</span>
+    <input type="date" ng-model="fromDate" />
+    <span> - </span>
+    <input type="date" ng-model="toDate" />
+    <button ng-click="btnUpdateReportClick($event)">Применить</button>
+  </div>
+  <table>
+    <tr>
+      <td>Название</td>
+      <td>Количество</td>
+      <td>Продажи</td>
+    </tr>
+    <tr ng-repeat="item in report">
+      <td>{{item.NAME}}</td>
+      <td>{{item.COUNT_ANK}}</td>
+      <td>{{item.SALE}}</td>
+    </tr>
+  </table>
+</div>
+

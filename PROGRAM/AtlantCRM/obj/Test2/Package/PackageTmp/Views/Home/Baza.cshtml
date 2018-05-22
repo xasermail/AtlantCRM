@@ -1,0 +1,137 @@
+﻿<!-- База -->
+<div id="baza" class="tab-content" ng-controller="bazaCtrl" ng-show="global.selectedMenuItem === 'menuItemBaza'">
+
+  <div class="filter-outer-block">
+    <div class="filter-actions">
+      <button type="button" class="btn btn-default btn-refresh" aria-label="Left Align" ng-click="refreshGrid()">
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+      </button>
+      <div class="vsego"><span>Всего: <span class="badge">{{vsego}}</span></span></div>
+    </div>
+
+    <div class="filter">
+
+      <!-- Посещения -->
+      <div class="filter-select filter-posescheniya">
+        <span class="arrow-down"></span>
+        <div class="filter-pos-top" ng-click="posDropDownClick()"></div>
+        <div ng-show="pos.applied === true">
+          <button class="btn btn-default btn-close" ng-click="posCloseClick()">x</button>
+        </div>
+        Посещения
+        <div class="filter-pos-window" ng-show="pos.shown === true">
+          <div class="date-s-po"><input type="date" ng-model="pos.s" /> - <input type="date" ng-model="pos.po" /></div>
+          <div class="pos-today"><button type="button" ng-click="posTodayClick()">За сегодня</button></div>
+          <button type="button" class="btn-ok" ng-click="posOkClick()">Применить</button>
+        </div>
+      </div>
+      <!-- /посещения -->
+
+
+      <!-- Период -->
+      <div class="filter-select filter-period">
+        <span class="arrow-down"></span>
+        <div class="filter-period-top" ng-click="periodDropDownClick()"></div>
+        <div ng-show="period.applied === true">
+          <button class="btn btn-default btn-close" ng-click="periodCloseClick()">x</button>
+        </div>
+        Период
+        <div class="filter-period-window" ng-show="period.shown === true">
+          <select ng-model="period.hodit" ng-options="item.ID as item.NAME for item in period.hoditNeHodit"></select>
+          <div class="filter-period-dn-div">
+            <input type="number" class="filter-period-dn" ng-model="period.dn" />
+            <span>дней</span>
+            <div class="dn-error" ng-show="period.dnError === true">должно быть > 0</div>
+          </div>
+          <button type="button" class="btn-ok" ng-click="periodOkClick()">Применить</button>
+        </div>
+      </div>
+      <!-- /период -->
+
+
+      <div class="filter-select filter-reg"><span class="arrow-down"></span>Регистрация</div>
+      <div class="filter-select filter-seansi"><span class="arrow-down"></span>Сеансы</div>
+
+
+      <!-- Заболевания -->
+      <div class="filter-select filter-zabol">
+        <span class="arrow-down"></span>
+        <div class="filter-zabol-top" ng-click="zabolDropDownClick()"></div>
+        <div ng-show="zabol.applied === true">
+          <button class="btn btn-default btn-close" ng-click="zabolCloseClick()">x</button>
+        </div>
+        Заболевания
+        <div class="filter-zabol-window" ng-show="zabol.shown === true">
+          <div><input ng-model="zabol.searchStr" placeholder="Поиск заболевания" class="search-str" /></div>
+          <div>
+            <select ng-model="zabol.id" ng-options="item.ID as item.NAME for item in global.manual.M_ZABOL | filter:{NAME: zabol.searchStr}"
+                    size="20" class="zabol-listbox"></select>
+          </div>
+          <div><button type="button" class="btn-ok" ng-click="zabolOkClick()" ng-disabled="zabol.id == null">Применить</button></div>
+        </div>
+      </div>
+      <!-- /заболевания -->
+
+
+      <div class="filter-select filter-kateg"><span class="arrow-down"></span>Категории</div>
+      <div class="filter-select filter-prod"><span class="arrow-down"></span>Продажи</div>
+      <div class="filter-select filter-uluch"><span class="arrow-down"></span>Улучшения</div>
+      <div class="aktivist"><input type="checkbox" /> <span>Активист</span></div>
+      <div class="pokazat-isklyuchennih"><input type="checkbox" /> <span>Показать исключенных</span></div>
+      <input class="poisk-po" type="text" placeholder="Поиск по имени, тел., адресу, перс. коду" ng-model="fio" ng-keypress="fioKeyPress($event)" />
+    </div>
+
+  </div>
+
+  <div class="fio-table">
+    <table class="table table-bordered table-hover table-striped">
+      <thead>
+        <tr>
+          <th>Код</th>
+          <th>ФИО</th>
+          <th>Телефон</th>
+          <th>Кол-во посещений</th>
+          <th>Последнее посещение</th>
+          <th>Последняя продажа</th>
+          <th>Специалист</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in bazaList" ng-dblclick="global.openAnk(item.id)" ng-class="{'success' : item.is_registered_today === 1}">
+          <td>{{item.kod}}</td>
+          <td>{{item.fio}}</td>
+          <td>{{item.phone}}</td>
+          <td>{{item.visit_count}}</td>
+          <td>{{item.last_visit | date:'dd.MM.yyyy'}}</td>
+          <td>{{item.last_sale | date:'dd.MM.yyyy'}}</td>
+          <td>{{item.reg_fio}}</td>
+          <td><button class="btn btn-default btn-sm" title="Перейти в Звонки"
+                      ng-click="openDialogRej(item.id)">
+                <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+              </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="div-pagination">
+      <nav aria-label="Page navigation">
+        <ul class="pagination">
+          <li ng-click="pageNext()">
+            <a href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li ng-repeat="item in pageNums" ng-class="{active: item === page}"><a href="#" ng-click="pageNumClickHandler(item)">{{item}}</a></li>
+          <li ng-click="pagePrev()">
+            <a href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+</div>
+<!-- /база -->
